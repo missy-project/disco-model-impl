@@ -10,6 +10,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Identifiable {
 
+	// properties
+
 	@Column
 	@Id
 	// TODO zl implement generator for URN consisting of agencyId + objectId + version
@@ -27,8 +29,12 @@ public class Identifiable {
 	@Column
 	private String minorVersion;
 
+	// relations
+
 	@ManyToMany
 	private Set<Note> note;
+
+	// getter/setter
 
 	public String getURN() {
 		return URN;

@@ -10,8 +10,12 @@ import org.gesis.ddi.Identifiable;
 @MappedSuperclass
 public class ConceptScheme extends Identifiable {
 
+	// relations
+
 	@ManyToMany
 	private Set<Concept> skos_hasTopConcept;
+
+	// getter/setter
 
 	public Set<Concept> getSkos_hasTopConcept() {
 		return skos_hasTopConcept;

@@ -7,8 +7,12 @@ import javax.persistence.ManyToMany;
 
 public class ResourcePackage extends Identifiable {
 
+	// relations
+
 	@ManyToMany
 	private Set<Identifiable> identifiable;
+
+	// getter/setter
 
 	public Set<Identifiable> getIdentifiable() {
 		return identifiable;

@@ -12,11 +12,15 @@ import org.gesis.ddi.Identifiable;
 @MappedSuperclass
 public class Concept extends Identifiable {
 
+	// properties
+
 	@Column
 	private String skos_prefLabel;
 
 	@Column
 	private String skos_notation;
+
+	// relations
 
 	@ManyToMany
 	private Set<ConceptScheme> skos_inScheme;
@@ -26,6 +30,8 @@ public class Concept extends Identifiable {
 
 	@ManyToOne(optional = false)
 	private Concept category;
+
+	// getter/setter
 
 	public String getSkos_prefLabel() {
 		return skos_prefLabel;

@@ -8,8 +8,12 @@ import org.gesis.ddi.ontology.DescriptiveStatistics;
 @MappedSuperclass
 public class CategoryStatistics extends DescriptiveStatistics {
 
+	// properties
+
 	@Column
 	private float value;
+
+	// getter/setter
 
 	public float getValue() {
 		return value;

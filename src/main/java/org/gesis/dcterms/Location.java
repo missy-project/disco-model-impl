@@ -8,8 +8,12 @@ import org.gesis.ddi.Identifiable;
 @MappedSuperclass
 public class Location extends Identifiable {
 
+	// properties
+
 	@Column
 	private String rdfs_label;
+
+	// getter/setter
 
 	public String getRdfs_label() {
 		return rdfs_label;
