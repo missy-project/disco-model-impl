@@ -1,14 +1,16 @@
 package org.gesis.ddi.ontology;
 
+import java.util.Set;
+
 import javax.persistence.Column;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
 import org.gesis.ddi.Identifiable;
-import org.gesis.skos.Concept;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractDataElement<Q extends AbstractQuestion<?>> extends Identifiable {
+public abstract class AbstractDataElement<U extends AbstractUniverse<?>, C extends AbstractConcept, R extends Representation> extends Identifiable {
 
 	// properties
 
@@ -20,14 +22,14 @@ public abstract class AbstractDataElement<Q extends AbstractQuestion<?>> extends
 
 	// relations
 
-	@ManyToOne
-	private AbstractUniverse<Q> holdsMeasurementOf;
+	@ManyToMany
+	private Set<U> universe;
 
-	@ManyToOne
-	private Concept hasConcept;
+	@ManyToMany
+	private Set<C> concept;
 
-	@ManyToOne
-	private Representation hasRepresentation;
+	@ManyToMany
+	private Set<R> representation;
 
 	// getter/setter
 
@@ -47,28 +49,28 @@ public abstract class AbstractDataElement<Q extends AbstractQuestion<?>> extends
 		this.dcterms_description = dcterms_description;
 	}
 
-	public AbstractUniverse<Q> getHoldsMeasurementOf() {
-		return holdsMeasurementOf;
+	public Set<U> getUniverse() {
+		return universe;
 	}
 
-	public void setHoldsMeasurementOf(AbstractUniverse<Q> holdsMeasurementOf) {
-		this.holdsMeasurementOf = holdsMeasurementOf;
+	public void setUniverse(Set<U> universe) {
+		this.universe = universe;
 	}
 
-	public Concept getHasConcept() {
-		return hasConcept;
+	public Set<C> getConcept() {
+		return concept;
 	}
 
-	public void setHasConcept(Concept hasConcept) {
-		this.hasConcept = hasConcept;
+	public void setConcept(Set<C> concept) {
+		this.concept = concept;
 	}
 
-	public Representation getHasRepresentation() {
-		return hasRepresentation;
+	public Set<R> getRepresentation() {
+		return representation;
 	}
 
-	public void setHasRepresentation(Representation hasRepresentation) {
-		this.hasRepresentation = hasRepresentation;
+	public void setRepresentation(Set<R> representation) {
+		this.representation = representation;
 	}
 
 }

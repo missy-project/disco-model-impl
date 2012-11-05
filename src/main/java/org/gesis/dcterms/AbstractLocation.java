@@ -3,10 +3,10 @@ package org.gesis.dcterms;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-import org.gesis.ddi.Identifiable;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractLocation extends Identifiable {
+public abstract class AbstractLocation extends AbstractConcept {
 
 	// properties
 

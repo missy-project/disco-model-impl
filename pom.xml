@@ -4,11 +4,11 @@
 		<groupId>org.gesis</groupId>
 		<artifactId>ddi</artifactId>
 		<relativePath>../ddi/pom.xml</relativePath>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.gesis.ddi</groupId>
-	<artifactId>ddi-model</artifactId>
+	<artifactId>disco-model</artifactId>
 
 	<dependencies>
 		<dependency>

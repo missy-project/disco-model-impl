@@ -2,21 +2,18 @@ package org.gesis.ddi.ontology;
 
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 
-import org.gesis.dcterms.Location;
-import org.gesis.dcterms.PeriodOfTime;
+import org.gesis.dcterms.AbstractLocation;
+import org.gesis.dcterms.AbstractPeriodOfTime;
 import org.gesis.ddi.Identifiable;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractCoverage<L extends Location, P extends PeriodOfTime> extends Identifiable {
+public abstract class AbstractCoverage<L extends AbstractLocation, P extends AbstractPeriodOfTime, C extends AbstractConcept> extends Identifiable {
 
 	// properties
-
-	@Column
-	private String dcterms_subject;
 
 	// relations
 
@@ -26,13 +23,18 @@ public abstract class AbstractCoverage<L extends Location, P extends PeriodOfTim
 	@ManyToMany
 	private Set<P> dcterms_temporal;
 
+	@ManyToMany
+	private Set<C> dcterms_subject;
+
 	// getter/setter
 
-	public String getDcterms_subject() {
+	public Set<C> getDcterms_subject()
+	{
 		return dcterms_subject;
 	}
 
-	public void setDcterms_subject(String dcterms_subject) {
+	public void setDcterms_subject( Set<C> dcterms_subject )
+	{
 		this.dcterms_subject = dcterms_subject;
 	}
 

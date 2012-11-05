@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import org.gesis.ddi.Identifiable;
@@ -15,23 +14,34 @@ public abstract class AbstractConcept extends Identifiable {
 	// properties
 
 	@Column
-	private String skos_prefLabel;
+	private String skos_definition;
 
 	@Column
 	private String skos_notation;
+
+	@Column
+	private String skos_prefLabel;
 
 	// relations
 
 	@ManyToMany
 	private Set<ConceptScheme> skos_inScheme;
 
-	@ManyToOne(optional = false)
-	private Concept skos_broader;
+	@ManyToMany
+	private Set<AbstractConcept> skos_broader;
 
-	@ManyToOne(optional = false)
-	private Concept category;
+	@ManyToMany
+	private Set<AbstractConcept> skos_narrower;
 
 	// getter/setter
+
+	public String getSkos_definition() {
+		return skos_definition;
+	}
+
+	public void setSkos_definition(String skos_definition) {
+		this.skos_definition = skos_definition;
+	}
 
 	public String getSkos_prefLabel() {
 		return skos_prefLabel;
@@ -57,19 +67,19 @@ public abstract class AbstractConcept extends Identifiable {
 		this.skos_inScheme = skos_inScheme;
 	}
 
-	public Concept getSkos_broader() {
+	public Set<AbstractConcept> getSkos_broader() {
 		return skos_broader;
 	}
 
-	public void setSkos_broader(Concept skos_broader) {
+	public void setSkos_broader(Set<AbstractConcept> skos_broader) {
 		this.skos_broader = skos_broader;
 	}
 
-	public Concept getCategory() {
-		return category;
+	public Set<AbstractConcept> getSkos_narrower() {
+		return skos_narrower;
 	}
 
-	public void setCategory(Concept category) {
-		this.category = category;
+	public void setSkos_narrower(Set<AbstractConcept> skos_narrower) {
+		this.skos_narrower = skos_narrower;
 	}
 }

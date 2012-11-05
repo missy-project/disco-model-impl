@@ -8,60 +8,76 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import org.gesis.ddi.Identifiable;
-import org.gesis.skos.Concept;
-import org.gesis.skos.ConceptScheme;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractQuestion<C extends Concept> extends Identifiable {
+public abstract class AbstractQuestion<C extends AbstractConcept, U extends AbstractUniverse<?>> extends Identifiable {
 
 	// properties
 
 	@Column
-	private String literalText;
+	private String questionText;
+
+	@Column
+	private String skos_prefLabel;
 
 	// relations
 
 	@ManyToOne
-	private ConceptScheme hasResponseDomain_;
-
-	@ManyToOne
-	private Representation hasResponseDomain;
+	private Representation responseDomain;
 
 	@ManyToMany
-	private Set<C> hasConcept;
+	private Set<C> concept;
+
+	@ManyToOne
+	private Set<U> universe;
 
 	// getter/setter
 
-	public Object getLiteralText() {
-		return literalText;
+	public Object getQuestionText() {
+		return questionText;
 	}
 
-	public void setLiteralText(String literalText) {
-		this.literalText = literalText;
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
 
-	public ConceptScheme getHasResponseDomain_() {
-		return hasResponseDomain_;
+	public String getSkos_prefLabel() {
+		return skos_prefLabel;
 	}
 
-	public void setHasResponseDomain_(ConceptScheme hasResponseDomain_) {
-		this.hasResponseDomain_ = hasResponseDomain_;
+	public void setSkos_prefLabel(String skos_prefLabel) {
+		this.skos_prefLabel = skos_prefLabel;
 	}
 
-	public Representation getHasResponseDomain() {
-		return hasResponseDomain;
+	public Representation getResponseDomain()
+	{
+		return responseDomain;
 	}
 
-	public void setHasResponseDomain(Representation hasResponseDomain) {
-		this.hasResponseDomain = hasResponseDomain;
+	public void setResponseDomain( Representation responseDomain )
+	{
+		this.responseDomain = responseDomain;
 	}
 
-	public Set<C> getHasConcept() {
-		return hasConcept;
+	public Set<C> getConcept()
+	{
+		return concept;
 	}
 
-	public void setHasConcept(Set<C> hasConcept) {
-		this.hasConcept = hasConcept;
+	public void setConcept( Set<C> concept )
+	{
+		this.concept = concept;
+	}
+
+	public Set<U> getUniverse()
+	{
+		return universe;
+	}
+
+	public void setUniverse( Set<U> universe )
+	{
+		this.universe = universe;
 	}
 
 }

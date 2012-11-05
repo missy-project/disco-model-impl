@@ -1,5 +1,7 @@
 package org.gesis.ddi.ontology;
 
-public class DataElement extends AbstractDataElement<Question> {
+import org.gesis.skos.Concept;
+
+public class DataElement extends AbstractDataElement<Universe, Concept, Representation> {
 
 }

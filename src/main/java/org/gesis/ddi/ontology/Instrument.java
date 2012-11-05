@@ -1,5 +1,5 @@
 package org.gesis.ddi.ontology;
 
-public class Instrument extends AbstractInstrument<Question> {
+public class Instrument extends AbstractInstrument {
 
 }

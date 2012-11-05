@@ -8,15 +8,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 import org.gesis.ddi.Identifiable;
-import org.gesis.skos.Concept;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractVariable<I extends AbstractInstrument<?>, D extends AbstractDataElement<Q>, Q extends AbstractQuestion<?>> extends Identifiable {
+public abstract class AbstractVariable<Q extends AbstractQuestion<?, ?>> extends Identifiable {
 
 	// properties
 
 	@Column
-	private String dcterms_identifier;
+	private String skos_notation;
 
 	@Column
 	private String skos_prefLabel;
@@ -26,32 +26,32 @@ public abstract class AbstractVariable<I extends AbstractInstrument<?>, D extend
 
 	// relations
 
-	@ManyToMany
-	private Set<I> isPopulatedBy;
+	@ManyToOne(optional = true)
+	private AbstractDataElement<?, ?, ?> basedOn;
+
+	@ManyToOne(optional = false)
+	private AbstractUniverse<Q> universe;
+
+	@ManyToOne(optional = false)
+	private Representation representation;
+
+	@ManyToOne(optional = false)
+	private AbstractConcept concept;
 
 	@ManyToMany
-	private Set<D> usesDataElement;
+	private Set<Q> question;
 
-	@ManyToOne
-	private AbstractUniverse<Q> holdsMeasurementOf;
-
-	@ManyToOne
-	private Representation hasRepresentation;
-
-	@ManyToOne
-	private Concept hasConcept;
-
-	@ManyToOne
-	private Q hasQuestion;
+	@ManyToOne(optional = true)
+	private AbstractAnalysisUnit analysisUnit;
 
 	// getter/setter
 
-	public String getDcterms_identifier() {
-		return dcterms_identifier;
+	public String getSkos_notation() {
+		return skos_notation;
 	}
 
-	public void setDcterms_identifier(String dcterms_identifier) {
-		this.dcterms_identifier = dcterms_identifier;
+	public void setSkos_notation(String skos_notation) {
+		this.skos_notation = skos_notation;
 	}
 
 	public String getSkos_prefLabel() {
@@ -70,52 +70,56 @@ public abstract class AbstractVariable<I extends AbstractInstrument<?>, D extend
 		this.dcterms_description = dcterms_description;
 	}
 
-	public Set<I> getIsPopulatedBy() {
-		return isPopulatedBy;
+	public AbstractDataElement<?, ?, ?> getBasedOn() {
+		return basedOn;
 	}
 
-	public void setIsPopulatedBy(Set<I> isPopulatedBy) {
-		this.isPopulatedBy = isPopulatedBy;
+	public void setBasedOn(AbstractDataElement<?, ?, ?> basedOn) {
+		this.basedOn = basedOn;
 	}
 
-	public Set<D> getUsesDataElement() {
-		return usesDataElement;
+	public AbstractUniverse<Q> getUniverse() {
+		return universe;
 	}
 
-	public void setUsesDataElement(Set<D> usesDataElement) {
-		this.usesDataElement = usesDataElement;
+	public void setUniverse(AbstractUniverse<Q> universe) {
+		this.universe = universe;
 	}
 
-	public AbstractUniverse<Q> getHoldsMeasurementOf() {
-		return holdsMeasurementOf;
+	public Representation getRepresentation() {
+		return representation;
 	}
 
-	public void setHoldsMeasurementOf(AbstractUniverse<Q> holdsMeasurementOf) {
-		this.holdsMeasurementOf = holdsMeasurementOf;
+	public void setRepresentation(Representation representation) {
+		this.representation = representation;
 	}
 
-	public Representation getHasRepresentation() {
-		return hasRepresentation;
+	public AbstractConcept getConcept() {
+		return concept;
 	}
 
-	public void setHasRepresentation(Representation hasRepresentation) {
-		this.hasRepresentation = hasRepresentation;
+	public void setConcept(AbstractConcept concept) {
+		this.concept = concept;
 	}
 
-	public Concept getHasConcept() {
-		return hasConcept;
+	public Set<Q> getQuestion()
+	{
+		return question;
 	}
 
-	public void setHasConcept(Concept hasConcept) {
-		this.hasConcept = hasConcept;
+	public void setQuestion( Set<Q> question )
+	{
+		this.question = question;
 	}
 
-	public Q getHasQuestion() {
-		return hasQuestion;
+	public AbstractAnalysisUnit getAnalysisUnit()
+	{
+		return analysisUnit;
 	}
 
-	public void setHasQuestion(Q hasQuestion) {
-		this.hasQuestion = hasQuestion;
+	public void setAnalysisUnit(AbstractAnalysisUnit analysisUnit)
+	{
+		this.analysisUnit = analysisUnit;
 	}
 
 }

@@ -9,7 +9,7 @@ import org.gesis.ddi.Identifiable;
 import org.gesis.ddi.ontology.AbstractVariable;
 
 @MappedSuperclass
-public abstract class AbstractDataset<V extends AbstractVariable<?, ?, ?>> extends Identifiable {
+public abstract class AbstractDataSet<V extends AbstractVariable<?>> extends Identifiable {
 
 	// relations
 

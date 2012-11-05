@@ -4,26 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import org.gesis.dcterms.AbstractDataset;
+import org.gesis.dcterms.AbstractMediaTypeOrExtend;
 import org.gesis.dcterms.Location;
 import org.gesis.dcterms.PeriodOfTime;
-import org.gesis.ddi.Identifiable;
+import org.gesis.skos.AbstractConcept;
 
 @MappedSuperclass
-public abstract class AbstractDatafile<L extends Location, P extends PeriodOfTime> extends Identifiable {
+public abstract class AbstractDataFile<L extends Location, P extends PeriodOfTime, C extends AbstractConcept> extends AbstractDataset {
 
 	// properties
-
-	@Column
-	private String dcterms_identifier;
 
 	@Column
 	private String dcterms_description;
 
 	@Column
 	private int caseQuantity;
-
-	@Column
-	private String dcterms_format;
 
 	@Column
 	private String dcterms_provenance;
@@ -34,17 +30,12 @@ public abstract class AbstractDatafile<L extends Location, P extends PeriodOfTim
 	// relations
 
 	@ManyToOne
-	private AbstractCoverage<L, P> hasCoverage;
+	private AbstractCoverage<L, P, C> coverage;
+
+	@ManyToOne
+	private AbstractMediaTypeOrExtend dcterms_format;
 
 	// getter/setter
-
-	public String getDcterms_identifier() {
-		return dcterms_identifier;
-	}
-
-	public void setDcterms_identifier(String dcterms_identifier) {
-		this.dcterms_identifier = dcterms_identifier;
-	}
 
 	public String getDcterms_description() {
 		return dcterms_description;
@@ -60,14 +51,6 @@ public abstract class AbstractDatafile<L extends Location, P extends PeriodOfTim
 
 	public void setCaseQuantity(int caseQuantity) {
 		this.caseQuantity = caseQuantity;
-	}
-
-	public String getDcterms_format() {
-		return dcterms_format;
-	}
-
-	public void setDcterms_format(String dcterms_format) {
-		this.dcterms_format = dcterms_format;
 	}
 
 	public String getDcterms_provenance() {
@@ -86,12 +69,22 @@ public abstract class AbstractDatafile<L extends Location, P extends PeriodOfTim
 		this.owl_versionInfo = owl_versionInfo;
 	}
 
-	public AbstractCoverage<L, P> getHasCoverage() {
-		return hasCoverage;
+	public AbstractCoverage<L, P, C> getCoverage()
+	{
+		return coverage;
 	}
 
-	public void setHasCoverage(AbstractCoverage<L, P> hasCoverage) {
-		this.hasCoverage = hasCoverage;
+	public void setCoverage(AbstractCoverage<L, P, C> coverage)
+	{
+		this.coverage = coverage;
+	}
+
+	public AbstractMediaTypeOrExtend getDcterms_format() {
+		return dcterms_format;
+	}
+
+	public void setDcterms_format(AbstractMediaTypeOrExtend dcterms_format) {
+		this.dcterms_format = dcterms_format;
 	}
 
 }
