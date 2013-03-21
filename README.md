@@ -14,6 +14,8 @@ All classes, datatype properties and object properties are modelled according to
 
 In order to make the persistence of the model easier, all classes are enriched with JPA-annotations, which indicate the relations discribed in the disco-spec. It was intentionally payed attention to JUST using JPA annotations, hence not being dependent to the Hibernate implementation.
 
+Please have a look at []() for an API for persisting
+
 #### Validation
 
 It is assumed to have the validation NOT coupled to the model, thus the existence of datatype and object properties is expected to be managed by the business logic.
