@@ -1,21 +1,17 @@
-package org.gesis.dcterms;
+package org.gesis.rdfs;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.rdfs.Resource;
+import org.gesis.ddi.ontology.Representation;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Location extends Resource
+public class RdfsDatatype extends Representation
 {
 
-	// properties
-
-	// getter/setter
-
-	public Location( String agencyId, String objectId, int majorVersion )
+	public RdfsDatatype( String agencyId, String objectId, int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}

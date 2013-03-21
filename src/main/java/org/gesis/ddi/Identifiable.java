@@ -3,40 +3,66 @@ package org.gesis.ddi;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
-@MappedSuperclass
-public class Identifiable {
+import org.gesis.ddi.util.URNBuilder;
+
+@Entity
+@Inheritance( strategy = InheritanceType.JOINED )
+public class Identifiable
+{
 
 	// properties
 
 	@Column
 	@Id
-	// TODO zl implement generator for URN consisting of agencyId + objectId + version
 	private String URN;
 
-	@Column
+	@Column( nullable = false )
 	private String agencyId;
 
-	@Column
+	@Column( nullable = false )
 	private String objectId;
 
-	@Column
-	private String majorVersion;
+	@Column( nullable = false )
+	private int majorVersion;
 
-	@Column
-	private String minorVersion;
+	@Column( nullable = false, updatable = false )
+	@Version
+	private int minorVersion;
 
 	// relations
 
+	@ElementCollection
 	@ManyToMany
+	@JoinTable(
+			name="Identifiable_Note",
+			joinColumns=@JoinColumn(name="identifiable_id"),
+			inverseJoinColumns=@JoinColumn( name = "note_id" ))
 	private Set<Note> note;
 
 	// getter/setter
 
-	public String getURN() {
+	public Identifiable( String agencyId, String objectId, int majorVersion )
+	{
+		super();
+		this.agencyId = agencyId;
+		this.objectId = objectId;
+		this.majorVersion = majorVersion;
+
+		this.URN = URNBuilder.buildFrom( this );
+	}
+
+	public String getURN()
+	{
 		return URN;
 	}
 
@@ -60,27 +86,33 @@ public class Identifiable {
 		this.objectId = objectId;
 	}
 
-	public String getMajorVersion() {
+	public int getMajorVersion()
+	{
 		return majorVersion;
 	}
 
-	public void setMajorVersion(String majorVersion) {
+	public void setMajorVersion( int majorVersion )
+	{
 		this.majorVersion = majorVersion;
 	}
 
-	public String getMinorVersion() {
+	public int getMinorVersion()
+	{
 		return minorVersion;
 	}
 
-	public void setMinorVersion(String minorVersion) {
+	public void setMinorVersion( int minorVersion )
+	{
 		this.minorVersion = minorVersion;
 	}
 
-	public Set<Note> getNote() {
+	public Set<Note> getNote()
+	{
 		return note;
 	}
 
-	public void setNote(Set<Note> note) {
+	public void setNote(Set<Note> note)
+	{
 		this.note = note;
 	}
 

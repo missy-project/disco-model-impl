@@ -1,5 +1,13 @@
 package org.gesis.dcterms;
 
-public class DataSet extends AbstractDataset {
+import org.gesis.rdfs.Resource;
+
+public class DataSet extends Resource
+{
+
+	public DataSet( String agencyId, String objectId, int majorVersion )
+	{
+		super( agencyId, objectId, majorVersion );
+	}
 
 }

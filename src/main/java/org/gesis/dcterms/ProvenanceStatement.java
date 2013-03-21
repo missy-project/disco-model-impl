@@ -8,14 +8,10 @@ import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Location extends Resource
+public class ProvenanceStatement extends Resource
 {
 
-	// properties
-
-	// getter/setter
-
-	public Location( String agencyId, String objectId, int majorVersion )
+	public ProvenanceStatement( String agencyId, String objectId, int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}

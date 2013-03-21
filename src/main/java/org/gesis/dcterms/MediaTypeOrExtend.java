@@ -4,18 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.rdfs.Resource;
+import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Location extends Resource
+public class MediaTypeOrExtend extends Concept
 {
-
 	// properties
 
-	// getter/setter
+	// relations
 
-	public Location( String agencyId, String objectId, int majorVersion )
+	// getter / setter
+
+	public MediaTypeOrExtend( String agencyId, String objectId, int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}

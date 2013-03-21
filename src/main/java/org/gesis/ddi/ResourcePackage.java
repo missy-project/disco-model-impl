@@ -4,8 +4,11 @@ import java.util.Set;
 
 import javax.persistence.ManyToMany;
 
+import org.gesis.rdfs.Resource;
 
-public class ResourcePackage extends Identifiable {
+
+public class ResourcePackage extends Resource
+{
 
 	// relations
 
@@ -13,6 +16,11 @@ public class ResourcePackage extends Identifiable {
 	private Set<Identifiable> identifiable;
 
 	// getter/setter
+
+	public ResourcePackage( String agencyId, String objectId, int majorVersion )
+	{
+		super( agencyId, objectId, majorVersion );
+	}
 
 	public Set<Identifiable> getIdentifiable() {
 		return identifiable;
