@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
@@ -37,17 +38,17 @@ public class Instrument extends Resource
 
 	// getter/setter
 
-	public Instrument( String agencyId, String objectId, int majorVersion )
+	public Instrument( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public LangString getDcterms_description()
 	{
-		return dcterms_description;
+		return this.dcterms_description;
 	}
 
-	public void setDcterms_description( LangString dcterms_description )
+	public void setDcterms_description( final LangString dcterms_description )
 	{
 		this.dcterms_description = dcterms_description;
 	}
@@ -57,9 +58,19 @@ public class Instrument extends Resource
 		return this.externalDocumentation;
 	}
 
-	public void setExternalDocumentation( Set<Document> externalDocumentation )
+	public void setExternalDocumentation( final Set<Document> externalDocumentation )
 	{
 		this.externalDocumentation = externalDocumentation;
+	}
+
+	public Instrument addExternalDocumentation( final Document document )
+	{
+		if ( this.externalDocumentation == null )
+			this.externalDocumentation = new HashSet<Document>();
+
+		this.externalDocumentation.add( document );
+
+		return this;
 	}
 
 }

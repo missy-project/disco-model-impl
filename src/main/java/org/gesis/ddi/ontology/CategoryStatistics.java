@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,67 +51,67 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
-	public CategoryStatistics( String agencyId, String objectId, int majorVersion )
+	public CategoryStatistics( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public int getFrequency()
 	{
-		return frequency;
+		return this.frequency;
 	}
 
-	public void setFrequency(int frequency)
+	public void setFrequency(final int frequency)
 	{
 		this.frequency = frequency;
 	}
 
 	public int getWeightFrequency()
 	{
-		return weightedFrequency;
+		return this.weightedFrequency;
 	}
 
-	public void setWeightFrequency(int weightFrequency)
+	public void setWeightFrequency(final int weightFrequency)
 	{
 		this.weightedFrequency = weightFrequency;
 	}
 
 	public double getCumulativePercentage()
 	{
-		return cumulativePercentage;
+		return this.cumulativePercentage;
 	}
 
-	public void setCumulativePercentage(double cumulativePercentage)
+	public void setCumulativePercentage(final double cumulativePercentage)
 	{
 		this.cumulativePercentage = cumulativePercentage;
 	}
 
 	public double getWeightedCumulativePercentage()
 	{
-		return weightedCumulativePercentage;
+		return this.weightedCumulativePercentage;
 	}
 
-	public void setWeightedCumulativePercentage(double weightedCumulativePercentage)
+	public void setWeightedCumulativePercentage(final double weightedCumulativePercentage)
 	{
 		this.weightedCumulativePercentage = weightedCumulativePercentage;
 	}
 
 	public double getPercentage()
 	{
-		return percentage;
+		return this.percentage;
 	}
 
-	public void setPercentage(double percentage)
+	public void setPercentage(final double percentage)
 	{
 		this.percentage = percentage;
 	}
 
 	public double getWeightedPercentage()
 	{
-		return weightedPercentage;
+		return this.weightedPercentage;
 	}
 
-	public void setWeightedPercentage(double weightedPercentage)
+	public void setWeightedPercentage(final double weightedPercentage)
 	{
 		this.weightedPercentage = weightedPercentage;
 	}
@@ -120,9 +121,19 @@ public class CategoryStatistics extends DescriptiveStatistics
 		return this.statisticsCategory;
 	}
 
-	public void setStatisticsCategory(Set<Concept> categories)
+	public void setStatisticsCategory(final Set<Concept> categories)
 	{
 		this.statisticsCategory = categories;
+	}
+
+	public CategoryStatistics addStatisticsCategory( final Concept category )
+	{
+		if ( this.statisticsCategory == null )
+			this.statisticsCategory = new HashSet<Concept>();
+
+		this.statisticsCategory.add( category );
+
+		return this;
 	}
 
 }

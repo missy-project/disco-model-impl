@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -68,127 +69,127 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
-	public SummaryStatistics( String agencyId, String objectId, int majorVersion )
+	public SummaryStatistics( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public int getInvalidCases()
 	{
-		return invalidCases;
+		return this.invalidCases;
 	}
 
-	public void setInvalidCases(int invalidCases)
+	public void setInvalidCases(final int invalidCases)
 	{
 		this.invalidCases = invalidCases;
 	}
 
 	public int getValidCases()
 	{
-		return validCases;
+		return this.validCases;
 	}
 
-	public void setValidCases(int validCases)
+	public void setValidCases(final int validCases)
 	{
 		this.validCases = validCases;
 	}
 
 	public int getWeightedInvalidCases()
 	{
-		return weightedInvalidCases;
+		return this.weightedInvalidCases;
 	}
 
-	public void setWeightedInvalidCases(int weightedInvalidCases)
+	public void setWeightedInvalidCases(final int weightedInvalidCases)
 	{
 		this.weightedInvalidCases = weightedInvalidCases;
 	}
 
 	public int getWeightValidCases()
 	{
-		return weightValidCases;
+		return this.weightValidCases;
 	}
 
-	public void setWeightValidCases(int weightValidCases)
+	public void setWeightValidCases(final int weightValidCases)
 	{
 		this.weightValidCases = weightValidCases;
 	}
 
 	public double getMaximum()
 	{
-		return maximum;
+		return this.maximum;
 	}
 
-	public void setMaximum(double maximum)
+	public void setMaximum(final double maximum)
 	{
 		this.maximum = maximum;
 	}
 
 	public double getMean()
 	{
-		return mean;
+		return this.mean;
 	}
 
-	public void setMean(double mean)
+	public void setMean(final double mean)
 	{
 		this.mean = mean;
 	}
 
 	public double getMedian()
 	{
-		return median;
+		return this.median;
 	}
 
-	public void setMedian(double median)
+	public void setMedian(final double median)
 	{
 		this.median = median;
 	}
 
 	public double getMinimum()
 	{
-		return minimum;
+		return this.minimum;
 	}
 
-	public void setMinimum(double minimum)
+	public void setMinimum(final double minimum)
 	{
 		this.minimum = minimum;
 	}
 
 	public double getMode()
 	{
-		return mode;
+		return this.mode;
 	}
 
-	public void setMode(double mode)
+	public void setMode(final double mode)
 	{
 		this.mode = mode;
 	}
 
 	public double getWeightedMean()
 	{
-		return weightedMean;
+		return this.weightedMean;
 	}
 
-	public void setWeightedMean(double weightedMean)
+	public void setWeightedMean(final double weightedMean)
 	{
 		this.weightedMean = weightedMean;
 	}
 
 	public double getWeightedMedian()
 	{
-		return weightedMedian;
+		return this.weightedMedian;
 	}
 
-	public void setWeightedMedian(double weightedMedian)
+	public void setWeightedMedian(final double weightedMedian)
 	{
 		this.weightedMedian = weightedMedian;
 	}
 
 	public double getWeightedMode()
 	{
-		return weightedMode;
+		return this.weightedMode;
 	}
 
-	public void setWeightedMode(double weightedMode)
+	public void setWeightedMode(final double weightedMode)
 	{
 		this.weightedMode = weightedMode;
 	}
@@ -198,17 +199,27 @@ public class SummaryStatistics extends DescriptiveStatistics
 		return this.statisticsVariable;
 	}
 
-	public void setStatisticsVariable(Set<Variable> variables)
+	public void setStatisticsVariable(final Set<Variable> variables)
 	{
 		this.statisticsVariable = variables;
 	}
 
-	public double getStandardDeviation()
+	public SummaryStatistics addStatisticsVariable( final Variable variable )
 	{
-		return standardDeviation;
+		if ( this.statisticsVariable == null )
+			this.statisticsVariable = new HashSet<Variable>();
+
+		this.statisticsVariable.add( variable );
+
+		return this;
 	}
 
-	public void setStandardDeviation( double standardDeviation )
+	public double getStandardDeviation()
+	{
+		return this.standardDeviation;
+	}
+
+	public void setStandardDeviation( final double standardDeviation )
 	{
 		this.standardDeviation = standardDeviation;
 	}

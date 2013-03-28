@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -114,69 +115,99 @@ public class LogicalDataSet extends Resource
 
 	// getter/setter
 
-	public LogicalDataSet( String agencyId, String objectId, int majorVersion )
+	public LogicalDataSet( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public LangString getDcterms_title()
 	{
-		return dcterms_title;
+		return this.dcterms_title;
 	}
 
-	public void setDcterms_title( LangString dcterms_title )
+	public void setDcterms_title( final LangString dcterms_title )
 	{
 		this.dcterms_title = dcterms_title;
 	}
 
 	public int isPublic()
 	{
-		return isPublic;
+		return this.isPublic;
 	}
 
-	public void setPublic(int isPublic)
+	public void setPublic(final int isPublic)
 	{
 		this.isPublic = isPublic;
 	}
 
 	public Universe getDataSetUniverse()
 	{
-		return universe;
+		return this.universe;
 	}
 
-	public void setDataSetUniverse(Universe dataSetUniverse)
+	public void setDataSetUniverse(final Universe dataSetUniverse)
 	{
 		this.universe = dataSetUniverse;
 	}
 
 	public Set<Location> getDcterms_spatial()
 	{
-		return dcterms_spatial;
+		return this.dcterms_spatial;
 	}
 
-	public void setDcterms_spatial( Set<Location> dcterms_spatial )
+	public void setDcterms_spatial( final Set<Location> dcterms_spatial )
 	{
 		this.dcterms_spatial = dcterms_spatial;
 	}
 
-	public Set<PeriodOfTime> getDcterms_temporal()
+	public LogicalDataSet addDcterms_spatial( final Location location )
 	{
-		return dcterms_temporal;
+		if ( this.dcterms_spatial == null )
+			this.dcterms_spatial = new HashSet<Location>();
+
+		this.dcterms_spatial.add( location );
+
+		return this;
 	}
 
-	public void setDcterms_temporal( Set<PeriodOfTime> dcterms_temporal )
+	public Set<PeriodOfTime> getDcterms_temporal()
+	{
+		return this.dcterms_temporal;
+	}
+
+	public void setDcterms_temporal( final Set<PeriodOfTime> dcterms_temporal )
 	{
 		this.dcterms_temporal = dcterms_temporal;
 	}
 
-	public Set<Concept> getDcterms_subject()
+	public LogicalDataSet addDcterms_temporal( final PeriodOfTime periodOfTime )
 	{
-		return dcterms_subject;
+		if ( this.dcterms_temporal == null )
+			this.dcterms_temporal = new HashSet<PeriodOfTime>();
+
+		this.dcterms_temporal.add( periodOfTime );
+
+		return this;
 	}
 
-	public void setDcterms_subject( Set<Concept> dcterms_subject )
+	public Set<Concept> getDcterms_subject()
+	{
+		return this.dcterms_subject;
+	}
+
+	public void setDcterms_subject( final Set<Concept> dcterms_subject )
 	{
 		this.dcterms_subject = dcterms_subject;
+	}
+
+	public LogicalDataSet addDcterms_subject( final Concept concept )
+	{
+		if ( this.dcterms_subject == null )
+			this.dcterms_subject = new HashSet<Concept>();
+
+		this.dcterms_subject.add( concept );
+
+		return this;
 	}
 
 	public Set<Instrument> getInstrument()
@@ -184,9 +215,39 @@ public class LogicalDataSet extends Resource
 		return this.instrument;
 	}
 
+	public void setInstrument( final Set<Instrument> instrument )
+	{
+		this.instrument = instrument;
+	}
+
+	public LogicalDataSet addInstrument( final Instrument instrument )
+	{
+		if ( this.instrument == null )
+			this.instrument = new HashSet<Instrument>();
+
+		this.instrument.add( instrument );
+
+		return this;
+	}
+
 	public Set<Variable> getContainsVariable()
 	{
 		return this.containsVariable;
+	}
+
+	public void setContainsVariable( final Set<Variable> containsVariable )
+	{
+		this.containsVariable = containsVariable;
+	}
+
+	public LogicalDataSet addContainsVariable( final Variable variable )
+	{
+		if ( this.containsVariable == null )
+			this.containsVariable = new HashSet<Variable>();
+
+		this.containsVariable.add( variable );
+
+		return this;
 	}
 
 	public Set<DataFile> getDataFile()
@@ -194,14 +255,39 @@ public class LogicalDataSet extends Resource
 		return this.dataFile;
 	}
 
+	public void setDataFile( final Set<DataFile> dataFile )
+	{
+		this.dataFile = dataFile;
+	}
+
+	public LogicalDataSet addDataFile( final DataFile dataFile )
+	{
+		if ( this.dataFile == null )
+			this.dataFile = new HashSet<DataFile>();
+
+		this.dataFile.add( dataFile );
+
+		return this;
+	}
+
 	public Set<DataSet> getAggregation()
 	{
 		return this.aggregation;
 	}
 
-	public void setAggregation( Set<DataSet> aggregation )
+	public void setAggregation( final Set<DataSet> aggregation )
 	{
 		this.aggregation = aggregation;
+	}
+
+	public LogicalDataSet addAggregation( final DataSet dataSet )
+	{
+		if ( this.aggregation == null )
+			this.aggregation = new HashSet<DataSet>();
+
+		this.aggregation.add( dataSet );
+
+		return this;
 	}
 
 	public Set<LicenseDocument> getDcterms_license()
@@ -209,39 +295,54 @@ public class LogicalDataSet extends Resource
 		return this.dcterms_license;
 	}
 
+	public void setDcterms_license( final Set<LicenseDocument> dcterms_license )
+	{
+		this.dcterms_license = dcterms_license;
+	}
+
+	public LogicalDataSet addDcterms_license( final LicenseDocument licenseDocument )
+	{
+		if ( this.dcterms_license == null )
+			this.dcterms_license = new HashSet<LicenseDocument>();
+
+		this.dcterms_license.add( licenseDocument );
+
+		return this;
+	}
+
 	public Set<RightsStatement> getDcterms_accessRights()
 	{
 		return this.dcterms_accessRights;
 	}
 
-	public void setInstrument(Set<Instrument> instrument)
+	public void setDcterms_accessRights( final Set<RightsStatement> dcterms_accessRights )
 	{
-		this.instrument = instrument;
+		this.dcterms_accessRights = dcterms_accessRights;
 	}
 
-	public void setContainsVariable(Set<Variable> containsVariable)
+	public LogicalDataSet addDcterms_accessRights( final RightsStatement rightsStatement )
 	{
-		this.containsVariable = containsVariable;
+		if ( this.dcterms_accessRights == null )
+			this.dcterms_accessRights = new HashSet<RightsStatement>();
+
+		this.dcterms_accessRights.add( rightsStatement );
+
+		return this;
 	}
 
-	public void setDataFile(Set<DataFile> dataFile)
-	{
-		this.dataFile = dataFile;
-	}
-
-	public void setDataCube(Set<DataSet> dataCube)
+	public void setDataCube(final Set<DataSet> dataCube)
 	{
 		this.aggregation = dataCube;
 	}
 
-	public void setDcterms_license( Set<LicenseDocument> dcterms_license )
+	public LogicalDataSet addDataCube( final DataSet dataCube )
 	{
-		this.dcterms_license = dcterms_license;
-	}
+		if ( this.aggregation == null )
+			this.aggregation = new HashSet<DataSet>();
 
-	public void setDcterms_accessRights( Set<RightsStatement> dcterms_accessRights )
-	{
-		this.dcterms_accessRights = dcterms_accessRights;
+		this.aggregation.add( dataCube );
+
+		return this;
 	}
 
 }

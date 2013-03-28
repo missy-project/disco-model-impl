@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -49,16 +50,16 @@ public class VariableDefinition extends Resource
 
 	// getter/setter
 
-	public VariableDefinition( String agencyId, String objectId, int majorVersion )
+	public VariableDefinition( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public String getDcterms_description() {
-		return dcterms_description;
+		return this.dcterms_description;
 	}
 
-	public void setDcterms_description(String dcterms_description) {
+	public void setDcterms_description(final String dcterms_description) {
 		this.dcterms_description = dcterms_description;
 	}
 
@@ -66,9 +67,19 @@ public class VariableDefinition extends Resource
 		return this.universe;
 	}
 
-	public void setUniverse(Set<Universe> universe)
+	public void setUniverse(final Set<Universe> universe)
 	{
 		this.universe = universe;
+	}
+
+	public VariableDefinition addUniverse( final Universe universe )
+	{
+		if ( this.universe == null )
+			this.universe = new HashSet<Universe>();
+
+		this.universe.add( universe );
+
+		return this;
 	}
 
 	public Concept getConcept()
@@ -76,7 +87,7 @@ public class VariableDefinition extends Resource
 		return this.concept;
 	}
 
-	public void setConcept( Concept concept )
+	public void setConcept( final Concept concept )
 	{
 		this.concept = concept;
 	}
@@ -85,9 +96,19 @@ public class VariableDefinition extends Resource
 		return this.representation;
 	}
 
-	public void setRepresentation(Set<Representation> representation)
+	public void setRepresentation(final Set<Representation> representation)
 	{
 		this.representation = representation;
+	}
+
+	public VariableDefinition addRepresentation( final Representation representation )
+	{
+		if ( this.representation == null )
+			this.representation = new HashSet<Representation>();
+
+		this.representation.add( representation );
+
+		return this;
 	}
 
 }

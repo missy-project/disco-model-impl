@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
@@ -50,36 +51,56 @@ public class Question extends Resource
 
 	// getter/setter
 
-	public Question( String agencyId, String objectId, int majorVersion )
+	public Question( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public Object getQuestionText() {
-		return questionText;
+		return this.questionText;
 	}
 
-	public void setQuestionText( LangString questionText )
+	public void setQuestionText( final LangString questionText )
 	{
 		this.questionText = questionText;
 	}
 
 	public Set<Representation> getResponseDomain()
 	{
-		return responseDomain;
+		return this.responseDomain;
 	}
 
-	public void setResponseDomain( Set<Representation> responseDomain )
+	public void setResponseDomain( final Set<Representation> responseDomain )
 	{
 		this.responseDomain = responseDomain;
+	}
+
+	public Question addResponseDomain( final Representation responseDomain )
+	{
+		if ( this.responseDomain == null )
+			this.responseDomain = new HashSet<Representation>();
+
+		this.responseDomain.add( responseDomain );
+
+		return this;
 	}
 
 	public Set<Concept> getConcept() {
 		return this.concept;
 	}
 
-	public void setConcept(Set<Concept> concept) {
+	public void setConcept(final Set<Concept> concept) {
 		this.concept = concept;
+	}
+
+	public Question addConcept( final Concept concept )
+	{
+		if ( this.concept == null )
+			this.concept = new HashSet<Concept>();
+
+		this.concept.add( concept );
+
+		return this;
 	}
 
 	public Universe getUniverse()
@@ -87,7 +108,7 @@ public class Question extends Resource
 		return this.universe;
 	}
 
-	public void setUniverse( Universe universe )
+	public void setUniverse( final Universe universe )
 	{
 		this.universe = universe;
 	}

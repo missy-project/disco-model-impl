@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -63,7 +64,7 @@ public class Study extends Union_StudyGroupStudy
 
 	// getter/setter
 
-	public Study( String agencyId, String objectId, int majorVersion )
+	public Study( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
@@ -73,9 +74,19 @@ public class Study extends Union_StudyGroupStudy
 		return this.instrument;
 	}
 
-	public void setInstrument( Set<Instrument> instrument )
+	public void setInstrument( final Set<Instrument> instrument )
 	{
 		this.instrument = instrument;
+	}
+
+	public Study addInstrument( final Instrument instrument )
+	{
+		if ( this.instrument == null )
+			this.instrument = new HashSet<Instrument>();
+
+		this.instrument.add( instrument );
+
+		return this;
 	}
 
 	public Set<Variable> getVariable()
@@ -83,9 +94,19 @@ public class Study extends Union_StudyGroupStudy
 		return this.variable;
 	}
 
-	public void setVariable( Set<Variable> variable )
+	public void setVariable( final Set<Variable> variable )
 	{
 		this.variable = variable;
+	}
+
+	public Study addVariable( final Variable variable )
+	{
+		if ( this.variable == null )
+			this.variable = new HashSet<Variable>();
+
+		this.variable.add( variable );
+
+		return this;
 	}
 
 	public Set<DataFile> getDataFile()
@@ -93,9 +114,19 @@ public class Study extends Union_StudyGroupStudy
 		return this.dataFile;
 	}
 
-	public void setDataFile( Set<DataFile> dataFile )
+	public void setDataFile( final Set<DataFile> dataFile )
 	{
 		this.dataFile = dataFile;
+	}
+
+	public Study addDataFile( final DataFile dataFile )
+	{
+		if ( this.dataFile == null )
+			this.dataFile = new HashSet<DataFile>();
+
+		this.dataFile.add( dataFile );
+
+		return this;
 	}
 
 	public Set<LogicalDataSet> getProduct()
@@ -103,27 +134,37 @@ public class Study extends Union_StudyGroupStudy
 		return this.product;
 	}
 
-	public void setProduct( Set<LogicalDataSet> product )
+	public void setProduct( final Set<LogicalDataSet> product )
 	{
 		this.product = product;
 	}
 
-	public String getOwl_versionInfo()
+	public Study addProduct( final LogicalDataSet logicalDataSet )
 	{
-		return owl_versionInfo;
+		if ( this.product == null )
+			this.product = new HashSet<LogicalDataSet>();
+
+		this.product.add( logicalDataSet );
+
+		return this;
 	}
 
-	public void setOwl_versionInfo( String owl_versionInfo )
+	public String getOwl_versionInfo()
+	{
+		return this.owl_versionInfo;
+	}
+
+	public void setOwl_versionInfo( final String owl_versionInfo )
 	{
 		this.owl_versionInfo = owl_versionInfo;
 	}
 
 	public StudyGroup getInGroup()
 	{
-		return inGroup;
+		return this.inGroup;
 	}
 
-	public void setInGroup( StudyGroup inGroup )
+	public void setInGroup( final StudyGroup inGroup )
 	{
 		this.inGroup = inGroup;
 	}

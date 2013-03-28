@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -62,88 +63,98 @@ public class Variable extends Resource
 
 	// getter/setter
 
-	public Variable( String agencyId, String objectId, int majorVersion )
+	public Variable( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public String getSkos_notation()
 	{
-		return skos_notation;
+		return this.skos_notation;
 	}
 
-	public void setSkos_notation(String skos_notation)
+	public void setSkos_notation(final String skos_notation)
 	{
 		this.skos_notation = skos_notation;
 	}
 
 	public LangString getDcterms_description()
 	{
-		return dcterms_description;
+		return this.dcterms_description;
 	}
 
-	public void setDcterms_description( LangString dcterms_description )
+	public void setDcterms_description( final LangString dcterms_description )
 	{
 		this.dcterms_description = dcterms_description;
 	}
 
 	public AnalysisUnit getAnalysisUnit()
 	{
-		return analysisUnit;
+		return this.analysisUnit;
 	}
 
-	public void setAnalysisUnit(AnalysisUnit analysisUnit)
+	public void setAnalysisUnit(final AnalysisUnit analysisUnit)
 	{
 		this.analysisUnit = analysisUnit;
 	}
 
 	public Concept getConcept()
 	{
-		return concept;
+		return this.concept;
 	}
 
-	public void setConcept(Concept concept)
+	public void setConcept(final Concept concept)
 	{
 		this.concept = concept;
 	}
 
 	public VariableDefinition getBasedOn()
 	{
-		return basedOn;
+		return this.basedOn;
 	}
 
-	public void setBasedOn(VariableDefinition dataElement)
+	public void setBasedOn(final VariableDefinition dataElement)
 	{
 		this.basedOn = dataElement;
 	}
 
 	public Representation getRepresentation()
 	{
-		return representation;
+		return this.representation;
 	}
 
-	public void setRepresentation(Representation representation)
+	public void setRepresentation(final Representation representation)
 	{
 		this.representation = representation;
 	}
 
 	public Universe getUniverse()
 	{
-		return universe;
+		return this.universe;
 	}
 
-	public void setUniverse(Universe universe)
+	public void setUniverse(final Universe universe)
 	{
 		this.universe = universe;
 	}
 
 	public Set<Question> getQuestion()
 	{
-		return question;
+		return this.question;
 	}
 
-	public void setQuestion(Set<Question> questions)
+	public void setQuestion(final Set<Question> questions)
 	{
 		this.question = questions;
+	}
+
+	public Variable addQuestion( final Question question )
+	{
+		if ( this.question == null )
+			this.question = new HashSet<Question>();
+
+		this.question.add( question );
+
+		return this;
 	}
 }

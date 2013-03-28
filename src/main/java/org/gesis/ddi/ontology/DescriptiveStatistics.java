@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
@@ -31,7 +32,7 @@ public class DescriptiveStatistics extends Resource
 
 	// getter/setter
 
-	public DescriptiveStatistics( String agencyId, String objectId, int majorVersion )
+	public DescriptiveStatistics( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
@@ -41,9 +42,19 @@ public class DescriptiveStatistics extends Resource
 		return this.statisticsDatafile;
 	}
 
-	public void setStatisticsDataFile(Set<DataFile> dataFiles)
+	public void setStatisticsDataFile(final Set<DataFile> dataFiles)
 	{
 		this.statisticsDatafile = dataFiles;
+	}
+
+	public DescriptiveStatistics addStatisticsDataFile( final DataFile dataFile )
+	{
+		if ( this.statisticsDatafile == null )
+			this.statisticsDatafile = new HashSet<DataFile>();
+
+		this.statisticsDatafile.add( dataFile );
+
+		return this;
 	}
 
 }

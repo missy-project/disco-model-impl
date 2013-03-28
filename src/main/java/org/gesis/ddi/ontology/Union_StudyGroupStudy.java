@@ -1,6 +1,7 @@
 package org.gesis.ddi.ontology;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 {
 	// properties
 
-	public Union_StudyGroupStudy( String agencyId, String objectId, int majorVersion )
+	public Union_StudyGroupStudy( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
@@ -134,132 +135,192 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public LangString getDcterms_abstract()
 	{
-		return dcterms_abstract;
+		return this.dcterms_abstract;
 	}
 
-	public void setDcterms_abstract( LangString dcterms_abstract )
+	public void setDcterms_abstract( final LangString dcterms_abstract )
 	{
 		this.dcterms_abstract = dcterms_abstract;
 	}
 
 	public LangString getDcterms_alternative()
 	{
-		return dcterms_alternative;
+		return this.dcterms_alternative;
 	}
 
-	public void setDcterms_alternative( LangString dcterms_alternative )
+	public void setDcterms_alternative( final LangString dcterms_alternative )
 	{
 		this.dcterms_alternative = dcterms_alternative;
 	}
 
 	public Date getDcterms_available()
 	{
-		return dcterms_available;
+		return this.dcterms_available;
 	}
 
-	public void setDcterms_available( Date dcterms_available )
+	public void setDcterms_available( final Date dcterms_available )
 	{
 		this.dcterms_available = dcterms_available;
 	}
 
 	public LangString getDcterms_title()
 	{
-		return dcterms_title;
+		return this.dcterms_title;
 	}
 
-	public void setDcterms_title( LangString dcterms_title )
+	public void setDcterms_title( final LangString dcterms_title )
 	{
 		this.dcterms_title = dcterms_title;
 	}
 
 	public LangString getPurpose()
 	{
-		return purpose;
+		return this.purpose;
 	}
 
-	public void setPurpose( LangString purpose )
+	public void setPurpose( final LangString purpose )
 	{
 		this.purpose = purpose;
 	}
 
 	public LangString getSubtitle()
 	{
-		return subtitle;
+		return this.subtitle;
 	}
 
-	public void setSubtitle( LangString subtitle )
+	public void setSubtitle( final LangString subtitle )
 	{
 		this.subtitle = subtitle;
 	}
 
 	public Set<PeriodOfTime> getDcterms_temporal()
 	{
-		return dcterms_temporal;
+		return this.dcterms_temporal;
 	}
 
-	public void setDcterms_temporal( Set<PeriodOfTime> dcterms_temporal )
+	public void setDcterms_temporal( final Set<PeriodOfTime> dcterms_temporal )
 	{
 		this.dcterms_temporal = dcterms_temporal;
 	}
 
-	public Set<Concept> getDcterms_subject()
+	public Union_StudyGroupStudy addDcterms_temporal( final PeriodOfTime periodOfTime )
 	{
-		return dcterms_subject;
+		if ( this.dcterms_temporal == null )
+			this.dcterms_temporal = new HashSet<PeriodOfTime>();
+
+		this.dcterms_temporal.add( periodOfTime );
+
+		return this;
 	}
 
-	public void setDcterms_subject( Set<Concept> dcterms_subject )
+	public Set<Concept> getDcterms_subject()
+	{
+		return this.dcterms_subject;
+	}
+
+	public void setDcterms_subject( final Set<Concept> dcterms_subject )
 	{
 		this.dcterms_subject = dcterms_subject;
 	}
 
-	public Set<Location> getDcterms_spacial()
+	public Union_StudyGroupStudy addDcterms_subject( final Concept concept )
 	{
-		return dcterms_spacial;
+		if ( this.dcterms_subject == null )
+			this.dcterms_subject = new HashSet<Concept>();
+
+		this.dcterms_subject.add( concept );
+
+		return this;
 	}
 
-	public void setDcterms_spacial( Set<Location> dcterms_spacial )
+	public Set<Location> getDcterms_spacial()
+	{
+		return this.dcterms_spacial;
+	}
+
+	public void setDcterms_spacial( final Set<Location> dcterms_spacial )
 	{
 		this.dcterms_spacial = dcterms_spacial;
 	}
 
-	public Set<Document> getDdiFile()
+	public Union_StudyGroupStudy addDcterms_spatial( final Location location )
 	{
-		return ddiFile;
+		if ( this.dcterms_spacial == null )
+			this.dcterms_spacial = new HashSet<Location>();
+
+		this.dcterms_spacial.add( location );
+
+		return this;
 	}
 
-	public void setDdiFile( Set<Document> ddiFile )
+	public Set<Document> getDdiFile()
+	{
+		return this.ddiFile;
+	}
+
+	public void setDdiFile( final Set<Document> ddiFile )
 	{
 		this.ddiFile = ddiFile;
 	}
 
-	public Concept getKindOfData()
+	public Union_StudyGroupStudy addDdiFile( final Document document )
 	{
-		return kindOfData;
+		if ( this.ddiFile == null )
+			this.ddiFile = new HashSet<Document>();
+
+		this.ddiFile.add( document );
+
+		return this;
 	}
 
-	public void setKindOfData( Concept kindOfData )
+	public Concept getKindOfData()
+	{
+		return this.kindOfData;
+	}
+
+	public void setKindOfData( final Concept kindOfData )
 	{
 		this.kindOfData = kindOfData;
 	}
 
 	public Set<Universe> getUniverse()
 	{
-		return universe;
+		return this.universe;
 	}
 
-	public void setUniverse( Set<Universe> universe )
+	public void setUniverse( final Set<Universe> universe )
 	{
 		this.universe = universe;
 	}
 
-	public Set<AnalysisUnit> getAnalysisUnit()
+	public Union_StudyGroupStudy addUniverse( final Universe universe )
 	{
-		return analysisUnit;
+		if ( this.universe == null )
+			this.universe = new HashSet<Universe>();
+
+		this.universe.add( universe );
+
+		return this;
 	}
 
-	public void setAnalysisUnit( Set<AnalysisUnit> analysisUnit )
+	public Set<AnalysisUnit> getAnalysisUnit()
+	{
+		return this.analysisUnit;
+	}
+
+	public void setAnalysisUnit( final Set<AnalysisUnit> analysisUnit )
 	{
 		this.analysisUnit = analysisUnit;
+	}
+
+	public Union_StudyGroupStudy addAnalysisUnit( final AnalysisUnit analysisUnit )
+	{
+		if ( this.analysisUnit == null )
+			this.analysisUnit = new HashSet<AnalysisUnit>();
+
+		this.analysisUnit.add( analysisUnit );
+
+		return this;
 	}
 
 	public Set<Agent> getDcterms_publisher()
@@ -267,9 +328,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this.dcterms_publisher;
 	}
 
-	public void setDcterms_publisher( Set<Agent> publisher )
+	public void setDcterms_publisher( final Set<Agent> publisher )
 	{
 		this.dcterms_publisher = publisher;
+	}
+
+	public Union_StudyGroupStudy addDcterms_publisher( final Agent agent )
+	{
+		if ( this.dcterms_publisher == null )
+			this.dcterms_publisher = new HashSet<Agent>();
+
+		this.dcterms_publisher.add( agent );
+
+		return this;
 	}
 
 	public Set<Agent> getDcterms_contributer()
@@ -277,9 +348,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this.dcterms_contributer;
 	}
 
-	public void setDcterms_contributer( Set<Agent> contributor )
+	public void setDcterms_contributer( final Set<Agent> contributor )
 	{
 		this.dcterms_contributer = contributor;
+	}
+
+	public Union_StudyGroupStudy addDcterms_contributor( final Agent agent )
+	{
+		if ( this.dcterms_contributer == null )
+			this.dcterms_contributer = new HashSet<Agent>();
+
+		this.dcterms_contributer.add( agent );
+
+		return this;
 	}
 
 	public Set<Agent> getDcterms_creator()
@@ -287,19 +368,39 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this.dcterms_creator;
 	}
 
-	public void setDcterms_creator( Set<Agent> creator )
+	public void setDcterms_creator( final Set<Agent> creator )
 	{
 		this.dcterms_creator = creator;
 	}
 
-	public Set<Agent> getFundedBy()
+	public Union_StudyGroupStudy addDcterms_creator( final Agent agent )
 	{
-		return fundedBy;
+		if ( this.dcterms_creator == null )
+			this.dcterms_creator = new HashSet<Agent>();
+
+		this.dcterms_creator.add( agent );
+
+		return this;
 	}
 
-	public void setFundedBy( Set<Agent> fundedBy )
+	public Set<Agent> getFundedBy()
+	{
+		return this.fundedBy;
+	}
+
+	public void setFundedBy( final Set<Agent> fundedBy )
 	{
 		this.fundedBy = fundedBy;
+	}
+
+	public Union_StudyGroupStudy addFundedBy( final Agent agent )
+	{
+		if ( this.fundedBy == null )
+			this.fundedBy = new HashSet<Agent>();
+
+		this.fundedBy.add( agent );
+
+		return this;
 	}
 
 }

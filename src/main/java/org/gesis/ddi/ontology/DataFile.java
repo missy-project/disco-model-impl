@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -77,87 +78,127 @@ public class DataFile extends Resource
 
 	// getter/setter
 
-	public DataFile( String agencyId, String objectId, int majorVersion )
+	public DataFile( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
 
 	public LangString getDcterms_description()
 	{
-		return dcterms_description;
+		return this.dcterms_description;
 	}
 
-	public void setDcterms_description( LangString dcterms_description )
+	public void setDcterms_description( final LangString dcterms_description )
 	{
 		this.dcterms_description = dcterms_description;
 	}
 
 	public int getCaseQuantity()
 	{
-		return caseQuantity;
+		return this.caseQuantity;
 	}
 
-	public void setCaseQuantity(int caseQuantity)
+	public void setCaseQuantity(final int caseQuantity)
 	{
 		this.caseQuantity = caseQuantity;
 	}
 
 	public String getOwl_versionInfo()
 	{
-		return owl_versionInfo;
+		return this.owl_versionInfo;
 	}
 
-	public void setOwl_versionInfo(String owl_versionInfo)
+	public void setOwl_versionInfo(final String owl_versionInfo)
 	{
 		this.owl_versionInfo = owl_versionInfo;
 	}
 
 	public Set<Location> getDcterms_spatial()
 	{
-		return dcterms_spatial;
+		return this.dcterms_spatial;
 	}
 
-	public void setDcterms_spatial( Set<Location> dcterms_spatial )
+	public void setDcterms_spatial( final Set<Location> dcterms_spatial )
 	{
 		this.dcterms_spatial = dcterms_spatial;
 	}
 
-	public Set<PeriodOfTime> getDcterms_temporal()
+	public DataFile addDcterms_spatial( final Location location )
 	{
-		return dcterms_temporal;
+		if ( this.dcterms_spatial == null )
+			this.dcterms_spatial = new HashSet<Location>();
+
+		this.dcterms_spatial.add( location );
+
+		return this;
 	}
 
-	public void setDcterms_temporal( Set<PeriodOfTime> dcterms_temporal )
+	public Set<PeriodOfTime> getDcterms_temporal()
+	{
+		return this.dcterms_temporal;
+	}
+
+	public void setDcterms_temporal( final Set<PeriodOfTime> dcterms_temporal )
 	{
 		this.dcterms_temporal = dcterms_temporal;
 	}
 
-	public Set<Concept> getDcterms_subject()
+	public DataFile addDcterms_temporal( final PeriodOfTime periodOfTime )
 	{
-		return dcterms_subject;
+		if ( this.dcterms_temporal == null )
+			this.dcterms_temporal = new HashSet<PeriodOfTime>();
+
+		this.dcterms_temporal.add( periodOfTime );
+
+		return this;
 	}
 
-	public void setDcterms_subject( Set<Concept> dcterms_subject )
+	public Set<Concept> getDcterms_subject()
+	{
+		return this.dcterms_subject;
+	}
+
+	public void setDcterms_subject( final Set<Concept> dcterms_subject )
 	{
 		this.dcterms_subject = dcterms_subject;
 	}
 
-	public Set<ProvenanceStatement> getDcterms_provenance()
+	public DataFile addDcterms_subject( final Concept dcterms_subject )
 	{
-		return dcterms_provenance;
+		if ( this.dcterms_subject == null )
+			this.dcterms_subject = new HashSet<Concept>();
+
+		this.dcterms_subject.add( dcterms_subject );
+
+		return this;
 	}
 
-	public void setDcterms_provenance( Set<ProvenanceStatement> dcterms_provenance )
+	public Set<ProvenanceStatement> getDcterms_provenance()
+	{
+		return this.dcterms_provenance;
+	}
+
+	public void setDcterms_provenance( final Set<ProvenanceStatement> dcterms_provenance )
 	{
 		this.dcterms_provenance = dcterms_provenance;
 	}
 
-	public MediaTypeOrExtend getDcterms_format()
+	public DataFile addDcterms_provenance( final ProvenanceStatement provenanceStatement )
 	{
-		return dcterms_format;
+		if ( this.dcterms_provenance == null )
+			this.dcterms_provenance = new HashSet<ProvenanceStatement>();
+
+		this.dcterms_provenance.add( provenanceStatement );
+
+		return this;
 	}
 
-	public void setDcterms_format( MediaTypeOrExtend dcterms_format )
+	public MediaTypeOrExtend getDcterms_format()
+	{
+		return this.dcterms_format;
+	}
+
+	public void setDcterms_format( final MediaTypeOrExtend dcterms_format )
 	{
 		this.dcterms_format = dcterms_format;
 	}

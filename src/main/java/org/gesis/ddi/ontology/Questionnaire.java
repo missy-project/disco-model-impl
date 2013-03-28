@@ -1,5 +1,6 @@
 package org.gesis.ddi.ontology;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
@@ -39,7 +40,7 @@ public class Questionnaire extends Instrument
 
 	// getter/setter
 
-	public Questionnaire( String agencyId, String objectId, int majorVersion )
+	public Questionnaire( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
 	}
@@ -48,16 +49,36 @@ public class Questionnaire extends Instrument
 		return this.collectionMode;
 	}
 
-	public void setCollectionMode(Set<Concept> collectionMode) {
+	public void setCollectionMode(final Set<Concept> collectionMode) {
 		this.collectionMode = collectionMode;
+	}
+
+	public Questionnaire addCollectionMode( final Concept concept )
+	{
+		if ( this.collectionMode == null )
+			this.collectionMode = new HashSet<Concept>();
+
+		this.collectionMode.add( concept );
+
+		return this;
 	}
 
 	public Set<Question> getQuestion() {
 		return this.question;
 	}
 
-	public void setQuestion(Set<Question> question) {
+	public void setQuestion(final Set<Question> question) {
 		this.question = question;
+	}
+
+	public Questionnaire addQuestion( final Question question )
+	{
+		if ( this.question == null )
+			this.question = new HashSet<Question>();
+
+		this.question.add( question );
+
+		return this;
 	}
 
 }
