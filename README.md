@@ -20,4 +20,7 @@ Please have a look at []() for an API for persisting
 
 It is assumed to have the validation NOT coupled to the model, thus the existence of datatype and object properties is expected to be managed by the business logic.
 
+### License & Copyright
+Apache License, Version 2.0 http://www.apache.org/licenses/LICENSE-2.0.html
 
+© GESIS – Leibniz Institute for the Social Sciences. http://www.gesis.org
