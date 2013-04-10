@@ -41,17 +41,17 @@ public class LangString
 	@GeneratedValue( strategy = GenerationType.AUTO )
 	private int id;
 
-	@Column( unique = true, name = "key_" )
-	private String key;
+	@Column( unique = true, name = "message_key" )
+	private String messageKey;
 
 	@Column
-	private String de_DE = null;
+	private String de = null;
 
 	@Column
-	private String en_UK = null;
+	private String en = null;
 
 	@Column
-	private String fr_FR = null;
+	private String fr = null;
 
 	@ElementCollection( fetch = FetchType.LAZY )
 	@MapKeyColumn( name = "language" )
@@ -79,20 +79,50 @@ public class LangString
 		return this.id;
 	}
 
-	private void setId( final int id )
+	public void setId( final int id )
 	{
 		this.id = id;
 	}
 
-	public String getKey_()
+	public String getMessageKey()
 	{
-		return this.key;
+		return this.messageKey;
 	}
 
-	public LangString setKey_( final String key )
+	public LangString setMessageKey( final String messageKey )
 	{
-		this.key = key;
+		this.messageKey = messageKey;
 		return this;
+	}
+
+	public String getDe()
+	{
+		return this.de;
+	}
+
+	public void setDe( final String de )
+	{
+		this.de = de;
+	}
+
+	public String getEn()
+	{
+		return this.en;
+	}
+
+	public void setEn( final String en )
+	{
+		this.en = en;
+	}
+
+	public String getFr()
+	{
+		return this.fr;
+	}
+
+	public void setFr( final String fr )
+	{
+		this.fr = fr;
 	}
 
 	/**
@@ -108,11 +138,11 @@ public class LangString
 
 		// first try to match from own fields
 		if ( Locales.isEqual( Locales.UNITED_KINGDOM, locale ) )
-			return this.en_UK;
+			return this.en;
 		else if ( Locales.isEqual( Locales.GERMANY, locale ) )
-			return this.de_DE;
+			return this.de;
 		else if ( Locales.isEqual( Locales.FRANCE, locale ) )
-			return this.fr_FR;
+			return this.fr;
 
 		if ( this.values == null || this.values.isEmpty() )
 			return null;
@@ -141,16 +171,16 @@ public class LangString
 		// first try to match to own fields
 		if ( Locales.isEqual( Locales.GERMANY, locale ) )
 		{
-			this.de_DE = value;
+			this.de = value;
 			return this;
 		} else if ( Locales.isEqual( Locales.UNITED_KINGDOM, locale ) )
 		{
-			this.en_UK = value;
+			this.en = value;
 			return this;
 
 		} else if ( Locales.isEqual( Locales.FRANCE, locale ) )
 		{
-			this.fr_FR = value;
+			this.fr = value;
 			return this;
 		}
 
@@ -194,14 +224,14 @@ public class LangString
 	{
 		Map<String, String> ret = new HashMap<String, String>( this.values );
 
-		if ( this.de_DE != null )
-			ret.put( LangStringKeyBuilder.buildFrom( Locales.GERMANY ), this.de_DE );
+		if ( this.de != null )
+			ret.put( LangStringKeyBuilder.buildFrom( Locales.GERMANY ), this.de );
 
-		if ( this.en_UK != null )
-			ret.put( LangStringKeyBuilder.buildFrom( Locales.UNITED_KINGDOM ), this.en_UK );
+		if ( this.en != null )
+			ret.put( LangStringKeyBuilder.buildFrom( Locales.UNITED_KINGDOM ), this.en );
 
-		if ( this.fr_FR != null )
-			ret.put( LangStringKeyBuilder.buildFrom( Locales.FRANCE ), this.fr_FR );
+		if ( this.fr != null )
+			ret.put( LangStringKeyBuilder.buildFrom( Locales.FRANCE ), this.fr );
 
 		return ret;
 	}
@@ -240,6 +270,12 @@ public class LangString
 			return null;
 
 		return new LocaleValueEntry( langString, value );
+	}
+
+	@Override
+	public String toString()
+	{
+		return "LangString [key=" + this.messageKey + ", de_DE=" + this.de + ", en_UK=" + this.en + ", fr_FR=" + this.fr + "]";
 	}
 
 }
