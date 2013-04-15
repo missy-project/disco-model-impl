@@ -21,6 +21,7 @@ public class Identifiable
 {
 
 	// properties
+    // bad commit with gitlab by alex, even without key
 
 	@Column
 	@Id
