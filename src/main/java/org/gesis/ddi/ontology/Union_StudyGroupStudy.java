@@ -4,8 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -31,60 +33,60 @@ public abstract class Union_StudyGroupStudy extends Resource
 		super( agencyId, objectId, majorVersion );
 	}
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_abstract;
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_alternative;
 
 	@Column
 	private Date dcterms_available;
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_title;
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString purpose;
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString subtitle;
 
 	// relations
 
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	private Set<PeriodOfTime> dcterms_temporal;
 
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	private Set<Concept> dcterms_subject;
 
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	private Set<Location> dcterms_spacial;
 
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
 	private Set<Document> ddiFile;
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name="concept_id" )
 	private Concept kindOfData;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
@@ -92,7 +94,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	protected Set<AnalysisUnit> analysisUnit;
 	
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Union_StudyGroupStudy", 
 			joinColumns = @JoinColumn( name = "union_id" ), 
@@ -100,7 +102,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	protected Set<Universe> universe;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Agent", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -108,7 +110,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	protected Set<Agent> dcterms_publisher;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Agent", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -116,7 +118,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	protected Set<Agent> dcterms_contributer;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Agent", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -124,7 +126,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	protected Set<Agent> dcterms_creator;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Agent", 
 			joinColumns = @JoinColumn( name = "study_id" ), 

@@ -2,9 +2,11 @@ package org.gesis.ddi;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -42,7 +44,7 @@ public class Identifiable
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Identifiable_Note",
 			joinColumns=@JoinColumn(name="identifiable_id"),
@@ -51,7 +53,7 @@ public class Identifiable
 
 	// getter/setter
 
-	public Identifiable( String agencyId, String objectId, int majorVersion )
+	public Identifiable( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super();
 		this.agencyId = agencyId;
@@ -63,55 +65,55 @@ public class Identifiable
 
 	public String getURN()
 	{
-		return URN;
+		return this.URN;
 	}
 
-	public void setURN(String uRN) {
-		URN = uRN;
+	public void setURN(final String uRN) {
+		this.URN = uRN;
 	}
 
 	public String getAgencyId() {
-		return agencyId;
+		return this.agencyId;
 	}
 
-	public void setAgencyId(String agencyId) {
+	public void setAgencyId(final String agencyId) {
 		this.agencyId = agencyId;
 	}
 
 	public String getObjectId() {
-		return objectId;
+		return this.objectId;
 	}
 
-	public void setObjectId(String objectId) {
+	public void setObjectId(final String objectId) {
 		this.objectId = objectId;
 	}
 
 	public int getMajorVersion()
 	{
-		return majorVersion;
+		return this.majorVersion;
 	}
 
-	public void setMajorVersion( int majorVersion )
+	public void setMajorVersion( final int majorVersion )
 	{
 		this.majorVersion = majorVersion;
 	}
 
 	public int getMinorVersion()
 	{
-		return minorVersion;
+		return this.minorVersion;
 	}
 
-	public void setMinorVersion( int minorVersion )
+	public void setMinorVersion( final int minorVersion )
 	{
 		this.minorVersion = minorVersion;
 	}
 
 	public Set<Note> getNote()
 	{
-		return note;
+		return this.note;
 	}
 
-	public void setNote(Set<Note> note)
+	public void setNote(final Set<Note> note)
 	{
 		this.note = note;
 	}

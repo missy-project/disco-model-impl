@@ -143,4 +143,83 @@ public class LangStringTest
 		assertNull( langString.getValue( Locales.FRANCE ) );
 	}
 
+	@Test
+	public void createUKLangString()
+	{
+		LangString ls = LangString.createUKLangString( "some value" );
+		assertNotNull( ls );
+		assertEquals( "some value", ls.getEn() );
+		assertNull( ls.getDe() );
+	}
+
+	@Test
+	public void createDELangString()
+	{
+		LangString ls = LangString.createDELangString( "some value" );
+		assertNotNull( ls );
+		assertEquals( "some value", ls.getDe() );
+		assertNull( ls.getEn() );
+	}
+
+	@Test
+	public void createFRLangString()
+	{
+		LangString ls = LangString.createFRLangString( "some value" );
+		assertNotNull( ls );
+		assertEquals( "some value", ls.getFr() );
+		assertNull( ls.getDe() );
+	}
+
+	@Test
+	public void createLangString()
+	{
+		LangString ls = LangString.createLangString( Locales.GERMANY, "a value" );
+		assertNotNull( ls );
+		assertEquals( "a value", ls.getDe() );
+		assertNull( ls.getEn() );
+	}
+
+	@Test
+	public void createNullLangString()
+	{
+		LangString ls = LangString.createLangString( Locales.GERMANY, null );
+		assertNull( ls );
+	}
+
+	@Test
+	public void createDECountryCodeLangString()
+	{
+		LangString ls = LangString.createLangString( "de", "value" );
+		assertNotNull( ls );
+		assertEquals( "value", ls.getDe() );
+		assertNull( ls.getEn() );
+	}
+
+	@Test
+	public void createUKCountryCodeLangString()
+	{
+		LangString ls = LangString.createLangString( "uk", "value" );
+		assertNotNull( ls );
+		assertEquals( "value", ls.getEn() );
+		assertNull( ls.getDe() );
+	}
+
+	@Test
+	public void createFRCountryCodeLangString()
+	{
+		LangString ls = LangString.createLangString( "fr", "value" );
+		assertNotNull( ls );
+		assertEquals( "value", ls.getFr() );
+		assertNull( ls.getEn() );
+	}
+
+	@Test
+	public void createNLCountryCodeLangString()
+	{
+		LangString ls = LangString.createLangString( "nl", "value" );
+		assertNotNull( ls );
+		assertEquals( "value", ls.getValue( Locales.getLocale( "nl" ) ) );
+		assertNull( ls.getEn() );
+	}
+
 }

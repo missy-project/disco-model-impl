@@ -3,9 +3,11 @@ package org.gesis.skos;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -23,7 +25,7 @@ public class Concept extends Resource
 
 	// properties
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString skos_definition;
 
 	@Column
@@ -32,7 +34,7 @@ public class Concept extends Resource
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_ConceptScheme", 
 			joinColumns = @JoinColumn( name = "concept_id" ), 
@@ -40,7 +42,7 @@ public class Concept extends Resource
 	protected Set<ConceptScheme> skos_inScheme;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_Concept", 
 			joinColumns = @JoinColumn( name = "concept_id" ), 
@@ -48,7 +50,7 @@ public class Concept extends Resource
 	protected Set<Concept> skos_broader;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_Concept", 
 			joinColumns = @JoinColumn( name = "concept_id" ), 
@@ -56,6 +58,11 @@ public class Concept extends Resource
 	protected Set<Concept> skos_narrower;
 
 	// getter/setter
+
+	private Concept()
+	{
+		super( null, null, 0 );
+	}
 
 	public Concept( final String agencyId, final String objectId, final int majorVersion )
 	{

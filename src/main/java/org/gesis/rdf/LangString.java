@@ -278,4 +278,67 @@ public class LangString
 		return "LangString [key=" + this.messageKey + ", de_DE=" + this.de + ", en_UK=" + this.en + ", fr_FR=" + this.fr + "]";
 	}
 
+	/**
+	 * Factory-method for a LangString object with UK-locale.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static LangString createUKLangString( final String value )
+	{
+		return createLangString( Locales.UNITED_KINGDOM, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object with DE-locale.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static LangString createDELangString( final String value )
+	{
+		return createLangString( Locales.GERMANY, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object with FR-locale.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static LangString createFRLangString( final String value )
+	{
+		return createLangString( Locales.FRANCE, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object with the provided locale.
+	 * 
+	 * @param locale
+	 * @param value
+	 * @return
+	 */
+	public static LangString createLangString( final Locale locale, final String value )
+	{
+		if ( locale == null || value == null )
+			return null;
+
+		return new LangString( locale, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object. The locale is tried to be
+	 * resolved from the country code.
+	 * 
+	 * @param country
+	 * @param value
+	 * @return
+	 */
+	public static LangString createLangString( final String country, final String value )
+	{
+		Locale loc = Locales.getLocale( country );
+
+		return createLangString( loc, value );
+	}
+
 }

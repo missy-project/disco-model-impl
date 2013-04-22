@@ -3,9 +3,11 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -26,12 +28,12 @@ public class Study extends Union_StudyGroupStudy
 
 	// relations
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "studyGroup_id" )
 	private StudyGroup inGroup;
 
 	@ElementCollection
-	@OneToMany
+	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Instrument", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -39,7 +41,7 @@ public class Study extends Union_StudyGroupStudy
 	protected Set<Instrument> instrument;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Variable", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -47,7 +49,7 @@ public class Study extends Union_StudyGroupStudy
 	protected Set<Variable> variable;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_DataFile", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
@@ -55,7 +57,7 @@ public class Study extends Union_StudyGroupStudy
 	protected Set<DataFile> dataFile;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_LogicalDataSet", 
 			joinColumns = @JoinColumn( name = "study_id" ), 
