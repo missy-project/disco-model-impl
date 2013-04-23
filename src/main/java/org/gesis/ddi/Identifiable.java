@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package org.gesis.ddi;
 
 import java.util.Set;
