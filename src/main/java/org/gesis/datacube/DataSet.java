@@ -2,8 +2,10 @@ package org.gesis.datacube;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -21,7 +23,7 @@ public class DataSet extends Resource
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="DataSet_Variable",
 			joinColumns=@JoinColumn(name="dataSet_id"),

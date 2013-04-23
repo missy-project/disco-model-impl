@@ -1,5 +1,7 @@
 package org.gesis.foaf;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
@@ -12,7 +14,7 @@ public class Person extends Agent {
 
 	// relations
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private Organization org_memberOf;
 
 	// getter/setter
