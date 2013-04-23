@@ -3,9 +3,11 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -30,7 +32,7 @@ public class LogicalDataSet extends Resource
 
 	// properties
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_title;
 
 	@Column
@@ -39,6 +41,7 @@ public class LogicalDataSet extends Resource
 	// relations
 
 	@ElementCollection
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Location", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -46,7 +49,7 @@ public class LogicalDataSet extends Resource
 	protected Set<Location> dcterms_spatial;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_PeriodOfTime", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -54,19 +57,19 @@ public class LogicalDataSet extends Resource
 	protected Set<PeriodOfTime> dcterms_temporal;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Concept", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected Set<Concept> dcterms_subject;
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "universe_id" )
 	protected Universe universe;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "LogicalDataSet_Instrument", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -74,7 +77,7 @@ public class LogicalDataSet extends Resource
 	protected Set<Instrument> instrument;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Variable", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -82,7 +85,7 @@ public class LogicalDataSet extends Resource
 	protected Set<Variable> containsVariable;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataFile", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -90,7 +93,7 @@ public class LogicalDataSet extends Resource
 	protected Set<DataFile> dataFile;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataSet", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -98,7 +101,7 @@ public class LogicalDataSet extends Resource
 	protected Set<DataSet> aggregation;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_LicenseDocument",
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
@@ -106,7 +109,7 @@ public class LogicalDataSet extends Resource
 	protected Set<LicenseDocument> dcterms_license;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Document", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),

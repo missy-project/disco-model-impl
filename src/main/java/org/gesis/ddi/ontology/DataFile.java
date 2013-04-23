@@ -3,9 +3,11 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -29,7 +31,7 @@ public class DataFile extends Resource
 
 	// properties
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_description;
 
 	@Column
@@ -39,7 +41,7 @@ public class DataFile extends Resource
 	private String owl_versionInfo;
 	
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_ProvenanceStatement", 
 			joinColumns = @JoinColumn( name = "dataFile_id" ), 
@@ -49,7 +51,7 @@ public class DataFile extends Resource
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_Location", 
 			joinColumns = @JoinColumn( name = "dataFile_id" ), 
@@ -57,7 +59,7 @@ public class DataFile extends Resource
 	protected Set<Location> dcterms_spatial;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_PeriodOfTime", 
 			joinColumns = @JoinColumn( name = "dataFile_id" ), 
@@ -65,14 +67,14 @@ public class DataFile extends Resource
 	protected Set<PeriodOfTime> dcterms_temporal;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_Concept", 
 			joinColumns = @JoinColumn( name = "dataFile_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected Set<Concept> dcterms_subject;
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "mediaTypeOrExtend_id" )
 	protected MediaTypeOrExtend dcterms_format;
 

@@ -3,8 +3,10 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -23,7 +25,7 @@ public class Questionnaire extends Instrument
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Questionnaire_Concept", 
 			joinColumns=@JoinColumn(name="questionnaire_id"), 
@@ -31,7 +33,7 @@ public class Questionnaire extends Instrument
 	protected Set<Concept> collectionMode;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Questionnaire_Question", 
 			joinColumns=@JoinColumn(name="questionnaire_id"), 

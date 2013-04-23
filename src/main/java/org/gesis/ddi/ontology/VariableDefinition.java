@@ -3,9 +3,11 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -29,19 +31,19 @@ public class VariableDefinition extends Resource
 	// relations
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="VariableDefinition_Universe",
 			joinColumns=@JoinColumn(name="variableDefinition_id"),
 			inverseJoinColumns=@JoinColumn( name = "universe_id" ))
 	protected Set<Universe> universe;
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "concept_id" )
 	protected Concept concept;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="VariableDefinition_Representation",
 			joinColumns=@JoinColumn(name="variableDefinition_id"),

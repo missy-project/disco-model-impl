@@ -3,8 +3,10 @@ package org.gesis.ddi.ontology;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -24,12 +26,13 @@ public class Question extends Resource
 
 	// properties
 
-	@OneToOne
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString questionText;
 
 	// relations
 
-	@ManyToMany
+	@ElementCollection
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Question_Representation",
 			joinColumns=@JoinColumn( name = "question_id" ),
@@ -37,7 +40,7 @@ public class Question extends Resource
 	protected Set<Representation> responseDomain;
 
 	@ElementCollection
-	@ManyToMany
+	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Question_Concept",
 			joinColumns=@JoinColumn(name="question_id"),
@@ -45,7 +48,7 @@ public class Question extends Resource
 	protected Set<Concept> concept;
 
 	@ElementCollection
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "universe_id" )
 	protected Universe universe;
 
