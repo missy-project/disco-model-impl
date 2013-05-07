@@ -66,7 +66,7 @@ public class Study extends Union_StudyGroupStudy
 
 	// getter/setter
 
-	public Study()
+	private Study()
 	{
 		super( null, null, 0 );
 	}

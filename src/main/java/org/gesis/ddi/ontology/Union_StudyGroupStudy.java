@@ -6,10 +6,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -27,11 +25,6 @@ import org.gesis.skos.Concept;
 public abstract class Union_StudyGroupStudy extends Resource
 {
 	// properties
-
-	public Union_StudyGroupStudy( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString dcterms_abstract;
@@ -54,87 +47,46 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	private Set<PeriodOfTime> dcterms_temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	private Set<Concept> dcterms_subject;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	private Set<Location> dcterms_spacial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
 	private Set<Document> ddiFile;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name="concept_id" )
 	private Concept kindOfData;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "analysisUnit_id" ) )
 	protected Set<AnalysisUnit> analysisUnit;
 	
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Union_StudyGroupStudy", 
-			joinColumns = @JoinColumn( name = "union_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "universe_id" ) )
 	protected Set<Universe> universe;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Agent", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "publisher_id" ) )
 	protected Set<Agent> dcterms_publisher;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Agent", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "contributor_id" ) )
 	protected Set<Agent> dcterms_contributer;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Agent", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "creator_id" ) )
 	protected Set<Agent> dcterms_creator;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Agent", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
-			inverseJoinColumns = @JoinColumn( name = "fundedBy_id" ) )
 	protected Set<Agent> fundedBy;
 
 	// getter/setter
 
+	public Union_StudyGroupStudy( final String agencyId, final String objectId, final int majorVersion )
+	{
+		super( agencyId, objectId, majorVersion );
+	}
+	
 	public LangString getDcterms_abstract()
 	{
 		return this.dcterms_abstract;
