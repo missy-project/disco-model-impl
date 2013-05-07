@@ -1,5 +1,6 @@
 package org.gesis.ddi;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -45,10 +46,10 @@ public class Identifiable
 
 	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable(
-			name="Identifiable_Note",
-			joinColumns=@JoinColumn(name="identifiable_id"),
-			inverseJoinColumns=@JoinColumn( name = "note_id" ))
+	@JoinTable( 
+			name = "Identifiable_Note", 
+			joinColumns = @JoinColumn( name = "identifiable_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "note_id" ) )
 	private Set<Note> note;
 
 	// getter/setter
@@ -68,23 +69,28 @@ public class Identifiable
 		return this.URN;
 	}
 
-	public void setURN(final String uRN) {
+	public void setURN( final String uRN )
+	{
 		this.URN = uRN;
 	}
 
-	public String getAgencyId() {
+	public String getAgencyId()
+	{
 		return this.agencyId;
 	}
 
-	public void setAgencyId(final String agencyId) {
+	public void setAgencyId( final String agencyId )
+	{
 		this.agencyId = agencyId;
 	}
 
-	public String getObjectId() {
+	public String getObjectId()
+	{
 		return this.objectId;
 	}
 
-	public void setObjectId(final String objectId) {
+	public void setObjectId( final String objectId )
+	{
 		this.objectId = objectId;
 	}
 
@@ -108,12 +114,22 @@ public class Identifiable
 		this.minorVersion = minorVersion;
 	}
 
+	public Identifiable addNote( final Note note )
+	{
+		if ( this.note == null )
+			this.note = new LinkedHashSet<Note>();
+
+		this.note.add( note );
+
+		return this;
+	}
+
 	public Set<Note> getNote()
 	{
 		return this.note;
 	}
 
-	public void setNote(final Set<Note> note)
+	public void setNote( final Set<Note> note )
 	{
 		this.note = note;
 	}
