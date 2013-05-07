@@ -66,6 +66,11 @@ public class Study extends Union_StudyGroupStudy
 
 	// getter/setter
 
+	public Study()
+	{
+		super( null, null, 0 );
+	}
+
 	public Study( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
