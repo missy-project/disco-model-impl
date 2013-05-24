@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -55,15 +54,19 @@ public class Variable extends Resource
 	@JoinColumn( name = "universe_id" )
 	protected Universe universe;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Variable_Question", 
-			joinColumns = @JoinColumn( name = "variable_id" ),
+			joinColumns = @JoinColumn( name = "variable_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "question_id" ) )
 	protected Set<Question> question;
 
 	// getter/setter
+
+	private Variable()
+	{
+		super( null, null, 0 );
+	}
 
 	public Variable( final String agencyId, final String objectId, final int majorVersion )
 	{
