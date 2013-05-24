@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -24,7 +23,6 @@ public class Questionnaire extends Instrument
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Questionnaire_Concept", 
@@ -32,7 +30,6 @@ public class Questionnaire extends Instrument
 			inverseJoinColumns=@JoinColumn(name="concept_id"))
 	protected Set<Concept> collectionMode;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Questionnaire_Question", 
