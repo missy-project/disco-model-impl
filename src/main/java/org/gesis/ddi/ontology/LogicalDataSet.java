@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -40,7 +39,6 @@ public class LogicalDataSet extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Location", 
@@ -48,7 +46,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	protected Set<Location> dcterms_spatial;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_PeriodOfTime", 
@@ -56,7 +53,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	protected Set<PeriodOfTime> dcterms_temporal;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Concept", 
@@ -68,7 +64,6 @@ public class LogicalDataSet extends Resource
 	@JoinColumn( name = "universe_id" )
 	protected Universe universe;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "LogicalDataSet_Instrument", 
@@ -76,7 +71,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
 	protected Set<Instrument> instrument;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Variable", 
@@ -84,7 +78,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> containsVariable;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataFile", 
@@ -92,7 +85,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected Set<DataFile> dataFile;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataSet", 
@@ -100,7 +92,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "dataSet_id" ) )
 	protected Set<DataSet> aggregation;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_LicenseDocument",
@@ -108,7 +99,6 @@ public class LogicalDataSet extends Resource
 			inverseJoinColumns = @JoinColumn( name = "licenseDocument_id" ) )
 	protected Set<LicenseDocument> dcterms_license;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Document", 

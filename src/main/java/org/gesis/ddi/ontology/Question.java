@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -31,7 +30,6 @@ public class Question extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Question_Representation",
@@ -39,7 +37,6 @@ public class Question extends Resource
 			inverseJoinColumns=@JoinColumn( name = "representation_id" ) )
 	protected Set<Representation> responseDomain;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Question_Concept",
@@ -47,7 +44,6 @@ public class Question extends Resource
 			inverseJoinColumns=@JoinColumn( name = "concept_id" ))
 	protected Set<Concept> concept;
 
-	@ElementCollection
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "universe_id" )
 	protected Universe universe;

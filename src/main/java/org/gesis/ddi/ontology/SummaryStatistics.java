@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -61,7 +60,6 @@ public class SummaryStatistics extends DescriptiveStatistics
 	private double standardDeviation;
 
 	// relations
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "SummaryStatistics_Variable", 

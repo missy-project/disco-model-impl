@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -40,7 +39,6 @@ public class DataFile extends Resource
 	@Column
 	private String owl_versionInfo;
 	
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_ProvenanceStatement", 
@@ -50,7 +48,6 @@ public class DataFile extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_Location", 
@@ -58,7 +55,6 @@ public class DataFile extends Resource
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	protected Set<Location> dcterms_spatial;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_PeriodOfTime", 
@@ -66,7 +62,6 @@ public class DataFile extends Resource
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	protected Set<PeriodOfTime> dcterms_temporal;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "DataFile_Concept", 

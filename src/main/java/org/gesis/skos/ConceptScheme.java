@@ -3,7 +3,6 @@ package org.gesis.skos;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -18,7 +17,6 @@ import org.gesis.rdfs.Resource;
 public class ConceptScheme extends Resource
 {
 
-	@ElementCollection
 	@ManyToMany
 	@JoinTable(
 			name="ConceptScheme_Concept",

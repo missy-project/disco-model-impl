@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -30,7 +29,6 @@ public class VariableDefinition extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="VariableDefinition_Universe",
@@ -42,7 +40,6 @@ public class VariableDefinition extends Resource
 	@JoinColumn( name = "concept_id" )
 	protected Concept concept;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="VariableDefinition_Representation",

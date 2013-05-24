@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -33,7 +32,6 @@ public class Concept extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_ConceptScheme", 
@@ -41,7 +39,6 @@ public class Concept extends Resource
 			inverseJoinColumns = @JoinColumn( name = "inScheme_id" ) )
 	protected Set<ConceptScheme> skos_inScheme;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_Concept", 
@@ -49,7 +46,6 @@ public class Concept extends Resource
 			inverseJoinColumns = @JoinColumn( name = "broader_id" ) )
 	protected Set<Concept> skos_broader;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Concept_Concept", 

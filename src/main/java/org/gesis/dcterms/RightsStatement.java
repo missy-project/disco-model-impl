@@ -2,7 +2,6 @@ package org.gesis.dcterms;
 
 import java.util.Set;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -27,7 +26,6 @@ public class RightsStatement extends Resource
 
 	// relations
 
-	@ElementCollection
 	@ManyToMany
 	@JoinTable( 
 			name = "RightsStatement_Document",

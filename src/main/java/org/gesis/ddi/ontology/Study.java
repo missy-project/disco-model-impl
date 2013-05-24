@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -32,7 +31,6 @@ public class Study extends Union_StudyGroupStudy
 	@JoinColumn( name = "studyGroup_id" )
 	private StudyGroup inGroup;
 
-	@ElementCollection
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Instrument", 
@@ -40,7 +38,6 @@ public class Study extends Union_StudyGroupStudy
 			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
 	protected Set<Instrument> instrument;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_Variable", 
@@ -48,7 +45,6 @@ public class Study extends Union_StudyGroupStudy
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> variable;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_DataFile", 
@@ -56,7 +52,6 @@ public class Study extends Union_StudyGroupStudy
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected Set<DataFile> dataFile;
 
-	@ElementCollection
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "Study_LogicalDataSet", 
