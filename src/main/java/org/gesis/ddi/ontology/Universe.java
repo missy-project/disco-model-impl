@@ -17,6 +17,11 @@ public class Universe extends Concept
 
 	// getter/setter
 
+	private Universe()
+	{
+		super( null, null, 0 );
+	}
+
 	public Universe( String agencyId, String objectId, int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
