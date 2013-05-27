@@ -41,14 +41,14 @@ public class Concept extends Resource
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
-			name = "Concept_Concept", 
+			name = "Concept_Broader", 
 			joinColumns = @JoinColumn( name = "concept_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "broader_id" ) )
 	protected Set<Concept> skos_broader;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
-			name = "Concept_Concept", 
+			name = "Concept_Narrower", 
 			joinColumns = @JoinColumn( name = "concept_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "narrower_id" ) )
 	protected Set<Concept> skos_narrower;
