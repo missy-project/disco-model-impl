@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 
 import org.gesis.ddi.util.LangStringKeyBuilder;
@@ -38,25 +39,29 @@ public class LangString
 
 	@Column
 	@Id
-	@GeneratedValue( strategy = GenerationType.AUTO )
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
 
 	@Column( unique = true, name = "message_key" )
 	private String messageKey;
 
 	@Column
+	@Lob
 	private String de = null;
 
 	@Column
+	@Lob
 	private String en = null;
 
 	@Column
+	@Lob
 	private String fr = null;
 
 	@ElementCollection( fetch = FetchType.LAZY )
 	@MapKeyColumn( name = "language" )
 	@Column( name = "value" )
 	@CollectionTable( name = "Languages_Values", joinColumns = @JoinColumn( name = "langString_id" ) )
+	@Lob
 	private Map<String, String> values = new HashMap<String, String>();
 
 	public LangString()
