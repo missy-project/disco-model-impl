@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
@@ -15,29 +14,29 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
+import org.gesis.ddi.util.AbstractBaseEntity;
 import org.gesis.ddi.util.URNBuilder;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Identifiable
+public class Identifiable extends AbstractBaseEntity
 {
 
 	// properties
 
 	@Column
-	@Id
 	private String URN;
 
-	@Column( nullable = false )
+	@Column
 	private String agencyId;
 
-	@Column( nullable = false )
+	@Column
 	private String objectId;
 
-	@Column( nullable = false )
+	@Column
 	private int majorVersion;
 
-	@Column( nullable = false, updatable = false )
+	@Column( updatable = false )
 	@Version
 	private int minorVersion;
 
@@ -51,6 +50,11 @@ public class Identifiable
 	private Set<Note> note;
 
 	// getter/setter
+
+	public Identifiable()
+	{
+
+	}
 
 	public Identifiable( final String agencyId, final String objectId, final int majorVersion )
 	{
@@ -77,9 +81,11 @@ public class Identifiable
 		return this.agencyId;
 	}
 
-	public void setAgencyId( final String agencyId )
+	public Identifiable setAgencyId( final String agencyId )
 	{
 		this.agencyId = agencyId;
+
+		return this;
 	}
 
 	public String getObjectId()
@@ -87,9 +93,11 @@ public class Identifiable
 		return this.objectId;
 	}
 
-	public void setObjectId( final String objectId )
+	public Identifiable setObjectId( final String objectId )
 	{
 		this.objectId = objectId;
+
+		return this;
 	}
 
 	public int getMajorVersion()
@@ -97,9 +105,11 @@ public class Identifiable
 		return this.majorVersion;
 	}
 
-	public void setMajorVersion( final int majorVersion )
+	public Identifiable setMajorVersion( final int majorVersion )
 	{
 		this.majorVersion = majorVersion;
+
+		return this;
 	}
 
 	public int getMinorVersion()
