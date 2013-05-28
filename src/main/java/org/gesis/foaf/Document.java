@@ -11,9 +11,4 @@ import org.gesis.rdfs.Resource;
 public class Document extends Resource
 {
 
-	public Document( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

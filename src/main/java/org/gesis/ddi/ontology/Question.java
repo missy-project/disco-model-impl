@@ -50,16 +50,6 @@ public class Question extends Resource
 
 	// getter/setter
 
-	private Question()
-	{
-		super( null, null, 0 );
-	}
-
-	public Question( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Object getQuestionText()
 	{
 		return this.questionText;

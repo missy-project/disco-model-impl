@@ -51,11 +51,6 @@ public class VariableDefinition extends Resource
 
 	// getter/setter
 
-	public VariableDefinition( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public String getDcterms_description() {
 		return this.dcterms_description;
 	}

@@ -11,9 +11,4 @@ import org.gesis.skos.Concept;
 public class AnalysisUnit extends Concept
 {
 
-	public AnalysisUnit( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

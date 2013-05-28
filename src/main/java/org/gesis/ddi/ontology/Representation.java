@@ -15,9 +15,4 @@ public class Representation extends Union_RdfsDataTypeSkosConceptScheme
 
 	// getter / setter
 
-	public Representation( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

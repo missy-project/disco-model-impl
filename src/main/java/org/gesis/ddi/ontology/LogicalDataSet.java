@@ -108,11 +108,6 @@ public class LogicalDataSet extends Resource
 
 	// getter/setter
 
-	public LogicalDataSet( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public LangString getDcterms_title()
 	{
 		return this.dcterms_title;

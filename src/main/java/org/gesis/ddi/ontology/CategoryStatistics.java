@@ -51,11 +51,6 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
-	public CategoryStatistics( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public int getFrequency()
 	{
 		return this.frequency;

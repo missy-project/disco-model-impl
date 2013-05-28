@@ -11,9 +11,4 @@ import org.gesis.ddi.ontology.Union_RdfsDataTypeSkosConceptScheme;
 public class Datatype extends Union_RdfsDataTypeSkosConceptScheme
 {
 
-	public Datatype( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

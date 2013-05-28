@@ -11,9 +11,4 @@ import org.gesis.ddi.Identifiable;
 public class StudyGroup extends Identifiable
 {
 
-	public StudyGroup( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

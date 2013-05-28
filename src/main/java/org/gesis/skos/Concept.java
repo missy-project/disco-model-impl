@@ -55,16 +55,6 @@ public class Concept extends Resource
 
 	// getter/setter
 
-	private Concept()
-	{
-		super( null, null, 0 );
-	}
-
-	public Concept( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public LangString getSkos_definition()
 	{
 		return this.skos_definition;

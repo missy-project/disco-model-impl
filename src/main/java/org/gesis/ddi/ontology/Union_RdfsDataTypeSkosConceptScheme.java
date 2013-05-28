@@ -8,9 +8,4 @@ import org.gesis.skos.ConceptScheme;
 public abstract class Union_RdfsDataTypeSkosConceptScheme extends ConceptScheme
 {
 
-	public Union_RdfsDataTypeSkosConceptScheme( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

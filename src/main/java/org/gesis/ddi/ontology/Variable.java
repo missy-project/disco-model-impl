@@ -63,16 +63,6 @@ public class Variable extends Resource
 
 	// getter/setter
 
-	private Variable()
-	{
-		super( null, null, 0 );
-	}
-
-	public Variable( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public String getSkos_notation()
 	{
 		return this.skos_notation;

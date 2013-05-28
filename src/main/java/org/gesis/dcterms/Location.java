@@ -15,9 +15,4 @@ public class Location extends Resource
 
 	// getter/setter
 
-	public Location( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

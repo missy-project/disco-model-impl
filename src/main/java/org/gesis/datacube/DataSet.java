@@ -30,16 +30,11 @@ public class DataSet extends Resource
 
 	// getter/setter
 
-	public DataSet( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Set<Variable> getInputVariable() {
 		return this.inputVariable;
 	}
 
-	public void setInputVariable(Set<Variable> inputVariables) {
+	public void setInputVariable(final Set<Variable> inputVariables) {
 		this.inputVariable = inputVariables;
 	}
 

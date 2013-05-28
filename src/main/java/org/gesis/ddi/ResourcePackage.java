@@ -17,16 +17,11 @@ public class ResourcePackage extends Resource
 
 	// getter/setter
 
-	public ResourcePackage( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Set<Identifiable> getIdentifiable() {
-		return identifiable;
+		return this.identifiable;
 	}
 
-	public void setIdentifiable(Set<Identifiable> identifiable) {
+	public void setIdentifiable(final Set<Identifiable> identifiable) {
 		this.identifiable = identifiable;
 	}
 

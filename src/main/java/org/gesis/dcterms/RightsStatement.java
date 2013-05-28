@@ -34,28 +34,23 @@ public class RightsStatement extends Resource
 	protected Set<Document> rdfs_seeAlso;
 	
 	// getter/setter
-	
-	public RightsStatement( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
 
 	public Set<Document> getRdfs_seeAlso()
 	{
-		return rdfs_seeAlso;
+		return this.rdfs_seeAlso;
 	}
 
-	public void setRdfs_seeAlso( Set<Document> rdfs_seeAlso )
+	public void setRdfs_seeAlso( final Set<Document> rdfs_seeAlso )
 	{
 		this.rdfs_seeAlso = rdfs_seeAlso;
 	}
 
 	public LangString getDcterms_description()
 	{
-		return dcterms_description;
+		return this.dcterms_description;
 	}
 
-	public void setDcterms_description( LangString dcterms_description )
+	public void setDcterms_description( final LangString dcterms_description )
 	{
 		this.dcterms_description = dcterms_description;
 	}

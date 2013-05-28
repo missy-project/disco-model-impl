@@ -16,9 +16,4 @@ public class MediaTypeOrExtend extends Concept
 
 	// getter / setter
 
-	public MediaTypeOrExtend( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

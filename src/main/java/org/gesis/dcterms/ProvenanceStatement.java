@@ -11,9 +11,4 @@ import org.gesis.rdfs.Resource;
 public class ProvenanceStatement extends Resource
 {
 
-	public ProvenanceStatement( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

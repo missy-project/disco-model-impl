@@ -32,11 +32,6 @@ public class DescriptiveStatistics extends Resource
 
 	// getter/setter
 
-	public DescriptiveStatistics( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Set<DataFile> getStatisticsDataFile()
 	{
 		return this.statisticsDatafile;

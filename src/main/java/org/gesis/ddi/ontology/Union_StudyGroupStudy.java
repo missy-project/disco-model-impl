@@ -82,11 +82,6 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	// getter/setter
 
-	public Union_StudyGroupStudy( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-	
 	public LangString getDcterms_abstract()
 	{
 		return this.dcterms_abstract;

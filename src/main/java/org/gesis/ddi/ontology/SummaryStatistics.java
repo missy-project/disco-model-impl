@@ -69,11 +69,6 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
-	public SummaryStatistics( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public int getInvalidCases()
 	{
 		return this.invalidCases;

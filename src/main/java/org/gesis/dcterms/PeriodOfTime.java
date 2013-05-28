@@ -26,27 +26,22 @@ public class PeriodOfTime extends Resource
 
 	// getter / setter
 
-	public PeriodOfTime( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Date getStartDate()
 	{
-		return startDate;
+		return this.startDate;
 	}
 
-	public void setStartDate( Date startDate )
+	public void setStartDate( final Date startDate )
 	{
 		this.startDate = startDate;
 	}
 
 	public Date getEndDate()
 	{
-		return endDate;
+		return this.endDate;
 	}
 
-	public void setEndDate( Date endDate )
+	public void setEndDate( final Date endDate )
 	{
 		this.endDate = endDate;
 	}

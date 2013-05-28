@@ -38,11 +38,6 @@ public class Instrument extends Resource
 
 	// getter/setter
 
-	public Instrument( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public LangString getDcterms_description()
 	{
 		return this.dcterms_description;

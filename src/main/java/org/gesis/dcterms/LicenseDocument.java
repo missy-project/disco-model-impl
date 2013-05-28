@@ -9,9 +9,4 @@ import javax.persistence.InheritanceType;
 public class LicenseDocument extends RightsStatement
 {
 
-	public LicenseDocument( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 }

@@ -27,11 +27,6 @@ public class ConceptScheme extends Resource
 
 	// getter/setter
 
-	public ConceptScheme( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Set<Concept> getSkos_hasTopConcept()
 	{
 		return this.skos_hasTopConcept;

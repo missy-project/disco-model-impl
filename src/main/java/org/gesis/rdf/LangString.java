@@ -10,13 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 
+import org.gesis.ddi.util.AbstractBaseEntity;
 import org.gesis.ddi.util.LangStringKeyBuilder;
 import org.gesis.ddi.util.LocaleValueEntry;
 import org.gesis.ddi.util.Locales;
@@ -34,13 +32,8 @@ import org.gesis.ddi.util.Locales;
  * 
  */
 @Entity
-public class LangString
+public class LangString extends AbstractBaseEntity
 {
-
-	@Column
-	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private int id;
 
 	@Column( unique = true, name = "message_key" )
 	private String messageKey;
@@ -77,16 +70,6 @@ public class LangString
 	public LangString( final Map<Locale, String> values )
 	{
 		addValues( values );
-	}
-
-	public int getId()
-	{
-		return this.id;
-	}
-
-	public void setId( final int id )
-	{
-		this.id = id;
 	}
 
 	public String getMessageKey()

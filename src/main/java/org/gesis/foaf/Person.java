@@ -19,16 +19,11 @@ public class Person extends Agent {
 
 	// getter/setter
 
-	public Person( String agencyId, String objectId, int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Organization getOrg_memberOf() {
-		return org_memberOf;
+		return this.org_memberOf;
 	}
 
-	public void setOrg_memberOf(Organization org_memberOf) {
+	public void setOrg_memberOf(final Organization org_memberOf) {
 		this.org_memberOf = org_memberOf;
 	}
 

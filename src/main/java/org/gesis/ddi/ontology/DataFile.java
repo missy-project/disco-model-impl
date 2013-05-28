@@ -75,11 +75,6 @@ public class DataFile extends Resource
 
 	// getter/setter
 
-	public DataFile( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public LangString getDcterms_description()
 	{
 		return this.dcterms_description;

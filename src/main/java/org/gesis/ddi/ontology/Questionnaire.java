@@ -39,16 +39,6 @@ public class Questionnaire extends Instrument
 
 	// getter/setter
 
-	private Questionnaire()
-	{
-		super( null, null, 0 );
-	}
-
-	public Questionnaire( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
-	}
-
 	public Set<Concept> getCollectionMode() {
 		return this.collectionMode;
 	}

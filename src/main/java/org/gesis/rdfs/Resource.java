@@ -40,6 +40,11 @@ public class Resource extends Identifiable
 
 	// getter/setter
 
+	public Resource()
+	{
+		super();
+	}
+
 	public Resource( final String agencyId, final String objectId, final int majorVersion )
 	{
 		super( agencyId, objectId, majorVersion );
