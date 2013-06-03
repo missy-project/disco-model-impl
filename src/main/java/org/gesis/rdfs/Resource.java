@@ -8,12 +8,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
-import org.gesis.ddi.Identifiable;
+import org.gesis.ddi.util.AbstractBaseEntity;
 import org.gesis.rdf.LangString;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Resource extends Identifiable
+public class Resource extends AbstractBaseEntity
 {
 
 	// properties
@@ -43,11 +43,6 @@ public class Resource extends Identifiable
 	public Resource()
 	{
 		super();
-	}
-
-	public Resource( final String agencyId, final String objectId, final int majorVersion )
-	{
-		super( agencyId, objectId, majorVersion );
 	}
 
 	public String getDdi2_1Identifier()

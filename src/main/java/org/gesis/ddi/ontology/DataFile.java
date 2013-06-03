@@ -19,13 +19,13 @@ import org.gesis.dcterms.Location;
 import org.gesis.dcterms.MediaTypeOrExtend;
 import org.gesis.dcterms.PeriodOfTime;
 import org.gesis.dcterms.ProvenanceStatement;
+import org.gesis.ddi.Identifiable;
 import org.gesis.rdf.LangString;
-import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class DataFile extends Resource
+public class DataFile extends Identifiable
 {
 
 	// properties

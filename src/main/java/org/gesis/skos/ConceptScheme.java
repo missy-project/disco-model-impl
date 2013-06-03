@@ -10,11 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.gesis.rdfs.Resource;
+import org.gesis.ddi.Identifiable;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class ConceptScheme extends Resource
+public class ConceptScheme extends Identifiable
 {
 
 	@ManyToMany

@@ -15,14 +15,14 @@ import javax.persistence.OneToOne;
 
 import org.gesis.dcterms.Location;
 import org.gesis.dcterms.PeriodOfTime;
+import org.gesis.ddi.Identifiable;
 import org.gesis.foaf.Agent;
 import org.gesis.foaf.Document;
 import org.gesis.rdf.LangString;
-import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @MappedSuperclass
-public abstract class Union_StudyGroupStudy extends Resource
+public abstract class Union_StudyGroupStudy extends Identifiable
 {
 	// properties
 

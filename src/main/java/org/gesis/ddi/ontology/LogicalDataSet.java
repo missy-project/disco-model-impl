@@ -20,13 +20,13 @@ import org.gesis.dcterms.LicenseDocument;
 import org.gesis.dcterms.Location;
 import org.gesis.dcterms.PeriodOfTime;
 import org.gesis.dcterms.RightsStatement;
+import org.gesis.ddi.Identifiable;
 import org.gesis.rdf.LangString;
-import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class LogicalDataSet extends Resource
+public class LogicalDataSet extends Identifiable
 {
 
 	// properties
