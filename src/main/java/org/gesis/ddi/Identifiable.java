@@ -14,12 +14,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
-import org.gesis.ddi.util.AbstractBaseEntity;
 import org.gesis.ddi.util.URNBuilder;
+import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Identifiable extends AbstractBaseEntity
+public class Identifiable extends Resource
 {
 
 	// properties
@@ -47,7 +47,7 @@ public class Identifiable extends AbstractBaseEntity
 			name = "Identifiable_Note", 
 			joinColumns = @JoinColumn( name = "identifiable_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "note_id" ) )
-	private Set<Note> note;
+	private Set<Identifiable> identifiables;
 
 	// getter/setter
 
@@ -122,24 +122,24 @@ public class Identifiable extends AbstractBaseEntity
 		this.minorVersion = minorVersion;
 	}
 
-	public Identifiable addNote( final Note note )
+	public Identifiable addIdentifiable( final Identifiable identifiable )
 	{
-		if ( this.note == null )
-			this.note = new LinkedHashSet<Note>();
+		if ( this.identifiables == null )
+			this.identifiables = new LinkedHashSet<Identifiable>();
 
-		this.note.add( note );
+		this.identifiables.add( identifiable );
 
 		return this;
 	}
 
-	public Set<Note> getNote()
+	public Set<Identifiable> getIdentifiables()
 	{
-		return this.note;
+		return this.identifiables;
 	}
 
-	public void setNote( final Set<Note> note )
+	public void setIdentifiables( final Set<Identifiable> identifiables )
 	{
-		this.note = note;
+		this.identifiables = identifiables;
 	}
 
 }
