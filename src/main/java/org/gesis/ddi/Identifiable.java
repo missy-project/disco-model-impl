@@ -12,7 +12,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Version;
 
 import org.gesis.ddi.util.URNBuilder;
 import org.gesis.rdfs.Resource;
@@ -37,7 +36,6 @@ public class Identifiable extends Resource
 	private int majorVersion;
 
 	@Column( updatable = false )
-	@Version
 	private int minorVersion;
 
 	// relations
