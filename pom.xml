@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.gesis</groupId>
 		<artifactId>ddi</artifactId>
-		<version>0.0.10-SNAPSHOT</version>
+		<version>0.0.11-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.gesis.ddi</groupId>
@@ -17,5 +17,5 @@
 		</dependency>
 	</dependencies>
 	
-	<version>0.0.10-SNAPSHOT</version>
+	<version>0.0.11-SNAPSHOT</version>
 </project>
