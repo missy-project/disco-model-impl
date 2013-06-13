@@ -12,11 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.gesis.ddi.Identifiable;
+import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class DescriptiveStatistics extends Identifiable
+public class DescriptiveStatistics extends Resource
 {
 
 	// properties

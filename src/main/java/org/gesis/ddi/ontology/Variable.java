@@ -15,13 +15,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import org.gesis.ddi.Identifiable;
 import org.gesis.rdf.LangString;
+import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Variable extends Identifiable
+public class Variable extends Resource
 {
 
 	// properties

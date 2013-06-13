@@ -15,12 +15,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.gesis.ddi.Identifiable;
+import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class VariableDefinition extends Identifiable
+public class VariableDefinition extends Resource
 {
 
 	// properties

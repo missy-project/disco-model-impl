@@ -13,13 +13,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import org.gesis.ddi.Identifiable;
 import org.gesis.foaf.Document;
 import org.gesis.rdf.LangString;
+import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Instrument extends Identifiable
+public class Instrument extends Resource
 {
 
 	// properties

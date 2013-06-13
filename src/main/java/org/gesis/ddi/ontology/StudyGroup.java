@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.ddi.Identifiable;
+import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class StudyGroup extends Identifiable
+public class StudyGroup extends Resource
 {
 
 }
