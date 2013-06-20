@@ -1,14 +1,18 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.rdfs.Resource;
-
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class StudyGroup extends Resource
+public class Representation extends Union_RdfsDataTypeSkosConceptScheme
 {
+
+	// properties
+
+	// relations
+
+	// getter / setter
 
 }

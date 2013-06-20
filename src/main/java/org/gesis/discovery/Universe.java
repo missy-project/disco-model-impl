@@ -1,4 +1,4 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -8,7 +8,13 @@ import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class AnalysisUnit extends Concept
+public class Universe extends Concept
 {
+
+	// properties
+
+	// relations
+
+	// getter/setter
 
 }

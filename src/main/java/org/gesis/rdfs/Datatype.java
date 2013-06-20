@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.ddi.ontology.Union_RdfsDataTypeSkosConceptScheme;
+import org.gesis.discovery.Union_RdfsDataTypeSkosConceptScheme;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )

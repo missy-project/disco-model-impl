@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.gesis.ddi.ontology.Variable;
+import org.gesis.discovery.Variable;
 import org.gesis.rdfs.Resource;
 
 @Entity

@@ -1,4 +1,4 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import javax.persistence.MappedSuperclass;
 

@@ -1,4 +1,4 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import java.util.HashSet;
 import java.util.Set;
