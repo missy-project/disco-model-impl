@@ -1,18 +1,20 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.gesis.skos.Concept;
+
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Representation extends Union_RdfsDataTypeSkosConceptScheme
+public class Universe extends Concept
 {
 
 	// properties
 
 	// relations
 
-	// getter / setter
+	// getter/setter
 
 }

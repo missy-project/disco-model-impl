@@ -1,14 +1,14 @@
-package org.gesis.ddi.ontology;
+package org.gesis.discovery;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.skos.Concept;
+import org.gesis.ddi.Identifiable;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class AnalysisUnit extends Concept
+public class StudyGroup extends Identifiable
 {
 
 }
