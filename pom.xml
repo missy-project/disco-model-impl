@@ -2,11 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.gesis</groupId>
-		<artifactId>ddi</artifactId>
+		<artifactId>disco</artifactId>
 		<version>0.0.11-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.gesis.ddi</groupId>
+	<groupId>org.gesis.disco</groupId>
 	<artifactId>disco-model</artifactId>
 
 	<dependencies>
@@ -16,6 +16,4 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 	</dependencies>
-	
-	<version>0.0.11-SNAPSHOT</version>
 </project>
