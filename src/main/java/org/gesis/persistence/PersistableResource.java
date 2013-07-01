@@ -1,28 +1,33 @@
-package org.gesis.ddi.util;
+package org.gesis.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import org.gesis.ddi.util.Identifier;
+import org.gesis.ddi.util.IdentifierFactory;
 
 @MappedSuperclass
-public class AbstractBaseEntity
+public abstract class PersistableResource
 {
 
 	@Column
 	@Id
 	private String id;
 
+	@Column
+	private String urn;
+
 	@Transient
 	private Identifier identifier;
 
-	public AbstractBaseEntity()
+	public PersistableResource()
 	{
 		this.id = IdentifierFactory.getNextDefaultIdentifier();
 	}
 
-	public AbstractBaseEntity( final Identifier identifier )
+	public PersistableResource( final Identifier identifier )
 	{
 		this.identifier = identifier;
 		this.id = identifier.getUniqueId();
@@ -46,6 +51,16 @@ public class AbstractBaseEntity
 	public void setIdentifier( final Identifier identifier )
 	{
 		this.identifier = identifier;
+	}
+
+	public String getURN()
+	{
+		return this.urn;
+	}
+
+	public void setURN( final String urn )
+	{
+		this.urn = urn;
 	}
 
 }

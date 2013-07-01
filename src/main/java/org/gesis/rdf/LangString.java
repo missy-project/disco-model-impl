@@ -14,10 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 
-import org.gesis.ddi.util.AbstractBaseEntity;
 import org.gesis.ddi.util.LangStringKeyBuilder;
 import org.gesis.ddi.util.LocaleValueEntry;
 import org.gesis.ddi.util.Locales;
+import org.gesis.persistence.PersistableResource;
 
 /**
  * Represents a multilingual string. Stores a multilingual value only with
@@ -32,7 +32,7 @@ import org.gesis.ddi.util.Locales;
  * 
  */
 @Entity
-public class LangString extends AbstractBaseEntity
+public class LangString extends PersistableResource
 {
 
 	@Column( unique = true, name = "message_key" )

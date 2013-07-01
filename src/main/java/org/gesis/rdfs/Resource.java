@@ -8,12 +8,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
-import org.gesis.ddi.util.AbstractBaseEntity;
+import org.gesis.persistence.PersistableResource;
 import org.gesis.rdf.LangString;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Resource extends AbstractBaseEntity
+public class Resource extends PersistableResource
 {
 
 	// properties
