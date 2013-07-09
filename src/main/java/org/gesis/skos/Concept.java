@@ -30,6 +30,9 @@ public class Concept extends Resource
 	@Column
 	private String skos_notation;
 
+	@Column
+	private boolean isValid;
+
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -73,6 +76,16 @@ public class Concept extends Resource
 	public void setSkos_notation( final String skos_notation )
 	{
 		this.skos_notation = skos_notation;
+	}
+
+	public boolean isValid()
+	{
+		return this.isValid;
+	}
+
+	public void setValid( final boolean isValid )
+	{
+		this.isValid = isValid;
 	}
 
 	public Concept addSkos_inScheme( final ConceptScheme conceptScheme )

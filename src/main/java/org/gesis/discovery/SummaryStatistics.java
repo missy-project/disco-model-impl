@@ -12,6 +12,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.gesis.rdf.LangString;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -19,18 +23,6 @@ public class SummaryStatistics extends DescriptiveStatistics
 {
 
 	// properties
-
-	@Column
-	private int invalidCases;
-
-	@Column
-	private int validCases;
-
-	@Column
-	private int weightedInvalidCases;
-
-	@Column
-	private int weightValidCases;
 
 	@Column
 	private double maximum;
@@ -48,16 +40,16 @@ public class SummaryStatistics extends DescriptiveStatistics
 	private double mode;
 
 	@Column
-	private double weightedMean;
-
-	@Column
-	private double weightedMedian;
-
-	@Column
-	private double weightedMode;
-
-	@Column
 	private double standardDeviation;
+
+	@Column
+	private int numberOfCases;
+
+	@Column
+	private int percentage;
+
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	private LangString typeOfCases;
 
 	// relations
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -67,47 +59,11 @@ public class SummaryStatistics extends DescriptiveStatistics
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> statisticsVariable;
 
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinColumn( name = "variable_id" )
+	protected Variable weightedBy;
+
 	// getter/setter
-
-	public int getInvalidCases()
-	{
-		return this.invalidCases;
-	}
-
-	public void setInvalidCases(final int invalidCases)
-	{
-		this.invalidCases = invalidCases;
-	}
-
-	public int getValidCases()
-	{
-		return this.validCases;
-	}
-
-	public void setValidCases(final int validCases)
-	{
-		this.validCases = validCases;
-	}
-
-	public int getWeightedInvalidCases()
-	{
-		return this.weightedInvalidCases;
-	}
-
-	public void setWeightedInvalidCases(final int weightedInvalidCases)
-	{
-		this.weightedInvalidCases = weightedInvalidCases;
-	}
-
-	public int getWeightValidCases()
-	{
-		return this.weightValidCases;
-	}
-
-	public void setWeightValidCases(final int weightValidCases)
-	{
-		this.weightValidCases = weightValidCases;
-	}
 
 	public double getMaximum()
 	{
@@ -159,34 +115,34 @@ public class SummaryStatistics extends DescriptiveStatistics
 		this.mode = mode;
 	}
 
-	public double getWeightedMean()
+	public int getNumberOfCases()
 	{
-		return this.weightedMean;
+		return this.numberOfCases;
 	}
 
-	public void setWeightedMean(final double weightedMean)
+	public void setNumberOfCases( final int numberOfCases )
 	{
-		this.weightedMean = weightedMean;
+		this.numberOfCases = numberOfCases;
 	}
 
-	public double getWeightedMedian()
+	public int getPercentage()
 	{
-		return this.weightedMedian;
+		return this.percentage;
 	}
 
-	public void setWeightedMedian(final double weightedMedian)
+	public void setPercentage( final int percentage )
 	{
-		this.weightedMedian = weightedMedian;
+		this.percentage = percentage;
 	}
 
-	public double getWeightedMode()
+	public LangString getTypeOfCases()
 	{
-		return this.weightedMode;
+		return this.typeOfCases;
 	}
 
-	public void setWeightedMode(final double weightedMode)
+	public void setTypeOfCases( final LangString typeOfCases )
 	{
-		this.weightedMode = weightedMode;
+		this.typeOfCases = typeOfCases;
 	}
 
 	public Set<Variable> getStatisticsVariable()
@@ -217,6 +173,16 @@ public class SummaryStatistics extends DescriptiveStatistics
 	public void setStandardDeviation( final double standardDeviation )
 	{
 		this.standardDeviation = standardDeviation;
+	}
+
+	public Variable getWeightedBy()
+	{
+		return this.weightedBy;
+	}
+
+	public void setWeightedBy( final Variable weightedBy )
+	{
+		this.weightedBy = weightedBy;
 	}
 
 }

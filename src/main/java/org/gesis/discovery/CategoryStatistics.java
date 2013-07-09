@@ -12,7 +12,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+import org.gesis.rdf.LangString;
 import org.gesis.skos.Concept;
 
 @Entity
@@ -26,19 +29,13 @@ public class CategoryStatistics extends DescriptiveStatistics
 	private int frequency;
 
 	@Column
-	private int weightedFrequency;
-
-	@Column
 	private double cumulativePercentage;
-
-	@Column
-	private double weightedCumulativePercentage;
 
 	@Column
 	private double percentage;
 
-	@Column
-	private double weightedPercentage;
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	private LangString typeOfCases;
 
 	// relations
 
@@ -48,6 +45,10 @@ public class CategoryStatistics extends DescriptiveStatistics
 			joinColumns = @JoinColumn( name = "categoryStatistics_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected Set<Concept> statisticsCategory;
+
+	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinColumn( name = "variable_id" )
+	protected Variable weightedBy;
 
 	// getter/setter
 
@@ -61,16 +62,6 @@ public class CategoryStatistics extends DescriptiveStatistics
 		this.frequency = frequency;
 	}
 
-	public int getWeightFrequency()
-	{
-		return this.weightedFrequency;
-	}
-
-	public void setWeightFrequency(final int weightFrequency)
-	{
-		this.weightedFrequency = weightFrequency;
-	}
-
 	public double getCumulativePercentage()
 	{
 		return this.cumulativePercentage;
@@ -79,16 +70,6 @@ public class CategoryStatistics extends DescriptiveStatistics
 	public void setCumulativePercentage(final double cumulativePercentage)
 	{
 		this.cumulativePercentage = cumulativePercentage;
-	}
-
-	public double getWeightedCumulativePercentage()
-	{
-		return this.weightedCumulativePercentage;
-	}
-
-	public void setWeightedCumulativePercentage(final double weightedCumulativePercentage)
-	{
-		this.weightedCumulativePercentage = weightedCumulativePercentage;
 	}
 
 	public double getPercentage()
@@ -101,14 +82,14 @@ public class CategoryStatistics extends DescriptiveStatistics
 		this.percentage = percentage;
 	}
 
-	public double getWeightedPercentage()
+	public LangString getTypeOfCases()
 	{
-		return this.weightedPercentage;
+		return this.typeOfCases;
 	}
 
-	public void setWeightedPercentage(final double weightedPercentage)
+	public void setTypeOfCases( final LangString typeOfCases )
 	{
-		this.weightedPercentage = weightedPercentage;
+		this.typeOfCases = typeOfCases;
 	}
 
 	public Set<Concept> getStatisticsCategory()
@@ -129,6 +110,16 @@ public class CategoryStatistics extends DescriptiveStatistics
 		this.statisticsCategory.add( category );
 
 		return this;
+	}
+
+	public Variable getWeightedBy()
+	{
+		return this.weightedBy;
+	}
+
+	public void setWeightedBy( final Variable weightedBy )
+	{
+		this.weightedBy = weightedBy;
 	}
 
 }
