@@ -49,7 +49,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	private int percentage;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString typeOfCases;
+	private LangString computationBase;
 
 	// relations
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -135,14 +135,14 @@ public class SummaryStatistics extends DescriptiveStatistics
 		this.percentage = percentage;
 	}
 
-	public LangString getTypeOfCases()
+	public LangString getComputationBase()
 	{
-		return this.typeOfCases;
+		return this.computationBase;
 	}
 
-	public void setTypeOfCases( final LangString typeOfCases )
+	public void setComputationBase( final LangString computationBase )
 	{
-		this.typeOfCases = typeOfCases;
+		this.computationBase = computationBase;
 	}
 
 	public Set<Variable> getStatisticsVariable()
