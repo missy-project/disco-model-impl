@@ -23,26 +23,26 @@ public class ConceptScheme extends Resource
 			joinColumns=@JoinColumn(name="conceptScheme_id"),
 			inverseJoinColumns=@JoinColumn(name="concept_id")
 	)
-	protected Set<Concept> skos_hasTopConcept;
+	protected Set<Concept> hasTopConcept;
 
 	// getter/setter
 
-	public Set<Concept> getSkos_hasTopConcept()
+	public Set<Concept> getHasTopConcept()
 	{
-		return this.skos_hasTopConcept;
+		return this.hasTopConcept;
 	}
 
-	public void setSkos_hasTopConcept( final Set<Concept> skos_hasTopConcept )
+	public void setHasTopConcept( final Set<Concept> skos_hasTopConcept )
 	{
-		this.skos_hasTopConcept = skos_hasTopConcept;
+		this.hasTopConcept = skos_hasTopConcept;
 	}
 
-	public ConceptScheme addSkos_hasTopConcept( final Concept concept )
+	public ConceptScheme addHasTopConcept( final Concept concept )
 	{
-		if ( this.skos_hasTopConcept == null )
-			this.skos_hasTopConcept = new LinkedHashSet<Concept>();
+		if ( this.hasTopConcept == null )
+			this.hasTopConcept = new LinkedHashSet<Concept>();
 
-		this.skos_hasTopConcept.add( concept );
+		this.hasTopConcept.add( concept );
 
 		return this;
 	}

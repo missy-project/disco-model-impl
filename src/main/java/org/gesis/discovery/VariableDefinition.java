@@ -27,7 +27,7 @@ public class VariableDefinition extends Resource
 
 	@Column
 	@Lob
-	private String dcterms_description;
+	private String description;
 
 	// relations
 
@@ -51,12 +51,12 @@ public class VariableDefinition extends Resource
 
 	// getter/setter
 
-	public String getDcterms_description() {
-		return this.dcterms_description;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setDcterms_description(final String dcterms_description) {
-		this.dcterms_description = dcterms_description;
+	public void setDescription(final String dcterms_description) {
+		this.description = dcterms_description;
 	}
 
 	public Set<Universe> getUniverse() {

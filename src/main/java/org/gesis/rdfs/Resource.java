@@ -34,7 +34,7 @@ public class Resource extends PersistableResource
 	private String ddi3_2Identifier;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString skos_prefLabel;
+	private LangString prefLabel;
 
 	// relations
 
@@ -95,14 +95,14 @@ public class Resource extends PersistableResource
 		this.ddi3_2Identifier = ddi3_2Identifier;
 	}
 
-	public LangString getSkos_prefLabel()
+	public LangString getPrefLabel()
 	{
-		return this.skos_prefLabel;
+		return this.prefLabel;
 	}
 
-	public void setSkos_prefLabel( final LangString skos_prefLabel )
+	public void setPrefLabel( final LangString skos_prefLabel )
 	{
-		this.skos_prefLabel = skos_prefLabel;
+		this.prefLabel = skos_prefLabel;
 	}
 
 }

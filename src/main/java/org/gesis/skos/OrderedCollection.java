@@ -38,7 +38,7 @@ public class OrderedCollection extends LinkedHashSet<Resource> implements Collec
 	// relations
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List skos_memberList;
+	private List memberList;
 
 	// getter / setter
 
@@ -47,14 +47,14 @@ public class OrderedCollection extends LinkedHashSet<Resource> implements Collec
 		id = IdentifierFactory.getNextDefaultIdentifier();
 	}
 
-	public List getSkos_memberList()
+	public List getMemberList()
 	{
-		return skos_memberList;
+		return memberList;
 	}
 
-	public void setSkos_memberList( final List skos_memberList )
+	public void setMemberList( final List memberList )
 	{
-		this.skos_memberList = skos_memberList;
+		this.memberList = memberList;
 	}
 
 	@Override

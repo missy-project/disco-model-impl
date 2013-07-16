@@ -25,7 +25,7 @@ public class Instrument extends Resource
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString dcterms_description;
+	private LangString description;
 
 	// relations
 
@@ -38,14 +38,14 @@ public class Instrument extends Resource
 
 	// getter/setter
 
-	public LangString getDcterms_description()
+	public LangString getDescription()
 	{
-		return this.dcterms_description;
+		return this.description;
 	}
 
-	public void setDcterms_description( final LangString dcterms_description )
+	public void setDescription( final LangString description )
 	{
-		this.dcterms_description = dcterms_description;
+		this.description = description;
 	}
 
 	public Set<Document> getExternalDocumentation()

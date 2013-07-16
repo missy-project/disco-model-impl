@@ -31,63 +31,63 @@ public class DataFile extends Resource
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString dcterms_description;
+	private LangString description;
 
 	@Column
 	private int caseQuantity;
 
 	@Column
 	private String owl_versionInfo;
-	
+
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "DataFile_ProvenanceStatement", 
-			joinColumns = @JoinColumn( name = "dataFile_id" ), 
+	@JoinTable(
+			name = "DataFile_ProvenanceStatement",
+			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "provenanceStatement_id" ) )
-	private Set<ProvenanceStatement> dcterms_provenance;
+	private Set<ProvenanceStatement> provenance;
 
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "DataFile_Location", 
-			joinColumns = @JoinColumn( name = "dataFile_id" ), 
+	@JoinTable(
+			name = "DataFile_Location",
+			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
-	protected Set<Location> dcterms_spatial;
+	protected Set<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "DataFile_PeriodOfTime", 
-			joinColumns = @JoinColumn( name = "dataFile_id" ), 
+	@JoinTable(
+			name = "DataFile_PeriodOfTime",
+			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
-	protected Set<PeriodOfTime> dcterms_temporal;
+	protected Set<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "DataFile_Concept", 
-			joinColumns = @JoinColumn( name = "dataFile_id" ), 
+	@JoinTable(
+			name = "DataFile_Concept",
+			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
-	protected Set<Concept> dcterms_subject;
+	protected Set<Concept> subject;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "mediaTypeOrExtend_id" )
-	protected MediaTypeOrExtend dcterms_format;
+	protected MediaTypeOrExtend format;
 
 	// getter/setter
 
-	public LangString getDcterms_description()
+	public LangString getDescription()
 	{
-		return this.dcterms_description;
+		return description;
 	}
 
-	public void setDcterms_description( final LangString dcterms_description )
+	public void setDescription( final LangString description )
 	{
-		this.dcterms_description = dcterms_description;
+		this.description = description;
 	}
 
 	public int getCaseQuantity()
 	{
-		return this.caseQuantity;
+		return caseQuantity;
 	}
 
 	public void setCaseQuantity(final int caseQuantity)
@@ -97,7 +97,7 @@ public class DataFile extends Resource
 
 	public String getOwl_versionInfo()
 	{
-		return this.owl_versionInfo;
+		return owl_versionInfo;
 	}
 
 	public void setOwl_versionInfo(final String owl_versionInfo)
@@ -105,94 +105,94 @@ public class DataFile extends Resource
 		this.owl_versionInfo = owl_versionInfo;
 	}
 
-	public Set<Location> getDcterms_spatial()
+	public Set<Location> getSpatial()
 	{
-		return this.dcterms_spatial;
+		return spatial;
 	}
 
-	public void setDcterms_spatial( final Set<Location> dcterms_spatial )
+	public void setSpatial( final Set<Location> spatial )
 	{
-		this.dcterms_spatial = dcterms_spatial;
+		this.spatial = spatial;
 	}
 
-	public DataFile addDcterms_spatial( final Location location )
+	public DataFile addSpatial( final Location location )
 	{
-		if ( this.dcterms_spatial == null )
-			this.dcterms_spatial = new HashSet<Location>();
+		if ( spatial == null )
+			spatial = new HashSet<Location>();
 
-		this.dcterms_spatial.add( location );
+		spatial.add( location );
 
 		return this;
 	}
 
-	public Set<PeriodOfTime> getDcterms_temporal()
+	public Set<PeriodOfTime> getTemporal()
 	{
-		return this.dcterms_temporal;
+		return temporal;
 	}
 
-	public void setDcterms_temporal( final Set<PeriodOfTime> dcterms_temporal )
+	public void setTemporal( final Set<PeriodOfTime> temporal )
 	{
-		this.dcterms_temporal = dcterms_temporal;
+		this.temporal = temporal;
 	}
 
-	public DataFile addDcterms_temporal( final PeriodOfTime periodOfTime )
+	public DataFile addTemporal( final PeriodOfTime periodOfTime )
 	{
-		if ( this.dcterms_temporal == null )
-			this.dcterms_temporal = new HashSet<PeriodOfTime>();
+		if ( temporal == null )
+			temporal = new HashSet<PeriodOfTime>();
 
-		this.dcterms_temporal.add( periodOfTime );
+		temporal.add( periodOfTime );
 
 		return this;
 	}
 
-	public Set<Concept> getDcterms_subject()
+	public Set<Concept> getSubject()
 	{
-		return this.dcterms_subject;
+		return subject;
 	}
 
-	public void setDcterms_subject( final Set<Concept> dcterms_subject )
+	public void setSubject( final Set<Concept> subject )
 	{
-		this.dcterms_subject = dcterms_subject;
+		this.subject = subject;
 	}
 
-	public DataFile addDcterms_subject( final Concept dcterms_subject )
+	public DataFile addSubject( final Concept concept )
 	{
-		if ( this.dcterms_subject == null )
-			this.dcterms_subject = new HashSet<Concept>();
+		if ( subject == null )
+			subject = new HashSet<Concept>();
 
-		this.dcterms_subject.add( dcterms_subject );
+		subject.add( concept );
 
 		return this;
 	}
 
-	public Set<ProvenanceStatement> getDcterms_provenance()
+	public Set<ProvenanceStatement> getProvenance()
 	{
-		return this.dcterms_provenance;
+		return provenance;
 	}
 
-	public void setDcterms_provenance( final Set<ProvenanceStatement> dcterms_provenance )
+	public void setProvenance( final Set<ProvenanceStatement> provenance )
 	{
-		this.dcterms_provenance = dcterms_provenance;
+		this.provenance = provenance;
 	}
 
-	public DataFile addDcterms_provenance( final ProvenanceStatement provenanceStatement )
+	public DataFile addProvenance( final ProvenanceStatement provenanceStatement )
 	{
-		if ( this.dcterms_provenance == null )
-			this.dcterms_provenance = new HashSet<ProvenanceStatement>();
+		if ( provenance == null )
+			provenance = new HashSet<ProvenanceStatement>();
 
-		this.dcterms_provenance.add( provenanceStatement );
+		provenance.add( provenanceStatement );
 
 		return this;
 	}
 
-	public MediaTypeOrExtend getDcterms_format()
+	public MediaTypeOrExtend getFormat()
 	{
-		return this.dcterms_format;
+		return format;
 	}
 
-	public void setDcterms_format( final MediaTypeOrExtend dcterms_format )
+	public void setFormat( final MediaTypeOrExtend format )
 	{
-		this.dcterms_format = dcterms_format;
+		this.format = format;
 	}
 
 }

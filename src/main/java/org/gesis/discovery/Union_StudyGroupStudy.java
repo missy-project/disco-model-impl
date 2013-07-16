@@ -27,16 +27,17 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString dcterms_abstract;
+	@Column( name = "abstract" )
+	private LangString abstract_;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString dcterms_alternative;
+	private LangString alternative;
 
 	@Column
-	private Date dcterms_available;
+	private Date available;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString dcterms_title;
+	private LangString title;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString purpose;
@@ -47,13 +48,13 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<PeriodOfTime> dcterms_temporal;
+	private Set<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Concept> dcterms_subject;
+	private Set<Concept> subject;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Location> dcterms_spacial;
+	private Set<Location> spacial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private Set<Document> ddiFile;
@@ -64,67 +65,67 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	protected Set<AnalysisUnit> analysisUnit;
-	
+
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	protected Set<Universe> universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> dcterms_publisher;
+	protected Set<Agent> publisher;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> dcterms_contributer;
+	protected Set<Agent> contributer;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> dcterms_creator;
+	protected Set<Agent> creator;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	protected Set<Agent> fundedBy;
 
 	// getter/setter
 
-	public LangString getDcterms_abstract()
+	public LangString getAbstract()
 	{
-		return this.dcterms_abstract;
+		return abstract_;
 	}
 
-	public void setDcterms_abstract( final LangString dcterms_abstract )
+	public void setAbstract( final LangString dcterms_abstract )
 	{
-		this.dcterms_abstract = dcterms_abstract;
+		abstract_ = dcterms_abstract;
 	}
 
-	public LangString getDcterms_alternative()
+	public LangString getAlternative()
 	{
-		return this.dcterms_alternative;
+		return alternative;
 	}
 
-	public void setDcterms_alternative( final LangString dcterms_alternative )
+	public void setAlternative( final LangString dcterms_alternative )
 	{
-		this.dcterms_alternative = dcterms_alternative;
+		alternative = dcterms_alternative;
 	}
 
-	public Date getDcterms_available()
+	public Date getAvailable()
 	{
-		return this.dcterms_available;
+		return available;
 	}
 
-	public void setDcterms_available( final Date dcterms_available )
+	public void setAvailable( final Date dcterms_available )
 	{
-		this.dcterms_available = dcterms_available;
+		available = dcterms_available;
 	}
 
-	public LangString getDcterms_title()
+	public LangString getTitle()
 	{
-		return this.dcterms_title;
+		return title;
 	}
 
-	public void setDcterms_title( final LangString dcterms_title )
+	public void setTitle( final LangString dcterms_title )
 	{
-		this.dcterms_title = dcterms_title;
+		title = dcterms_title;
 	}
 
 	public LangString getPurpose()
 	{
-		return this.purpose;
+		return purpose;
 	}
 
 	public void setPurpose( final LangString purpose )
@@ -134,7 +135,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public LangString getSubtitle()
 	{
-		return this.subtitle;
+		return subtitle;
 	}
 
 	public void setSubtitle( final LangString subtitle )
@@ -142,69 +143,69 @@ public abstract class Union_StudyGroupStudy extends Resource
 		this.subtitle = subtitle;
 	}
 
-	public Set<PeriodOfTime> getDcterms_temporal()
+	public Set<PeriodOfTime> getTemporal()
 	{
-		return this.dcterms_temporal;
+		return temporal;
 	}
 
-	public void setDcterms_temporal( final Set<PeriodOfTime> dcterms_temporal )
+	public void setTemporal( final Set<PeriodOfTime> dcterms_temporal )
 	{
-		this.dcterms_temporal = dcterms_temporal;
+		temporal = dcterms_temporal;
 	}
 
-	public Union_StudyGroupStudy addDcterms_temporal( final PeriodOfTime periodOfTime )
+	public Union_StudyGroupStudy addTemporal( final PeriodOfTime periodOfTime )
 	{
-		if ( this.dcterms_temporal == null )
-			this.dcterms_temporal = new HashSet<PeriodOfTime>();
+		if ( temporal == null )
+			temporal = new HashSet<PeriodOfTime>();
 
-		this.dcterms_temporal.add( periodOfTime );
+		temporal.add( periodOfTime );
 
 		return this;
 	}
 
-	public Set<Concept> getDcterms_subject()
+	public Set<Concept> getSubject()
 	{
-		return this.dcterms_subject;
+		return subject;
 	}
 
-	public void setDcterms_subject( final Set<Concept> dcterms_subject )
+	public void setSubject( final Set<Concept> dcterms_subject )
 	{
-		this.dcterms_subject = dcterms_subject;
+		subject = dcterms_subject;
 	}
 
-	public Union_StudyGroupStudy addDcterms_subject( final Concept concept )
+	public Union_StudyGroupStudy addSubject( final Concept concept )
 	{
-		if ( this.dcterms_subject == null )
-			this.dcterms_subject = new HashSet<Concept>();
+		if ( subject == null )
+			subject = new HashSet<Concept>();
 
-		this.dcterms_subject.add( concept );
+		subject.add( concept );
 
 		return this;
 	}
 
-	public Set<Location> getDcterms_spacial()
+	public Set<Location> getSpacial()
 	{
-		return this.dcterms_spacial;
+		return spacial;
 	}
 
-	public void setDcterms_spacial( final Set<Location> dcterms_spacial )
+	public void setSpacial( final Set<Location> dcterms_spacial )
 	{
-		this.dcterms_spacial = dcterms_spacial;
+		spacial = dcterms_spacial;
 	}
 
-	public Union_StudyGroupStudy addDcterms_spatial( final Location location )
+	public Union_StudyGroupStudy addSpatial( final Location location )
 	{
-		if ( this.dcterms_spacial == null )
-			this.dcterms_spacial = new HashSet<Location>();
+		if ( spacial == null )
+			spacial = new HashSet<Location>();
 
-		this.dcterms_spacial.add( location );
+		spacial.add( location );
 
 		return this;
 	}
 
 	public Set<Document> getDdiFile()
 	{
-		return this.ddiFile;
+		return ddiFile;
 	}
 
 	public void setDdiFile( final Set<Document> ddiFile )
@@ -214,17 +215,17 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public Union_StudyGroupStudy addDdiFile( final Document document )
 	{
-		if ( this.ddiFile == null )
-			this.ddiFile = new HashSet<Document>();
+		if ( ddiFile == null )
+			ddiFile = new HashSet<Document>();
 
-		this.ddiFile.add( document );
+		ddiFile.add( document );
 
 		return this;
 	}
 
 	public Concept getKindOfData()
 	{
-		return this.kindOfData;
+		return kindOfData;
 	}
 
 	public void setKindOfData( final Concept kindOfData )
@@ -234,7 +235,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public Set<Universe> getUniverse()
 	{
-		return this.universe;
+		return universe;
 	}
 
 	public void setUniverse( final Set<Universe> universe )
@@ -254,7 +255,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public Set<AnalysisUnit> getAnalysisUnit()
 	{
-		return this.analysisUnit;
+		return analysisUnit;
 	}
 
 	public void setAnalysisUnit( final Set<AnalysisUnit> analysisUnit )
@@ -272,69 +273,69 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this;
 	}
 
-	public Set<Agent> getDcterms_publisher()
+	public Set<Agent> getPublisher()
 	{
-		return this.dcterms_publisher;
+		return publisher;
 	}
 
-	public void setDcterms_publisher( final Set<Agent> publisher )
+	public void setPublisher( final Set<Agent> publisher )
 	{
-		this.dcterms_publisher = publisher;
+		this.publisher = publisher;
 	}
 
-	public Union_StudyGroupStudy addDcterms_publisher( final Agent agent )
+	public Union_StudyGroupStudy addPublisher( final Agent agent )
 	{
-		if ( this.dcterms_publisher == null )
-			this.dcterms_publisher = new HashSet<Agent>();
+		if ( publisher == null )
+			publisher = new HashSet<Agent>();
 
-		this.dcterms_publisher.add( agent );
+		publisher.add( agent );
 
 		return this;
 	}
 
-	public Set<Agent> getDcterms_contributer()
+	public Set<Agent> getContributer()
 	{
-		return this.dcterms_contributer;
+		return contributer;
 	}
 
-	public void setDcterms_contributer( final Set<Agent> contributor )
+	public void setContributer( final Set<Agent> contributor )
 	{
-		this.dcterms_contributer = contributor;
+		contributer = contributor;
 	}
 
-	public Union_StudyGroupStudy addDcterms_contributor( final Agent agent )
+	public Union_StudyGroupStudy addContributor( final Agent agent )
 	{
-		if ( this.dcterms_contributer == null )
-			this.dcterms_contributer = new HashSet<Agent>();
+		if ( contributer == null )
+			contributer = new HashSet<Agent>();
 
-		this.dcterms_contributer.add( agent );
+		contributer.add( agent );
 
 		return this;
 	}
 
-	public Set<Agent> getDcterms_creator()
+	public Set<Agent> getCreator()
 	{
-		return this.dcterms_creator;
+		return creator;
 	}
 
-	public void setDcterms_creator( final Set<Agent> creator )
+	public void setCreator( final Set<Agent> creator )
 	{
-		this.dcterms_creator = creator;
+		this.creator = creator;
 	}
 
-	public Union_StudyGroupStudy addDcterms_creator( final Agent agent )
+	public Union_StudyGroupStudy addCreator( final Agent agent )
 	{
-		if ( this.dcterms_creator == null )
-			this.dcterms_creator = new HashSet<Agent>();
+		if ( creator == null )
+			creator = new HashSet<Agent>();
 
-		this.dcterms_creator.add( agent );
+		creator.add( agent );
 
 		return this;
 	}
 
 	public Set<Agent> getFundedBy()
 	{
-		return this.fundedBy;
+		return fundedBy;
 	}
 
 	public void setFundedBy( final Set<Agent> fundedBy )
@@ -344,10 +345,10 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	public Union_StudyGroupStudy addFundedBy( final Agent agent )
 	{
-		if ( this.fundedBy == null )
-			this.fundedBy = new HashSet<Agent>();
+		if ( fundedBy == null )
+			fundedBy = new HashSet<Agent>();
 
-		this.fundedBy.add( agent );
+		fundedBy.add( agent );
 
 		return this;
 	}

@@ -25,7 +25,7 @@ public class Variable extends Concept
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected LangString dcterms_description;
+	protected LangString description;
 
 	// relations
 
@@ -58,14 +58,14 @@ public class Variable extends Concept
 
 	// getter/setter
 
-	public LangString getDcterms_description()
+	public LangString getDescription()
 	{
-		return dcterms_description;
+		return description;
 	}
 
-	public void setDcterms_description( final LangString dcterms_description )
+	public void setDescription( final LangString dcterms_description )
 	{
-		this.dcterms_description = dcterms_description;
+		this.description = dcterms_description;
 	}
 
 	public AnalysisUnit getAnalysisUnit()
