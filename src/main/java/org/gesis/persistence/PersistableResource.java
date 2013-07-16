@@ -8,8 +8,12 @@ import javax.persistence.Transient;
 import org.gesis.ddi.util.Identifier;
 import org.gesis.ddi.util.IdentifierFactory;
 
+/**
+ * @author matthaeus
+ * 
+ */
 @MappedSuperclass
-public abstract class PersistableResource
+public abstract class PersistableResource implements IPersistableResource
 {
 
 	@Column
@@ -24,18 +28,22 @@ public abstract class PersistableResource
 
 	public PersistableResource()
 	{
-		this.id = IdentifierFactory.getNextDefaultIdentifier();
+		id = IdentifierFactory.getNextDefaultIdentifier();
 	}
 
 	public PersistableResource( final Identifier identifier )
 	{
 		this.identifier = identifier;
-		this.id = identifier.getUniqueId();
+		id = identifier.getUniqueId();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.gesis.persistence.IPersistableResource#getId()
+	 */
+	@Override
 	public String getId()
 	{
-		return this.id;
+		return id;
 	}
 
 	public void setId( final String id )
@@ -45,7 +53,7 @@ public abstract class PersistableResource
 
 	public Identifier getIdentifier()
 	{
-		return this.identifier;
+		return identifier;
 	}
 
 	public void setIdentifier( final Identifier identifier )
@@ -53,9 +61,13 @@ public abstract class PersistableResource
 		this.identifier = identifier;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.gesis.persistence.IPersistableResource#getURN()
+	 */
+	@Override
 	public String getURN()
 	{
-		return this.urn;
+		return urn;
 	}
 
 	public void setURN( final String urn )
