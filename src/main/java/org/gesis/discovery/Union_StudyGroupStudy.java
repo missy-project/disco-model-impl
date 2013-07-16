@@ -27,7 +27,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@Column( name = "abstract" )
+	@JoinColumn( name = "abstract_id" )
 	private LangString abstract_;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
