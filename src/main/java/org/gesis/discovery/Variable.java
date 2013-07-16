@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -16,18 +15,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
-import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Variable extends Resource
+public class Variable extends Concept
 {
 
 	// properties
-
-	@Column
-	protected String skos_notation;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	protected LangString dcterms_description;
@@ -55,27 +50,17 @@ public class Variable extends Resource
 	protected Universe universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Variable_Question", 
-			joinColumns = @JoinColumn( name = "variable_id" ), 
+	@JoinTable(
+			name = "Variable_Question",
+			joinColumns = @JoinColumn( name = "variable_id" ),
 			inverseJoinColumns = @JoinColumn( name = "question_id" ) )
 	protected Set<Question> question;
 
 	// getter/setter
 
-	public String getSkos_notation()
-	{
-		return this.skos_notation;
-	}
-
-	public void setSkos_notation(final String skos_notation)
-	{
-		this.skos_notation = skos_notation;
-	}
-
 	public LangString getDcterms_description()
 	{
-		return this.dcterms_description;
+		return dcterms_description;
 	}
 
 	public void setDcterms_description( final LangString dcterms_description )
@@ -85,7 +70,7 @@ public class Variable extends Resource
 
 	public AnalysisUnit getAnalysisUnit()
 	{
-		return this.analysisUnit;
+		return analysisUnit;
 	}
 
 	public void setAnalysisUnit(final AnalysisUnit analysisUnit)
@@ -95,7 +80,7 @@ public class Variable extends Resource
 
 	public Concept getConcept()
 	{
-		return this.concept;
+		return concept;
 	}
 
 	public void setConcept(final Concept concept)
@@ -105,17 +90,17 @@ public class Variable extends Resource
 
 	public VariableDefinition getBasedOn()
 	{
-		return this.basedOn;
+		return basedOn;
 	}
 
 	public void setBasedOn(final VariableDefinition dataElement)
 	{
-		this.basedOn = dataElement;
+		basedOn = dataElement;
 	}
 
 	public Representation getRepresentation()
 	{
-		return this.representation;
+		return representation;
 	}
 
 	public void setRepresentation(final Representation representation)
@@ -125,7 +110,7 @@ public class Variable extends Resource
 
 	public Universe getUniverse()
 	{
-		return this.universe;
+		return universe;
 	}
 
 	public void setUniverse(final Universe universe)
@@ -135,12 +120,12 @@ public class Variable extends Resource
 
 	public Set<Question> getQuestion()
 	{
-		return this.question;
+		return question;
 	}
 
 	public void setQuestion(final Set<Question> questions)
 	{
-		this.question = questions;
+		question = questions;
 	}
 
 	public Variable addQuestion( final Question question )

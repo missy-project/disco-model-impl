@@ -15,12 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
-import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Question extends Resource
+public class Question extends Concept
 {
 
 	// properties
@@ -52,7 +51,7 @@ public class Question extends Resource
 
 	public Object getQuestionText()
 	{
-		return this.questionText;
+		return questionText;
 	}
 
 	public void setQuestionText( final LangString questionText )
@@ -62,7 +61,7 @@ public class Question extends Resource
 
 	public Set<Representation> getResponseDomain()
 	{
-		return this.responseDomain;
+		return responseDomain;
 	}
 
 	public void setResponseDomain( final Set<Representation> responseDomain )
@@ -81,7 +80,7 @@ public class Question extends Resource
 	}
 
 	public Set<Concept> getConcept() {
-		return this.concept;
+		return concept;
 	}
 
 	public void setConcept(final Set<Concept> concept) {
@@ -100,7 +99,7 @@ public class Question extends Resource
 
 	public Universe getUniverse()
 	{
-		return this.universe;
+		return universe;
 	}
 
 	public void setUniverse( final Universe universe )
