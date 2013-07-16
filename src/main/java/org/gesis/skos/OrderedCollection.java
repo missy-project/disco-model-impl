@@ -5,20 +5,41 @@ import java.util.LinkedHashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 import org.gesis.rdf.List;
 import org.gesis.rdfs.Resource;
 
 @Entity
+@Inheritance( strategy = InheritanceType.JOINED )
 public class OrderedCollection extends LinkedHashSet<Resource> implements Collection
 {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1983493043919178783L;
 
+	// properties
+
+	// relations
+
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private List skos_memberList;
+
+	// getter / setter
+
+	public List getSkos_memberList()
+	{
+		return skos_memberList;
+	}
+
+	public void setSkos_memberList( final List skos_memberList )
+	{
+		this.skos_memberList = skos_memberList;
+	}
+
+
 }
