@@ -35,7 +35,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	private float percentage;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private LangString typeOfCases;
+	private LangString computationBase;
 
 	// relations
 
@@ -82,14 +82,14 @@ public class CategoryStatistics extends DescriptiveStatistics
 		this.percentage = percentage;
 	}
 
-	public LangString getTypeOfCases()
+	public LangString getComputationBase()
 	{
-		return this.typeOfCases;
+		return this.computationBase;
 	}
 
-	public void setTypeOfCases( final LangString typeOfCases )
+	public void setComputationBase( final LangString computationBase )
 	{
-		this.typeOfCases = typeOfCases;
+		this.computationBase = computationBase;
 	}
 
 	public Set<Concept> getStatisticsCategory()
