@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass;
 import org.gesis.skos.OrderedCollection;
 
 @MappedSuperclass
-public abstract class Union_RdfsDataTypeSkosOrderedCollection extends OrderedCollection
+public abstract class Union_DataTypeOrderedCollection extends OrderedCollection
 {
 
 	/**

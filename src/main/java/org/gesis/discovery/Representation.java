@@ -6,7 +6,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Representation extends Union_RdfsDataTypeSkosOrderedCollection
+public class Representation extends Union_DataTypeOrderedCollection
 {
 
 	/**

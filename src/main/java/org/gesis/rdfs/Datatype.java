@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.discovery.Union_RdfsDataTypeSkosOrderedCollection;
+import org.gesis.discovery.Union_DataTypeOrderedCollection;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Datatype extends Union_RdfsDataTypeSkosOrderedCollection
+public class Datatype extends Union_DataTypeOrderedCollection
 {
 
 	/**
