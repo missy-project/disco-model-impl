@@ -1,14 +1,11 @@
 package org.gesis.rdf;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.gesis.rdfs.Resource;
 
@@ -21,14 +18,10 @@ public class List extends Resource
 
 	// relations
 
-	@Column
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private Resource first;
 
-	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable(
-			name = "List_List",
-			joinColumns = @JoinColumn( name = "parent_id" ),
-			inverseJoinColumns = @JoinColumn( name = "child_id" ) )
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private List rest;
 
 	// getter / setter
