@@ -22,7 +22,7 @@ public class RightsStatement extends Resource
 	// properties
 	
 	@OneToOne
-	private LangString dcterms_description;
+	private LangString description;
 
 	// relations
 
@@ -31,28 +31,28 @@ public class RightsStatement extends Resource
 			name = "RightsStatement_Document",
 			joinColumns = @JoinColumn( name = "rightsStatement_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
-	protected Set<Document> rdfs_seeAlso;
+	protected Set<Document> seeAlso;
 	
 	// getter/setter
 
-	public Set<Document> getRdfs_seeAlso()
+	public Set<Document> getSeeAlso()
 	{
-		return this.rdfs_seeAlso;
+		return this.seeAlso;
 	}
 
-	public void setRdfs_seeAlso( final Set<Document> rdfs_seeAlso )
+	public void setSeeAlso( final Set<Document> rdfs_seeAlso )
 	{
-		this.rdfs_seeAlso = rdfs_seeAlso;
+		this.seeAlso = rdfs_seeAlso;
 	}
 
-	public LangString getDcterms_description()
+	public LangString getDescription()
 	{
-		return this.dcterms_description;
+		return this.description;
 	}
 
-	public void setDcterms_description( final LangString dcterms_description )
+	public void setDescription( final LangString dcterms_description )
 	{
-		this.dcterms_description = dcterms_description;
+		this.description = dcterms_description;
 	}
 	
 }
