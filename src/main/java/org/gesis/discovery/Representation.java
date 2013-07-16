@@ -6,8 +6,13 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Representation extends Union_RdfsDataTypeSkosConceptScheme
+public class Representation extends Union_RdfsDataTypeSkosOrderedCollection
 {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 5380796606719931171L;
 
 	// properties
 

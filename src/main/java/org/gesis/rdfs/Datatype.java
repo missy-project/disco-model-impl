@@ -4,11 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.gesis.discovery.Union_RdfsDataTypeSkosConceptScheme;
+import org.gesis.discovery.Union_RdfsDataTypeSkosOrderedCollection;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Datatype extends Union_RdfsDataTypeSkosConceptScheme
+public class Datatype extends Union_RdfsDataTypeSkosOrderedCollection
 {
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 8651712862586966754L;
 
 }
