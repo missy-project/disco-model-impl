@@ -47,7 +47,7 @@ public class VariableDefinition extends Resource
 			name="VariableDefinition_Representation",
 			joinColumns=@JoinColumn(name="variableDefinition_id"),
 			inverseJoinColumns=@JoinColumn( name = "representation_id" ))
-	protected Set<Representation> representation;
+	protected Set<RepresentationImpl> representation;
 
 	// getter/setter
 
@@ -88,19 +88,19 @@ public class VariableDefinition extends Resource
 		this.concept = concept;
 	}
 
-	public Set<Representation> getRepresentation() {
+	public Set<RepresentationImpl> getRepresentation() {
 		return this.representation;
 	}
 
-	public void setRepresentation(final Set<Representation> representation)
+	public void setRepresentation(final Set<RepresentationImpl> representation)
 	{
 		this.representation = representation;
 	}
 
-	public VariableDefinition addRepresentation( final Representation representation )
+	public VariableDefinition addRepresentation( final RepresentationImpl representation )
 	{
 		if ( this.representation == null )
-			this.representation = new HashSet<Representation>();
+			this.representation = new HashSet<RepresentationImpl>();
 
 		this.representation.add( representation );
 

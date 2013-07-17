@@ -34,7 +34,7 @@ public class Question extends Concept
 			name="Question_Representation",
 			joinColumns=@JoinColumn( name = "question_id" ),
 			inverseJoinColumns=@JoinColumn( name = "representation_id" ) )
-	protected Set<Representation> responseDomain;
+	protected Set<RepresentationImpl> responseDomain;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
@@ -59,20 +59,20 @@ public class Question extends Concept
 		this.questionText = questionText;
 	}
 
-	public Set<Representation> getResponseDomain()
+	public Set<RepresentationImpl> getResponseDomain()
 	{
 		return responseDomain;
 	}
 
-	public void setResponseDomain( final Set<Representation> responseDomain )
+	public void setResponseDomain( final Set<RepresentationImpl> responseDomain )
 	{
 		this.responseDomain = responseDomain;
 	}
 
-	public Question addResponseDomain( final Representation responseDomain )
+	public Question addResponseDomain( final RepresentationImpl responseDomain )
 	{
 		if ( this.responseDomain == null )
-			this.responseDomain = new HashSet<Representation>();
+			this.responseDomain = new HashSet<RepresentationImpl>();
 
 		this.responseDomain.add( responseDomain );
 

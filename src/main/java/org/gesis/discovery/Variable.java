@@ -103,7 +103,7 @@ public class Variable extends Concept
 		return representation;
 	}
 
-	public void setRepresentation(final Representation representation)
+	public void setRepresentation( final Representation representation )
 	{
 		this.representation = representation;
 	}
