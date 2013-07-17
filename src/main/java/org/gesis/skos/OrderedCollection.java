@@ -12,13 +12,14 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 import org.gesis.ddi.util.IdentifierFactory;
+import org.gesis.discovery.Representation;
 import org.gesis.persistence.IPersistableResource;
 import org.gesis.rdf.List;
 import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class OrderedCollection extends LinkedHashSet<Resource> implements Collection, IPersistableResource
+public class OrderedCollection extends LinkedHashSet<Resource> implements Collection, IPersistableResource, Representation
 {
 
 	/**
