@@ -27,9 +27,9 @@ import org.gesis.persistence.PersistableResource;
  * Locale.GERMANY, Locale.UNITED_KINGDOM, and Locale.FRANCE. Other Locales may
  * be added without paying attention to the default Locales, but are stored in a
  * OneToMany-relationship in a separate data structure.
- * 
+ *
  * @author matthaeus
- * 
+ *
  */
 @Entity
 public class LangString extends PersistableResource
@@ -55,7 +55,7 @@ public class LangString extends PersistableResource
 	@Column( name = "value" )
 	@CollectionTable( name = "Languages_Values", joinColumns = @JoinColumn( name = "langString_id" ) )
 	@Lob
-	private Map<String, String> values = new HashMap<String, String>();
+	private final Map<String, String> values = new HashMap<String, String>();
 
 	public LangString()
 	{
@@ -64,12 +64,12 @@ public class LangString extends PersistableResource
 
 	public LangString( final Locale locale, final String value )
 	{
-		addValue( locale, value );
+		setValue( locale, value );
 	}
 
 	public LangString( final Map<Locale, String> values )
 	{
-		addValues( values );
+		setValues( values );
 	}
 
 	public String getMessageKey()
@@ -115,7 +115,7 @@ public class LangString extends PersistableResource
 
 	/**
 	 * Returns the corresponding value to the passed <i>locale</i>.
-	 * 
+	 *
 	 * @param locale
 	 * @return
 	 */
@@ -143,12 +143,12 @@ public class LangString extends PersistableResource
 	/**
 	 * Adds a <i>value</i> to the corresponding <i>locale</i> to this
 	 * LangString-object.
-	 * 
+	 *
 	 * @param locale
 	 * @param value
 	 * @return
 	 */
-	public LangString addValue( final Locale locale, final String value )
+	public LangString setValue( final Locale locale, final String value )
 	{
 		if ( locale == null )
 			return this;
@@ -186,17 +186,17 @@ public class LangString extends PersistableResource
 	/**
 	 * Adds all values to their corresponding Locale in <i>values</i> to this
 	 * LangString-object.
-	 * 
+	 *
 	 * @param values
 	 * @return
 	 */
-	public LangString addValues( final Map<Locale, String> values )
+	public LangString setValues( final Map<Locale, String> values )
 	{
 		if ( values == null )
 			return this;
 
 		for ( Locale locale : values.keySet() )
-			addValue( locale, values.get( locale ) );
+			setValue( locale, values.get( locale ) );
 
 		return this;
 	}
@@ -204,7 +204,7 @@ public class LangString extends PersistableResource
 	/**
 	 * Returns the map of <i>all</i> values, including the default Locales,
 	 * added to this LangString-object.
-	 * 
+	 *
 	 * @param all
 	 * @return
 	 */
@@ -224,11 +224,6 @@ public class LangString extends PersistableResource
 		return ret;
 	}
 
-	public void setValues( final Map<String, String> values )
-	{
-		this.values = values;
-	}
-
 	/**
 	 * Returns an java.util.Map.Entry object from <i>locale</i> and
 	 * <i>value</i>. For instance, if<br>
@@ -238,7 +233,7 @@ public class LangString extends PersistableResource
 	 * <code>buildEntryFrom(locale, "some value")</code> <br>
 	 * <br>
 	 * returns and Entry-object with key = "de_DE" and value = "some value".
-	 * 
+	 *
 	 * @param locale
 	 * @param value
 	 * @return
@@ -268,7 +263,7 @@ public class LangString extends PersistableResource
 
 	/**
 	 * Factory-method for a LangString object with UK-locale.
-	 * 
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -279,7 +274,7 @@ public class LangString extends PersistableResource
 
 	/**
 	 * Factory-method for a LangString object with DE-locale.
-	 * 
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -290,7 +285,7 @@ public class LangString extends PersistableResource
 
 	/**
 	 * Factory-method for a LangString object with FR-locale.
-	 * 
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -301,7 +296,7 @@ public class LangString extends PersistableResource
 
 	/**
 	 * Factory-method for a LangString object with the provided locale.
-	 * 
+	 *
 	 * @param locale
 	 * @param value
 	 * @return
@@ -317,7 +312,7 @@ public class LangString extends PersistableResource
 	/**
 	 * Factory-method for a LangString object. The locale is tried to be
 	 * resolved from the country code.
-	 * 
+	 *
 	 * @param country
 	 * @param value
 	 * @return

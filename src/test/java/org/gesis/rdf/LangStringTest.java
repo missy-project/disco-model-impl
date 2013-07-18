@@ -52,7 +52,7 @@ public class LangStringTest
 	@Test
 	public void addLocaleValue_DE()
 	{
-		LangString langString = new LangString().addValue( Locales.GERMANY, "de value" );
+		LangString langString = new LangString().setValue( Locales.GERMANY, "de value" );
 
 		assertEquals( "de value", langString.getValue( Locales.GERMANY ) );
 
@@ -64,7 +64,7 @@ public class LangStringTest
 	@Test
 	public void addLocaleValue_UK()
 	{
-		LangString langString = new LangString().addValue( Locales.UNITED_KINGDOM, "uk value" );
+		LangString langString = new LangString().setValue( Locales.UNITED_KINGDOM, "uk value" );
 
 		assertEquals( "uk value", langString.getValue( Locales.UNITED_KINGDOM ) );
 
@@ -76,7 +76,7 @@ public class LangStringTest
 	@Test
 	public void addLocaleValue_FR()
 	{
-		LangString langString = new LangString().addValue( Locales.FRANCE, "fr value" );
+		LangString langString = new LangString().setValue( Locales.FRANCE, "fr value" );
 
 		assertEquals( "fr value", langString.getValue( Locales.FRANCE ) );
 
@@ -95,7 +95,7 @@ public class LangStringTest
 		assertEquals( "some value", uk_value );
 
 		// add other value
-		langString.addValue( new Locale( "nl", "NL" ), "nl value" );
+		langString.setValue( new Locale( "nl", "NL" ), "nl value" );
 
 		String nl_value = langString.getValue( new Locale( "nl", "NL" ) );
 		assertNotNull( nl_value );
