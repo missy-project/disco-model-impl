@@ -31,7 +31,7 @@ public class Concept extends Resource
 	private String notation;
 
 	@Column
-	private boolean isValid;
+	private Boolean isValid = false;
 
 	// relations
 
@@ -78,12 +78,12 @@ public class Concept extends Resource
 		this.notation = skos_notation;
 	}
 
-	public boolean isValid()
+	public Boolean isValid()
 	{
 		return this.isValid;
 	}
 
-	public void setValid( final boolean isValid )
+	public void setValid( final Boolean isValid )
 	{
 		this.isValid = isValid;
 	}

@@ -1,10 +1,14 @@
 package org.gesis.discovery;
 
-/**
- * @author matthaeus
- * 
- */
-public interface Representation
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import org.gesis.rdfs.Resource;
+
+@Entity
+@Inheritance( strategy = InheritanceType.JOINED )
+public class Representation extends Resource
 {
 
 }

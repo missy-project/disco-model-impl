@@ -11,11 +11,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.gesis.discovery.Representation;
-import org.gesis.rdfs.Resource;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class ConceptScheme extends Resource implements Representation
+public class ConceptScheme extends Representation
 {
 
 	@ManyToMany

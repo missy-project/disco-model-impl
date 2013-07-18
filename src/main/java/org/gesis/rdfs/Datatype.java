@@ -8,7 +8,7 @@ import org.gesis.discovery.Representation;
 
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Datatype extends Resource implements Representation
+public class Datatype extends Representation
 {
 
 }
