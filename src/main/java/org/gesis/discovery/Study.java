@@ -23,7 +23,7 @@ public class Study extends Union_StudyGroupStudy
 	// properties
 
 	@Column
-	private String owl_versionInfo;
+	private String versionInfo;
 
 	// relations
 
@@ -32,30 +32,30 @@ public class Study extends Union_StudyGroupStudy
 	private StudyGroup inGroup;
 
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Instrument", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
+	@JoinTable(
+			name = "Study_Instrument",
+			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
 	protected Set<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_Variable", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
+	@JoinTable(
+			name = "Study_Variable",
+			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> variable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_DataFile", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
+	@JoinTable(
+			name = "Study_DataFile",
+			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected Set<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "Study_LogicalDataSet", 
-			joinColumns = @JoinColumn( name = "study_id" ), 
+	@JoinTable(
+			name = "Study_LogicalDataSet",
+			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "logicalDataSet_id" ) )
 	protected Set<LogicalDataSet> product;
 
@@ -141,14 +141,14 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
-	public String getOwl_versionInfo()
+	public String getVersionInfo()
 	{
-		return this.owl_versionInfo;
+		return this.versionInfo;
 	}
 
-	public void setOwl_versionInfo( final String owl_versionInfo )
+	public void setVersionInfo( final String owl_versionInfo )
 	{
-		this.owl_versionInfo = owl_versionInfo;
+		this.versionInfo = owl_versionInfo;
 	}
 
 	public StudyGroup getInGroup()
