@@ -37,7 +37,7 @@ public class DataFile extends Resource
 	private int caseQuantity;
 
 	@Column
-	private String owl_versionInfo;
+	private String versionInfo;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
@@ -95,14 +95,14 @@ public class DataFile extends Resource
 		this.caseQuantity = caseQuantity;
 	}
 
-	public String getOwl_versionInfo()
+	public String getVersionInfo()
 	{
-		return owl_versionInfo;
+		return versionInfo;
 	}
 
-	public void setOwl_versionInfo(final String owl_versionInfo)
+	public void setVersionInfo( final String owl_versionInfo )
 	{
-		this.owl_versionInfo = owl_versionInfo;
+		this.versionInfo = owl_versionInfo;
 	}
 
 	public Set<Location> getSpatial()
