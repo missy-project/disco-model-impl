@@ -36,6 +36,9 @@ public class Resource extends PersistableResource
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString prefLabel;
 
+	@Column
+	private String versionInfo;
+
 	// relations
 
 	// getter/setter
@@ -103,6 +106,16 @@ public class Resource extends PersistableResource
 	public void setPrefLabel( final LangString skos_prefLabel )
 	{
 		this.prefLabel = skos_prefLabel;
+	}
+
+	public String getVersionInfo()
+	{
+		return versionInfo;
+	}
+
+	public void setVersionInfo( final String versionInfo )
+	{
+		this.versionInfo = versionInfo;
 	}
 
 }
