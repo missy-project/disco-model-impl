@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
@@ -21,9 +20,6 @@ public class Study extends Union_StudyGroupStudy
 {
 
 	// properties
-
-	@Column
-	private String versionInfo;
 
 	// relations
 
@@ -139,16 +135,6 @@ public class Study extends Union_StudyGroupStudy
 		this.product.add( logicalDataSet );
 
 		return this;
-	}
-
-	public String getVersionInfo()
-	{
-		return this.versionInfo;
-	}
-
-	public void setVersionInfo( final String owl_versionInfo )
-	{
-		this.versionInfo = owl_versionInfo;
 	}
 
 	public StudyGroup getInGroup()
