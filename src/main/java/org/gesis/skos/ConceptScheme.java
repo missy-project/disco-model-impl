@@ -3,6 +3,7 @@ package org.gesis.skos;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -17,32 +18,31 @@ import org.gesis.discovery.Representation;
 public class ConceptScheme extends Representation
 {
 
-	@ManyToMany
-	@JoinTable(
-			name="ConceptScheme_Concept",
-			joinColumns=@JoinColumn(name="conceptScheme_id"),
-			inverseJoinColumns=@JoinColumn(name="concept_id")
-	)
+	@ManyToMany( cascade = CascadeType.ALL )
+	@JoinTable( 
+			name = "ConceptScheme_Concept",
+			joinColumns = @JoinColumn( name = "conceptScheme_id", referencedColumnName = "id" ),
+			inverseJoinColumns = @JoinColumn( name = "hasTopConcept_id" ) )
 	protected Set<Concept> hasTopConcept;
 
 	// getter/setter
 
 	public Set<Concept> getHasTopConcept()
 	{
-		return this.hasTopConcept;
+		return hasTopConcept;
 	}
 
 	public void setHasTopConcept( final Set<Concept> skos_hasTopConcept )
 	{
-		this.hasTopConcept = skos_hasTopConcept;
+		hasTopConcept = skos_hasTopConcept;
 	}
 
 	public ConceptScheme addHasTopConcept( final Concept concept )
 	{
-		if ( this.hasTopConcept == null )
-			this.hasTopConcept = new LinkedHashSet<Concept>();
+		if ( hasTopConcept == null )
+			hasTopConcept = new LinkedHashSet<Concept>();
 
-		this.hasTopConcept.add( concept );
+		hasTopConcept.add( concept );
 
 		return this;
 	}

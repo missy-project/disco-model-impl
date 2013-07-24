@@ -37,50 +37,50 @@ public class Concept extends Resource
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
-			name = "Concept_ConceptScheme", 
-			joinColumns = @JoinColumn( name = "concept_id" ), 
+			name = "Concept_ConceptScheme",
+			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "inScheme_id" ) )
-	protected Set<ConceptScheme> inScheme;
+	private Set<ConceptScheme> inScheme;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
-			name = "Concept_Broader", 
-			joinColumns = @JoinColumn( name = "concept_id" ), 
+			name = "Concept_ConceptBroader",
+			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "broader_id" ) )
-	protected Set<Concept> broader;
+	private Set<Concept> broader;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
-			name = "Concept_Narrower", 
-			joinColumns = @JoinColumn( name = "concept_id" ), 
+			name = "Concept_ConceptNarrower",
+			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "narrower_id" ) )
-	protected Set<Concept> narrower;
+	private Set<Concept> narrower;
 
 	// getter/setter
 
 	public LangString getDefinition()
 	{
-		return this.definition;
+		return definition;
 	}
 
 	public void setDefinition( final LangString skos_definition )
 	{
-		this.definition = skos_definition;
+		definition = skos_definition;
 	}
 
 	public String getNotation()
 	{
-		return this.notation;
+		return notation;
 	}
 
 	public void setNotation( final String skos_notation )
 	{
-		this.notation = skos_notation;
+		notation = skos_notation;
 	}
 
 	public Boolean isValid()
 	{
-		return this.isValid;
+		return isValid;
 	}
 
 	public void setValid( final Boolean isValid )
@@ -90,62 +90,62 @@ public class Concept extends Resource
 
 	public Concept addInScheme( final ConceptScheme conceptScheme )
 	{
-		if ( this.inScheme == null )
-			this.inScheme = new LinkedHashSet<ConceptScheme>();
+		if ( inScheme == null )
+			inScheme = new LinkedHashSet<ConceptScheme>();
 
-		this.inScheme.add( conceptScheme );
+		inScheme.add( conceptScheme );
 
 		return this;
 	}
 
 	public Set<ConceptScheme> getInScheme()
 	{
-		return this.inScheme;
+		return inScheme;
 	}
 
 	public void setInScheme( final Set<ConceptScheme> skos_inScheme )
 	{
-		this.inScheme = skos_inScheme;
+		inScheme = skos_inScheme;
 	}
 
 	public Concept addBroader( final Concept concept )
 	{
-		if ( this.broader == null )
-			this.broader = new LinkedHashSet<Concept>();
+		if ( broader == null )
+			broader = new LinkedHashSet<Concept>();
 
-		this.broader.add( concept );
+		broader.add( concept );
 
 		return this;
 	}
 
 	public Set<Concept> getBroader()
 	{
-		return this.broader;
+		return broader;
 	}
 
 	public void setBroader( final Set<Concept> skos_broader )
 	{
-		this.broader = skos_broader;
+		broader = skos_broader;
 	}
 
 	public Concept addNarrower( final Concept concept )
 	{
-		if ( this.narrower == null )
-			this.narrower = new LinkedHashSet<Concept>();
+		if ( narrower == null )
+			narrower = new LinkedHashSet<Concept>();
 
-		this.narrower.add( concept );
+		narrower.add( concept );
 
 		return this;
 	}
 
 	public Set<Concept> getNarrower()
 	{
-		return this.narrower;
+		return narrower;
 	}
 
 	public void setNarrower( final Set<Concept> skos_narrower )
 	{
-		this.narrower = skos_narrower;
+		narrower = skos_narrower;
 	}
 
 }
