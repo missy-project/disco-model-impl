@@ -2,7 +2,6 @@ package org.gesis.skos;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
@@ -19,7 +18,7 @@ public class OrderedCollection extends Representation
 
 	// relations
 
-	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+	@OneToOne( cascade = CascadeType.ALL )
 	private List memberList;
 
 	// getter / setter
