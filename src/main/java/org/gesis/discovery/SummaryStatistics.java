@@ -43,19 +43,19 @@ public class SummaryStatistics extends DescriptiveStatistics
 	private float standardDeviation;
 
 	@Column
-	private int numberOfCases;
+	private int numberOfCases = -1;
 
 	@Column
-	private float percentage;
+	private float percentage = -1;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString computationBase;
 
 	// relations
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "SummaryStatistics_Variable", 
-			joinColumns = @JoinColumn( name = "summaryStatistics_id" ), 
+	@JoinTable(
+			name = "SummaryStatistics_Variable",
+			joinColumns = @JoinColumn( name = "summaryStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> statisticsVariable;
 
@@ -67,7 +67,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getMaximum()
 	{
-		return this.maximum;
+		return maximum;
 	}
 
 	public void setMaximum( final float maximum )
@@ -77,7 +77,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getMean()
 	{
-		return this.mean;
+		return mean;
 	}
 
 	public void setMean( final float mean )
@@ -87,7 +87,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getMedian()
 	{
-		return this.median;
+		return median;
 	}
 
 	public void setMedian( final float median )
@@ -97,7 +97,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getMinimum()
 	{
-		return this.minimum;
+		return minimum;
 	}
 
 	public void setMinimum( final float minimum )
@@ -107,7 +107,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getMode()
 	{
-		return this.mode;
+		return mode;
 	}
 
 	public void setMode( final float mode )
@@ -117,7 +117,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public int getNumberOfCases()
 	{
-		return this.numberOfCases;
+		return numberOfCases;
 	}
 
 	public void setNumberOfCases( final int numberOfCases )
@@ -127,7 +127,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public float getPercentage()
 	{
-		return this.percentage;
+		return percentage;
 	}
 
 	public void setPercentage( final float percentage )
@@ -137,7 +137,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public LangString getComputationBase()
 	{
-		return this.computationBase;
+		return computationBase;
 	}
 
 	public void setComputationBase( final LangString computationBase )
@@ -147,27 +147,27 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public Set<Variable> getStatisticsVariable()
 	{
-		return this.statisticsVariable;
+		return statisticsVariable;
 	}
 
 	public void setStatisticsVariable(final Set<Variable> variables)
 	{
-		this.statisticsVariable = variables;
+		statisticsVariable = variables;
 	}
 
 	public SummaryStatistics addStatisticsVariable( final Variable variable )
 	{
-		if ( this.statisticsVariable == null )
-			this.statisticsVariable = new HashSet<Variable>();
+		if ( statisticsVariable == null )
+			statisticsVariable = new HashSet<Variable>();
 
-		this.statisticsVariable.add( variable );
+		statisticsVariable.add( variable );
 
 		return this;
 	}
 
 	public float getStandardDeviation()
 	{
-		return this.standardDeviation;
+		return standardDeviation;
 	}
 
 	public void setStandardDeviation( final float standardDeviation )
@@ -177,7 +177,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	public Variable getWeightedBy()
 	{
-		return this.weightedBy;
+		return weightedBy;
 	}
 
 	public void setWeightedBy( final Variable weightedBy )
