@@ -26,13 +26,13 @@ public class CategoryStatistics extends DescriptiveStatistics
 	// properties
 
 	@Column
-	private int frequency;
+	private int frequency = -1;
 
 	@Column
-	private float cumulativePercentage;
+	private float cumulativePercentage = -1;
 
 	@Column
-	private float percentage;
+	private float percentage = -1;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString computationBase;
@@ -40,9 +40,9 @@ public class CategoryStatistics extends DescriptiveStatistics
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "CategoryStatistics_Concept", 
-			joinColumns = @JoinColumn( name = "categoryStatistics_id" ), 
+	@JoinTable(
+			name = "CategoryStatistics_Concept",
+			joinColumns = @JoinColumn( name = "categoryStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected Set<Concept> statisticsCategory;
 
@@ -54,7 +54,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	public int getFrequency()
 	{
-		return this.frequency;
+		return frequency;
 	}
 
 	public void setFrequency(final int frequency)
@@ -64,7 +64,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	public float getCumulativePercentage()
 	{
-		return this.cumulativePercentage;
+		return cumulativePercentage;
 	}
 
 	public void setCumulativePercentage( final float cumulativePercentage )
@@ -74,7 +74,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	public float getPercentage()
 	{
-		return this.percentage;
+		return percentage;
 	}
 
 	public void setPercentage( final float percentage )
@@ -84,7 +84,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	public LangString getComputationBase()
 	{
-		return this.computationBase;
+		return computationBase;
 	}
 
 	public void setComputationBase( final LangString computationBase )
@@ -94,27 +94,27 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	public Set<Concept> getStatisticsCategory()
 	{
-		return this.statisticsCategory;
+		return statisticsCategory;
 	}
 
 	public void setStatisticsCategory(final Set<Concept> categories)
 	{
-		this.statisticsCategory = categories;
+		statisticsCategory = categories;
 	}
 
 	public CategoryStatistics addStatisticsCategory( final Concept category )
 	{
-		if ( this.statisticsCategory == null )
-			this.statisticsCategory = new HashSet<Concept>();
+		if ( statisticsCategory == null )
+			statisticsCategory = new HashSet<Concept>();
 
-		this.statisticsCategory.add( category );
+		statisticsCategory.add( category );
 
 		return this;
 	}
 
 	public Variable getWeightedBy()
 	{
-		return this.weightedBy;
+		return weightedBy;
 	}
 
 	public void setWeightedBy( final Variable weightedBy )
