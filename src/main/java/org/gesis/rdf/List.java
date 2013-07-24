@@ -18,10 +18,10 @@ public class List extends Resource
 
 	// relations
 
-	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
 	private Resource first;
 
-	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
 	private List rest;
 
 	// getter / setter

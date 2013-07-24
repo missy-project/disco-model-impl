@@ -19,7 +19,7 @@ public class OrderedCollection extends Representation
 
 	// relations
 
-	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
 	private List memberList;
 
 	// getter / setter
