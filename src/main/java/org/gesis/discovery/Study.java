@@ -28,10 +28,7 @@ public class Study extends Union_StudyGroupStudy
 	private StudyGroup inGroup;
 
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable(
-			name = "Study_Instrument",
-			joinColumns = @JoinColumn( name = "study_id" ),
-			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
+	@JoinColumn( name = "study_id" )
 	protected Set<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
