@@ -51,7 +51,7 @@ public class LangString extends PersistableResource
 	private String fr = null;
 
 	@ElementCollection( fetch = FetchType.LAZY )
-	@MapKeyColumn( name = "language" )
+	@MapKeyColumn( name = "language", length = 2 )
 	@Column( name = "value" )
 	@CollectionTable( name = "Languages_Values", joinColumns = @JoinColumn( name = "langString_id" ) )
 	@Lob
