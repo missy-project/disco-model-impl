@@ -14,11 +14,11 @@ import org.gesis.ddi.util.IdentifierFactory;
 public abstract class PersistableResource implements IPersistableResource
 {
 
-	@Column
+	@Column( length = 40 )
 	@Id
 	private String id;
 
-	@Column
+	@Column( length = 100 )
 	private String urn;
 
 	public PersistableResource()
