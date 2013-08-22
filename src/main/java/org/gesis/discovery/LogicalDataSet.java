@@ -40,15 +40,24 @@ public class LogicalDataSet extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_Location", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "location_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_Location", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	protected Set<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_PeriodOfTime", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_PeriodOfTime", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	protected Set<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_Concept", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_Concept", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected Set<Concept> subject;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -56,27 +65,45 @@ public class LogicalDataSet extends Resource
 	protected Universe universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_Instrument", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_Instrument", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
 	protected Set<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_Variable", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_Variable", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected Set<Variable> containsVariable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_DataFile", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_DataFile", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected Set<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_DataSet", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "dataSet_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_DataSet", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "dataSet_id" ) )
 	protected Set<DataSet> aggregation;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_LicenseDocument", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "licenseDocument_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_LicenseDocument", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "licenseDocument_id" ) )
 	protected Set<LicenseDocument> license;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( name = "LogicalDataSet_Document", joinColumns = @JoinColumn( name = "logicalDataSet_id" ), inverseJoinColumns = @JoinColumn( name = "rightsStatement_id" ) )
+	@JoinTable( 
+			name = "LogicalDataSet_Document", 
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+			inverseJoinColumns = @JoinColumn( name = "rightsStatement_id" ) )
 	protected Set<RightsStatement> accessRights;
 
 	// getter/setter
@@ -101,14 +128,14 @@ public class LogicalDataSet extends Resource
 		this.isPublic = isPublic;
 	}
 
-	public Universe getDataSetUniverse()
+	public Universe getUniverse()
 	{
 		return universe;
 	}
 
-	public void setDataSetUniverse( final Universe dataSetUniverse )
+	public void setUniverse( final Universe universe )
 	{
-		universe = dataSetUniverse;
+		this.universe = universe;
 	}
 
 	public Set<Location> getSpatial()
