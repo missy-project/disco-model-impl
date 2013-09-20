@@ -1,6 +1,6 @@
 package org.gesis.rdfs;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,7 +30,7 @@ public class Resource extends PersistableResource
 
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "resource_id" )
-	private Set<Identifier> identifier;
+	private List<Identifier> identifier;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString prefLabel;
@@ -62,12 +62,12 @@ public class Resource extends PersistableResource
 		this.versionInfo = versionInfo;
 	}
 
-	public Set<Identifier> getIdentifier()
+	public List<Identifier> getIdentifier()
 	{
 		return identifier;
 	}
 
-	public void setIdentifier( final Set<Identifier> identifier )
+	public void setIdentifier( final List<Identifier> identifier )
 	{
 		this.identifier = identifier;
 	}

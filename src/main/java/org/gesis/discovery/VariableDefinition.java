@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,7 +36,7 @@ public class VariableDefinition extends Resource
 			name="VariableDefinition_Universe",
 			joinColumns=@JoinColumn(name="variableDefinition_id"),
 			inverseJoinColumns=@JoinColumn( name = "universe_id" ))
-	protected Set<Universe> universe;
+	protected List<Universe> universe;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "concept_id" )
@@ -47,7 +47,7 @@ public class VariableDefinition extends Resource
 			name="VariableDefinition_Representation",
 			joinColumns=@JoinColumn(name="variableDefinition_id"),
 			inverseJoinColumns=@JoinColumn( name = "representation_id" ))
-	protected Set<Representation> representation;
+	protected List<Representation> representation;
 
 	// getter/setter
 
@@ -59,11 +59,11 @@ public class VariableDefinition extends Resource
 		this.description = dcterms_description;
 	}
 
-	public Set<Universe> getUniverse() {
+	public List<Universe> getUniverse() {
 		return this.universe;
 	}
 
-	public void setUniverse(final Set<Universe> universe)
+	public void setUniverse(final List<Universe> universe)
 	{
 		this.universe = universe;
 	}
@@ -71,7 +71,7 @@ public class VariableDefinition extends Resource
 	public VariableDefinition addUniverse( final Universe universe )
 	{
 		if ( this.universe == null )
-			this.universe = new HashSet<Universe>();
+			this.universe = new ArrayList<Universe>();
 
 		this.universe.add( universe );
 
@@ -88,11 +88,11 @@ public class VariableDefinition extends Resource
 		this.concept = concept;
 	}
 
-	public Set<Representation> getRepresentation() {
+	public List<Representation> getRepresentation() {
 		return this.representation;
 	}
 
-	public void setRepresentation(final Set<Representation> representation)
+	public void setRepresentation(final List<Representation> representation)
 	{
 		this.representation = representation;
 	}
@@ -100,7 +100,7 @@ public class VariableDefinition extends Resource
 	public VariableDefinition addRepresentation( final Representation representation )
 	{
 		if ( this.representation == null )
-			this.representation = new HashSet<Representation>();
+			this.representation = new ArrayList<Representation>();
 
 		this.representation.add( representation );
 

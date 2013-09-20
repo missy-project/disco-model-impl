@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -34,14 +34,14 @@ public class Question extends Concept
 			name="Question_Representation",
 			joinColumns=@JoinColumn( name = "question_id" ),
 			inverseJoinColumns=@JoinColumn( name = "representation_id" ) )
-	protected Set<Representation> responseDomain;
+	protected List<Representation> responseDomain;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Question_Concept",
 			joinColumns=@JoinColumn(name="question_id"),
 			inverseJoinColumns=@JoinColumn( name = "concept_id" ))
-	protected Set<Concept> concept;
+	protected List<Concept> concept;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "universe_id" )
@@ -59,12 +59,12 @@ public class Question extends Concept
 		this.questionText = questionText;
 	}
 
-	public Set<Representation> getResponseDomain()
+	public List<Representation> getResponseDomain()
 	{
 		return responseDomain;
 	}
 
-	public void setResponseDomain( final Set<Representation> responseDomain )
+	public void setResponseDomain( final List<Representation> responseDomain )
 	{
 		this.responseDomain = responseDomain;
 	}
@@ -72,25 +72,25 @@ public class Question extends Concept
 	public Question addResponseDomain( final Representation responseDomain )
 	{
 		if ( this.responseDomain == null )
-			this.responseDomain = new HashSet<Representation>();
+			this.responseDomain = new ArrayList<Representation>();
 
 		this.responseDomain.add( responseDomain );
 
 		return this;
 	}
 
-	public Set<Concept> getConcept() {
+	public List<Concept> getConcept() {
 		return concept;
 	}
 
-	public void setConcept(final Set<Concept> concept) {
+	public void setConcept(final List<Concept> concept) {
 		this.concept = concept;
 	}
 
 	public Question addConcept( final Concept concept )
 	{
 		if ( this.concept == null )
-			this.concept = new HashSet<Concept>();
+			this.concept = new ArrayList<Concept>();
 
 		this.concept.add( concept );
 

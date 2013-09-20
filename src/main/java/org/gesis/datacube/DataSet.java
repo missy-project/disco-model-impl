@@ -1,6 +1,6 @@
 package org.gesis.datacube;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,15 +26,15 @@ public class DataSet extends Resource
 			name="DataSet_Variable",
 			joinColumns=@JoinColumn(name="dataSet_id"),
 			inverseJoinColumns=@JoinColumn( name = "variable_id" ))
-	protected Set<Variable> inputVariable;
+	protected List<Variable> inputVariable;
 
 	// getter/setter
 
-	public Set<Variable> getInputVariable() {
+	public List<Variable> getInputVariable() {
 		return this.inputVariable;
 	}
 
-	public void setInputVariable(final Set<Variable> inputVariables) {
+	public void setInputVariable(final List<Variable> inputVariables) {
 		this.inputVariable = inputVariables;
 	}
 

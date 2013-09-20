@@ -1,6 +1,6 @@
 package org.gesis.dcterms;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -31,16 +31,16 @@ public class RightsStatement extends Resource
 			name = "RightsStatement_Document",
 			joinColumns = @JoinColumn( name = "rightsStatement_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
-	protected Set<Document> seeAlso;
+	protected List<Document> seeAlso;
 	
 	// getter/setter
 
-	public Set<Document> getSeeAlso()
+	public List<Document> getSeeAlso()
 	{
 		return this.seeAlso;
 	}
 
-	public void setSeeAlso( final Set<Document> rdfs_seeAlso )
+	public void setSeeAlso( final List<Document> rdfs_seeAlso )
 	{
 		this.seeAlso = rdfs_seeAlso;
 	}

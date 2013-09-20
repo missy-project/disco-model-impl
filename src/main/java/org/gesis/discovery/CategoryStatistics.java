@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,7 +44,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 			name = "CategoryStatistics_Concept",
 			joinColumns = @JoinColumn( name = "categoryStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
-	protected Set<Concept> statisticsCategory;
+	protected List<Concept> statisticsCategory;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "variable_id" )
@@ -92,12 +92,12 @@ public class CategoryStatistics extends DescriptiveStatistics
 		this.computationBase = computationBase;
 	}
 
-	public Set<Concept> getStatisticsCategory()
+	public List<Concept> getStatisticsCategory()
 	{
 		return statisticsCategory;
 	}
 
-	public void setStatisticsCategory(final Set<Concept> categories)
+	public void setStatisticsCategory(final List<Concept> categories)
 	{
 		statisticsCategory = categories;
 	}
@@ -105,7 +105,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	public CategoryStatistics addStatisticsCategory( final Concept category )
 	{
 		if ( statisticsCategory == null )
-			statisticsCategory = new HashSet<Concept>();
+			statisticsCategory = new ArrayList<Concept>();
 
 		statisticsCategory.add( category );
 

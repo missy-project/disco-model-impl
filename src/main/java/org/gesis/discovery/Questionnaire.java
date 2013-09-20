@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,47 +28,47 @@ public class Questionnaire extends Instrument
 			name="Questionnaire_Concept", 
 			joinColumns=@JoinColumn(name="questionnaire_id"), 
 			inverseJoinColumns=@JoinColumn(name="concept_id"))
-	protected Set<Concept> collectionMode;
+	protected List<Concept> collectionMode;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name="Questionnaire_Question", 
 			joinColumns=@JoinColumn(name="questionnaire_id"), 
 			inverseJoinColumns=@JoinColumn(name="question_id"))
-	protected Set<Question> question;
+	protected List<Question> question;
 
 	// getter/setter
 
-	public Set<Concept> getCollectionMode() {
+	public List<Concept> getCollectionMode() {
 		return this.collectionMode;
 	}
 
-	public void setCollectionMode(final Set<Concept> collectionMode) {
+	public void setCollectionMode(final List<Concept> collectionMode) {
 		this.collectionMode = collectionMode;
 	}
 
 	public Questionnaire addCollectionMode( final Concept concept )
 	{
 		if ( this.collectionMode == null )
-			this.collectionMode = new HashSet<Concept>();
+			this.collectionMode = new ArrayList<Concept>();
 
 		this.collectionMode.add( concept );
 
 		return this;
 	}
 
-	public Set<Question> getQuestion() {
+	public List<Question> getQuestion() {
 		return this.question;
 	}
 
-	public void setQuestion(final Set<Question> question) {
+	public void setQuestion(final List<Question> question) {
 		this.question = question;
 	}
 
 	public Questionnaire addQuestion( final Question question )
 	{
 		if ( this.question == null )
-			this.question = new HashSet<Question>();
+			this.question = new ArrayList<Question>();
 
 		this.question.add( question );
 

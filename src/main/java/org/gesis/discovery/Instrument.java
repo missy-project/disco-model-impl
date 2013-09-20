@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -34,7 +34,7 @@ public class Instrument extends Resource
 			name = "Instrument_Document",
 			joinColumns = @JoinColumn( name = "instrument_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
-	protected Set<Document> externalDocumentation;
+	protected List<Document> externalDocumentation;
 
 	// getter/setter
 
@@ -48,12 +48,12 @@ public class Instrument extends Resource
 		this.description = description;
 	}
 
-	public Set<Document> getExternalDocumentation()
+	public List<Document> getExternalDocumentation()
 	{
 		return this.externalDocumentation;
 	}
 
-	public void setExternalDocumentation( final Set<Document> externalDocumentation )
+	public void setExternalDocumentation( final List<Document> externalDocumentation )
 	{
 		this.externalDocumentation = externalDocumentation;
 	}
@@ -61,7 +61,7 @@ public class Instrument extends Resource
 	public Instrument addExternalDocumentation( final Document document )
 	{
 		if ( this.externalDocumentation == null )
-			this.externalDocumentation = new HashSet<Document>();
+			this.externalDocumentation = new ArrayList<Document>();
 
 		this.externalDocumentation.add( document );
 

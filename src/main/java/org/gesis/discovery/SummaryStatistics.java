@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -57,7 +57,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 			name = "SummaryStatistics_Variable",
 			joinColumns = @JoinColumn( name = "summaryStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
-	protected Set<Variable> statisticsVariable;
+	protected List<Variable> statisticsVariable;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "variable_id" )
@@ -145,12 +145,12 @@ public class SummaryStatistics extends DescriptiveStatistics
 		this.computationBase = computationBase;
 	}
 
-	public Set<Variable> getStatisticsVariable()
+	public List<Variable> getStatisticsVariable()
 	{
 		return statisticsVariable;
 	}
 
-	public void setStatisticsVariable(final Set<Variable> variables)
+	public void setStatisticsVariable(final List<Variable> variables)
 	{
 		statisticsVariable = variables;
 	}
@@ -158,7 +158,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	public SummaryStatistics addStatisticsVariable( final Variable variable )
 	{
 		if ( statisticsVariable == null )
-			statisticsVariable = new HashSet<Variable>();
+			statisticsVariable = new ArrayList<Variable>();
 
 		statisticsVariable.add( variable );
 
