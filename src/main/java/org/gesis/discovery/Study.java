@@ -29,28 +29,28 @@ public class Study extends Union_StudyGroupStudy
 
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "study_id" )
-	protected Set<Instrument> instrument;
+	private Set<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_Variable",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
-	protected Set<Variable> variable;
+	private Set<Variable> variable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_DataFile",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
-	protected Set<DataFile> dataFile;
+	private Set<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_LogicalDataSet",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "logicalDataSet_id" ) )
-	protected Set<LogicalDataSet> product;
+	private Set<LogicalDataSet> product;
 
 	// getter/setter
 
