@@ -1,7 +1,7 @@
 package org.gesis.skos;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,21 +40,21 @@ public class Concept extends Resource
 			name = "Concept_ConceptScheme",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "inScheme_id" ) )
-	private Set<ConceptScheme> inScheme;
+	private List<ConceptScheme> inScheme;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Concept_ConceptBroader",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "broader_id" ) )
-	private Set<Concept> broader;
+	private List<Concept> broader;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Concept_ConceptNarrower",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "narrower_id" ) )
-	private Set<Concept> narrower;
+	private List<Concept> narrower;
 
 	// getter/setter
 
@@ -103,19 +103,19 @@ public class Concept extends Resource
 	public Concept addInScheme( final ConceptScheme conceptScheme )
 	{
 		if ( inScheme == null )
-			inScheme = new LinkedHashSet<ConceptScheme>();
+			inScheme = new ArrayList<ConceptScheme>();
 
 		inScheme.add( conceptScheme );
 
 		return this;
 	}
 
-	public Set<ConceptScheme> getInScheme()
+	public List<ConceptScheme> getInScheme()
 	{
 		return inScheme;
 	}
 
-	public void setInScheme( final Set<ConceptScheme> skos_inScheme )
+	public void setInScheme( final List<ConceptScheme> skos_inScheme )
 	{
 		inScheme = skos_inScheme;
 	}
@@ -123,19 +123,19 @@ public class Concept extends Resource
 	public Concept addBroader( final Concept concept )
 	{
 		if ( broader == null )
-			broader = new LinkedHashSet<Concept>();
+			broader = new ArrayList<Concept>();
 
 		broader.add( concept );
 
 		return this;
 	}
 
-	public Set<Concept> getBroader()
+	public List<Concept> getBroader()
 	{
 		return broader;
 	}
 
-	public void setBroader( final Set<Concept> skos_broader )
+	public void setBroader( final List<Concept> skos_broader )
 	{
 		broader = skos_broader;
 	}
@@ -143,19 +143,19 @@ public class Concept extends Resource
 	public Concept addNarrower( final Concept concept )
 	{
 		if ( narrower == null )
-			narrower = new LinkedHashSet<Concept>();
+			narrower = new ArrayList<Concept>();
 
 		narrower.add( concept );
 
 		return this;
 	}
 
-	public Set<Concept> getNarrower()
+	public List<Concept> getNarrower()
 	{
 		return narrower;
 	}
 
-	public void setNarrower( final Set<Concept> skos_narrower )
+	public void setNarrower( final List<Concept> skos_narrower )
 	{
 		narrower = skos_narrower;
 	}

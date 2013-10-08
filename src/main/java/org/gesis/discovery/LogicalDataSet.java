@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,21 +44,21 @@ public class LogicalDataSet extends Resource
 			name = "LogicalDataSet_Location", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
-	protected Set<Location> spatial;
+	protected List<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_PeriodOfTime", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
-	protected Set<PeriodOfTime> temporal;
+	protected List<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Concept", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
-	protected Set<Concept> subject;
+	protected List<Concept> subject;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "universe_id" )
@@ -69,42 +69,42 @@ public class LogicalDataSet extends Resource
 			name = "LogicalDataSet_Instrument", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
-	protected Set<Instrument> instrument;
+	protected List<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Variable", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
-	protected Set<Variable> containsVariable;
+	protected List<Variable> containsVariable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataFile", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
-	protected Set<DataFile> dataFile;
+	protected List<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_DataSet", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "dataSet_id" ) )
-	protected Set<DataSet> aggregation;
+	protected List<DataSet> aggregation;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_LicenseDocument", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "licenseDocument_id" ) )
-	protected Set<LicenseDocument> license;
+	protected List<LicenseDocument> license;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable( 
 			name = "LogicalDataSet_Document", 
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "rightsStatement_id" ) )
-	protected Set<RightsStatement> accessRights;
+	protected List<RightsStatement> accessRights;
 
 	// getter/setter
 
@@ -138,12 +138,12 @@ public class LogicalDataSet extends Resource
 		this.universe = universe;
 	}
 
-	public Set<Location> getSpatial()
+	public List<Location> getSpatial()
 	{
 		return spatial;
 	}
 
-	public void setSpatial( final Set<Location> dcterms_spatial )
+	public void setSpatial( final List<Location> dcterms_spatial )
 	{
 		spatial = dcterms_spatial;
 	}
@@ -151,19 +151,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addSpatial( final Location location )
 	{
 		if ( spatial == null )
-			spatial = new HashSet<Location>();
+			spatial = new ArrayList<Location>();
 
 		spatial.add( location );
 
 		return this;
 	}
 
-	public Set<PeriodOfTime> getTemporal()
+	public List<PeriodOfTime> getTemporal()
 	{
 		return temporal;
 	}
 
-	public void setTemporal( final Set<PeriodOfTime> dcterms_temporal )
+	public void setTemporal( final List<PeriodOfTime> dcterms_temporal )
 	{
 		temporal = dcterms_temporal;
 	}
@@ -171,19 +171,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addTemporal( final PeriodOfTime periodOfTime )
 	{
 		if ( temporal == null )
-			temporal = new HashSet<PeriodOfTime>();
+			temporal = new ArrayList<PeriodOfTime>();
 
 		temporal.add( periodOfTime );
 
 		return this;
 	}
 
-	public Set<Concept> getSubject()
+	public List<Concept> getSubject()
 	{
 		return subject;
 	}
 
-	public void setSubject( final Set<Concept> dcterms_subject )
+	public void setSubject( final List<Concept> dcterms_subject )
 	{
 		subject = dcterms_subject;
 	}
@@ -191,19 +191,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addSubject( final Concept concept )
 	{
 		if ( subject == null )
-			subject = new HashSet<Concept>();
+			subject = new ArrayList<Concept>();
 
 		subject.add( concept );
 
 		return this;
 	}
 
-	public Set<Instrument> getInstrument()
+	public List<Instrument> getInstrument()
 	{
 		return instrument;
 	}
 
-	public void setInstrument( final Set<Instrument> instrument )
+	public void setInstrument( final List<Instrument> instrument )
 	{
 		this.instrument = instrument;
 	}
@@ -211,19 +211,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addInstrument( final Instrument instrument )
 	{
 		if ( this.instrument == null )
-			this.instrument = new HashSet<Instrument>();
+			this.instrument = new ArrayList<Instrument>();
 
 		this.instrument.add( instrument );
 
 		return this;
 	}
 
-	public Set<Variable> getContainsVariable()
+	public List<Variable> getContainsVariable()
 	{
 		return containsVariable;
 	}
 
-	public void setContainsVariable( final Set<Variable> containsVariable )
+	public void setContainsVariable( final List<Variable> containsVariable )
 	{
 		this.containsVariable = containsVariable;
 	}
@@ -231,19 +231,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addContainsVariable( final Variable variable )
 	{
 		if ( containsVariable == null )
-			containsVariable = new HashSet<Variable>();
+			containsVariable = new ArrayList<Variable>();
 
 		containsVariable.add( variable );
 
 		return this;
 	}
 
-	public Set<DataFile> getDataFile()
+	public List<DataFile> getDataFile()
 	{
 		return dataFile;
 	}
 
-	public void setDataFile( final Set<DataFile> dataFile )
+	public void setDataFile( final List<DataFile> dataFile )
 	{
 		this.dataFile = dataFile;
 	}
@@ -251,19 +251,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addDataFile( final DataFile dataFile )
 	{
 		if ( this.dataFile == null )
-			this.dataFile = new HashSet<DataFile>();
+			this.dataFile = new ArrayList<DataFile>();
 
 		this.dataFile.add( dataFile );
 
 		return this;
 	}
 
-	public Set<DataSet> getAggregation()
+	public List<DataSet> getAggregation()
 	{
 		return aggregation;
 	}
 
-	public void setAggregation( final Set<DataSet> aggregation )
+	public void setAggregation( final List<DataSet> aggregation )
 	{
 		this.aggregation = aggregation;
 	}
@@ -271,19 +271,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addAggregation( final DataSet dataSet )
 	{
 		if ( aggregation == null )
-			aggregation = new HashSet<DataSet>();
+			aggregation = new ArrayList<DataSet>();
 
 		aggregation.add( dataSet );
 
 		return this;
 	}
 
-	public Set<LicenseDocument> getLicense()
+	public List<LicenseDocument> getLicense()
 	{
 		return license;
 	}
 
-	public void setLicense( final Set<LicenseDocument> dcterms_license )
+	public void setLicense( final List<LicenseDocument> dcterms_license )
 	{
 		license = dcterms_license;
 	}
@@ -291,19 +291,19 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addLicense( final LicenseDocument licenseDocument )
 	{
 		if ( license == null )
-			license = new HashSet<LicenseDocument>();
+			license = new ArrayList<LicenseDocument>();
 
 		license.add( licenseDocument );
 
 		return this;
 	}
 
-	public Set<RightsStatement> getAccessRights()
+	public List<RightsStatement> getAccessRights()
 	{
 		return accessRights;
 	}
 
-	public void setAccessRights( final Set<RightsStatement> dcterms_accessRights )
+	public void setAccessRights( final List<RightsStatement> dcterms_accessRights )
 	{
 		accessRights = dcterms_accessRights;
 	}
@@ -311,14 +311,14 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addAccessRights( final RightsStatement rightsStatement )
 	{
 		if ( accessRights == null )
-			accessRights = new HashSet<RightsStatement>();
+			accessRights = new ArrayList<RightsStatement>();
 
 		accessRights.add( rightsStatement );
 
 		return this;
 	}
 
-	public void setDataCube( final Set<DataSet> dataCube )
+	public void setDataCube( final List<DataSet> dataCube )
 	{
 		aggregation = dataCube;
 	}
@@ -326,7 +326,7 @@ public class LogicalDataSet extends Resource
 	public LogicalDataSet addDataCube( final DataSet dataCube )
 	{
 		if ( aggregation == null )
-			aggregation = new HashSet<DataSet>();
+			aggregation = new ArrayList<DataSet>();
 
 		aggregation.add( dataCube );
 

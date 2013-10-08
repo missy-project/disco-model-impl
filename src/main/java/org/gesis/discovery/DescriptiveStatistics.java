@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,16 +28,16 @@ public class DescriptiveStatistics extends Resource
 			name = "DescriptiveStatistics_DataFile", 
 			joinColumns = @JoinColumn( name = "descriptiveStatistics_id" ), 
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
-	protected Set<DataFile> statisticsDatafile;
+	protected List<DataFile> statisticsDatafile;
 
 	// getter/setter
 
-	public Set<DataFile> getStatisticsDataFile()
+	public List<DataFile> getStatisticsDataFile()
 	{
 		return this.statisticsDatafile;
 	}
 
-	public void setStatisticsDataFile(final Set<DataFile> dataFiles)
+	public void setStatisticsDataFile(final List<DataFile> dataFiles)
 	{
 		this.statisticsDatafile = dataFiles;
 	}
@@ -45,7 +45,7 @@ public class DescriptiveStatistics extends Resource
 	public DescriptiveStatistics addStatisticsDataFile( final DataFile dataFile )
 	{
 		if ( this.statisticsDatafile == null )
-			this.statisticsDatafile = new HashSet<DataFile>();
+			this.statisticsDatafile = new ArrayList<DataFile>();
 
 		this.statisticsDatafile.add( dataFile );
 

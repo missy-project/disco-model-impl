@@ -1,8 +1,8 @@
 package org.gesis.discovery;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,38 +48,38 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<PeriodOfTime> temporal;
+	private List<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Concept> subject;
+	private List<Concept> subject;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Location> spacial;
+	private List<Location> spacial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Document> ddiFile;
+	private List<Document> ddiFile;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name="concept_id" )
 	private Concept kindOfData;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<AnalysisUnit> analysisUnit;
+	private List<AnalysisUnit> analysisUnit;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Universe> universe;
+	private List<Universe> universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Agent> publisher;
+	private List<Agent> publisher;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Agent> contributer;
+	private List<Agent> contributer;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Agent> creator;
+	private List<Agent> creator;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private Set<Agent> fundedBy;
+	private List<Agent> fundedBy;
 
 	// getter/setter
 
@@ -143,12 +143,12 @@ public abstract class Union_StudyGroupStudy extends Resource
 		this.subtitle = subtitle;
 	}
 
-	public Set<PeriodOfTime> getTemporal()
+	public List<PeriodOfTime> getTemporal()
 	{
 		return temporal;
 	}
 
-	public void setTemporal( final Set<PeriodOfTime> dcterms_temporal )
+	public void setTemporal( final List<PeriodOfTime> dcterms_temporal )
 	{
 		temporal = dcterms_temporal;
 	}
@@ -156,19 +156,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addTemporal( final PeriodOfTime periodOfTime )
 	{
 		if ( temporal == null )
-			temporal = new HashSet<PeriodOfTime>();
+			temporal = new ArrayList<PeriodOfTime>();
 
 		temporal.add( periodOfTime );
 
 		return this;
 	}
 
-	public Set<Concept> getSubject()
+	public List<Concept> getSubject()
 	{
 		return subject;
 	}
 
-	public void setSubject( final Set<Concept> dcterms_subject )
+	public void setSubject( final List<Concept> dcterms_subject )
 	{
 		subject = dcterms_subject;
 	}
@@ -176,19 +176,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addSubject( final Concept concept )
 	{
 		if ( subject == null )
-			subject = new HashSet<Concept>();
+			subject = new ArrayList<Concept>();
 
 		subject.add( concept );
 
 		return this;
 	}
 
-	public Set<Location> getSpacial()
+	public List<Location> getSpacial()
 	{
 		return spacial;
 	}
 
-	public void setSpacial( final Set<Location> dcterms_spacial )
+	public void setSpacial( final List<Location> dcterms_spacial )
 	{
 		spacial = dcterms_spacial;
 	}
@@ -196,19 +196,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addSpatial( final Location location )
 	{
 		if ( spacial == null )
-			spacial = new HashSet<Location>();
+			spacial = new ArrayList<Location>();
 
 		spacial.add( location );
 
 		return this;
 	}
 
-	public Set<Document> getDdiFile()
+	public List<Document> getDdiFile()
 	{
 		return ddiFile;
 	}
 
-	public void setDdiFile( final Set<Document> ddiFile )
+	public void setDdiFile( final List<Document> ddiFile )
 	{
 		this.ddiFile = ddiFile;
 	}
@@ -216,7 +216,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addDdiFile( final Document document )
 	{
 		if ( ddiFile == null )
-			ddiFile = new HashSet<Document>();
+			ddiFile = new ArrayList<Document>();
 
 		ddiFile.add( document );
 
@@ -233,12 +233,12 @@ public abstract class Union_StudyGroupStudy extends Resource
 		this.kindOfData = kindOfData;
 	}
 
-	public Set<Universe> getUniverse()
+	public List<Universe> getUniverse()
 	{
 		return universe;
 	}
 
-	public void setUniverse( final Set<Universe> universe )
+	public void setUniverse( final List<Universe> universe )
 	{
 		this.universe = universe;
 	}
@@ -246,19 +246,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addUniverse( final Universe universe )
 	{
 		if ( this.universe == null )
-			this.universe = new HashSet<Universe>();
+			this.universe = new ArrayList<Universe>();
 
 		this.universe.add( universe );
 
 		return this;
 	}
 
-	public Set<AnalysisUnit> getAnalysisUnit()
+	public List<AnalysisUnit> getAnalysisUnit()
 	{
 		return analysisUnit;
 	}
 
-	public void setAnalysisUnit( final Set<AnalysisUnit> analysisUnit )
+	public void setAnalysisUnit( final List<AnalysisUnit> analysisUnit )
 	{
 		this.analysisUnit = analysisUnit;
 	}
@@ -266,19 +266,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addAnalysisUnit( final AnalysisUnit analysisUnit )
 	{
 		if ( this.analysisUnit == null )
-			this.analysisUnit = new HashSet<AnalysisUnit>();
+			this.analysisUnit = new ArrayList<AnalysisUnit>();
 
 		this.analysisUnit.add( analysisUnit );
 
 		return this;
 	}
 
-	public Set<Agent> getPublisher()
+	public List<Agent> getPublisher()
 	{
 		return publisher;
 	}
 
-	public void setPublisher( final Set<Agent> publisher )
+	public void setPublisher( final List<Agent> publisher )
 	{
 		this.publisher = publisher;
 	}
@@ -286,19 +286,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addPublisher( final Agent agent )
 	{
 		if ( publisher == null )
-			publisher = new HashSet<Agent>();
+			publisher = new ArrayList<Agent>();
 
 		publisher.add( agent );
 
 		return this;
 	}
 
-	public Set<Agent> getContributer()
+	public List<Agent> getContributer()
 	{
 		return contributer;
 	}
 
-	public void setContributer( final Set<Agent> contributor )
+	public void setContributer( final List<Agent> contributor )
 	{
 		contributer = contributor;
 	}
@@ -306,19 +306,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addContributor( final Agent agent )
 	{
 		if ( contributer == null )
-			contributer = new HashSet<Agent>();
+			contributer = new ArrayList<Agent>();
 
 		contributer.add( agent );
 
 		return this;
 	}
 
-	public Set<Agent> getCreator()
+	public List<Agent> getCreator()
 	{
 		return creator;
 	}
 
-	public void setCreator( final Set<Agent> creator )
+	public void setCreator( final List<Agent> creator )
 	{
 		this.creator = creator;
 	}
@@ -326,19 +326,19 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addCreator( final Agent agent )
 	{
 		if ( creator == null )
-			creator = new HashSet<Agent>();
+			creator = new ArrayList<Agent>();
 
 		creator.add( agent );
 
 		return this;
 	}
 
-	public Set<Agent> getFundedBy()
+	public List<Agent> getFundedBy()
 	{
 		return fundedBy;
 	}
 
-	public void setFundedBy( final Set<Agent> fundedBy )
+	public void setFundedBy( final List<Agent> fundedBy )
 	{
 		this.fundedBy = fundedBy;
 	}
@@ -346,7 +346,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	public Union_StudyGroupStudy addFundedBy( final Agent agent )
 	{
 		if ( fundedBy == null )
-			fundedBy = new HashSet<Agent>();
+			fundedBy = new ArrayList<Agent>();
 
 		fundedBy.add( agent );
 

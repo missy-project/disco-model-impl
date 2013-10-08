@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,37 +29,37 @@ public class Study extends Union_StudyGroupStudy
 
 	@OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "study_id" )
-	private Set<Instrument> instrument;
+	private List<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_Variable",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
-	private Set<Variable> variable;
+	private List<Variable> variable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_DataFile",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
-	private Set<DataFile> dataFile;
+	private List<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "Study_LogicalDataSet",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "logicalDataSet_id" ) )
-	private Set<LogicalDataSet> product;
+	private List<LogicalDataSet> product;
 
 	// getter/setter
 
-	public Set<Instrument> getInstrument()
+	public List<Instrument> getInstrument()
 	{
 		return this.instrument;
 	}
 
-	public void setInstrument( final Set<Instrument> instrument )
+	public void setInstrument( final List<Instrument> instrument )
 	{
 		this.instrument = instrument;
 	}
@@ -67,19 +67,19 @@ public class Study extends Union_StudyGroupStudy
 	public Study addInstrument( final Instrument instrument )
 	{
 		if ( this.instrument == null )
-			this.instrument = new HashSet<Instrument>();
+			this.instrument = new ArrayList<Instrument>();
 
 		this.instrument.add( instrument );
 
 		return this;
 	}
 
-	public Set<Variable> getVariable()
+	public List<Variable> getVariable()
 	{
 		return this.variable;
 	}
 
-	public void setVariable( final Set<Variable> variable )
+	public void setVariable( final List<Variable> variable )
 	{
 		this.variable = variable;
 	}
@@ -87,19 +87,19 @@ public class Study extends Union_StudyGroupStudy
 	public Study addVariable( final Variable variable )
 	{
 		if ( this.variable == null )
-			this.variable = new HashSet<Variable>();
+			this.variable = new ArrayList<Variable>();
 
 		this.variable.add( variable );
 
 		return this;
 	}
 
-	public Set<DataFile> getDataFile()
+	public List<DataFile> getDataFile()
 	{
 		return this.dataFile;
 	}
 
-	public void setDataFile( final Set<DataFile> dataFile )
+	public void setDataFile( final List<DataFile> dataFile )
 	{
 		this.dataFile = dataFile;
 	}
@@ -107,19 +107,19 @@ public class Study extends Union_StudyGroupStudy
 	public Study addDataFile( final DataFile dataFile )
 	{
 		if ( this.dataFile == null )
-			this.dataFile = new HashSet<DataFile>();
+			this.dataFile = new ArrayList<DataFile>();
 
 		this.dataFile.add( dataFile );
 
 		return this;
 	}
 
-	public Set<LogicalDataSet> getProduct()
+	public List<LogicalDataSet> getProduct()
 	{
 		return this.product;
 	}
 
-	public void setProduct( final Set<LogicalDataSet> product )
+	public void setProduct( final List<LogicalDataSet> product )
 	{
 		this.product = product;
 	}
@@ -127,7 +127,7 @@ public class Study extends Union_StudyGroupStudy
 	public Study addProduct( final LogicalDataSet logicalDataSet )
 	{
 		if ( this.product == null )
-			this.product = new HashSet<LogicalDataSet>();
+			this.product = new ArrayList<LogicalDataSet>();
 
 		this.product.add( logicalDataSet );
 

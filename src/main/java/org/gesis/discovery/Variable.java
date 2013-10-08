@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -54,7 +54,7 @@ public class Variable extends Concept
 			name = "Variable_Question",
 			joinColumns = @JoinColumn( name = "variable_id" ),
 			inverseJoinColumns = @JoinColumn( name = "question_id" ) )
-	protected Set<Question> question;
+	protected List<Question> question;
 
 	// getter/setter
 
@@ -118,12 +118,12 @@ public class Variable extends Concept
 		this.universe = universe;
 	}
 
-	public Set<Question> getQuestion()
+	public List<Question> getQuestion()
 	{
 		return question;
 	}
 
-	public void setQuestion(final Set<Question> questions)
+	public void setQuestion(final List<Question> questions)
 	{
 		question = questions;
 	}
@@ -131,7 +131,7 @@ public class Variable extends Concept
 	public Variable addQuestion( final Question question )
 	{
 		if ( this.question == null )
-			this.question = new HashSet<Question>();
+			this.question = new ArrayList<Question>();
 
 		this.question.add( question );
 

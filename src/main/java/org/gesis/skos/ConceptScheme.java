@@ -1,7 +1,7 @@
 package org.gesis.skos;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,16 +23,16 @@ public class ConceptScheme extends Representation
 			name = "ConceptScheme_Concept",
 			joinColumns = @JoinColumn( name = "conceptScheme_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "hasTopConcept_id" ) )
-	protected Set<Concept> hasTopConcept;
+	protected List<Concept> hasTopConcept;
 
 	// getter/setter
 
-	public Set<Concept> getHasTopConcept()
+	public List<Concept> getHasTopConcept()
 	{
 		return hasTopConcept;
 	}
 
-	public void setHasTopConcept( final Set<Concept> skos_hasTopConcept )
+	public void setHasTopConcept( final List<Concept> skos_hasTopConcept )
 	{
 		hasTopConcept = skos_hasTopConcept;
 	}
@@ -40,7 +40,7 @@ public class ConceptScheme extends Representation
 	public ConceptScheme addHasTopConcept( final Concept concept )
 	{
 		if ( hasTopConcept == null )
-			hasTopConcept = new LinkedHashSet<Concept>();
+			hasTopConcept = new ArrayList<Concept>();
 
 		hasTopConcept.add( concept );
 

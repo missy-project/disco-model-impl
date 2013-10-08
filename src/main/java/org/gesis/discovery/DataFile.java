@@ -1,7 +1,7 @@
 package org.gesis.discovery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -41,7 +41,7 @@ public class DataFile extends Resource
 			name = "DataFile_ProvenanceStatement",
 			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "provenanceStatement_id" ) )
-	private Set<ProvenanceStatement> provenance;
+	private List<ProvenanceStatement> provenance;
 
 	// relations
 
@@ -50,21 +50,21 @@ public class DataFile extends Resource
 			name = "DataFile_Location",
 			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
-	protected Set<Location> spatial;
+	protected List<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "DataFile_PeriodOfTime",
 			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
-	protected Set<PeriodOfTime> temporal;
+	protected List<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
 			name = "DataFile_Concept",
 			joinColumns = @JoinColumn( name = "dataFile_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
-	protected Set<Concept> subject;
+	protected List<Concept> subject;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "mediaTypeOrExtend_id" )
@@ -92,12 +92,12 @@ public class DataFile extends Resource
 		this.caseQuantity = caseQuantity;
 	}
 
-	public Set<Location> getSpatial()
+	public List<Location> getSpatial()
 	{
 		return spatial;
 	}
 
-	public void setSpatial( final Set<Location> spatial )
+	public void setSpatial( final List<Location> spatial )
 	{
 		this.spatial = spatial;
 	}
@@ -105,19 +105,19 @@ public class DataFile extends Resource
 	public DataFile addSpatial( final Location location )
 	{
 		if ( spatial == null )
-			spatial = new HashSet<Location>();
+			spatial = new ArrayList<Location>();
 
 		spatial.add( location );
 
 		return this;
 	}
 
-	public Set<PeriodOfTime> getTemporal()
+	public List<PeriodOfTime> getTemporal()
 	{
 		return temporal;
 	}
 
-	public void setTemporal( final Set<PeriodOfTime> temporal )
+	public void setTemporal( final List<PeriodOfTime> temporal )
 	{
 		this.temporal = temporal;
 	}
@@ -125,19 +125,19 @@ public class DataFile extends Resource
 	public DataFile addTemporal( final PeriodOfTime periodOfTime )
 	{
 		if ( temporal == null )
-			temporal = new HashSet<PeriodOfTime>();
+			temporal = new ArrayList<PeriodOfTime>();
 
 		temporal.add( periodOfTime );
 
 		return this;
 	}
 
-	public Set<Concept> getSubject()
+	public List<Concept> getSubject()
 	{
 		return subject;
 	}
 
-	public void setSubject( final Set<Concept> subject )
+	public void setSubject( final List<Concept> subject )
 	{
 		this.subject = subject;
 	}
@@ -145,19 +145,19 @@ public class DataFile extends Resource
 	public DataFile addSubject( final Concept concept )
 	{
 		if ( subject == null )
-			subject = new HashSet<Concept>();
+			subject = new ArrayList<Concept>();
 
 		subject.add( concept );
 
 		return this;
 	}
 
-	public Set<ProvenanceStatement> getProvenance()
+	public List<ProvenanceStatement> getProvenance()
 	{
 		return provenance;
 	}
 
-	public void setProvenance( final Set<ProvenanceStatement> provenance )
+	public void setProvenance( final List<ProvenanceStatement> provenance )
 	{
 		this.provenance = provenance;
 	}
@@ -165,7 +165,7 @@ public class DataFile extends Resource
 	public DataFile addProvenance( final ProvenanceStatement provenanceStatement )
 	{
 		if ( provenance == null )
-			provenance = new HashSet<ProvenanceStatement>();
+			provenance = new ArrayList<ProvenanceStatement>();
 
 		provenance.add( provenanceStatement );
 
