@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -70,15 +71,31 @@ public abstract class Union_StudyGroupStudy extends Resource
 	private List<Universe> universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Agent_Publisher",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "publisher_id" ) )
 	private List<Agent> publisher;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Agent_Contributer",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "contributer_id" ) )
 	private List<Agent> contributer;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Agent_Creator",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "creator_id" ) )
 	private List<Agent> creator;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Agent_FundedBy",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "fundedBy_id" ) )
 	private List<Agent> fundedBy;
 
 	// getter/setter
