@@ -51,10 +51,11 @@ public class LangString extends PersistableResource
 	private String fr = null;
 
 	@ElementCollection( fetch = FetchType.LAZY )
-	@MapKeyColumn( name = "language", length = 2 )
-	@Column( name = "value" )
-	@CollectionTable( name = "Languages_Values", joinColumns = @JoinColumn( name = "langString_id" ) )
-	@Lob
+	@MapKeyColumn( name = "language", columnDefinition = "varchar(2)" )
+	@Column( name = "value", columnDefinition = "longtext" )
+	@CollectionTable(
+			name = "LangString_OtherLanguages",
+			joinColumns = @JoinColumn( name = "langString_id" ) )
 	private final Map<String, String> values = new HashMap<String, String>();
 
 	public LangString()
