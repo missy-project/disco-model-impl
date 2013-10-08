@@ -36,21 +36,21 @@ public class Concept extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Concept_ConceptScheme",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "inScheme_id" ) )
 	private Set<ConceptScheme> inScheme;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Concept_ConceptBroader",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "broader_id" ) )
 	private Set<Concept> broader;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Concept_ConceptNarrower",
 			joinColumns = @JoinColumn( name = "concept_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "narrower_id" ) )
@@ -58,6 +58,18 @@ public class Concept extends Resource
 
 	// getter/setter
 
+	/**
+	 * Corresponds to skos:definition. <br>
+	 * <br>
+	 * A skos:definition is a "documentation property (note property)", which in
+	 * skos refers to <i>"... information relating to SKOS concepts. There is no
+	 * restriction on the nature of this information, e.g., it could be plain
+	 * text, hypertext, or an image; it could be a definition, information about
+	 * the scope of a concept, editorial information, or any other type of
+	 * information."</i> (from the specification).
+	 * 
+	 * @return
+	 */
 	public LangString getDefinition()
 	{
 		return definition;
