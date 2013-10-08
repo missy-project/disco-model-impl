@@ -64,22 +64,22 @@ public abstract class Union_StudyGroupStudy extends Resource
 	private Concept kindOfData;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<AnalysisUnit> analysisUnit;
+	private Set<AnalysisUnit> analysisUnit;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Universe> universe;
+	private Set<Universe> universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> publisher;
+	private Set<Agent> publisher;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> contributer;
+	private Set<Agent> contributer;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> creator;
+	private Set<Agent> creator;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	protected Set<Agent> fundedBy;
+	private Set<Agent> fundedBy;
 
 	// getter/setter
 
