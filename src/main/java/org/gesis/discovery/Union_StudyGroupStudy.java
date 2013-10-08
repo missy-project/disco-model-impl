@@ -49,15 +49,31 @@ public abstract class Union_StudyGroupStudy extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_PeriodOfTime",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "temporal_id" ) )
 	private List<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Concept",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "subject_id" ) )
 	private List<Concept> subject;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Location",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "spacial_id" ) )
 	private List<Location> spacial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Document",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "ddiFile_id" ) )
 	private List<Document> ddiFile;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -65,9 +81,17 @@ public abstract class Union_StudyGroupStudy extends Resource
 	private Concept kindOfData;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_AnalysisUnit",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "analysisUnit_id" ) )
 	private List<AnalysisUnit> analysisUnit;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+	@JoinTable(
+			name = "Study_Universe",
+			joinColumns = @JoinColumn( name = "study_id" ),
+			inverseJoinColumns = @JoinColumn( name = "universe_id" ) )
 	private List<Universe> universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
