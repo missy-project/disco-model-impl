@@ -13,6 +13,23 @@ public class Location extends Resource
 
 	// properties
 
+	private String label;
+
 	// getter/setter
+
+	/**
+	 * Corresponds to rdfs:label.
+	 * 
+	 * @return
+	 */
+	public String getLabel()
+	{
+		return label;
+	}
+
+	public void setLabel( final String label )
+	{
+		this.label = label;
+	}
 
 }
