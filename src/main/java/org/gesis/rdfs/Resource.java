@@ -42,6 +42,21 @@ public class Resource extends PersistableResource
 		super();
 	}
 
+	/**
+	 * Corresponds to skos:prefLabel. <br>
+	 * <br>
+	 * From the specification: <br>
+	 * <i>"A lexical label is a string of UNICODE characters, such as "romantic
+	 * love" or "れんあい", in a given natural language, such as English or Japanese
+	 * (written here in hiragana). <br>
+	 * <br>
+	 * The preferred and alternative labels are useful when generating or
+	 * creating human-readable representations of a knowledge organization
+	 * system. These labels provide the strongest clues as to the meaning of a
+	 * SKOS concept."</i>
+	 * 
+	 * @return
+	 */
 	public LangString getPrefLabel()
 	{
 		return this.prefLabel;
@@ -52,6 +67,11 @@ public class Resource extends PersistableResource
 		this.prefLabel = skos_prefLabel;
 	}
 
+	/**
+	 * Corresponds to owl:versionInfo
+	 * 
+	 * @return
+	 */
 	public String getVersionInfo()
 	{
 		return versionInfo;
