@@ -79,10 +79,10 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
-			name = "Study_Agent_Contributer",
+ name = "Study_Agent_Contributor",
 			joinColumns = @JoinColumn( name = "study_id" ),
-			inverseJoinColumns = @JoinColumn( name = "contributer_id" ) )
-	private List<Agent> contributer;
+ inverseJoinColumns = @JoinColumn( name = "contributor_id" ) )
+	private List<Agent> contributor;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
@@ -310,22 +310,22 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this;
 	}
 
-	public List<Agent> getContributer()
+	public List<Agent> getContributor()
 	{
-		return contributer;
+		return contributor;
 	}
 
-	public void setContributer( final List<Agent> contributor )
+	public void setContributor( final List<Agent> contributor )
 	{
-		contributer = contributor;
+		this.contributor = contributor;
 	}
 
 	public Union_StudyGroupStudy addContributor( final Agent agent )
 	{
-		if ( contributer == null )
-			contributer = new ArrayList<Agent>();
+		if ( contributor == null )
+			contributor = new ArrayList<Agent>();
 
-		contributer.add( agent );
+		contributor.add( agent );
 
 		return this;
 	}
