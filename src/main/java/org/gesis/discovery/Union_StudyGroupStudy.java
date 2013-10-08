@@ -79,9 +79,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
- name = "Study_Agent_Contributor",
+			name = "Study_Agent_Contributor",
 			joinColumns = @JoinColumn( name = "study_id" ),
- inverseJoinColumns = @JoinColumn( name = "contributor_id" ) )
+			inverseJoinColumns = @JoinColumn( name = "contributor_id" ) )
 	private List<Agent> contributor;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
