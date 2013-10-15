@@ -34,29 +34,29 @@ public class LogicalDataSet extends Resource
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString title;
 
-	@Column
-	private int isPublic;
+	@Column( columnDefinition = "bit default 0" )
+	private boolean isPublic;
 
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_Location", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_Location",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "location_id" ) )
 	protected List<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_PeriodOfTime", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_PeriodOfTime",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "periodOfTime_id" ) )
 	protected List<PeriodOfTime> temporal;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_Concept", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_Concept",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected List<Concept> subject;
 
@@ -65,44 +65,44 @@ public class LogicalDataSet extends Resource
 	protected Universe universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_Instrument", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_Instrument",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "instrument_id" ) )
 	protected List<Instrument> instrument;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_Variable", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_Variable",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
 	protected List<Variable> containsVariable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_DataFile", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_DataFile",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected List<DataFile> dataFile;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_DataSet", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_DataSet",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataSet_id" ) )
 	protected List<DataSet> aggregation;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_LicenseDocument", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_LicenseDocument",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "licenseDocument_id" ) )
 	protected List<LicenseDocument> license;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "LogicalDataSet_Document", 
-			joinColumns = @JoinColumn( name = "logicalDataSet_id" ), 
+	@JoinTable(
+			name = "LogicalDataSet_Document",
+			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "rightsStatement_id" ) )
 	protected List<RightsStatement> accessRights;
 
@@ -118,12 +118,12 @@ public class LogicalDataSet extends Resource
 		title = dcterms_title;
 	}
 
-	public int isPublic()
+	public boolean isPublic()
 	{
 		return isPublic;
 	}
 
-	public void setPublic( final int isPublic )
+	public void setPublic( final boolean isPublic )
 	{
 		this.isPublic = isPublic;
 	}
