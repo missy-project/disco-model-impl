@@ -47,8 +47,8 @@ public class Resource extends PersistableResource
 	 * <br>
 	 * From the specification: <br>
 	 * <i>"A lexical label is a string of UNICODE characters, such as "romantic
-	 * love" or "れんあい", in a given natural language, such as English or Japanese
-	 * (written here in hiragana). <br>
+	 * love", in a given natural language, such as English or Japanese (written
+	 * here in hiragana). <br>
 	 * <br>
 	 * The preferred and alternative labels are useful when generating or
 	 * creating human-readable representations of a knowledge organization
