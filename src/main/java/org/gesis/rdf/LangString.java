@@ -325,4 +325,13 @@ public class LangString extends PersistableResource
 		return createLangString( loc, value );
 	}
 
+	/**
+	 * Factory-method for a LangString-object, that has no values for no country.
+	 * @return
+	 */
+	public static LangString blank()
+	{
+		return new LangString();
+	}
+
 }
