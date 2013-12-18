@@ -35,7 +35,7 @@ public class LogicalDataSet extends Resource
 	private LangString title;
 
 	@Column( columnDefinition = "bit default 0" )
-	private boolean isPublic;
+	private boolean isPublic = false;
 
 	// relations
 

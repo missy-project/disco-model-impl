@@ -30,7 +30,7 @@ public class Concept extends Resource
 	@Column
 	private String notation;
 
-	@Column
+	@Column( columnDefinition = "bit default 0" )
 	private Boolean isValid = false;
 
 	// relations
