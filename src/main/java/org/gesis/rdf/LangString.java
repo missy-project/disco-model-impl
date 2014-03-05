@@ -268,7 +268,7 @@ public class LangString extends PersistableResource
 	 * @param value
 	 * @return
 	 */
-	public static LangString createUKLangString( final String value )
+	public static LangString uk( final String value )
 	{
 		return createLangString( Locales.UNITED_KINGDOM, value );
 	}
@@ -279,7 +279,7 @@ public class LangString extends PersistableResource
 	 * @param value
 	 * @return
 	 */
-	public static LangString createDELangString( final String value )
+	public static LangString de( final String value )
 	{
 		return createLangString( Locales.GERMANY, value );
 	}
@@ -290,7 +290,7 @@ public class LangString extends PersistableResource
 	 * @param value
 	 * @return
 	 */
-	public static LangString createFRLangString( final String value )
+	public static LangString fr( final String value )
 	{
 		return createLangString( Locales.FRANCE, value );
 	}

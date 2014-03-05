@@ -146,7 +146,7 @@ public class LangStringTest
 	@Test
 	public void createUKLangString()
 	{
-		LangString ls = LangString.createUKLangString( "some value" );
+		LangString ls = LangString.uk( "some value" );
 		assertNotNull( ls );
 		assertEquals( "some value", ls.getEn() );
 		assertNull( ls.getDe() );
@@ -155,7 +155,7 @@ public class LangStringTest
 	@Test
 	public void createDELangString()
 	{
-		LangString ls = LangString.createDELangString( "some value" );
+		LangString ls = LangString.de( "some value" );
 		assertNotNull( ls );
 		assertEquals( "some value", ls.getDe() );
 		assertNull( ls.getEn() );
@@ -164,7 +164,7 @@ public class LangStringTest
 	@Test
 	public void createFRLangString()
 	{
-		LangString ls = LangString.createFRLangString( "some value" );
+		LangString ls = LangString.fr( "some value" );
 		assertNotNull( ls );
 		assertEquals( "some value", ls.getFr() );
 		assertNull( ls.getDe() );
