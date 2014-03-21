@@ -39,7 +39,7 @@ public class Variable extends Concept
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "variableDefinition_id" )
-	protected VariableDefinition basedOn;
+	protected RepresentedVariable basedOn;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinColumn( name = "representation_id" )
@@ -88,12 +88,12 @@ public class Variable extends Concept
 		this.concept = concept;
 	}
 
-	public VariableDefinition getBasedOn()
+	public RepresentedVariable getBasedOn()
 	{
 		return basedOn;
 	}
 
-	public void setBasedOn(final VariableDefinition dataElement)
+	public void setBasedOn(final RepresentedVariable dataElement)
 	{
 		basedOn = dataElement;
 	}

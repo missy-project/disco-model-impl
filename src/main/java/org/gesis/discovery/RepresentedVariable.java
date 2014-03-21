@@ -20,7 +20,7 @@ import org.gesis.skos.Concept;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class VariableDefinition extends Resource
+public class RepresentedVariable extends Resource
 {
 
 	// properties
@@ -68,7 +68,7 @@ public class VariableDefinition extends Resource
 		this.universe = universe;
 	}
 
-	public VariableDefinition addUniverse( final Universe universe )
+	public RepresentedVariable addUniverse( final Universe universe )
 	{
 		if ( this.universe == null )
 			this.universe = new ArrayList<Universe>();
@@ -97,7 +97,7 @@ public class VariableDefinition extends Resource
 		this.representation = representation;
 	}
 
-	public VariableDefinition addRepresentation( final Representation representation )
+	public RepresentedVariable addRepresentation( final Representation representation )
 	{
 		if ( this.representation == null )
 			this.representation = new ArrayList<Representation>();
