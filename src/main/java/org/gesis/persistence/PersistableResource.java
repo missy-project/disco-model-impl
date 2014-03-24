@@ -1,49 +1,31 @@
 package org.gesis.persistence;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import org.gesis.ddi.util.IdentifierFactory;
-
 /**
+ * Extends {@link PersistableType} with Resource specific attributes, namely a
+ * <i>URN</i>.
+ * 
  * @author matthaeus
  * 
  */
 @MappedSuperclass
-public abstract class PersistableResource implements IPersistableResource
+public abstract class PersistableResource extends PersistableType
 {
 
-	@Column( length = 40 )
-	@Id
-	private String id;
+	// properties
 
 	@Column( length = 100 )
 	private String urn;
 
+	// getter / setter
+
 	public PersistableResource()
 	{
-		id = IdentifierFactory.getNextDefaultIdentifier();
+		super();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.gesis.persistence.IPersistableResource#getId()
-	 */
-	@Override
-	public String getId()
-	{
-		return id;
-	}
-
-	public void setId( final String id )
-	{
-		this.id = id;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.gesis.persistence.IPersistableResource#getURN()
-	 */
-	@Override
 	public String getURN()
 	{
 		return urn;
