@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 
 import org.gesis.dcterms.Location;
 import org.gesis.dcterms.PeriodOfTime;
-import org.gesis.foaf.Agent;
 import org.gesis.foaf.Document;
 import org.gesis.rdf.LangString;
 import org.gesis.rdfs.Resource;
@@ -69,17 +68,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private List<Universe> universe;
 
-	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List<Agent> publisher;
-
-	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List<Agent> contributor;
-
-	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List<Agent> creator;
-
-	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List<Agent> fundedBy;
+	/* For relationships to Agent please see the corresponding subtypes. */
 
 	// getter/setter
 
@@ -269,86 +258,6 @@ public abstract class Union_StudyGroupStudy extends Resource
 			this.analysisUnit = new ArrayList<AnalysisUnit>();
 
 		this.analysisUnit.add( analysisUnit );
-
-		return this;
-	}
-
-	public List<Agent> getPublisher()
-	{
-		return publisher;
-	}
-
-	public void setPublisher( final List<Agent> publisher )
-	{
-		this.publisher = publisher;
-	}
-
-	public Union_StudyGroupStudy addPublisher( final Agent agent )
-	{
-		if ( publisher == null )
-			publisher = new ArrayList<Agent>();
-
-		publisher.add( agent );
-
-		return this;
-	}
-
-	public List<Agent> getContributor()
-	{
-		return contributor;
-	}
-
-	public void setContributor( final List<Agent> contributor )
-	{
-		this.contributor = contributor;
-	}
-
-	public Union_StudyGroupStudy addContributor( final Agent agent )
-	{
-		if ( contributor == null )
-			contributor = new ArrayList<Agent>();
-
-		contributor.add( agent );
-
-		return this;
-	}
-
-	public List<Agent> getCreator()
-	{
-		return creator;
-	}
-
-	public void setCreator( final List<Agent> creator )
-	{
-		this.creator = creator;
-	}
-
-	public Union_StudyGroupStudy addCreator( final Agent agent )
-	{
-		if ( creator == null )
-			creator = new ArrayList<Agent>();
-
-		creator.add( agent );
-
-		return this;
-	}
-
-	public List<Agent> getFundedBy()
-	{
-		return fundedBy;
-	}
-
-	public void setFundedBy( final List<Agent> fundedBy )
-	{
-		this.fundedBy = fundedBy;
-	}
-
-	public Union_StudyGroupStudy addFundedBy( final Agent agent )
-	{
-		if ( fundedBy == null )
-			fundedBy = new ArrayList<Agent>();
-
-		fundedBy.add( agent );
 
 		return this;
 	}
