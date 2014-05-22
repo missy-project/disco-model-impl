@@ -1,6 +1,6 @@
 This package contains the 
 
-**Implementation of the disco-spec - the DDI Discovery Vocabulary**
+**Implementation of the disco-spec - the DDI Discovery Vocabulary Specification**
 
 ### DDI-RDF Discovery Vocabulary (disco)
 The Data Documentation Initiative (DDI) is an acknowledged international standard for the documentation and management of data from the social, behavioral, and economic sciences. Statistical domain experts, i.e. representatives of national statistical institutes and national data archives, and Linked Open Data community members have developed the DDI-RDF Discovery Vocabulary – based on a subset of the DDI - in order to support the discovery of statistical data as well as metadata. This vocabulary supports dentifying programmatically the relevant data sets for a specific research purpose.
