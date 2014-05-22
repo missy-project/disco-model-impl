@@ -48,8 +48,8 @@ It is assumed to have the validation NOT coupled to the model, thus the existenc
 
 ### Editors
 
-* Matthäus Zloch [E-Mail](matthaeus.zloch@gesis.org)
-* Thomas Bosch [E-Mail](thomas.bosch@gesis.org)
+* Matthäus Zloch <matthaeus.zloch@gesis.org>
+* Thomas Bosch <thomas.bosch@gesis.org>
 
 ### License & Copyright
 
