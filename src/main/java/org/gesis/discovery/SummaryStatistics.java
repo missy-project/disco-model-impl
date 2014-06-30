@@ -25,28 +25,28 @@ public class SummaryStatistics extends DescriptiveStatistics
 	// properties
 
 	@Column
-	private float maximum;
+	private double maximum;
 
 	@Column
-	private float mean;
+	private double mean;
 
 	@Column
-	private float median;
+	private double median;
 
 	@Column
-	private float minimum;
+	private double minimum;
 
 	@Column
-	private float mode;
+	private double mode;
 
 	@Column
-	private float standardDeviation;
+	private double standardDeviation;
 
 	@Column
 	private int numberOfCases = -1;
 
 	@Column
-	private float percentage = -1;
+	private double percentage = -1;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString computationBase;
@@ -65,52 +65,52 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
-	public float getMaximum()
+	public double getMaximum()
 	{
 		return maximum;
 	}
 
-	public void setMaximum( final float maximum )
+	public void setMaximum( final double maximum )
 	{
 		this.maximum = maximum;
 	}
 
-	public float getMean()
+	public double getMean()
 	{
 		return mean;
 	}
 
-	public void setMean( final float mean )
+	public void setMean( final double mean )
 	{
 		this.mean = mean;
 	}
 
-	public float getMedian()
+	public double getMedian()
 	{
 		return median;
 	}
 
-	public void setMedian( final float median )
+	public void setMedian( final double median )
 	{
 		this.median = median;
 	}
 
-	public float getMinimum()
+	public double getMinimum()
 	{
 		return minimum;
 	}
 
-	public void setMinimum( final float minimum )
+	public void setMinimum( final double minimum )
 	{
 		this.minimum = minimum;
 	}
 
-	public float getMode()
+	public double getMode()
 	{
 		return mode;
 	}
 
-	public void setMode( final float mode )
+	public void setMode( final double mode )
 	{
 		this.mode = mode;
 	}
@@ -125,12 +125,12 @@ public class SummaryStatistics extends DescriptiveStatistics
 		this.numberOfCases = numberOfCases;
 	}
 
-	public float getPercentage()
+	public double getPercentage()
 	{
 		return percentage;
 	}
 
-	public void setPercentage( final float percentage )
+	public void setPercentage( final double percentage )
 	{
 		this.percentage = percentage;
 	}
@@ -165,12 +165,12 @@ public class SummaryStatistics extends DescriptiveStatistics
 		return this;
 	}
 
-	public float getStandardDeviation()
+	public double getStandardDeviation()
 	{
 		return standardDeviation;
 	}
 
-	public void setStandardDeviation( final float standardDeviation )
+	public void setStandardDeviation( final double standardDeviation )
 	{
 		this.standardDeviation = standardDeviation;
 	}

@@ -29,10 +29,10 @@ public class CategoryStatistics extends DescriptiveStatistics
 	private int frequency = -1;
 
 	@Column
-	private float cumulativePercentage = -1;
+	private double cumulativePercentage = -1;
 
 	@Column
-	private float percentage = -1;
+	private double percentage = -1;
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString computationBase;
@@ -57,27 +57,27 @@ public class CategoryStatistics extends DescriptiveStatistics
 		return frequency;
 	}
 
-	public void setFrequency(final int frequency)
+	public void setFrequency( final int frequency )
 	{
 		this.frequency = frequency;
 	}
 
-	public float getCumulativePercentage()
+	public double getCumulativePercentage()
 	{
 		return cumulativePercentage;
 	}
 
-	public void setCumulativePercentage( final float cumulativePercentage )
+	public void setCumulativePercentage( final double cumulativePercentage )
 	{
 		this.cumulativePercentage = cumulativePercentage;
 	}
 
-	public float getPercentage()
+	public double getPercentage()
 	{
 		return percentage;
 	}
 
-	public void setPercentage( final float percentage )
+	public void setPercentage( final double percentage )
 	{
 		this.percentage = percentage;
 	}
@@ -97,7 +97,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 		return statisticsCategory;
 	}
 
-	public void setStatisticsCategory(final List<Concept> categories)
+	public void setStatisticsCategory( final List<Concept> categories )
 	{
 		statisticsCategory = categories;
 	}
