@@ -59,7 +59,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	private List<Document> ddiFile;
 
 	@ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinColumn( name="concept_id" )
+	@JoinColumn( name = "concept_id" )
 	private Concept kindOfData;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )

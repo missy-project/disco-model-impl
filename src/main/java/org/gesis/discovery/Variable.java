@@ -50,10 +50,7 @@ public class Variable extends Concept
 	protected Universe universe;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable(
-			name = "Variable_Question",
-			joinColumns = @JoinColumn( name = "variable_id" ),
-			inverseJoinColumns = @JoinColumn( name = "question_id" ) )
+	@JoinTable( name = "Variable_Question", joinColumns = @JoinColumn( name = "variable_id" ), inverseJoinColumns = @JoinColumn( name = "question_id" ) )
 	protected List<Question> question;
 
 	// getter/setter
