@@ -90,9 +90,9 @@ public class Concept extends Resource
 		return notation;
 	}
 
-	public void setNotation( final String skos_notation )
+	public void setNotation( final String notation )
 	{
-		notation = skos_notation;
+		this.notation = notation;
 	}
 
 	public Boolean isValid()
