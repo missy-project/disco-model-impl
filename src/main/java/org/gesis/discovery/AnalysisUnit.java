@@ -11,4 +11,9 @@ import org.gesis.skos.Concept;
 public class AnalysisUnit extends Concept
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

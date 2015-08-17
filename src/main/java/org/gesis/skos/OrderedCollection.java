@@ -14,6 +14,11 @@ import org.gesis.rdf.List;
 public class OrderedCollection extends Representation
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations

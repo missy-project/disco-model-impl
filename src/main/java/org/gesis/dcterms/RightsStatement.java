@@ -19,20 +19,25 @@ import org.gesis.rdfs.Resource;
 public class RightsStatement extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
-	
+
 	@OneToOne
 	private LangString description;
 
 	// relations
 
 	@ManyToMany
-	@JoinTable( 
+	@JoinTable(
 			name = "RightsStatement_Document",
-			joinColumns = @JoinColumn( name = "rightsStatement_id" ), 
+			joinColumns = @JoinColumn( name = "rightsStatement_id" ),
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
 	protected List<Document> seeAlso;
-	
+
 	// getter/setter
 
 	public List<Document> getSeeAlso()
@@ -54,5 +59,5 @@ public class RightsStatement extends Resource
 	{
 		this.description = dcterms_description;
 	}
-	
+
 }

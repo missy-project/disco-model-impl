@@ -19,21 +19,26 @@ import org.gesis.skos.Concept;
 public class Questionnaire extends Instrument
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
-			name="Questionnaire_Concept", 
-			joinColumns=@JoinColumn(name="questionnaire_id"), 
+			name="Questionnaire_Concept",
+			joinColumns=@JoinColumn(name="questionnaire_id"),
 			inverseJoinColumns=@JoinColumn(name="concept_id"))
 	protected List<Concept> collectionMode;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
-			name="Questionnaire_Question", 
-			joinColumns=@JoinColumn(name="questionnaire_id"), 
+			name="Questionnaire_Question",
+			joinColumns=@JoinColumn(name="questionnaire_id"),
 			inverseJoinColumns=@JoinColumn(name="question_id"))
 	protected List<Question> question;
 

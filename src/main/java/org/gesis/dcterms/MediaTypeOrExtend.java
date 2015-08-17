@@ -10,6 +10,12 @@ import org.gesis.skos.Concept;
 @Inheritance( strategy = InheritanceType.JOINED )
 public class MediaTypeOrExtend extends Concept
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations

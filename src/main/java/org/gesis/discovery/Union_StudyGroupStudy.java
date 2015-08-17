@@ -23,6 +23,12 @@ import org.gesis.skos.Concept;
 @MappedSuperclass
 public abstract class Union_StudyGroupStudy extends Resource
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )

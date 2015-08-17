@@ -14,6 +14,11 @@ import org.gesis.persistence.PersistableResource;
 public class Identifier extends PersistableResource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column

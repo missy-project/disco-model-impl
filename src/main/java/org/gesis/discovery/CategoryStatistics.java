@@ -23,6 +23,11 @@ import org.gesis.skos.Concept;
 public class CategoryStatistics extends DescriptiveStatistics
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column
@@ -40,9 +45,9 @@ public class CategoryStatistics extends DescriptiveStatistics
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "CategoryStatistics_Concept", 
-			joinColumns = @JoinColumn( name = "categoryStatistics_id" ), 
+	@JoinTable(
+			name = "CategoryStatistics_Concept",
+			joinColumns = @JoinColumn( name = "categoryStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "concept_id" ) )
 	protected List<Concept> statisticsCategory;
 

@@ -23,6 +23,11 @@ import org.gesis.skos.Concept;
 public class RepresentedVariable extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column

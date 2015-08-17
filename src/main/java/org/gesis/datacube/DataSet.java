@@ -19,6 +19,11 @@ import org.gesis.rdfs.Resource;
 public class DataSet extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )

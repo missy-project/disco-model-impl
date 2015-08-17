@@ -11,4 +11,9 @@ import org.gesis.discovery.Representation;
 public class Datatype extends Representation
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

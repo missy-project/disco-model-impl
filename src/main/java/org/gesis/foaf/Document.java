@@ -11,4 +11,9 @@ import org.gesis.rdfs.Resource;
 public class Document extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

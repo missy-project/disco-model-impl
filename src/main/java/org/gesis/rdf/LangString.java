@@ -35,6 +35,11 @@ import org.gesis.persistence.PersistableResource;
 public class LangString extends PersistableResource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column( unique = true, name = "message_key" )
 	private String messageKey;
 

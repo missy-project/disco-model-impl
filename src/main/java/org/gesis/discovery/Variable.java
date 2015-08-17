@@ -22,6 +22,11 @@ import org.gesis.skos.Concept;
 public class Variable extends Concept
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )

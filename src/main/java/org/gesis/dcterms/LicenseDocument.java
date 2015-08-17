@@ -9,4 +9,9 @@ import javax.persistence.InheritanceType;
 public class LicenseDocument extends RightsStatement
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }
