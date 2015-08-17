@@ -37,9 +37,10 @@ public abstract class PersistableResource extends PersistableType implements Ser
 		return urn;
 	}
 
-	public void setURN( final String urn )
+	public PersistableResource setURN( final String urn )
 	{
 		this.urn = urn;
+		return this;
 	}
 
 }

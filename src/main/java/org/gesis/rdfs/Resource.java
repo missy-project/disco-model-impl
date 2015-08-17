@@ -66,9 +66,10 @@ public class Resource extends PersistableResource
 		return this.prefLabel;
 	}
 
-	public void setPrefLabel( final LangString prefLabel )
+	public Resource setPrefLabel( final LangString prefLabel )
 	{
 		this.prefLabel = prefLabel;
+		return this;
 	}
 
 	/**
@@ -81,9 +82,10 @@ public class Resource extends PersistableResource
 		return versionInfo;
 	}
 
-	public void setVersionInfo( final String versionInfo )
+	public Resource setVersionInfo( final String versionInfo )
 	{
 		this.versionInfo = versionInfo;
+		return this;
 	}
 
 	public List<Identifier> getIdentifier()

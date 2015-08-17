@@ -59,9 +59,10 @@ public class Question extends Concept
 		return questionText;
 	}
 
-	public void setQuestionText( final LangString questionText )
+	public Question setQuestionText( final LangString questionText )
 	{
 		this.questionText = questionText;
+		return this;
 	}
 
 	public List<Representation> getResponseDomain()

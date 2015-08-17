@@ -80,9 +80,10 @@ public class Concept extends Resource
 		return definition;
 	}
 
-	public void setDefinition( final LangString definition )
+	public Concept setDefinition( final LangString definition )
 	{
 		this.definition = definition;
+		return this;
 	}
 
 	public String getNotation()
@@ -90,9 +91,10 @@ public class Concept extends Resource
 		return notation;
 	}
 
-	public void setNotation( final String notation )
+	public Concept setNotation( final String notation )
 	{
 		this.notation = notation;
+		return this;
 	}
 
 	public Boolean isValid()
@@ -100,9 +102,10 @@ public class Concept extends Resource
 		return isValid;
 	}
 
-	public void setValid( final Boolean isValid )
+	public Concept setValid( final Boolean isValid )
 	{
 		this.isValid = isValid;
+		return this;
 	}
 
 	public Concept addInScheme( final ConceptScheme conceptScheme )
@@ -120,9 +123,10 @@ public class Concept extends Resource
 		return inScheme;
 	}
 
-	public void setInScheme( final List<ConceptScheme> inScheme )
+	public Concept setInScheme( final List<ConceptScheme> inScheme )
 	{
 		this.inScheme = inScheme;
+		return this;
 	}
 
 	public Concept addBroader( final Concept concept )
