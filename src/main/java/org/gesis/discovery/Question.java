@@ -113,4 +113,15 @@ public class Question extends Concept
 		this.universe = universe;
 	}
 
+	/**
+	 * @param questionText
+	 * @return
+	 */
+	public static Question withQuestionText( final LangString questionText )
+	{
+		Question question = new Question();
+		question.setQuestionText( questionText );
+
+		return question;
+	}
 }
