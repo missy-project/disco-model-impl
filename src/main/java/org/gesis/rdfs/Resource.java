@@ -66,9 +66,9 @@ public class Resource extends PersistableResource
 		return this.prefLabel;
 	}
 
-	public void setPrefLabel( final LangString skos_prefLabel )
+	public void setPrefLabel( final LangString prefLabel )
 	{
-		this.prefLabel = skos_prefLabel;
+		this.prefLabel = prefLabel;
 	}
 
 	/**
