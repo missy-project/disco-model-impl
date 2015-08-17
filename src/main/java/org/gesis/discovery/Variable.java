@@ -139,4 +139,19 @@ public class Variable extends Concept
 
 		return this;
 	}
+
+	/**
+	 * Factory-method for obtaining a Variable with predefined <i>notation</i>.
+	 * 
+	 * @param notation
+	 *            May be null.
+	 * @return
+	 */
+	public static Variable withNotation( final String notation )
+	{
+		Variable variable = new Variable();
+		variable.setNotation( notation );
+
+		return variable;
+	}
 }
