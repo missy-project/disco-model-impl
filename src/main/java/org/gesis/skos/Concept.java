@@ -80,9 +80,9 @@ public class Concept extends Resource
 		return definition;
 	}
 
-	public void setDefinition( final LangString skos_definition )
+	public void setDefinition( final LangString definition )
 	{
-		definition = skos_definition;
+		this.definition = definition;
 	}
 
 	public String getNotation()
@@ -120,9 +120,9 @@ public class Concept extends Resource
 		return inScheme;
 	}
 
-	public void setInScheme( final List<ConceptScheme> skos_inScheme )
+	public void setInScheme( final List<ConceptScheme> inScheme )
 	{
-		inScheme = skos_inScheme;
+		this.inScheme = inScheme;
 	}
 
 	public Concept addBroader( final Concept concept )
@@ -140,9 +140,9 @@ public class Concept extends Resource
 		return broader;
 	}
 
-	public void setBroader( final List<Concept> skos_broader )
+	public void setBroader( final List<Concept> broader )
 	{
-		broader = skos_broader;
+		this.broader = broader;
 	}
 
 	public Concept addNarrower( final Concept concept )
@@ -160,9 +160,38 @@ public class Concept extends Resource
 		return narrower;
 	}
 
-	public void setNarrower( final List<Concept> skos_narrower )
+	public void setNarrower( final List<Concept> narrower )
 	{
-		narrower = skos_narrower;
+		this.narrower = narrower;
 	}
 
+	/**
+	 * Factory-method which returns an object of type T (of Class-type
+	 * <i>clazz</i>) with predefined <i>notation</i>. The returned object is of
+	 * superclass Concept. The concreate subclass can be passed as an parameter. <br>
+	 * <br>
+	 * E.g.
+	 * <code>Concept.withNotation( Question.class, "question notation" );</code>
+	 * 
+	 * @param notation
+	 * @return
+	 */
+	public static <T extends Concept> T withNotation( final Class<T> clazz, final String notation )
+	{
+		try
+		{
+			T c = clazz.newInstance();
+			c.setNotation( notation );
+
+			return c;
+		}
+		catch ( InstantiationException e )
+		{
+			return null;
+		}
+		catch ( IllegalAccessException e )
+		{
+			return null;
+		}
+	}
 }
