@@ -34,4 +34,13 @@ public class ConceptTest
 		assertEquals( "Question", question.getClass().getSimpleName() );
 		assertEquals( "question notation", question.getNotation() );
 	}
+
+	@Test
+	public void equalObjects()
+	{
+		Variable targetClassNotation = Variable.withNotation( Variable.class, "notation of target class" );
+		Variable ownNotation = Variable.withNotation( "notation of own class" );
+		assertEquals( "org.gesis.discovery.Variable", targetClassNotation.getClass().getName() );
+		assertEquals( "org.gesis.discovery.Variable", ownNotation.getClass().getName() );
+	}
 }
