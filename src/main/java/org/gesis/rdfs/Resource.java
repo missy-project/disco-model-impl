@@ -97,4 +97,36 @@ public class Resource extends PersistableResource
 	{
 		this.identifier = identifier;
 	}
+
+	/**
+	 * Factory-method which returns an object of type T (of Class-type
+	 * <i>clazz</i>) with predefined <i>prefLabel</i>. The returned object is of
+	 * superclass Resource. The concreate subclass can be passed as an
+	 * parameter. <br>
+	 * <br>
+	 * E.g.
+	 * <code>Resource.withPrefLabel( Questionnaire.class, LangString.withLocaleAndValue( Locale.UK, "name of questionnaire" ) );</code>
+	 * 
+	 * @param clazz
+	 * @param prefLabel
+	 * @return
+	 */
+	public static <T extends Resource> T withPrefLabel( final Class<T> clazz, final LangString prefLabel )
+	{
+		try
+		{
+			T resource = clazz.newInstance();
+			resource.setPrefLabel( prefLabel );
+
+			return resource;
+		}
+		catch ( InstantiationException e )
+		{
+			return null;
+		}
+		catch ( IllegalAccessException e )
+		{
+			return null;
+		}
+	}
 }
