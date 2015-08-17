@@ -20,6 +20,10 @@ import org.gesis.rdf.LangString;
 @Inheritance( strategy = InheritanceType.JOINED )
 public class Resource extends PersistableResource
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	// properties
 

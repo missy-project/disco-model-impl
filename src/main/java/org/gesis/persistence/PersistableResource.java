@@ -1,5 +1,7 @@
 package org.gesis.persistence;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
@@ -11,11 +13,15 @@ import javax.persistence.MappedSuperclass;
  * 
  */
 @MappedSuperclass
-public abstract class PersistableResource extends PersistableType
+public abstract class PersistableResource extends PersistableType implements Serializable
 {
 
-	// properties
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	// properties
 	@Column( length = 100 )
 	private String urn;
 
