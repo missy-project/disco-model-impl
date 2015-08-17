@@ -189,7 +189,7 @@ public class LangStringTest
 	@Test
 	public void createDECountryCodeLangString()
 	{
-		LangString ls = LangString.withCountryAndValue( "de", "value" );
+		LangString ls = LangString.withLocaleAndValue( "de", "value" );
 		assertNotNull( ls );
 		assertEquals( "value", ls.getDe() );
 		assertNull( ls.getEn() );
@@ -198,7 +198,7 @@ public class LangStringTest
 	@Test
 	public void createUKCountryCodeLangString()
 	{
-		LangString ls = LangString.withCountryAndValue( "uk", "value" );
+		LangString ls = LangString.withLocaleAndValue( "uk", "value" );
 		assertNotNull( ls );
 		assertEquals( "value", ls.getEn() );
 		assertNull( ls.getDe() );
@@ -207,7 +207,7 @@ public class LangStringTest
 	@Test
 	public void createFRCountryCodeLangString()
 	{
-		LangString ls = LangString.withCountryAndValue( "fr", "value" );
+		LangString ls = LangString.withLocaleAndValue( "fr", "value" );
 		assertNotNull( ls );
 		assertEquals( "value", ls.getFr() );
 		assertNull( ls.getEn() );
@@ -216,7 +216,7 @@ public class LangStringTest
 	@Test
 	public void createNLCountryCodeLangString()
 	{
-		LangString ls = LangString.withCountryAndValue( "nl", "value" );
+		LangString ls = LangString.withLocaleAndValue( "nl", "value" );
 		assertNotNull( ls );
 		assertEquals( "value", ls.getValue( Locales.getLocale( "nl" ) ) );
 		assertNull( ls.getEn() );

@@ -324,7 +324,7 @@ public class LangString extends PersistableResource
 	 * @param value
 	 * @return
 	 */
-	public static LangString withCountryAndValue( final String country, final String value )
+	public static LangString withLocaleAndValue( final String country, final String value )
 	{
 		Locale loc = Locales.getLocale( country );
 
