@@ -65,9 +65,10 @@ public class Variable extends Concept
 		return description;
 	}
 
-	public void setDescription( final LangString description )
+	public Variable setDescription( final LangString description )
 	{
 		this.description = description;
+		return this;
 	}
 
 	public AnalysisUnit getAnalysisUnit()
@@ -75,9 +76,10 @@ public class Variable extends Concept
 		return analysisUnit;
 	}
 
-	public void setAnalysisUnit( final AnalysisUnit analysisUnit )
+	public Variable setAnalysisUnit( final AnalysisUnit analysisUnit )
 	{
 		this.analysisUnit = analysisUnit;
+		return this;
 	}
 
 	public Concept getConcept()
@@ -85,9 +87,10 @@ public class Variable extends Concept
 		return concept;
 	}
 
-	public void setConcept( final Concept concept )
+	public Variable setConcept( final Concept concept )
 	{
 		this.concept = concept;
+		return this;
 	}
 
 	public RepresentedVariable getBasedOn()
@@ -95,9 +98,10 @@ public class Variable extends Concept
 		return basedOn;
 	}
 
-	public void setBasedOn( final RepresentedVariable dataElement )
+	public Variable setBasedOn( final RepresentedVariable dataElement )
 	{
 		basedOn = dataElement;
+		return this;
 	}
 
 	public Representation getRepresentation()
@@ -105,9 +109,10 @@ public class Variable extends Concept
 		return representation;
 	}
 
-	public void setRepresentation( final Representation representation )
+	public Variable setRepresentation( final Representation representation )
 	{
 		this.representation = representation;
+		return this;
 	}
 
 	public Universe getUniverse()
@@ -115,9 +120,10 @@ public class Variable extends Concept
 		return universe;
 	}
 
-	public void setUniverse( final Universe universe )
+	public Variable setUniverse( final Universe universe )
 	{
 		this.universe = universe;
+		return this;
 	}
 
 	public List<Question> getQuestion()
@@ -125,9 +131,10 @@ public class Variable extends Concept
 		return question;
 	}
 
-	public void setQuestion( final List<Question> questions )
+	public Variable setQuestion( final List<Question> questions )
 	{
 		question = questions;
+		return this;
 	}
 
 	public Variable addQuestion( final Question question )
