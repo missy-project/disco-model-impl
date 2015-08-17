@@ -65,9 +65,9 @@ public class Variable extends Concept
 		return description;
 	}
 
-	public void setDescription( final LangString dcterms_description )
+	public void setDescription( final LangString description )
 	{
-		this.description = dcterms_description;
+		this.description = description;
 	}
 
 	public AnalysisUnit getAnalysisUnit()
@@ -75,7 +75,7 @@ public class Variable extends Concept
 		return analysisUnit;
 	}
 
-	public void setAnalysisUnit(final AnalysisUnit analysisUnit)
+	public void setAnalysisUnit( final AnalysisUnit analysisUnit )
 	{
 		this.analysisUnit = analysisUnit;
 	}
@@ -85,7 +85,7 @@ public class Variable extends Concept
 		return concept;
 	}
 
-	public void setConcept(final Concept concept)
+	public void setConcept( final Concept concept )
 	{
 		this.concept = concept;
 	}
@@ -95,7 +95,7 @@ public class Variable extends Concept
 		return basedOn;
 	}
 
-	public void setBasedOn(final RepresentedVariable dataElement)
+	public void setBasedOn( final RepresentedVariable dataElement )
 	{
 		basedOn = dataElement;
 	}
@@ -115,7 +115,7 @@ public class Variable extends Concept
 		return universe;
 	}
 
-	public void setUniverse(final Universe universe)
+	public void setUniverse( final Universe universe )
 	{
 		this.universe = universe;
 	}
@@ -125,7 +125,7 @@ public class Variable extends Concept
 		return question;
 	}
 
-	public void setQuestion(final List<Question> questions)
+	public void setQuestion( final List<Question> questions )
 	{
 		question = questions;
 	}
