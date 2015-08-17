@@ -275,7 +275,7 @@ public class LangString extends PersistableResource
 	 */
 	public static LangString uk( final String value )
 	{
-		return createLangString( Locales.UNITED_KINGDOM, value );
+		return withLocaleAndValue( Locales.UNITED_KINGDOM, value );
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class LangString extends PersistableResource
 	 */
 	public static LangString de( final String value )
 	{
-		return createLangString( Locales.GERMANY, value );
+		return withLocaleAndValue( Locales.GERMANY, value );
 	}
 
 	/**
@@ -297,16 +297,48 @@ public class LangString extends PersistableResource
 	 */
 	public static LangString fr( final String value )
 	{
-		return createLangString( Locales.FRANCE, value );
+		return withLocaleAndValue( Locales.FRANCE, value );
 	}
 
 	/**
 	 * Factory-method for a LangString object with the provided locale.
-	 *
+	 * 
+	 * @param locale
+	 * @param value
+	 * @return null, if either <i>locale</i> or <i>value</i> is null.
+	 */
+	public static LangString withLocaleAndValue( final Locale locale, final String value )
+	{
+		if ( locale == null || value == null )
+			return null;
+
+		return new LangString( locale, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object. The Locale is tried to be
+	 * resolved from the <i>country</i> code. The <i>country</i> should be one
+	 * of de, uk, fr.
+	 * 
+	 * @param country
+	 * @param value
+	 * @return
+	 */
+	public static LangString withCountryAndValue( final String country, final String value )
+	{
+		Locale loc = Locales.getLocale( country );
+
+		return withLocaleAndValue( loc, value );
+	}
+
+	/**
+	 * Factory-method for a LangString object with the provided locale.
+	 * 
 	 * @param locale
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static LangString createLangString( final Locale locale, final String value )
 	{
 		if ( locale == null || value == null )
@@ -318,20 +350,23 @@ public class LangString extends PersistableResource
 	/**
 	 * Factory-method for a LangString object. The locale is tried to be
 	 * resolved from the country code.
-	 *
+	 * 
 	 * @param country
 	 * @param value
 	 * @return
 	 */
+	@Deprecated
 	public static LangString createLangString( final String country, final String value )
 	{
-		Locale loc = Locales.getLocale( country );
+		Locale locale = Locales.getLocale( country );
 
-		return createLangString( loc, value );
+		return withLocaleAndValue( locale, value );
 	}
 
 	/**
-	 * Factory-method for a LangString-object, that has no values for no country.
+	 * Factory-method for a LangString-object, that has no values for no
+	 * country.
+	 * 
 	 * @return
 	 */
 	public static LangString blank()
