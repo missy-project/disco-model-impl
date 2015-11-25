@@ -56,7 +56,7 @@ public class LangString extends PersistableResource
 	private String fr = null;
 
 	@ElementCollection( fetch = FetchType.LAZY )
-	@MapKeyColumn( name = "language", columnDefinition = "varchar(2)" )
+	@MapKeyColumn( name = "language", columnDefinition = "varchar(5)" )
 	@Column( name = "value", columnDefinition = "longtext" )
 	@CollectionTable(
 			name = "LangString_OtherLanguages",
