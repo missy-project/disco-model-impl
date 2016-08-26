@@ -27,6 +27,14 @@ public class Locales
 		return false;
 	}
 
+	/**
+	 * Returns a Locale by the given <i>country</i>. If the Locale is not known
+	 * by this class, a new Locale will be created by invoking <i>new Locale(
+	 * country, country )</i>.
+	 * 
+	 * @param country
+	 * @return
+	 */
 	public static Locale getLocale( String country )
 	{
 		if ( country == null )
@@ -44,5 +52,32 @@ public class Locales
 			return FRANCE;
 
 		return new Locale( country, country );
+	}
+
+	/**
+	 * Returns a Locale by the given <i>language</i>. If the Locale is not known
+	 * by this class, a new Loale will be created by invoking <i>new Locale(
+	 * language, language )</i>.
+	 * 
+	 * @param language
+	 * @return
+	 */
+	public static Locale getLocaleByLanguage( String language )
+	{
+		if ( language == null )
+			return null;
+
+		language = language.toLowerCase();
+
+		if ( language.equals( "de" ) )
+			return GERMANY;
+
+		if ( language.equals( "en" ) )
+			return UNITED_KINGDOM;
+
+		if ( language.equals( "fr" ) )
+			return FRANCE;
+
+		return new Locale( language, language );
 	}
 }

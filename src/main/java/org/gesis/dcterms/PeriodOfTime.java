@@ -14,6 +14,11 @@ import org.gesis.rdfs.Resource;
 public class PeriodOfTime extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column

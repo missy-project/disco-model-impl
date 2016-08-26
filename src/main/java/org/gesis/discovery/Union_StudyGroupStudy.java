@@ -23,6 +23,12 @@ import org.gesis.skos.Concept;
 @MappedSuperclass
 public abstract class Union_StudyGroupStudy extends Resource
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -77,9 +83,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return abstract_;
 	}
 
-	public void setAbstract( final LangString dcterms_abstract )
+	public void setAbstract( final LangString abstract_ )
 	{
-		abstract_ = dcterms_abstract;
+		this.abstract_ = abstract_;
 	}
 
 	public LangString getAlternative()
@@ -87,9 +93,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return alternative;
 	}
 
-	public void setAlternative( final LangString dcterms_alternative )
+	public void setAlternative( final LangString alternative )
 	{
-		alternative = dcterms_alternative;
+		this.alternative = alternative;
 	}
 
 	public Date getAvailable()
@@ -97,9 +103,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return available;
 	}
 
-	public void setAvailable( final Date dcterms_available )
+	public void setAvailable( final Date available )
 	{
-		available = dcterms_available;
+		this.available = available;
 	}
 
 	public LangString getTitle()
@@ -107,9 +113,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return title;
 	}
 
-	public void setTitle( final LangString dcterms_title )
+	public void setTitle( final LangString title )
 	{
-		title = dcterms_title;
+		this.title = title;
 	}
 
 	public LangString getPurpose()
@@ -137,9 +143,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return temporal;
 	}
 
-	public void setTemporal( final List<PeriodOfTime> dcterms_temporal )
+	public void setTemporal( final List<PeriodOfTime> temporal )
 	{
-		temporal = dcterms_temporal;
+		this.temporal = temporal;
 	}
 
 	public Union_StudyGroupStudy addTemporal( final PeriodOfTime periodOfTime )
@@ -157,9 +163,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return subject;
 	}
 
-	public void setSubject( final List<Concept> dcterms_subject )
+	public void setSubject( final List<Concept> subject )
 	{
-		subject = dcterms_subject;
+		this.subject = subject;
 	}
 
 	public Union_StudyGroupStudy addSubject( final Concept concept )
@@ -177,9 +183,9 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return spacial;
 	}
 
-	public void setSpacial( final List<Location> dcterms_spacial )
+	public void setSpacial( final List<Location> spacial )
 	{
-		spacial = dcterms_spacial;
+		this.spacial = spacial;
 	}
 
 	public Union_StudyGroupStudy addSpatial( final Location location )

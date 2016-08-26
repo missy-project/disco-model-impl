@@ -22,6 +22,11 @@ import org.gesis.rdfs.Resource;
 public class Instrument extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -30,9 +35,9 @@ public class Instrument extends Resource
 	// relations
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Instrument_Document",
-			joinColumns = @JoinColumn( name = "instrument_id" ), 
+			joinColumns = @JoinColumn( name = "instrument_id" ),
 			inverseJoinColumns = @JoinColumn( name = "document_id" ) )
 	protected List<Document> externalDocumentation;
 

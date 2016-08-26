@@ -20,6 +20,10 @@ import org.gesis.rdf.LangString;
 @Inheritance( strategy = InheritanceType.JOINED )
 public class Resource extends PersistableResource
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	// properties
 
@@ -62,9 +66,10 @@ public class Resource extends PersistableResource
 		return this.prefLabel;
 	}
 
-	public void setPrefLabel( final LangString skos_prefLabel )
+	public Resource setPrefLabel( final LangString prefLabel )
 	{
-		this.prefLabel = skos_prefLabel;
+		this.prefLabel = prefLabel;
+		return this;
 	}
 
 	/**
@@ -77,9 +82,10 @@ public class Resource extends PersistableResource
 		return versionInfo;
 	}
 
-	public void setVersionInfo( final String versionInfo )
+	public Resource setVersionInfo( final String versionInfo )
 	{
 		this.versionInfo = versionInfo;
+		return this;
 	}
 
 	public List<Identifier> getIdentifier()
@@ -90,5 +96,37 @@ public class Resource extends PersistableResource
 	public void setIdentifier( final List<Identifier> identifier )
 	{
 		this.identifier = identifier;
+	}
+
+	/**
+	 * Factory-method which returns an object of type T (of Class-type
+	 * <i>clazz</i>) with predefined <i>prefLabel</i>. The returned object is of
+	 * superclass Resource. The concreate subclass can be passed as an
+	 * parameter. <br>
+	 * <br>
+	 * E.g.
+	 * <code>Resource.withPrefLabel( Questionnaire.class, LangString.withLocaleAndValue( Locale.UK, "name of questionnaire" ) );</code>
+	 * 
+	 * @param clazz
+	 * @param prefLabel
+	 * @return
+	 */
+	public static <T extends Resource> T withPrefLabel( final Class<T> clazz, final LangString prefLabel )
+	{
+		try
+		{
+			T resource = clazz.newInstance();
+			resource.setPrefLabel( prefLabel );
+
+			return resource;
+		}
+		catch ( InstantiationException e )
+		{
+			return null;
+		}
+		catch ( IllegalAccessException e )
+		{
+			return null;
+		}
 	}
 }

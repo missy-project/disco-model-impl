@@ -19,14 +19,18 @@ import org.gesis.rdfs.Resource;
 public class DescriptiveStatistics extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations
-
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
-			name = "DescriptiveStatistics_DataFile", 
-			joinColumns = @JoinColumn( name = "descriptiveStatistics_id" ), 
+	@JoinTable(
+			name = "DescriptiveStatistics_DataFile",
+			joinColumns = @JoinColumn( name = "descriptiveStatistics_id" ),
 			inverseJoinColumns = @JoinColumn( name = "dataFile_id" ) )
 	protected List<DataFile> statisticsDatafile;
 

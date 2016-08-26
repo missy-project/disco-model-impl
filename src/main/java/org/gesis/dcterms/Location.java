@@ -13,6 +13,11 @@ import org.gesis.rdfs.Resource;
 public class Location extends Resource
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column

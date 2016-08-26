@@ -18,8 +18,17 @@ import org.gesis.discovery.Representation;
 public class ConceptScheme extends Representation
 {
 
+	// properties
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	// relations
+
 	@ManyToMany( cascade = CascadeType.ALL )
-	@JoinTable( 
+	@JoinTable(
 			name = "ConceptScheme_Concept",
 			joinColumns = @JoinColumn( name = "conceptScheme_id", referencedColumnName = "id" ),
 			inverseJoinColumns = @JoinColumn( name = "hasTopConcept_id" ) )

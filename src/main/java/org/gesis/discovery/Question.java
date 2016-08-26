@@ -22,6 +22,11 @@ import org.gesis.skos.Concept;
 public class Question extends Concept
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
@@ -54,9 +59,10 @@ public class Question extends Concept
 		return questionText;
 	}
 
-	public void setQuestionText( final LangString questionText )
+	public Question setQuestionText( final LangString questionText )
 	{
 		this.questionText = questionText;
+		return this;
 	}
 
 	public List<Representation> getResponseDomain()
@@ -107,4 +113,15 @@ public class Question extends Concept
 		this.universe = universe;
 	}
 
+	/**
+	 * @param questionText
+	 * @return
+	 */
+	public static Question withQuestionText( final LangString questionText )
+	{
+		Question question = new Question();
+		question.setQuestionText( questionText );
+
+		return question;
+	}
 }

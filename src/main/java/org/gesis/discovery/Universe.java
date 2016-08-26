@@ -11,6 +11,11 @@ import org.gesis.skos.Concept;
 public class Universe extends Concept
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations

@@ -21,6 +21,11 @@ import org.gesis.foaf.Agent;
 public class Study extends Union_StudyGroupStudy
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	// relations
@@ -55,28 +60,28 @@ public class Study extends Union_StudyGroupStudy
 	private List<LogicalDataSet> product;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Study_Publisher",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "agent_id" ) )
 	private List<Agent> publisher;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Study_Contributor",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "agent_id" ) )
 	private List<Agent> contributor;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Study_Creator",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "agent_id" ) )
 	private List<Agent> creator;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	@JoinTable( 
+	@JoinTable(
 			name = "Study_FundedBy",
 			joinColumns = @JoinColumn( name = "study_id" ),
 			inverseJoinColumns = @JoinColumn( name = "agent_id" ) )

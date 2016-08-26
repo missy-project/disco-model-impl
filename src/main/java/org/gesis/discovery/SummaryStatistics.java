@@ -22,6 +22,11 @@ import org.gesis.rdf.LangString;
 public class SummaryStatistics extends DescriptiveStatistics
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	// properties
 
 	@Column
