@@ -9,4 +9,9 @@ public class IdentifierFactory
 	{
 		return UUID.randomUUID().toString();
 	}
+	
+	public static String getNextDefaultIdentifier(String prefix)
+	{
+		return prefix + "-" + UUID.randomUUID().toString();
+	}
 }
