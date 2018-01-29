@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -16,8 +14,15 @@ import org.gesis.adms.Identifier;
 import org.gesis.persistence.PersistableResource;
 import org.gesis.rdf.LangString;
 
-@Entity
-@Inheritance( strategy = InheritanceType.JOINED )
+/**
+ * In disco, every entity is defined as an rdfs:Resource.
+ * 
+ * Extends {@link PersistableResource} with rdfs:Resource specific properties.
+ * 
+ * @author matthaeus
+ *
+ */
+@MappedSuperclass
 public class Resource extends PersistableResource
 {
 	/**
@@ -47,25 +52,34 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Corresponds to skos:prefLabel. <br>
-	 * <br>
-	 * From the specification: <br>
-	 * <i>"A lexical label is a string of UNICODE characters, such as "romantic
-	 * love", in a given natural language, such as English or Japanese (written
-	 * here in hiragana). <br>
-	 * <br>
-	 * The preferred and alternative labels are useful when generating or
-	 * creating human-readable representations of a knowledge organization
-	 * system. These labels provide the strongest clues as to the meaning of a
-	 * SKOS concept."</i>
+	 * <p>
+	 * Corresponds to skos:prefLabel.
+	 * </p>
 	 * 
-	 * @return
+	 * <p>
+	 * From the specification: <i>"A lexical label is a string of UNICODE
+	 * characters, such as "romantic love", in a given natural language, such as
+	 * English or Japanese (written here in hiragana). <br>
+	 * <br>
+	 * The preferred and alternative labels are useful when generating or creating
+	 * human-readable representations of a knowledge organization system. These
+	 * labels provide the strongest clues as to the meaning of a SKOS concept."</i>
+	 * </p>
+	 * 
+	 * @return The prefLabel of this Resource.
 	 */
 	public LangString getPrefLabel()
 	{
 		return this.prefLabel;
 	}
 
+	/**
+	 * Sets the prefLabel for this Resource.
+	 * 
+	 * @param prefLabel
+	 * @return this Resource object
+	 * @see {@link getPrefLabel()}
+	 */
 	public Resource setPrefLabel( final LangString prefLabel )
 	{
 		this.prefLabel = prefLabel;
@@ -82,17 +96,43 @@ public class Resource extends PersistableResource
 		return versionInfo;
 	}
 
+	/**
+	 * Sets the versionInfo for this Resource.
+	 * 
+	 * @param versionInfo
+	 * @return this Resource object.
+	 * @see {@link getVersionInfo()}
+	 */
 	public Resource setVersionInfo( final String versionInfo )
 	{
 		this.versionInfo = versionInfo;
 		return this;
 	}
 
+	/**
+	 * <p>
+	 * Corresponds to adms:identifier.
+	 * </p>
+	 * <p>
+	 * In general, such {@link Identifiers} can be added to each entitiy in disco,
+	 * since every entity is defined as an rdfs:{@link Resource}.
+	 * </p>
+	 * 
+	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#identification
+	 * 
+	 * @return A list of {@link Identifiers} this resource is associated with.
+	 */
 	public List<Identifier> getIdentifier()
 	{
 		return identifier;
 	}
 
+	/**
+	 * Sets the list of Identifiers for this Resource.
+	 * 
+	 * @param identifier
+	 * @see {@link getIdentifier()}
+	 */
 	public void setIdentifier( final List<Identifier> identifier )
 	{
 		this.identifier = identifier;
