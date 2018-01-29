@@ -85,11 +85,13 @@ public class Question extends Concept
 		return this;
 	}
 
-	public List<Concept> getConcept() {
+	public List<Concept> getConcept()
+	{
 		return concept;
 	}
 
-	public void setConcept(final List<Concept> concept) {
+	public void setConcept( final List<Concept> concept )
+	{
 		this.concept = concept;
 	}
 

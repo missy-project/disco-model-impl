@@ -14,6 +14,14 @@ import javax.persistence.ManyToMany;
 
 import org.gesis.skos.Concept;
 
+/**
+ * A Questionnaire is an {@link Instrument} that contains a flow of
+ * {@link Question}s.
+ * 
+ * @author matthaeus
+ * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-questionnaire
+ *
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class Questionnaire extends Instrument
@@ -44,6 +52,17 @@ public class Questionnaire extends Instrument
 
 	// getter/setter
 
+	/**
+	 * A collection method (also "Mode of Collection") is a special
+	 * {@link Instrument} that defines the procedure, technique, or mode of inquiry
+	 * used to attain the data. A specific collection mode can be associated with 0
+	 * to n {@link Questionnaire}s.
+	 * 
+	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-collectionmode
+	 * @see http://www.ddialliance.org/Specification/DDI-CV/ModeOfCollection_2.0.html
+	 * 
+	 * @return List of Concepts definining the collection mode.
+	 */
 	public List<Concept> getCollectionMode() {
 		return this.collectionMode;
 	}
@@ -62,6 +81,12 @@ public class Questionnaire extends Instrument
 		return this;
 	}
 
+	/**
+	 * Indicates the {@link Question}s associated to {@link Variable}s or contained
+	 * in {@link Questionnaire}s.
+	 * 
+	 * @return List of Questions contained in this Questionnaire.
+	 */
 	public List<Question> getQuestion() {
 		return this.question;
 	}

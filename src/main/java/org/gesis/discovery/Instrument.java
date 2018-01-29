@@ -17,6 +17,16 @@ import org.gesis.foaf.Document;
 import org.gesis.rdf.LangString;
 import org.gesis.rdfs.Resource;
 
+/**
+ * The data for the study are collected by an instrument. The purpose of an
+ * Instrument, i.e. an interview, a questionnaire or another entity used as a
+ * means of data collection, is in the case of a survey to record the flow of a
+ * questionnaire, its use of questions, and additional component parts.
+ * 
+ * @author matthaeus
+ * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-instrument
+ *
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class Instrument extends Resource
