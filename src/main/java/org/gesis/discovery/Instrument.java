@@ -24,7 +24,7 @@ import org.gesis.rdfs.Resource;
  * questionnaire, its use of questions, and additional component parts.
  * 
  * @author matthaeus
- * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-instrument
+ * @see http://rdf-vocabulary.ddialliance.org/discovery.html#instrument
  *
  */
 @Entity
@@ -53,21 +53,60 @@ public class Instrument extends Resource
 
 	// getter/setter
 
+	/**
+	 * <p>
+	 * Corresponds to dcterms:description.
+	 * </p>
+	 * <p>
+	 * Instruments can be labeled and described using dcterms:description and
+	 * skos:prefLabel.
+	 * </p>
+	 * 
+	 * @return The description of this Instrument.
+	 * @see {@link setDescription()}
+	 * @see {@link setPrefLabel()}
+	 */
 	public LangString getDescription()
 	{
 		return this.description;
 	}
 
+	/**
+	 * <p>
+	 * Sets the description of this Instrument.
+	 * </p>
+	 * 
+	 * <p>
+	 * Instruments can be labeled and described using dcterms:description and
+	 * skos:prefLabel.
+	 * </p>
+	 * 
+	 * @param description
+	 * @see {@link setPrefLabel()}
+	 */
 	public void setDescription( final LangString description )
 	{
 		this.description = description;
 	}
 
+	/**
+	 * Points from an {@link Instrument} to a {@link Document}, which is the
+	 * external documentation of this {@link Instrument}.
+	 * 
+	 * @return The list of {@link Documents}s of this Instrument.
+	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-externaldocumentation
+	 */
 	public List<Document> getExternalDocumentation()
 	{
 		return this.externalDocumentation;
 	}
 
+	/**
+	 * Sets the list of Documents for this Instrument.
+	 * 
+	 * @param externalDocumentation
+	 * @see getExternalDocumentation()
+	 */
 	public void setExternalDocumentation( final List<Document> externalDocumentation )
 	{
 		this.externalDocumentation = externalDocumentation;

@@ -67,6 +67,12 @@ public class Questionnaire extends Instrument
 		return this.collectionMode;
 	}
 
+	/**
+	 * Sets the list of collection modes ({@link Concept}) for this Questionnaire.
+	 * 
+	 * @param collectionMode
+	 * @see {@link getCollectionMode()}
+	 */
 	public void setCollectionMode(final List<Concept> collectionMode) {
 		this.collectionMode = collectionMode;
 	}
@@ -91,6 +97,12 @@ public class Questionnaire extends Instrument
 		return this.question;
 	}
 
+	/**
+	 * Sets the list of Questions for this Questionnaire instrument.
+	 * 
+	 * @param question
+	 * @see {@link getQuestion()}
+	 */
 	public void setQuestion(final List<Question> question) {
 		this.question = question;
 	}
