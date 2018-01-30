@@ -16,13 +16,14 @@ import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
 import org.gesis.skos.Concept;
+import org.gesis.skos.ConceptScheme;
 
 /**
  * A Question is designed to get information upon a subject, or sequence of
  * subjects, from a respondent. A Question is a {@link Concept}.
  * 
  * @author matthaeus
- * @see http://rdf-vocabulary.ddialliance.org/discovery.html#question
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#question}
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -63,6 +64,7 @@ public class Question extends Concept
 
 	/**
 	 * @return The question text of this Question object.
+	 * @see {@link LangString}
 	 */
 	public Object getQuestionText()
 	{
@@ -70,9 +72,10 @@ public class Question extends Concept
 	}
 
 	/**
-	 * Sets the question text for this Question.
+	 * Corresponds to disco:questionText. Sets the question text for this Question.
 	 * 
 	 * @param questionText
+	 * @see {@link getQuestionText()}
 	 * @return this Question object.
 	 */
 	public Question setQuestionText( final LangString questionText )
@@ -84,7 +87,9 @@ public class Question extends Concept
 	/**
 	 * Get the list of response domains ({@link Representation}) of this Question.
 	 * 
-	 * @return
+	 * @return The list of Representations of this Variable.
+	 * @see {@link Representation}
+	 * @see {@link ConceptScheme}
 	 */
 	public List<Representation> getResponseDomain()
 	{
@@ -92,7 +97,8 @@ public class Question extends Concept
 	}
 
 	/**
-	 * Set the list of response domains ({@link Representation}) of this Question.
+	 * Corresponds to disco:responseDomain. Set the list of response domains
+	 * ({@link Representation}) of this Question.
 	 * 
 	 * @param responseDomain
 	 * @see {@link getReponseDomain()}
@@ -115,10 +121,8 @@ public class Question extends Concept
 	}
 
 	/**
-	 * Points to the DDI concept of a RepresentedVariable, a Variable, or a
-	 * Question.
-	 * 
 	 * @return The list of {@link Concept}s of this Question.
+	 * @see {@link Concept}
 	 */
 	public List<Concept> getConcept()
 	{
@@ -126,7 +130,9 @@ public class Question extends Concept
 	}
 
 	/**
-	 * Sets the list of Concepts for this Question.
+	 * Corresponds to disco:concept. Sets the list of Concepts for this Question.
+	 * Points to the DDI concept of a RepresentedVariable, a Variable, or a
+	 * Question.
 	 * 
 	 * @param concept
 	 * @see {@link getConcept()}
@@ -150,9 +156,13 @@ public class Question extends Concept
 
 	/**
 	 * Indicates the particular {@link Universe}(s) that may be connected to this
-	 * Question.
+	 * Question. For instance, two questions are addressing the universe of persons,
+	 * the third question is addressing a specific subset of the universe of
+	 * persons.
 	 * 
 	 * @return The Universe of this Question.
+	 * @see {@link Universe}
+	 * @see {@link Concept}
 	 */
 	public Universe getUniverse()
 	{
@@ -160,11 +170,13 @@ public class Question extends Concept
 	}
 
 	/**
-	 * Sets the {@link Universe} for this Question.
+	 * Corresponds to disco:universe. Sets the {@link Universe} for this Question.
+	 * For instance, two questions are addressing the universe of persons, the third
+	 * question is addressing a specific subset of the universe of persons.
 	 * 
 	 * @param universe
-	 * @see {@link getUniverse()}
 	 * @return This Question object.
+	 * @see {@link getUniverse()}
 	 */
 	public Question setUniverse( final Universe universe )
 	{
