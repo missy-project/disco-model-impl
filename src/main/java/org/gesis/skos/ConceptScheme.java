@@ -13,6 +13,18 @@ import javax.persistence.ManyToMany;
 
 import org.gesis.discovery.Representation;
 
+/**
+ * A ConceptScheme, defined within the SKOS namespace, is a set of metadata
+ * describing statistical Concepts in a theme taxonomy.
+ * 
+ * <p>
+ * A ConceptScheme is a {@link Representation}.
+ * </p>
+ * 
+ * @author matthaeus
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#codes-and-categories}
+ * @see {@link Representation}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class ConceptScheme extends Representation
@@ -36,14 +48,27 @@ public class ConceptScheme extends Representation
 
 	// getter/setter
 
+	/**
+	 * @return The list of top concepts in this ConceptScheme.
+	 * @see {@link Concept}
+	 */
 	public List<Concept> getHasTopConcept()
 	{
 		return hasTopConcept;
 	}
 
-	public void setHasTopConcept( final List<Concept> skos_hasTopConcept )
+	/**
+	 * Corresponds to skos:hasTopConcept. Sets the top concepts in this specific
+	 * ConceptScheme.
+	 * 
+	 * @param hasTopConcept
+	 * @return This ConceptScheme object.
+	 * @see {@link getHasTopConcept()}
+	 */
+	public ConceptScheme setHasTopConcept( final List<Concept> hasTopConcept )
 	{
-		hasTopConcept = skos_hasTopConcept;
+		this.hasTopConcept = hasTopConcept;
+		return this;
 	}
 
 	public ConceptScheme addHasTopConcept( final Concept concept )
