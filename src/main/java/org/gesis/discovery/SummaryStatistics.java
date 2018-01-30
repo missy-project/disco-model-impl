@@ -17,6 +17,14 @@ import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
 
+/**
+ * For SummaryStatistics, maximum values, minimum values, and standard
+ * deviations can be defined. SummaryStatistics pointing to variables.
+ * 
+ * @author matthaeus
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics}
+ * @see {@link DescriptiveStatistics}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class SummaryStatistics extends DescriptiveStatistics
@@ -70,94 +78,193 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	// getter/setter
 
+	/**
+	 * Corresponds to disco:maximum.
+	 * 
+	 * @return
+	 */
 	public double getMaximum()
 	{
 		return maximum;
 	}
 
+	/**
+	 * Corresponds to disco:maximum.
+	 * 
+	 * @param maximum
+	 */
 	public void setMaximum( final double maximum )
 	{
 		this.maximum = maximum;
 	}
 
+	/**
+	 * Corresponds to disco:mean.
+	 * 
+	 * @return
+	 */
 	public double getMean()
 	{
 		return mean;
 	}
 
+	/**
+	 * Corresponds to disco:mean.
+	 * 
+	 * @param mean
+	 */
 	public void setMean( final double mean )
 	{
 		this.mean = mean;
 	}
 
+	/**
+	 * Corresponds to disco:median.
+	 * 
+	 * @return
+	 */
 	public double getMedian()
 	{
 		return median;
 	}
 
+	/**
+	 * Corresponds to disco:median.
+	 * 
+	 * @param median
+	 */
 	public void setMedian( final double median )
 	{
 		this.median = median;
 	}
 
+	/**
+	 * Corresponds to disco:minimum.
+	 * 
+	 * @return
+	 */
 	public double getMinimum()
 	{
 		return minimum;
 	}
 
+	/**
+	 * Corresponds to disco:minimum.
+	 * 
+	 * @param minimum
+	 */
 	public void setMinimum( final double minimum )
 	{
 		this.minimum = minimum;
 	}
 
+	/**
+	 * Corresponds to disco:mode.
+	 * 
+	 * @return
+	 */
 	public double getMode()
 	{
 		return mode;
 	}
 
+	/**
+	 * Corresponds to disco:mode.
+	 * 
+	 * @param mode
+	 */
 	public void setMode( final double mode )
 	{
 		this.mode = mode;
 	}
 
+	/**
+	 * Corresponds to disco:numberOfCases.
+	 * 
+	 * @return
+	 */
 	public int getNumberOfCases()
 	{
 		return numberOfCases;
 	}
 
+	/**
+	 * Corresponds to disco:numberOfCases.
+	 * 
+	 * @param numberOfCases
+	 */
 	public void setNumberOfCases( final int numberOfCases )
 	{
 		this.numberOfCases = numberOfCases;
 	}
 
+	/**
+	 * Corresponds to disco:percentage.
+	 * 
+	 * @return
+	 */
 	public double getPercentage()
 	{
 		return percentage;
 	}
 
+	/**
+	 * Corresponds to disco:percentage.
+	 * 
+	 * @param percentage
+	 */
 	public void setPercentage( final double percentage )
 	{
 		this.percentage = percentage;
 	}
 
+	/**
+	 * @return The computation base of this SummaryStatistics.
+	 * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-computationbase}
+	 */
 	public LangString getComputationBase()
 	{
 		return computationBase;
 	}
 
-	public void setComputationBase( final LangString computationBase )
+	/**
+	 * Corresponds to disco:computationBase. It expresses if the cases - which are
+	 * the basis of the computation of a statistics value - are valid, invalid or
+	 * the total of both. The usage of computationBase for frequency differs from
+	 * the usage for the percentage statistics and the summary statistics. A
+	 * distinction regarding computationBase doesn't apply to frequency as category
+	 * statistic.
+	 * 
+	 * @param computationBase
+	 * @return This SummaryStatistics object.
+	 * @see {@link getComputationBase()}
+	 */
+	public SummaryStatistics setComputationBase( final LangString computationBase )
 	{
 		this.computationBase = computationBase;
+		return this;
 	}
 
+	/**
+	 * Indicates the Variable of a specific SummaryStatistics individual.
+	 * 
+	 * @return The list of Varibles of the SummaryStatistics.
+	 */
 	public List<Variable> getStatisticsVariable()
 	{
 		return statisticsVariable;
 	}
 
-	public void setStatisticsVariable(final List<Variable> variables)
+	/**
+	 * Corresponds to disco:statisticsVariable. Indicates the Variables of a
+	 * specific SummaryStatistics individual.
+	 * 
+	 * @param variables
+	 */
+	public SummaryStatistics setStatisticsVariable( final List<Variable> variables )
 	{
 		statisticsVariable = variables;
+		return this;
 	}
 
 	public SummaryStatistics addStatisticsVariable( final Variable variable )
@@ -170,24 +277,49 @@ public class SummaryStatistics extends DescriptiveStatistics
 		return this;
 	}
 
+	/**
+	 * Corresponds to disco:standardDeviation.
+	 * 
+	 * @return
+	 */
 	public double getStandardDeviation()
 	{
 		return standardDeviation;
 	}
 
+	/**
+	 * Corresponds to disco:standardDeviation.
+	 * 
+	 * @param standardDeviation
+	 */
 	public void setStandardDeviation( final double standardDeviation )
 	{
 		this.standardDeviation = standardDeviation;
 	}
 
+	/**
+	 * @return The Variable this SummaryStatistics is weighted by.
+	 */
 	public Variable getWeightedBy()
 	{
 		return weightedBy;
 	}
 
-	public void setWeightedBy( final Variable weightedBy )
+	/**
+	 * Corresponds to disco:weightedBy. It defines the weight variable of a category
+	 * or summary statistic computation respectively value. It can also be used to
+	 * indicate if a weight variable is used but the related variable is not known.
+	 * weightedBy may be assigned to a category statistic value or to a summary
+	 * statistic value.
+	 * 
+	 * @param weightedBy
+	 * @return This SummaryStatistics object.
+	 * @see {@link getWeightedBy()}
+	 */
+	public SummaryStatistics setWeightedBy( final Variable weightedBy )
 	{
 		this.weightedBy = weightedBy;
+		return this;
 	}
 
 }

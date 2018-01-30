@@ -14,6 +14,21 @@ import javax.persistence.ManyToMany;
 
 import org.gesis.rdfs.Resource;
 
+/**
+ * An overview over the microdata can be given either by the descriptive
+ * statistics or the aggregated data. DescriptiveStatistics may be minimal,
+ * maximal, mean values, and absolute and relative frequencies. Aggregated data
+ * are derived from microdata by statistics on groups, or aggregates such as
+ * counts, means, or frequencies.
+ * 
+ * <p>
+ * Subclasses of this class are {@link SummaryStatistics} and
+ * {@link CategoryStatistics}, which are both descriptive statistics.
+ * </p>
+ * 
+ * @author matthaeus
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class DescriptiveStatistics extends Resource
@@ -36,14 +51,26 @@ public class DescriptiveStatistics extends Resource
 
 	// getter/setter
 
+	/**
+	 * @return The list of DataFiles of this individual.
+	 */
 	public List<DataFile> getStatisticsDataFile()
 	{
 		return this.statisticsDatafile;
 	}
 
-	public void setStatisticsDataFile(final List<DataFile> dataFiles)
+	/**
+	 * Corresponds to disco:statisticsDataFile. Indicates the DataFile of a specific
+	 * DesciptiveStatistics individual.
+	 * 
+	 * @param dataFiles
+	 * @return This DescriptiveStatistics object.
+	 * @see {@link getStatisticsDataFile()}
+	 */
+	public DescriptiveStatistics setStatisticsDataFile( final List<DataFile> dataFiles )
 	{
 		this.statisticsDatafile = dataFiles;
+		return this;
 	}
 
 	public DescriptiveStatistics addStatisticsDataFile( final DataFile dataFile )
