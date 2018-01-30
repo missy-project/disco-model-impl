@@ -1,0 +1,16 @@
+stages:
+  - build
+
+variables:
+  MAVEN_REPO: "$CI_PROJECT_DIR/.m2"
+
+build:
+  stage:build
+  image: maven:3.5.2-jdk-7-alpine
+  script:
+    - mvn -Dmaven.repo.local=$MAVEN_REPO package
+  
+  artifacts:
+    name: "disco-model_$CI_COMMIT_SHA"
+    paths:
+      - target/*.jar
