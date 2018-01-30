@@ -59,7 +59,7 @@ public abstract class Union_StudyGroupStudy extends Resource
 	private List<Concept> subject;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
-	private List<Location> spacial;
+	private List<Location> spatial;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private List<Document> ddiFile;
@@ -178,22 +178,22 @@ public abstract class Union_StudyGroupStudy extends Resource
 		return this;
 	}
 
-	public List<Location> getSpacial()
+	public List<Location> getSpatial()
 	{
-		return spacial;
+		return spatial;
 	}
 
-	public void setSpacial( final List<Location> spacial )
+	public void setSpatial( final List<Location> spatial )
 	{
-		this.spacial = spacial;
+		this.spatial = spatial;
 	}
 
 	public Union_StudyGroupStudy addSpatial( final Location location )
 	{
-		if ( spacial == null )
-			spacial = new ArrayList<Location>();
+		if ( spatial == null )
+			spatial = new ArrayList<Location>();
 
-		spacial.add( location );
+		spatial.add( location );
 
 		return this;
 	}

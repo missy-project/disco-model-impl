@@ -15,6 +15,17 @@ import javax.persistence.OneToMany;
 
 import org.gesis.foaf.Agent;
 
+/**
+ * In some cases, where data collection is cyclic or on-going, data sets may be
+ * released as a StudyGroup, where each cycle or wave of the data collection
+ * activity produces one or more data sets. This is typical for longitudinal
+ * studies, panel studies, and other types of series (to use the DDI term). In
+ * this case, a number of {@link Study} objects would be collected into a single
+ * StudyGroup.
+ * 
+ * @author matthaeus
+ * @see {@link Study}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class StudyGroup extends Union_StudyGroupStudy
@@ -60,25 +71,55 @@ public class StudyGroup extends Union_StudyGroupStudy
 
 	// getter / setter
 
+	/**
+	 * @return The list of Studies this StudyGroup contains, where each cycle or
+	 *         "wave" of the data collection activity produces one or more data sets
+	 * @see {@link Study}
+	 */
 	public List<Study> getStudies()
 	{
 		return studies;
 	}
 
-	public void setStudies( final List<Study> studies )
+	/**
+	 * A Study represents the process by which a data set was generated or
+	 * collected. In some cases, where data collection is cyclic or on-going,
+	 * several data sets may be released in one StudyGroup, where each cycle or
+	 * "wave" of the data collection activity produces one or more data sets.
+	 * 
+	 * @param studies
+	 * @return This StudyGroup object.
+	 * @see {@link getStudies()}
+	 */
+	public StudyGroup setStudies( final List<Study> studies )
 	{
 		this.studies = studies;
+		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this StudyGroup.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getPublisher()
 	{
 		return publisher;
 	}
 
-	public void setPublisher( final List<Agent> publisher )
+	/**
+	 * Corresponds to dcterms:publisher. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param publisher
+	 * @return This StudyGroup object.
+	 */
+	public StudyGroup setPublisher( final List<Agent> publisher )
 	{
 		this.publisher = publisher;
+		return this;
 	}
+
 
 	public Union_StudyGroupStudy addPublisher( final Agent agent )
 	{
@@ -90,14 +131,28 @@ public class StudyGroup extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this StudyGroup functioning as contributors.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getContributor()
 	{
 		return contributor;
 	}
 
-	public void setContributor( final List<Agent> contributor )
+	/**
+	 * Corresponds to dcterms:contributor. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param contributor
+	 * @return This StudyGroup object.
+	 * @see {@link getContributor()}
+	 */
+	public StudyGroup setContributor( final List<Agent> contributor )
 	{
 		this.contributor = contributor;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addContributor( final Agent agent )
@@ -110,14 +165,28 @@ public class StudyGroup extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this StudyGroup functioning as creators.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getCreator()
 	{
 		return creator;
 	}
 
-	public void setCreator( final List<Agent> creator )
+	/**
+	 * Corresponds to dcterms:creator. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param creator
+	 * @return This StudyGroup object.
+	 * @see {@link getCreator()}
+	 */
+	public StudyGroup setCreator( final List<Agent> creator )
 	{
 		this.creator = creator;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addCreator( final Agent agent )
@@ -130,14 +199,29 @@ public class StudyGroup extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this StudyGroup functioning as contributors
+	 *         that funded this StudyGroup.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getFundedBy()
 	{
 		return fundedBy;
 	}
 
-	public void setFundedBy( final List<Agent> fundedBy )
+	/**
+	 * Corresponds to disco:fundedBy. Studies or groups of studies (StudyGroup) may
+	 * be funded by foaf:Agents. The object property fundedBy is defined as
+	 * sub-property of dcterms:contributor.
+	 * 
+	 * @param fundedBy
+	 * @return This StudyGroup object.
+	 * @see {@link getFundedBy()}
+	 */
+	public StudyGroup setFundedBy( final List<Agent> fundedBy )
 	{
 		this.fundedBy = fundedBy;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addFundedBy( final Agent agent )

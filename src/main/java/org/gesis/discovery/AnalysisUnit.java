@@ -7,12 +7,10 @@ import javax.persistence.InheritanceType;
 import org.gesis.skos.Concept;
 
 /**
- * <p>
  * An AnalysisUnit is defined as follows: The process of collecting data focuses
  * on the analysis of a particular type of subject. If, for example, the adult
  * population of Finland is being studied, the AnalysisUnit would be individuals
  * or persons.
- * </p>
  * <p>
  * An AnalysisUnit is a {@link Concept}.
  * 

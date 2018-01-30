@@ -16,6 +16,31 @@ import javax.persistence.OneToMany;
 
 import org.gesis.foaf.Agent;
 
+/**
+ * A Study represents the process by which a data set was generated or
+ * collected.
+ * 
+ * <p>
+ * A simple Study supports the stages of the full data lifecycle in a modular
+ * manner. A Study represents the process by which a data set was generated or
+ * collected. Literal properties include information about the funding,
+ * organizational affiliation, abstract, title, version, and other such
+ * high-level information. The key criteria for a study are: a single conceptual
+ * model (e.g. survey research concept), a single instrument (e.g.
+ * questionnaire) made up of one or more parts (ex. employer survey, worker
+ * survey), and a single logical data structure of the initial raw data
+ * (multiple data files can be created from this such as a public use microdata
+ * file or aggregate data files). In some cases, where data collection is cyclic
+ * or on-going, data sets may be released as a StudyGroup, where each cycle or
+ * "wave" of the data collection activity produces one or more data sets. This
+ * is typical for longitudinal studies, panel studies, and other types of
+ * "series" (to use the DDI term). In this case, a number of Study objects would
+ * be collected into a single StudyGroup.
+ * </p>
+ * 
+ * @author matthaeus
+ *
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class Study extends Union_StudyGroupStudy
@@ -89,14 +114,32 @@ public class Study extends Union_StudyGroupStudy
 
 	// getter/setter
 
+	/**
+	 * @return The list of {@link Instrument}s this Study uses to collect data.
+	 * @see {@link Instrument}
+	 * @see {@link Questionnaire}
+	 */
 	public List<Instrument> getInstrument()
 	{
 		return this.instrument;
 	}
 
-	public void setInstrument( final List<Instrument> instrument )
+	/**
+	 * Corresponds to disco:instrument. The data for the study are collected by one
+	 * or more {@link Instrument}s. The purpose of an Instrument, i.e. an interview,
+	 * a {@link Questionnaire} or another entity used as a means of data collection,
+	 * is in the case of a survey to record the flow of a questionnaire, its use of
+	 * questions, and additional component parts. A questionnaire contains a flow of
+	 * questions.
+	 * 
+	 * @param instrument
+	 * @return This Study object.
+	 * @see {@link getInstrument()}
+	 */
+	public Study setInstrument( final List<Instrument> instrument )
 	{
 		this.instrument = instrument;
+		return this;
 	}
 
 	public Study addInstrument( final Instrument instrument )
@@ -109,14 +152,28 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Variables this Study contains.
+	 * @see {@link Variable}
+	 */
 	public List<Variable> getVariable()
 	{
 		return this.variable;
 	}
 
-	public void setVariable( final List<Variable> variable )
+	/**
+	 * Corresponds to disco:variable. Sets the list of Variables for this Study. A
+	 * variable might be the answer of a question, have an administrative source, or
+	 * be derived from other variables.
+	 * 
+	 * @param variable
+	 * @return This Study object.
+	 * @see {@link getVariable()}
+	 */
+	public Study setVariable( final List<Variable> variable )
 	{
 		this.variable = variable;
+		return this;
 	}
 
 	public Study addVariable( final Variable variable )
@@ -129,14 +186,31 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * The collected data result in the microdata represented by the DataFile.
+	 * 
+	 * @return The list of DataFiles to represent results of this Study.
+	 * @see {@link DataFile}
+	 * @see {@link LogicalDataSet}
+	 */
 	public List<DataFile> getDataFile()
 	{
 		return this.dataFile;
 	}
 
-	public void setDataFile( final List<DataFile> dataFile )
+	/**
+	 * Corresponds to disco:dataFile. Data sets have a logical representation, which
+	 * describes the contents of the data set, and a physical representation, which
+	 * is a distributed file holding that data.
+	 * 
+	 * @param dataFile
+	 * @return This Study object.
+	 * @see {@link getDataFile()}
+	 */
+	public Study setDataFile( final List<DataFile> dataFile )
 	{
 		this.dataFile = dataFile;
+		return this;
 	}
 
 	public Study addDataFile( final DataFile dataFile )
@@ -149,14 +223,30 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of LogicalDataSets this Study uses to express logical
+	 *         metadata.
+	 * @see {@link LogicalDataSet}
+	 */
 	public List<LogicalDataSet> getProduct()
 	{
 		return this.product;
 	}
 
-	public void setProduct( final List<LogicalDataSet> product )
+	/**
+	 * Corresponds to disco:product. Each Study has a set of logical metadata
+	 * associated with the processing of data, at the time of collection or later
+	 * during cleaning, and re-coding. LogicalDataSet represents the microdata
+	 * dataset.
+	 * 
+	 * @param product
+	 * @return This Study object.
+	 * @see {@link getProduct()}
+	 */
+	public Study setProduct( final List<LogicalDataSet> product )
 	{
 		this.product = product;
+		return this;
 	}
 
 	public Study addProduct( final LogicalDataSet logicalDataSet )
@@ -169,24 +259,49 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The StudyGroup this Study is contained in.
+	 */
 	public StudyGroup getInGroup()
 	{
 		return this.inGroup;
 	}
 
-	public void setInGroup( final StudyGroup inGroup )
+	/**
+	 * Corresponds to disco:inGroup. Sets the StudyGroup which contains this Study.
+	 * 
+	 * @param inGroup
+	 * @return This Study object.
+	 * @see {@link getInGroup()}
+	 */
+	public Study setInGroup( final StudyGroup inGroup )
 	{
 		this.inGroup = inGroup;
+		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this Study functioning as publishers.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getPublisher()
 	{
 		return publisher;
 	}
 
-	public void setPublisher( final List<Agent> publisher )
+	/**
+	 * Corresponds to dcterms:publisher. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param publisher
+	 * @return This Study object.
+	 * @see {@link getPublisher()}
+	 */
+	public Study setPublisher( final List<Agent> publisher )
 	{
 		this.publisher = publisher;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addPublisher( final Agent agent )
@@ -199,14 +314,28 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this Study functioning as contributors.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getContributor()
 	{
 		return contributor;
 	}
 
-	public void setContributor( final List<Agent> contributor )
+	/**
+	 * Corresponds to dcterms:contributor. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param contributor
+	 * @return This Study object.
+	 * @see {@link getContributor()}
+	 */
+	public Study setContributor( final List<Agent> contributor )
 	{
 		this.contributor = contributor;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addContributor( final Agent agent )
@@ -219,14 +348,28 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this Study functioning as creators.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getCreator()
 	{
 		return creator;
 	}
 
-	public void setCreator( final List<Agent> creator )
+	/**
+	 * Corresponds to dcterms:creator. Creators, contributors, and publishers of
+	 * Studies and groups of studies (StudyGroup) are foaf:Agents, which are either
+	 * foaf:Persons or org:Organizations whose members are foaf:Persons.
+	 * 
+	 * @param creator
+	 * @return This Study object.
+	 * @see {@link getCreator()}
+	 */
+	public Study setCreator( final List<Agent> creator )
 	{
 		this.creator = creator;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addCreator( final Agent agent )
@@ -239,14 +382,29 @@ public class Study extends Union_StudyGroupStudy
 		return this;
 	}
 
+	/**
+	 * @return The list of Agents of this Study functioning as contributors that
+	 *         funded this Study.
+	 * @see {@link Agent}
+	 */
 	public List<Agent> getFundedBy()
 	{
 		return fundedBy;
 	}
 
-	public void setFundedBy( final List<Agent> fundedBy )
+	/**
+	 * Corresponds to disco:fundedBy. Studies or groups of studies (StudyGroup) may
+	 * be funded by foaf:Agents. The object property fundedBy is defined as
+	 * sub-property of dcterms:contributor.
+	 * 
+	 * @param fundedBy
+	 * @return This Study object.
+	 * @see {@link getFundedBy()}
+	 */
+	public Study setFundedBy( final List<Agent> fundedBy )
 	{
 		this.fundedBy = fundedBy;
+		return this;
 	}
 
 	public Union_StudyGroupStudy addFundedBy( final Agent agent )

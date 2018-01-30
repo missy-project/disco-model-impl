@@ -24,6 +24,24 @@ import org.gesis.rdf.LangString;
 import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
+/**
+ * Each study has a set of logical metadata associated with the processing of
+ * data, at the time of collection or later during cleaning, and re-coding.
+ * LogicalDataSet represents the microdata dataset.
+ * 
+ * <p>
+ * You can state a title (dcterms:title) and a flag indicating if the microdata
+ * dataset is publicly available (isPublic). You can specify access rights
+ * (dcterms:accessRights) and LicenseStatements (dcterms:license) for microdata
+ * datasets. For a LogicalDataSet the three dimensions of coverage can be
+ * specified: Spatial (dcterms:spatial), temporal (dcterms:temporal), and
+ * topical (dcterms:subject).
+ * </p>
+ * 
+ * @author matthaeus
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#logicaldataset}
+ * @see {@link DataFile}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class LogicalDataSet extends Resource
@@ -41,6 +59,9 @@ public class LogicalDataSet extends Resource
 
 	@Column( columnDefinition = "bit default 0" )
 	private boolean isPublic = false;
+
+	@Column
+	private int variableQuantity;
 
 	// relations
 
@@ -81,7 +102,7 @@ public class LogicalDataSet extends Resource
 			name = "LogicalDataSet_Variable",
 			joinColumns = @JoinColumn( name = "logicalDataSet_id" ),
 			inverseJoinColumns = @JoinColumn( name = "variable_id" ) )
-	protected List<Variable> containsVariable;
+	protected List<Variable> variable;
 
 	@ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	@JoinTable(
@@ -113,44 +134,122 @@ public class LogicalDataSet extends Resource
 
 	// getter/setter
 
+	/**
+	 * @return The title of this LogicalDataSet.
+	 */
 	public LangString getTitle()
 	{
 		return title;
 	}
 
-	public void setTitle( final LangString dcterms_title )
+	/**
+	 * Corresponds to dcterms:title
+	 * 
+	 * @param title
+	 * @return This LogicalDataSet object.
+	 * @see {@link getTitle()}
+	 */
+	public LogicalDataSet setTitle( final LangString title )
 	{
-		title = dcterms_title;
+		this.title = title;
+		return this;
 	}
 
+	/**
+	 * A flag indicating if the microdata dataset is publicly available.
+	 * 
+	 * @return
+	 */
 	public boolean isPublic()
 	{
 		return isPublic;
 	}
 
-	public void setPublic( final boolean isPublic )
+	/**
+	 * A flag indicating if the microdata dataset is publicly available.
+	 * 
+	 * @param isPublic
+	 * @return This LogicalDataSet object.
+	 * @see {@link isPublic()}
+	 */
+	public LogicalDataSet setPublic( final boolean isPublic )
 	{
 		this.isPublic = isPublic;
+		return this;
 	}
 
+	/**
+	 * @return The variable quantity of this LogicalDataSet.
+	 * @see {@link DataFile}
+	 */
+	public int getVariableQuantity()
+	{
+		return variableQuantity;
+	}
+
+	/**
+	 * Corresponds to disco:variableQuantity. Just like there is caseQuantity on the
+	 * {@link DataFile} there is also variableQuantity on this LogicalDataSet. This
+	 * is useful to have when (1) no variable level information is available and
+	 * when (2) only a stub of the RDF is requested e.g when returning basic
+	 * information on a study of file, we do not need to return information on
+	 * potentially hundreds or thousands of variables references or metadata.
+	 * 
+	 * @param variableQuantity
+	 * @return This LogicalDataSet object.
+	 * @see {@link getVariableQuantity()}
+	 */
+	public LogicalDataSet setVariableQuantity( int variableQuantity )
+	{
+		this.variableQuantity = variableQuantity;
+		return this;
+	}
+
+	/**
+	 * @return The Universe of this LogicalDataSet.
+	 * @see {@link Universe}
+	 */
 	public Universe getUniverse()
 	{
 		return universe;
 	}
 
-	public void setUniverse( final Universe universe )
+	/**
+	 * Sets the Universe for this LogicalDataSet. Any universe of a microdata
+	 * dataset is a subset of the Universe of the entire {@link Study}.
+	 * 
+	 * @param universe
+	 * @return This LogicalDataSet object.
+	 * @see {@link getUniverse()}
+	 */
+	public LogicalDataSet setUniverse( final Universe universe )
 	{
 		this.universe = universe;
+		return this;
 	}
 
+	/**
+	 * @return The list of spatial coverages (Location) of this microdata dataset.
+	 * @see {@link Location}
+	 */
 	public List<Location> getSpatial()
 	{
 		return spatial;
 	}
 
-	public void setSpatial( final List<Location> dcterms_spatial )
+	/**
+	 * Corresponds to dcterms:spatial. For a LogicalDataSet the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param spatial
+	 * @return This LogicalDataSet object.
+	 * @see {@link getSpatial()}
+	 */
+	public LogicalDataSet setSpatial( final List<Location> spatial )
 	{
-		spatial = dcterms_spatial;
+		this.spatial = spatial;
+		return this;
 	}
 
 	public LogicalDataSet addSpatial( final Location location )
@@ -163,14 +262,29 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of temporal coverages (PeriodOfTime) of this microdata
+	 *         dataset.
+	 * @see {@link PeriodOfTime}
+	 */
 	public List<PeriodOfTime> getTemporal()
 	{
 		return temporal;
 	}
 
-	public void setTemporal( final List<PeriodOfTime> dcterms_temporal )
+	/**
+	 * Corresponds to dcterms:temporal. For a LogicalDataSet the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param temporal
+	 * @return This LogicalDataSet object.
+	 * @see {@link getTemporal()}
+	 */
+	public LogicalDataSet setTemporal( final List<PeriodOfTime> temporal )
 	{
-		temporal = dcterms_temporal;
+		this.temporal = temporal;
+		return this;
 	}
 
 	public LogicalDataSet addTemporal( final PeriodOfTime periodOfTime )
@@ -183,14 +297,28 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of topical coverages (Concept) of this microdata dataset.
+	 * @see {@link Concept}
+	 */
 	public List<Concept> getSubject()
 	{
 		return subject;
 	}
 
-	public void setSubject( final List<Concept> dcterms_subject )
+	/**
+	 * Corresponds to dcterms:subject. For a LogicalDataSet the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param subject
+	 * @return This LogicalDataSet object.
+	 * @see {@link getSubject()}
+	 */
+	public LogicalDataSet setSubject( final List<Concept> subject )
 	{
-		subject = dcterms_subject;
+		this.subject = subject;
+		return this;
 	}
 
 	public LogicalDataSet addSubject( final Concept concept )
@@ -203,14 +331,32 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of {@link Instrument}s this Study uses to collect data.
+	 * @see {@link Instrument}
+	 * @see {@link Questionnaire}
+	 */
 	public List<Instrument> getInstrument()
 	{
 		return instrument;
 	}
 
-	public void setInstrument( final List<Instrument> instrument )
+	/**
+	 * Corresponds to disco:instrument. The data for the study are collected by one
+	 * or more {@link Instrument}s. The purpose of an Instrument, i.e. an interview,
+	 * a {@link Questionnaire} or another entity used as a means of data collection,
+	 * is in the case of a survey to record the flow of a questionnaire, its use of
+	 * questions, and additional component parts. A questionnaire contains a flow of
+	 * questions.
+	 * 
+	 * @param instrument
+	 * @return This LogicalDataSet object.
+	 * @see {@link getInstrument()}
+	 */
+	public LogicalDataSet setInstrument( final List<Instrument> instrument )
 	{
 		this.instrument = instrument;
+		return this;
 	}
 
 	public LogicalDataSet addInstrument( final Instrument instrument )
@@ -223,34 +369,63 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
-	public List<Variable> getContainsVariable()
+	/**
+	 * @return The list of Variables this microdata dataset contains.
+	 * @see {@link Variable}
+	 */
+	public List<Variable> getVariable()
 	{
-		return containsVariable;
+		return variable;
 	}
 
-	public void setContainsVariable( final List<Variable> containsVariable )
+	/**
+	 * Corresponds to disco:variable. Sets the list of Variables for this microdata
+	 * dataset. A variable might be the answer of a question, have an administrative
+	 * source, or be derived from other variables.
+	 * 
+	 * @param variable
+	 * @return This LogicalDataSet object.
+	 * @see {@link getVariable()}
+	 */
+	public void setVariable( final List<Variable> variables )
 	{
-		this.containsVariable = containsVariable;
+		this.variable = variables;
 	}
 
 	public LogicalDataSet addContainsVariable( final Variable variable )
 	{
-		if ( containsVariable == null )
-			containsVariable = new ArrayList<Variable>();
+		if ( this.variable == null )
+			this.variable = new ArrayList<Variable>();
 
-		containsVariable.add( variable );
+		this.variable.add( variable );
 
 		return this;
 	}
 
+	/**
+	 * The collected data result in the microdata represented by the DataFile.
+	 * 
+	 * @return The list of DataFiles to represent results of this Study.
+	 * @see {@link DataFile}
+	 * @see {@link Study}
+	 */
 	public List<DataFile> getDataFile()
 	{
 		return dataFile;
 	}
 
-	public void setDataFile( final List<DataFile> dataFile )
+	/**
+	 * Corresponds to disco:DataFile. A DataFile represents the physical data
+	 * storage of the microdata datasets.
+	 * 
+	 * @param dataFile
+	 * @return This LogicalDataSet object.
+	 * @see {@link getDataFile()}
+	 */
+	public LogicalDataSet setDataFile( final List<DataFile> dataFile )
 	{
 		this.dataFile = dataFile;
+		return this;
 	}
 
 	public LogicalDataSet addDataFile( final DataFile dataFile )
@@ -263,14 +438,28 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of derived cube datasets from this microdata dataset.
+	 * @see {@link DataSet}
+	 */
 	public List<DataSet> getAggregation()
 	{
 		return aggregation;
 	}
 
-	public void setAggregation( final List<DataSet> aggregation )
+	/**
+	 * Corresponds to disco:aggregation. Disco contains this property to indicate
+	 * that a cube dataset (from RDF Data Cube Vocabulary) was derived by tabulating
+	 * a record-level dataset.
+	 * 
+	 * @param aggregation
+	 * @return This LogicalDataSet object.
+	 * @see {@link getAggregation()}
+	 */
+	public LogicalDataSet setAggregation( final List<DataSet> aggregation )
 	{
 		this.aggregation = aggregation;
+		return this;
 	}
 
 	public LogicalDataSet addAggregation( final DataSet dataSet )
@@ -283,14 +472,30 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of LicenseDocuments this logical dataset has attached.
+	 * @see {@link LicenseDocument}
+	 * @see {@link AccessRights}
+	 */
 	public List<LicenseDocument> getLicense()
 	{
 		return license;
 	}
 
-	public void setLicense( final List<LicenseDocument> dcterms_license )
+	/**
+	 * Every logical dataset may have access rights statements and licensing
+	 * information attached to it. For those purposes, the Dublin Core properties
+	 * dcterms:accessRights and dcterms:license are used.
+	 * 
+	 * @param license
+	 * @return This LogicalDataSet object.
+	 * @see {@link getLicense()}
+	 * @see {@link getAccessRights()}
+	 */
+	public LogicalDataSet setLicense( final List<LicenseDocument> license )
 	{
-		license = dcterms_license;
+		this.license = license;
+		return this;
 	}
 
 	public LogicalDataSet addLicense( final LicenseDocument licenseDocument )
@@ -303,14 +508,28 @@ public class LogicalDataSet extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of RightsStatements this logical dataset has attached.
+	 * @see {@link RightsStatement}
+	 * @see {@link LicenseDocument}
+	 */
 	public List<RightsStatement> getAccessRights()
 	{
 		return accessRights;
 	}
 
-	public void setAccessRights( final List<RightsStatement> dcterms_accessRights )
+	/**
+	 * Every logical dataset may have access rights statements and licensing
+	 * information attached to it. For those purposes, the Dublin Core properties
+	 * dcterms:accessRights and dcterms:license are used.
+	 * 
+	 * @param accessRights
+	 * @return
+	 */
+	public LogicalDataSet setAccessRights( final List<RightsStatement> accessRights )
 	{
-		accessRights = dcterms_accessRights;
+		this.accessRights = accessRights;
+		return this;
 	}
 
 	public LogicalDataSet addAccessRights( final RightsStatement rightsStatement )
@@ -319,21 +538,6 @@ public class LogicalDataSet extends Resource
 			accessRights = new ArrayList<RightsStatement>();
 
 		accessRights.add( rightsStatement );
-
-		return this;
-	}
-
-	public void setDataCube( final List<DataSet> dataCube )
-	{
-		aggregation = dataCube;
-	}
-
-	public LogicalDataSet addDataCube( final DataSet dataCube )
-	{
-		if ( aggregation == null )
-			aggregation = new ArrayList<DataSet>();
-
-		aggregation.add( dataCube );
 
 		return this;
 	}

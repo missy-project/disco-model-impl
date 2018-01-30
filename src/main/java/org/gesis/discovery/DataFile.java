@@ -23,6 +23,26 @@ import org.gesis.rdf.LangString;
 import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
+/**
+ * The collected data of a Study results in the microdata represented by the
+ * DataFile. Data sets have a logical representation, which describes the
+ * contents of the data set, and a physical representation, which is a
+ * distributed file holding that data. It is possible to format data files in
+ * many different ways, even if the logical content is the same. data files
+ * (DataFile), which are also dcterms:Datasets as well as dcat:Distributions,
+ * represents all the physical distributed data files containing the microdata
+ * datasets.
+ * 
+ * <p>
+ * It is possible to describe data files (DataFile) (dcterms:description). Data
+ * files (DataFile), case quantities (disco:caseQuantity) and versions
+ * (owl:versionInfo) can also be stated. Using the object property
+ * dcterms:format, data files (DataFile) formats can be defined.
+ * </p>
+ * 
+ * @author matthaeus
+ * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#datafile}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class DataFile extends Resource
@@ -77,31 +97,73 @@ public class DataFile extends Resource
 
 	// getter/setter
 
+	/**
+	 * @return The description of this DataFile.
+	 */
 	public LangString getDescription()
 	{
 		return description;
 	}
 
-	public void setDescription( final LangString description )
+	/**
+	 * Corresponds to dcterms:description.
+	 * 
+	 * @param description
+	 * @return This DateFile object.
+	 * @see {@link getDescription()}
+	 */
+	public DataFile setDescription( final LangString description )
 	{
 		this.description = description;
+		return this;
 	}
 
+	/**
+	 * @return The case quantity of this DataFile.
+	 * @see {@link LogicalDataSet}
+	 */
 	public int getCaseQuantity()
 	{
 		return caseQuantity;
 	}
 
-	public void setCaseQuantity(final int caseQuantity)
+	/**
+	 * Corresponds to disco:caseQuantity. Just like there is variableQuantity on the
+	 * {@link LogicalDataSet} there is also caseQuantity on this DataFile. This is
+	 * useful to have when (1) no variable level information is available and when
+	 * (2) only a stub of the RDF is requested e.g when returning basic information
+	 * on a study of file, we do not need to return information on potentially
+	 * hundreds or thousands of variables references or metadata.
+	 * 
+	 * @param caseQuantity
+	 * @return This DataFile object.
+	 * @see {@link getCaseQuantity()}
+	 */
+	public DataFile setCaseQuantity( final int caseQuantity )
 	{
 		this.caseQuantity = caseQuantity;
+		return this;
 	}
 
+	/**
+	 * @return The list of geographical coverages (Location) this DataFile is
+	 *         attached to.
+	 * @see {@link Location}
+	 */
 	public List<Location> getSpatial()
 	{
 		return spatial;
 	}
 
+	/**
+	 * Corresponds to dcterms:spatial. For a DataFile the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param spatial
+	 * @return This DataFile object.
+	 * @see {@link getSpatial()}
+	 */
 	public void setSpatial( final List<Location> spatial )
 	{
 		this.spatial = spatial;
@@ -117,11 +179,25 @@ public class DataFile extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of temporal coverages (PeriodOfTime) this DataFile is
+	 *         attached to.
+	 * @see {@link PeriodOfTime}
+	 */
 	public List<PeriodOfTime> getTemporal()
 	{
 		return temporal;
 	}
 
+	/**
+	 * Corresponds to dcterms:temporal. For a DataFile the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param temporal
+	 * @return This DataFile object. {@link getTemporal()}
+	 * @see {@link getTemporal()}
+	 */
 	public void setTemporal( final List<PeriodOfTime> temporal )
 	{
 		this.temporal = temporal;
@@ -137,11 +213,24 @@ public class DataFile extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of topical coverages (Concept) this DataFile is attached to.
+	 * @see {@link Concept}
+	 */
 	public List<Concept> getSubject()
 	{
 		return subject;
 	}
 
+	/**
+	 * Corresponds to dcterms:subject. For a DataFile the three dimensions of
+	 * coverage can be specified: Spatial (dcterms:spatial), temporal
+	 * (dcterms:temporal), and topical (dcterms:subject).
+	 * 
+	 * @param subject
+	 * @return This DataFile object.
+	 * @see {@link getSubject()}
+	 */
 	public void setSubject( final List<Concept> subject )
 	{
 		this.subject = subject;
@@ -157,34 +246,58 @@ public class DataFile extends Resource
 		return this;
 	}
 
+	/**
+	 * @return The list of ProvenanceStatement attached to this DataFile.
+	 * @see {@link ProvenanceStatement}
+	 */
 	public List<ProvenanceStatement> getProvenance()
 	{
 		return provenance;
 	}
 
-	public void setProvenance( final List<ProvenanceStatement> provenance )
+	/**
+	 * Corresponds to dcterms:provenance. Defines the provenance information for
+	 * this data file.
+	 * 
+	 * @param provenance
+	 * @return This DataFile object.
+	 * @see {@link getProvenanceStatement()}
+	 */
+	public DataFile setProvenance( final List<ProvenanceStatement> provenance )
 	{
 		this.provenance = provenance;
+		return this;
 	}
 
 	public DataFile addProvenance( final ProvenanceStatement provenanceStatement )
 	{
-		if ( provenance == null )
-			provenance = new ArrayList<ProvenanceStatement>();
+		if ( this.provenance == null )
+			this.provenance = new ArrayList<ProvenanceStatement>();
 
-		provenance.add( provenanceStatement );
+		this.provenance.add( provenanceStatement );
 
 		return this;
 	}
 
+	/**
+	 * @return The format for this DataFile.
+	 */
 	public MediaTypeOrExtend getFormat()
 	{
 		return format;
 	}
 
-	public void setFormat( final MediaTypeOrExtend format )
+	/**
+	 * Corresponds to dcterms:format.
+	 * 
+	 * @param format
+	 * @return This DataFile object.
+	 * @see {@link getFormat()}
+	 */
+	public DataFile setFormat( final MediaTypeOrExtend format )
 	{
 		this.format = format;
+		return this;
 	}
 
 }

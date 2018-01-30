@@ -54,9 +54,7 @@ public class Instrument extends Resource
 	// getter/setter
 
 	/**
-	 * <p>
 	 * Corresponds to dcterms:description.
-	 * </p>
 	 * <p>
 	 * Instruments can be labeled and described using dcterms:description and
 	 * skos:prefLabel.
