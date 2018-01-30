@@ -52,19 +52,9 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * <p>
-	 * Corresponds to skos:prefLabel.
-	 * </p>
-	 * 
-	 * <p>
-	 * From the specification: <i>"A lexical label is a string of UNICODE
-	 * characters, such as "romantic love", in a given natural language, such as
-	 * English or Japanese (written here in hiragana). <br>
-	 * <br>
-	 * The preferred and alternative labels are useful when generating or creating
-	 * human-readable representations of a knowledge organization system. These
-	 * labels provide the strongest clues as to the meaning of a SKOS concept."</i>
-	 * </p>
+	 * From the specification: A lexical label is a string of UNICODE characters,
+	 * such as "romantic love", in a given natural language, such as English or
+	 * Japanese (written here in hiragana).
 	 * 
 	 * @return The prefLabel of this Resource.
 	 */
@@ -74,7 +64,12 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Sets the prefLabel for this Resource.
+	 * Corresponds to skos:prefLabel. Sets the prefLabel for this Resource.
+	 * <p>
+	 * The preferred and alternative labels are useful when generating or creating
+	 * human-readable representations of a knowledge organization system. These
+	 * labels provide the strongest clues as to the meaning of a SKOS concept.
+	 * </p>
 	 * 
 	 * @param prefLabel
 	 * @return this Resource object
@@ -87,9 +82,7 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Corresponds to owl:versionInfo
-	 * 
-	 * @return
+	 * @return The versionInfo of this Resource.
 	 */
 	public String getVersionInfo()
 	{
@@ -97,7 +90,7 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Sets the versionInfo for this Resource.
+	 * Corresponds to owl:versionInfo. Sets the versionInfo for this Resource.
 	 * 
 	 * @param versionInfo
 	 * @return this Resource object.
@@ -110,17 +103,11 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * <p>
-	 * Corresponds to adms:identifier.
-	 * </p>
-	 * <p>
 	 * In general, such {@link Identifiers} can be added to each entitiy in disco,
 	 * since every entity is defined as an rdfs:{@link Resource}.
-	 * </p>
-	 * 
-	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#identification
 	 * 
 	 * @return A list of {@link Identifiers} this resource is associated with.
+	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#identification
 	 */
 	public List<Identifier> getIdentifier()
 	{
@@ -128,7 +115,8 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Sets the list of Identifiers for this Resource.
+	 * Corresponds to adms:identifier. Sets the list of Identifiers for this
+	 * Resource.
 	 * 
 	 * @param identifier
 	 * @see {@link getIdentifier()}
@@ -139,17 +127,18 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * Factory-method which returns an object of type T (of Class-type
-	 * <i>clazz</i>) with predefined <i>prefLabel</i>. The returned object is of
-	 * superclass Resource. The concreate subclass can be passed as an
-	 * parameter. <br>
-	 * <br>
-	 * E.g.
+	 * Factory-method which returns an object of (sub-)type T with predefined
+	 * <i>prefLabel</i>.
+	 * 
+	 * <p>
+	 * Example code:
 	 * <code>Resource.withPrefLabel( Questionnaire.class, LangString.withLocaleAndValue( Locale.UK, "name of questionnaire" ) );</code>
+	 * </p>
 	 * 
 	 * @param clazz
 	 * @param prefLabel
-	 * @return
+	 * @return The returned object is of superclass Resource. The concreate subclass
+	 *         can be passed as an parameter.
 	 */
 	public static <T extends Resource> T withPrefLabel( final Class<T> clazz, final LangString prefLabel )
 	{
