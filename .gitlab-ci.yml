@@ -7,7 +7,7 @@ variables:
   MAVEN_REPO: "$CI_PROJECT_DIR/.m2"
 
 build_artifact:
-  stage:build
+  stage: build
   script:
     - mvn -Dmaven.repo.local=$MAVEN_REPO package
   artifacts:
