@@ -14,6 +14,13 @@ import org.gesis.foaf.Document;
 import org.gesis.rdf.LangString;
 import org.gesis.rdfs.Resource;
 
+/**
+ * Access rights are defined in a dcterms:RightsStatement object, which may
+ * reference an external document stating the access rights in more detail.
+ * 
+ * @author matthaeus
+ * @see {@link LicenseDocument}
+ */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
 public class RightsStatement extends Resource
@@ -40,24 +47,49 @@ public class RightsStatement extends Resource
 
 	// getter/setter
 
+	/**
+	 * @return The list of Documents this RightsStatements has attached.
+	 * @see {@link Document}
+	 */
 	public List<Document> getSeeAlso()
 	{
 		return this.seeAlso;
 	}
 
-	public void setSeeAlso( final List<Document> rdfs_seeAlso )
+	/**
+	 * Corresponds to rdfs:seeAlso.
+	 * 
+	 * @param seeAlso
+	 * @return This RightsStatement object.
+	 * @see {@link getSeeAlso()}
+	 */
+	public RightsStatement setSeeAlso( final List<Document> seeAlso )
 	{
-		this.seeAlso = rdfs_seeAlso;
+		this.seeAlso = seeAlso;
+		return this;
 	}
 
+	/**
+	 * @return The description of this RightsStatement.
+	 */
 	public LangString getDescription()
 	{
 		return this.description;
 	}
 
-	public void setDescription( final LangString dcterms_description )
+	/**
+	 * Corresponds to dcterms:description. For a RightsStatement descriptions and
+	 * labels (skos:prefLabel) may be given.
+	 * 
+	 * @param description
+	 * @return This RightsStatement object.
+	 * @see {@link getDescription()}
+	 * @see {@link Resource}
+	 */
+	public RightsStatement setDescription( final LangString description )
 	{
-		this.description = dcterms_description;
+		this.description = description;
+		return this;
 	}
 
 }
