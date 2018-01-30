@@ -22,11 +22,14 @@ import org.gesis.persistence.PersistableResource;
 /**
  * Represents a multilingual string. Stores a multilingual value only with
  * correspondence to a Locale. It may represent an arbitrary number of values
- * and their corresponding Locales. <br>
+ * and their corresponding Locales.
+ * 
+ * <p>
  * Please note that, this class provides some "default" Locales, which are
  * Locale.GERMANY, Locale.UNITED_KINGDOM, and Locale.FRANCE. Other Locales may
  * be added without paying attention to the default Locales, but are stored in a
  * OneToMany-relationship in a separate data structure.
+ * </p>
  *
  * @author matthaeus
  *
@@ -83,6 +86,12 @@ public class LangString extends PersistableResource
 		return this.messageKey;
 	}
 
+	/**
+	 * Sets the message key for this LangString.
+	 * 
+	 * @param messageKey
+	 * @return This LangString object.
+	 */
 	public LangString setMessageKey( final String messageKey )
 	{
 		this.messageKey = messageKey;
@@ -94,9 +103,14 @@ public class LangString extends PersistableResource
 		return this.de;
 	}
 
-	public void setDe( final String de )
+	/**
+	 * @param de
+	 * @return
+	 */
+	public LangString setDe( final String de )
 	{
 		this.de = de;
+		return this;
 	}
 
 	public String getEn()
@@ -104,9 +118,14 @@ public class LangString extends PersistableResource
 		return this.en;
 	}
 
-	public void setEn( final String en )
+	/**
+	 * @param en
+	 * @return
+	 */
+	public LangString setEn( final String en )
 	{
 		this.en = en;
+		return this;
 	}
 
 	public String getFr()
@@ -114,9 +133,14 @@ public class LangString extends PersistableResource
 		return this.fr;
 	}
 
-	public void setFr( final String fr )
+	/**
+	 * @param fr
+	 * @return
+	 */
+	public LangString setFr( final String fr )
 	{
 		this.fr = fr;
+		return this;
 	}
 
 	/**
