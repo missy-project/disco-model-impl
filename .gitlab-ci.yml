@@ -20,6 +20,7 @@ pages:
   stage: gitlab-javadoc-page
   script:
   - mvn javadoc:javadoc
+  - mv target/site/apidocs public
   artifacts:
     paths:
-    - target/site/apidocs/
+    - public/
