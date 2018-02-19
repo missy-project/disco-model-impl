@@ -1,10 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.gesis</groupId>
-		<artifactId>disco</artifactId>
-		<version>1.0.14</version>
-	</parent>
 
 	<groupId>org.gesis.disco</groupId>
 	<artifactId>disco-model</artifactId>
@@ -16,5 +11,49 @@
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
+		
+		<dependency>
+	  		<groupId>junit</groupId>
+	  		<artifactId>junit</artifactId>
+	  		<version>4.8.2</version>
+	  		<scope>test</scope>
+	  	</dependency>
+			
 	</dependencies>
+	
+  <build>
+    <plugins>
+		<plugin>
+	    	<groupId>org.apache.maven.plugins</groupId>
+	    	<artifactId>maven-compiler-plugin</artifactId>
+	    	<version>2.3.2</version>
+	    	<configuration>
+	    		<source>1.6</source>
+	    		<target>1.6</target>
+	    	</configuration>
+	    </plugin>
+	    
+	    <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.9</version>
+			<configuration>
+				<aggregate>true</aggregate>
+				<charset>UTF-8</charset>
+				<docencoding>UTF-8</docencoding>
+				<docfilessubdirs>true</docfilessubdirs>
+			</configuration>
+			<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	    
+    </plugins>
+  </build>
+	
 </project>
