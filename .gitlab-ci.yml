@@ -2,6 +2,7 @@ image: maven:3.5.2-jdk-7-alpine
 
 stages:
   - build
+  - gitlab-javadoc-page
 
 variables:
   MAVEN_REPO: "$CI_PROJECT_DIR/.m2"
@@ -14,3 +15,11 @@ build_artifact:
     name: "disco-model_$CI_COMMIT_SHA"
     paths:
       - target/*.jar
+
+pages:
+  stage: gitlab-javadoc-page
+  script:
+  - mvn javadoc:javadoc
+  artifacts:
+    paths:
+    - target/site/apidocs/
