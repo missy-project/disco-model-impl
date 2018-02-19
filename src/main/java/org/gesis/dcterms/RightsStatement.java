@@ -19,7 +19,7 @@ import org.gesis.rdfs.Resource;
  * reference an external document stating the access rights in more detail.
  * 
  * @author matthaeus
- * @see {@link LicenseDocument}
+ * @see org.gesis.dcterms.LicenseDocument
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -49,7 +49,7 @@ public class RightsStatement extends Resource
 
 	/**
 	 * @return The list of Documents this RightsStatements has attached.
-	 * @see {@link Document}
+	 * @see org.gesis.foaf.Document
 	 */
 	public List<Document> getSeeAlso()
 	{
@@ -61,7 +61,7 @@ public class RightsStatement extends Resource
 	 * 
 	 * @param seeAlso
 	 * @return This RightsStatement object.
-	 * @see {@link getSeeAlso()}
+	 * @see #getSeeAlso()
 	 */
 	public RightsStatement setSeeAlso( final List<Document> seeAlso )
 	{
@@ -83,8 +83,8 @@ public class RightsStatement extends Resource
 	 * 
 	 * @param description
 	 * @return This RightsStatement object.
-	 * @see {@link getDescription()}
-	 * @see {@link Resource}
+	 * @see #getDescription()
+	 * @see org.gesis.rdfs.Resource
 	 */
 	public RightsStatement setDescription( final LangString description )
 	{

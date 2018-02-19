@@ -32,7 +32,9 @@ import org.gesis.rdfs.Resource;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#coverage-of-studies-logical-datasets-and-data-files}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#coverage-of-studies-logical-datasets-and-data-files">
+ *      Coverage of Studies, LogicalDataSets, and DataFiles</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -73,7 +75,7 @@ public class PeriodOfTime extends Resource
 	 * 
 	 * @param startDate
 	 * @return This PeriodOfTime object.
-	 * @see {@link getStartDate()}
+	 * @see #getStartDate()
 	 */
 	public PeriodOfTime setStartDate( final Date startDate )
 	{
@@ -95,11 +97,12 @@ public class PeriodOfTime extends Resource
 	 * 
 	 * @param endDate
 	 * @return This PeriodOfTime object.
-	 * @see {@link getEndDate()}
+	 * @see #getEndDate()
 	 */
-	public void setEndDate( final Date endDate )
+	public PeriodOfTime setEndDate( final Date endDate )
 	{
 		this.endDate = endDate;
+		return this;
 	}
 
 	/**
@@ -116,12 +119,14 @@ public class PeriodOfTime extends Resource
 	 * 
 	 * @param dateIssued
 	 * @return This PeriodOfTime object.
-	 * @see {@link getDateIssued()}
-	 * @see {@link setStartDate()} and {@link setEndDate()}
+	 * @see #getDateIssued()
+	 * @see #setStartDate(Date)
+	 * @see #setEndDate(Date)
 	 */
-	public void setDateIssued( Date dateIssued )
+	public PeriodOfTime setDateIssued( Date dateIssued )
 	{
 		this.dateIssued = dateIssued;
+		return this;
 	}
 
 }

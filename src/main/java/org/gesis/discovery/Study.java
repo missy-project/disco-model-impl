@@ -39,6 +39,9 @@ import org.gesis.foaf.Agent;
  * </p>
  * 
  * @author matthaeus
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#study">Definition:
+ *      Studies and StudyGroups</a>
  *
  */
 @Entity
@@ -115,9 +118,9 @@ public class Study extends Union_StudyGroupStudy
 	// getter/setter
 
 	/**
-	 * @return The list of {@link Instrument}s this Study uses to collect data.
-	 * @see {@link Instrument}
-	 * @see {@link Questionnaire}
+	 * @return The list of Instruments this Study uses to collect data.
+	 * @see org.gesis.discovery.Instrument
+	 * @see org.gesis.discovery.Questionnaire
 	 */
 	public List<Instrument> getInstrument()
 	{
@@ -134,7 +137,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param instrument
 	 * @return This Study object.
-	 * @see {@link getInstrument()}
+	 * @see #getInstrument()
 	 */
 	public Study setInstrument( final List<Instrument> instrument )
 	{
@@ -154,7 +157,7 @@ public class Study extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Variables this Study contains.
-	 * @see {@link Variable}
+	 * @see org.gesis.discovery.Variable
 	 */
 	public List<Variable> getVariable()
 	{
@@ -168,7 +171,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param variable
 	 * @return This Study object.
-	 * @see {@link getVariable()}
+	 * @see #getVariable()
 	 */
 	public Study setVariable( final List<Variable> variable )
 	{
@@ -190,8 +193,8 @@ public class Study extends Union_StudyGroupStudy
 	 * The collected data result in the microdata represented by the DataFile.
 	 * 
 	 * @return The list of DataFiles to represent results of this Study.
-	 * @see {@link DataFile}
-	 * @see {@link LogicalDataSet}
+	 * @see org.gesis.discovery.DataFile
+	 * @see org.gesis.discovery.LogicalDataSet
 	 */
 	public List<DataFile> getDataFile()
 	{
@@ -205,7 +208,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param dataFile
 	 * @return This Study object.
-	 * @see {@link getDataFile()}
+	 * @see #getDataFile()
 	 */
 	public Study setDataFile( final List<DataFile> dataFile )
 	{
@@ -226,7 +229,7 @@ public class Study extends Union_StudyGroupStudy
 	/**
 	 * @return The list of LogicalDataSets this Study uses to express logical
 	 *         metadata.
-	 * @see {@link LogicalDataSet}
+	 * @see org.gesis.discovery.LogicalDataSet
 	 */
 	public List<LogicalDataSet> getProduct()
 	{
@@ -241,7 +244,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param product
 	 * @return This Study object.
-	 * @see {@link getProduct()}
+	 * @see #getProduct()
 	 */
 	public Study setProduct( final List<LogicalDataSet> product )
 	{
@@ -272,7 +275,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param inGroup
 	 * @return This Study object.
-	 * @see {@link getInGroup()}
+	 * @see #getInGroup()
 	 */
 	public Study setInGroup( final StudyGroup inGroup )
 	{
@@ -282,7 +285,7 @@ public class Study extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this Study functioning as publishers.
-	 * @see {@link Agent}
+	 * @see org.gesis.foaf.Agent
 	 */
 	public List<Agent> getPublisher()
 	{
@@ -296,7 +299,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param publisher
 	 * @return This Study object.
-	 * @see {@link getPublisher()}
+	 * @see #getPublisher()
 	 */
 	public Study setPublisher( final List<Agent> publisher )
 	{
@@ -316,7 +319,7 @@ public class Study extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this Study functioning as contributors.
-	 * @see {@link Agent}
+	 * @see org.gesis.foaf.Agent
 	 */
 	public List<Agent> getContributor()
 	{
@@ -330,7 +333,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param contributor
 	 * @return This Study object.
-	 * @see {@link getContributor()}
+	 * @see #getContributor()
 	 */
 	public Study setContributor( final List<Agent> contributor )
 	{
@@ -350,7 +353,7 @@ public class Study extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this Study functioning as creators.
-	 * @see {@link Agent}
+	 * @see org.gesis.foaf.Agent
 	 */
 	public List<Agent> getCreator()
 	{
@@ -364,7 +367,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param creator
 	 * @return This Study object.
-	 * @see {@link getCreator()}
+	 * @see #getCreator()
 	 */
 	public Study setCreator( final List<Agent> creator )
 	{
@@ -385,7 +388,7 @@ public class Study extends Union_StudyGroupStudy
 	/**
 	 * @return The list of Agents of this Study functioning as contributors that
 	 *         funded this Study.
-	 * @see {@link Agent}
+	 * @see org.gesis.foaf.Agent
 	 */
 	public List<Agent> getFundedBy()
 	{
@@ -399,7 +402,7 @@ public class Study extends Union_StudyGroupStudy
 	 * 
 	 * @param fundedBy
 	 * @return This Study object.
-	 * @see {@link getFundedBy()}
+	 * @see #getFundedBy()
 	 */
 	public Study setFundedBy( final List<Agent> fundedBy )
 	{

@@ -18,6 +18,8 @@ public class Organization extends Agent
 
 	// properties
 
+	private static final long serialVersionUID = -9153662811977414544L;
+
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY )
 	private LangString altLabel;
 
@@ -32,12 +34,11 @@ public class Organization extends Agent
 	 * From the specification: <br>
 	 * <i>"A lexical label is a string of UNICODE characters ... <br>
 	 * <br>
-	 * The preferred and alternative labels are useful when generating or
-	 * creating human-readable representations of a knowledge organization
-	 * system. These labels provide the strongest clues as to the meaning of a
-	 * SKOS concept."</i>
+	 * The preferred and alternative labels are useful when generating or creating
+	 * human-readable representations of a knowledge organization system. These
+	 * labels provide the strongest clues as to the meaning of a SKOS concept."</i>
 	 * 
-	 * @return
+	 * @return The altLabel of this Organization.
 	 */
 	public LangString getAltLabel()
 	{
@@ -50,27 +51,33 @@ public class Organization extends Agent
 	}
 
 	/**
-	 * Corresponds to skos:notation.<br>
-	 * <br>
-	 * From the specification:<br>
-	 * <i>"A notation is a string of characters such as "T58.5" or "303.4833"
-	 * used to uniquely identify a concept within the scope of a given concept
-	 * scheme.<br>
-	 * <br>
-	 * A notation is different from a lexical label in that a notation is not
-	 * normally recognizable as a word or sequence of words in any natural
-	 * language."</i>
-	 * 
-	 * @return
+	 * @return The notation of this Organization.
 	 */
 	public String getNotation()
 	{
 		return notation;
 	}
 
-	public void setNotation( final String notation )
+	/**
+	 * Corresponds to skos:notation. From the specification:
+	 * <p>
+	 * <i>"A notation is a string of characters such as "T58.5" or "303.4833" used
+	 * to uniquely identify a concept within the scope of a given concept scheme.
+	 * </p>
+	 * <p>
+	 * A notation is different from a lexical label in that a notation is not
+	 * normally recognizable as a word or sequence of words in any natural
+	 * language."</i>
+	 * </p>
+	 * 
+	 * @param notation
+	 * @return This Organization object.
+	 * @see #getNotation()
+	 */
+	public Organization setNotation( final String notation )
 	{
 		this.notation = notation;
+		return this;
 	}
 
 }

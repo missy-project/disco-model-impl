@@ -22,8 +22,10 @@ import org.gesis.rdf.LangString;
  * deviations can be defined. SummaryStatistics pointing to variables.
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics}
- * @see {@link DescriptiveStatistics}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics">Definition:
+ *      Descriptive Statistics</a>
+ * @see org.gesis.discovery.DescriptiveStatistics
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -81,7 +83,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:maximum.
 	 * 
-	 * @return
+	 * @return maximum.
 	 */
 	public double getMaximum()
 	{
@@ -101,7 +103,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:mean.
 	 * 
-	 * @return
+	 * @return mean.
 	 */
 	public double getMean()
 	{
@@ -121,7 +123,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:median.
 	 * 
-	 * @return
+	 * @return median.
 	 */
 	public double getMedian()
 	{
@@ -141,7 +143,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:minimum.
 	 * 
-	 * @return
+	 * @return minimum.
 	 */
 	public double getMinimum()
 	{
@@ -161,7 +163,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:mode.
 	 * 
-	 * @return
+	 * @return mode.
 	 */
 	public double getMode()
 	{
@@ -181,7 +183,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:numberOfCases.
 	 * 
-	 * @return
+	 * @return numberOfCases.
 	 */
 	public int getNumberOfCases()
 	{
@@ -201,7 +203,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:percentage.
 	 * 
-	 * @return
+	 * @return percentage.
 	 */
 	public double getPercentage()
 	{
@@ -220,7 +222,9 @@ public class SummaryStatistics extends DescriptiveStatistics
 
 	/**
 	 * @return The computation base of this SummaryStatistics.
-	 * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-computationbase}
+	 * @see <a href=
+	 *      "http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-computationbase">Definition:
+	 *      computationbase</a>
 	 */
 	public LangString getComputationBase()
 	{
@@ -237,7 +241,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	 * 
 	 * @param computationBase
 	 * @return This SummaryStatistics object.
-	 * @see {@link getComputationBase()}
+	 * @see #getComputationBase()
 	 */
 	public SummaryStatistics setComputationBase( final LangString computationBase )
 	{
@@ -280,7 +284,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:standardDeviation.
 	 * 
-	 * @return
+	 * @return standardDeviation.
 	 */
 	public double getStandardDeviation()
 	{
@@ -314,7 +318,7 @@ public class SummaryStatistics extends DescriptiveStatistics
 	 * 
 	 * @param weightedBy
 	 * @return This SummaryStatistics object.
-	 * @see {@link getWeightedBy()}
+	 * @see #getWeightedBy()
 	 */
 	public SummaryStatistics setWeightedBy( final Variable weightedBy )
 	{

@@ -19,15 +19,15 @@ import org.gesis.rdfs.Resource;
 
 /**
  * <p>
- * skos:Concept is reused to a large extent to represent DDI concepts, codes,
- * and categories. SKOS defines the term skos:Concept, which is a unit of
- * knowledge created by a unique combination of characteristics. In context of
- * statistical (meta)data, concepts are abstract summaries, general notions,
- * knowledge of a whole set of behaviours, attitudes or characteristics which
- * are seen as having something in common. Skos:Concepts may be associated with
- * variables, variable definitions, and questions and are reused to a large
- * extent to represent DDI concepts (skos:prefLabel), codes (skos:notation), and
- * category labels (skos:prefLabel). Skos:Concepts may be organized in
+ * Concept is reused to a large extent to represent DDI concepts, codes, and
+ * categories. SKOS defines the term skos:Concept, which is a unit of knowledge
+ * created by a unique combination of characteristics. In context of statistical
+ * (meta)data, concepts are abstract summaries, general notions, knowledge of a
+ * whole set of behaviours, attitudes or characteristics which are seen as
+ * having something in common. Skos:Concepts may be associated with variables,
+ * variable definitions, and questions and are reused to a large extent to
+ * represent DDI concepts (skos:prefLabel), codes (skos:notation), and category
+ * labels (skos:prefLabel). Skos:Concepts may be organized in
  * skos:ConceptSchemes (skos:inScheme), sets of metadata describing statistical
  * concepts. Hierarchies of DDI concepts can be built using the object
  * properties skos:broader and skos:narrower. Topical coverage can be expressed
@@ -63,7 +63,9 @@ import org.gesis.rdfs.Resource;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#simple-knowledge-organization-system-skos}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#simple-knowledge-organization-system-skos">Definition:
+ *      Simple Knowledge Organization System SKOS</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -112,8 +114,8 @@ public class Concept extends Resource
 	// getter/setter
 
 	/**
-	 * A skos:definition is a "documentation property (note property)", which in
-	 * skos refers to <i>"... information relating to SKOS concepts. There is no
+	 * A definition is a "documentation property (note property)", which in skos
+	 * refers to <i>"... information relating to SKOS concepts. There is no
 	 * restriction on the nature of this information, e.g., it could be plain text,
 	 * hypertext, or an image; it could be a definition, information about the scope
 	 * of a concept, editorial information, or any other type of information."</i>
@@ -131,7 +133,7 @@ public class Concept extends Resource
 	 * 
 	 * @param definition
 	 * @return This Concept object.
-	 * @see {@link getDefinition()}
+	 * @see #getDefinition()
 	 */
 	public Concept setDefinition( final LangString definition )
 	{
@@ -157,7 +159,7 @@ public class Concept extends Resource
 	 * 
 	 * @param notation
 	 * @return This Concept object.
-	 * @see {@link getNotation()}
+	 * @see #getNotation()
 	 */
 	public Concept setNotation( final String notation )
 	{
@@ -235,7 +237,7 @@ public class Concept extends Resource
 	 * 
 	 * @param broader
 	 * @return This Concept object.
-	 * @see {@link getBroader()}
+	 * @see #getBroader()
 	 */
 	public Concept setBroader( final List<Concept> broader )
 	{
@@ -268,7 +270,7 @@ public class Concept extends Resource
 	 * 
 	 * @param narrower
 	 * @return This Concept object.
-	 * @see {@link getNarrower()}
+	 * @see #getNarrower()
 	 */
 	public Concept setNarrower( final List<Concept> narrower )
 	{

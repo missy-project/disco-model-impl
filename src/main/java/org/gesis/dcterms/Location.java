@@ -30,7 +30,9 @@ import org.gesis.rdfs.Resource;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#coverage-of-studies-logical-datasets-and-data-files}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#coverage-of-studies-logical-datasets-and-data-files">Documentation:
+ *      Coverage of studies, logical datasets, and data files</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -65,7 +67,7 @@ public class Location extends Resource
 	 * 
 	 * @param label
 	 * @return This Location object.
-	 * @see {@link getLabel()}
+	 * @see #getLabel()
 	 */
 	public Location setLabel( final String label )
 	{

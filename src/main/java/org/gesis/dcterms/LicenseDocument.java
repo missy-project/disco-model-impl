@@ -5,11 +5,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 /**
- * License information is captured in a dcterms:LicenseDocument, which is a
- * subtype of dcterms:RightsStatements.
+ * License information is captured in a LicenseDocument (corresponds to
+ * dcterms:LicenseDocument), which is a subtype of RightsStatements (corresponds
+ * to dcterms:RightsStatement).
  * 
  * @author matthaeus
- * @see {@link RightsStatement}
+ * @see org.gesis.dcterms.RightsStatement
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )

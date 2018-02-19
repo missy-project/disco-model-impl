@@ -73,7 +73,7 @@ public class Resource extends PersistableResource
 	 * 
 	 * @param prefLabel
 	 * @return this Resource object
-	 * @see {@link getPrefLabel()}
+	 * @see #getPrefLabel()
 	 */
 	public Resource setPrefLabel( final LangString prefLabel )
 	{
@@ -94,7 +94,7 @@ public class Resource extends PersistableResource
 	 * 
 	 * @param versionInfo
 	 * @return this Resource object.
-	 * @see {@link getVersionInfo()}
+	 * @see #getVersionInfo()
 	 */
 	public Resource setVersionInfo( final String versionInfo )
 	{
@@ -103,11 +103,12 @@ public class Resource extends PersistableResource
 	}
 
 	/**
-	 * In general, such {@link Identifiers} can be added to each entitiy in disco,
+	 * In general, such {@link Identifier}s can be added to each entitiy in disco,
 	 * since every entity is defined as an rdfs:{@link Resource}.
 	 * 
-	 * @return A list of {@link Identifiers} this resource is associated with.
-	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#identification
+	 * @return A list of {@link Identifier}s this resource is associated with.
+	 * @see <a href=
+	 *      "http://rdf-vocabulary.ddialliance.org/discovery.html#identification">Identification</a>
 	 */
 	public List<Identifier> getIdentifier()
 	{
@@ -119,7 +120,7 @@ public class Resource extends PersistableResource
 	 * Resource.
 	 * 
 	 * @param identifier
-	 * @see {@link getIdentifier()}
+	 * @see #getIdentifier()
 	 */
 	public void setIdentifier( final List<Identifier> identifier )
 	{

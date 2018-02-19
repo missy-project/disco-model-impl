@@ -39,8 +39,10 @@ import org.gesis.skos.Concept;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#logicaldataset}
- * @see {@link DataFile}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#logicaldataset">Definition:
+ *      LogicalDataSet</a>
+ * @see org.gesis.discovery.DataFile
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -147,7 +149,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param title
 	 * @return This LogicalDataSet object.
-	 * @see {@link getTitle()}
+	 * @see #getTitle()
 	 */
 	public LogicalDataSet setTitle( final LangString title )
 	{
@@ -158,7 +160,7 @@ public class LogicalDataSet extends Resource
 	/**
 	 * A flag indicating if the microdata dataset is publicly available.
 	 * 
-	 * @return
+	 * @return The value of isPublic.
 	 */
 	public boolean isPublic()
 	{
@@ -170,7 +172,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param isPublic
 	 * @return This LogicalDataSet object.
-	 * @see {@link isPublic()}
+	 * @see #isPublic()
 	 */
 	public LogicalDataSet setPublic( final boolean isPublic )
 	{
@@ -180,7 +182,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The variable quantity of this LogicalDataSet.
-	 * @see {@link DataFile}
+	 * @see org.gesis.discovery.DataFile
 	 */
 	public int getVariableQuantity()
 	{
@@ -197,7 +199,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param variableQuantity
 	 * @return This LogicalDataSet object.
-	 * @see {@link getVariableQuantity()}
+	 * @see #getVariableQuantity()
 	 */
 	public LogicalDataSet setVariableQuantity( int variableQuantity )
 	{
@@ -207,7 +209,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The Universe of this LogicalDataSet.
-	 * @see {@link Universe}
+	 * @see org.gesis.discovery.Universe
 	 */
 	public Universe getUniverse()
 	{
@@ -220,7 +222,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param universe
 	 * @return This LogicalDataSet object.
-	 * @see {@link getUniverse()}
+	 * @see #getUniverse()
 	 */
 	public LogicalDataSet setUniverse( final Universe universe )
 	{
@@ -230,7 +232,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of spatial coverages (Location) of this microdata dataset.
-	 * @see {@link Location}
+	 * @see org.gesis.dcterms.Location
 	 */
 	public List<Location> getSpatial()
 	{
@@ -244,7 +246,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param spatial
 	 * @return This LogicalDataSet object.
-	 * @see {@link getSpatial()}
+	 * @see #getSpatial()
 	 */
 	public LogicalDataSet setSpatial( final List<Location> spatial )
 	{
@@ -265,7 +267,7 @@ public class LogicalDataSet extends Resource
 	/**
 	 * @return The list of temporal coverages (PeriodOfTime) of this microdata
 	 *         dataset.
-	 * @see {@link PeriodOfTime}
+	 * @see org.gesis.dcterms.PeriodOfTime
 	 */
 	public List<PeriodOfTime> getTemporal()
 	{
@@ -279,7 +281,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param temporal
 	 * @return This LogicalDataSet object.
-	 * @see {@link getTemporal()}
+	 * @see #getTemporal()
 	 */
 	public LogicalDataSet setTemporal( final List<PeriodOfTime> temporal )
 	{
@@ -299,7 +301,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of topical coverages (Concept) of this microdata dataset.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Concept> getSubject()
 	{
@@ -313,7 +315,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param subject
 	 * @return This LogicalDataSet object.
-	 * @see {@link getSubject()}
+	 * @see #getSubject()
 	 */
 	public LogicalDataSet setSubject( final List<Concept> subject )
 	{
@@ -333,8 +335,8 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of {@link Instrument}s this Study uses to collect data.
-	 * @see {@link Instrument}
-	 * @see {@link Questionnaire}
+	 * @see org.gesis.discovery.Instrument
+	 * @see org.gesis.discovery.Questionnaire
 	 */
 	public List<Instrument> getInstrument()
 	{
@@ -351,7 +353,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param instrument
 	 * @return This LogicalDataSet object.
-	 * @see {@link getInstrument()}
+	 * @see #getInstrument()
 	 */
 	public LogicalDataSet setInstrument( final List<Instrument> instrument )
 	{
@@ -371,7 +373,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of Variables this microdata dataset contains.
-	 * @see {@link Variable}
+	 * @see org.gesis.discovery.Variable
 	 */
 	public List<Variable> getVariable()
 	{
@@ -383,13 +385,14 @@ public class LogicalDataSet extends Resource
 	 * dataset. A variable might be the answer of a question, have an administrative
 	 * source, or be derived from other variables.
 	 * 
-	 * @param variable
+	 * @param variables
 	 * @return This LogicalDataSet object.
-	 * @see {@link getVariable()}
+	 * @see #getVariable()
 	 */
-	public void setVariable( final List<Variable> variables )
+	public LogicalDataSet setVariable( final List<Variable> variables )
 	{
 		this.variable = variables;
+		return this;
 	}
 
 	public LogicalDataSet addContainsVariable( final Variable variable )
@@ -406,8 +409,8 @@ public class LogicalDataSet extends Resource
 	 * The collected data result in the microdata represented by the DataFile.
 	 * 
 	 * @return The list of DataFiles to represent results of this Study.
-	 * @see {@link DataFile}
-	 * @see {@link Study}
+	 * @see org.gesis.discovery.DataFile
+	 * @see org.gesis.discovery.Study
 	 */
 	public List<DataFile> getDataFile()
 	{
@@ -420,7 +423,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param dataFile
 	 * @return This LogicalDataSet object.
-	 * @see {@link getDataFile()}
+	 * @see #getDataFile()
 	 */
 	public LogicalDataSet setDataFile( final List<DataFile> dataFile )
 	{
@@ -440,7 +443,7 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of derived cube datasets from this microdata dataset.
-	 * @see {@link DataSet}
+	 * @see org.gesis.datacube.DataSet
 	 */
 	public List<DataSet> getAggregation()
 	{
@@ -454,7 +457,7 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param aggregation
 	 * @return This LogicalDataSet object.
-	 * @see {@link getAggregation()}
+	 * @see #getAggregation()
 	 */
 	public LogicalDataSet setAggregation( final List<DataSet> aggregation )
 	{
@@ -474,8 +477,8 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of LicenseDocuments this logical dataset has attached.
-	 * @see {@link LicenseDocument}
-	 * @see {@link AccessRights}
+	 * @see org.gesis.dcterms.LicenseDocument
+	 * @see org.gesis.dcterms.RightsStatement
 	 */
 	public List<LicenseDocument> getLicense()
 	{
@@ -489,8 +492,8 @@ public class LogicalDataSet extends Resource
 	 * 
 	 * @param license
 	 * @return This LogicalDataSet object.
-	 * @see {@link getLicense()}
-	 * @see {@link getAccessRights()}
+	 * @see #getLicense()
+	 * @see #getAccessRights()
 	 */
 	public LogicalDataSet setLicense( final List<LicenseDocument> license )
 	{
@@ -510,8 +513,8 @@ public class LogicalDataSet extends Resource
 
 	/**
 	 * @return The list of RightsStatements this logical dataset has attached.
-	 * @see {@link RightsStatement}
-	 * @see {@link LicenseDocument}
+	 * @see org.gesis.dcterms.RightsStatement
+	 * @see org.gesis.dcterms.LicenseDocument
 	 */
 	public List<RightsStatement> getAccessRights()
 	{
@@ -524,7 +527,7 @@ public class LogicalDataSet extends Resource
 	 * dcterms:accessRights and dcterms:license are used.
 	 * 
 	 * @param accessRights
-	 * @return
+	 * @return This LogicalDataSet object.
 	 */
 	public LogicalDataSet setAccessRights( final List<RightsStatement> accessRights )
 	{

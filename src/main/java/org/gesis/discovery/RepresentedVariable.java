@@ -18,6 +18,15 @@ import javax.persistence.ManyToOne;
 import org.gesis.rdfs.Resource;
 import org.gesis.skos.Concept;
 
+/**
+ * RepresentedVariable encompasse study-independent, re-usable parts of
+ * variables like occupation classification.
+ * 
+ * @author matthaeus
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#variable-and-variable-definition">Definition:
+ *      Variable and Variable Definition</a>
+ */
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public class RepresentedVariable extends Resource
@@ -56,21 +65,53 @@ public class RepresentedVariable extends Resource
 
 	// getter/setter
 
+	/**
+	 * @return The description of this RepresentedVariable.
+	 */
 	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(final String dcterms_description) {
-		this.description = dcterms_description;
+	/**
+	 * Corresponds to dcterms:description.
+	 * 
+	 * Variables can be described (dcterms:description), have associated names
+	 * (skos:notation), and have labels that are set via the datatype property
+	 * prefLabel (skos:prefLabel).
+	 * 
+	 * @param description
+	 * @see #getDescription()
+	 * @see org.gesis.discovery.Variable
+	 */
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
+	/**
+	 * Indicates the particular {@link Universe}(s) that may be connected to this
+	 * Variable. Any universe of a Variable definition is a subset of the Universe
+	 * of the entire {@link Study}.
+	 * 
+	 * @return The Universe of this RepresentedVariable.
+	 * @see org.gesis.discovery.Universe
+	 * @see org.gesis.skos.Concept
+	 */
 	public List<Universe> getUniverse() {
 		return this.universe;
 	}
 
-	public void setUniverse(final List<Universe> universe)
+	/**
+	 * Sets the Universe for this RepresentedVariable. Any universe of a Variable
+	 * definition is a subset of the Universe of the entire {@link Study}.
+	 * 
+	 * @param universe
+	 * @return This RepresentedVariable object.
+	 * @see #getUniverse()
+	 */
+	public RepresentedVariable setUniverse( final List<Universe> universe )
 	{
 		this.universe = universe;
+		return this;
 	}
 
 	public RepresentedVariable addUniverse( final Universe universe )
@@ -83,23 +124,56 @@ public class RepresentedVariable extends Resource
 		return this;
 	}
 
+	/**
+	 * Points to the DDI concept of a RepresentedVariable, a Variable, or a
+	 * Question.
+	 * 
+	 * @return The Concept of this RepresentedVariable.
+	 * @see org.gesis.skos.Concept
+	 */
 	public Concept getConcept()
 	{
 		return this.concept;
 	}
 
-	public void setConcept( final Concept concept )
+	/**
+	 * Sets the Concept for this Variable.
+	 * 
+	 * @param concept
+	 * @return This RepresentedVariable object.
+	 * @see #getConcept()
+	 */
+	public RepresentedVariable setConcept( final Concept concept )
 	{
 		this.concept = concept;
+		return this;
 	}
 
+	/**
+	 * The {@link Representation} of a variable is the combination of a value
+	 * domain, datatype, and, if necessary, a unit of measure or a character set.
+	 * 
+	 * @return The Representation of this RepresentedVariable.
+	 * @see org.gesis.discovery.Representation
+	 * @see org.gesis.skos.ConceptScheme
+	 */
 	public List<Representation> getRepresentation() {
 		return this.representation;
 	}
 
-	public void setRepresentation(final List<Representation> representation)
+	/**
+	 * Sets the Representation which is one of a set of values to which a numerical
+	 * measure or a category from a classification can be assigned (e.g. income,
+	 * age, and sex: male coded as 1).
+	 * 
+	 * @param representation
+	 * @return This RepresentedVariable object.
+	 * @see #getRepresentation()
+	 */
+	public RepresentedVariable setRepresentation( final List<Representation> representation )
 	{
 		this.representation = representation;
+		return this;
 	}
 
 	public RepresentedVariable addRepresentation( final Representation representation )

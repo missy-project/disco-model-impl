@@ -22,12 +22,14 @@ import org.gesis.rdfs.Resource;
  * counts, means, or frequencies.
  * 
  * <p>
- * Subclasses of this class are {@link SummaryStatistics} and
- * {@link CategoryStatistics}, which are both descriptive statistics.
+ * Subclasses of this class are org.gesis.disco.SummaryStatistics and
+ * org.gesis.disco.CategoryStatistics, which are both descriptive statistics.
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics">Definition:
+ *      Descriptive Statistics</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -65,7 +67,7 @@ public class DescriptiveStatistics extends Resource
 	 * 
 	 * @param dataFiles
 	 * @return This DescriptiveStatistics object.
-	 * @see {@link getStatisticsDataFile()}
+	 * @see #getStatisticsDataFile()
 	 */
 	public DescriptiveStatistics setStatisticsDataFile( final List<DataFile> dataFiles )
 	{

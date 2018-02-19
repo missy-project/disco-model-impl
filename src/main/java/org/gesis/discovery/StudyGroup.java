@@ -20,11 +20,13 @@ import org.gesis.foaf.Agent;
  * released as a StudyGroup, where each cycle or wave of the data collection
  * activity produces one or more data sets. This is typical for longitudinal
  * studies, panel studies, and other types of series (to use the DDI term). In
- * this case, a number of {@link Study} objects would be collected into a single
- * StudyGroup.
+ * this case, a number of objects would be collected into a single StudyGroup.
  * 
  * @author matthaeus
- * @see {@link Study}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#study">Definition:
+ *      Studies and StudyGroups</a>
+ * @see org.gesis.discovery.Study
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -74,7 +76,6 @@ public class StudyGroup extends Union_StudyGroupStudy
 	/**
 	 * @return The list of Studies this StudyGroup contains, where each cycle or
 	 *         "wave" of the data collection activity produces one or more data sets
-	 * @see {@link Study}
 	 */
 	public List<Study> getStudies()
 	{
@@ -89,7 +90,7 @@ public class StudyGroup extends Union_StudyGroupStudy
 	 * 
 	 * @param studies
 	 * @return This StudyGroup object.
-	 * @see {@link getStudies()}
+	 * @see #getStudies()
 	 */
 	public StudyGroup setStudies( final List<Study> studies )
 	{
@@ -99,7 +100,6 @@ public class StudyGroup extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this StudyGroup.
-	 * @see {@link Agent}
 	 */
 	public List<Agent> getPublisher()
 	{
@@ -113,6 +113,7 @@ public class StudyGroup extends Union_StudyGroupStudy
 	 * 
 	 * @param publisher
 	 * @return This StudyGroup object.
+	 * @see #getPublisher()
 	 */
 	public StudyGroup setPublisher( final List<Agent> publisher )
 	{
@@ -133,7 +134,6 @@ public class StudyGroup extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this StudyGroup functioning as contributors.
-	 * @see {@link Agent}
 	 */
 	public List<Agent> getContributor()
 	{
@@ -147,7 +147,7 @@ public class StudyGroup extends Union_StudyGroupStudy
 	 * 
 	 * @param contributor
 	 * @return This StudyGroup object.
-	 * @see {@link getContributor()}
+	 * @see #getContributor()
 	 */
 	public StudyGroup setContributor( final List<Agent> contributor )
 	{
@@ -167,7 +167,6 @@ public class StudyGroup extends Union_StudyGroupStudy
 
 	/**
 	 * @return The list of Agents of this StudyGroup functioning as creators.
-	 * @see {@link Agent}
 	 */
 	public List<Agent> getCreator()
 	{
@@ -181,7 +180,7 @@ public class StudyGroup extends Union_StudyGroupStudy
 	 * 
 	 * @param creator
 	 * @return This StudyGroup object.
-	 * @see {@link getCreator()}
+	 * @see #getCreator()
 	 */
 	public StudyGroup setCreator( final List<Agent> creator )
 	{
@@ -202,7 +201,6 @@ public class StudyGroup extends Union_StudyGroupStudy
 	/**
 	 * @return The list of Agents of this StudyGroup functioning as contributors
 	 *         that funded this StudyGroup.
-	 * @see {@link Agent}
 	 */
 	public List<Agent> getFundedBy()
 	{
@@ -216,7 +214,7 @@ public class StudyGroup extends Union_StudyGroupStudy
 	 * 
 	 * @param fundedBy
 	 * @return This StudyGroup object.
-	 * @see {@link getFundedBy()}
+	 * @see #getFundedBy()
 	 */
 	public StudyGroup setFundedBy( final List<Agent> fundedBy )
 	{

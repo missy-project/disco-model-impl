@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.gesis.discovery.LogicalDataSet;
 import org.gesis.discovery.Variable;
 import org.gesis.rdfs.Resource;
 
@@ -39,8 +38,10 @@ import org.gesis.rdfs.Resource;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#rdf-data-cube-vocabulary-qb}
- * @see {@link LogicalDataSet}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#rdf-data-cube-vocabulary-qb">Definition:
+ *      RDF DataCube vocabulary</a>
+ * @see org.gesis.discovery.LogicalDataSet
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -65,7 +66,7 @@ public class DataSet extends Resource
 
 	/**
 	 * @return The list of Variables this DataSet is attached to.
-	 * @see {@link Variable}
+	 * @see org.gesis.discovery.Variable
 	 */
 	public List<Variable> getInputVariable()
 	{

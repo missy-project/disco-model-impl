@@ -24,8 +24,10 @@ import org.gesis.skos.Concept;
  * defined.
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics}
- * @see {@link DescriptiveStatistics}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#descriptivestatistics">Definition:
+ *      Descriptive Statistics</a>
+ * @see org.gesis.discovery.DescriptiveStatistics
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -69,7 +71,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:frequency.
 	 * 
-	 * @return
+	 * @return The frequency.
 	 */
 	public int getFrequency()
 	{
@@ -89,7 +91,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:cumulativePercentage.
 	 * 
-	 * @return
+	 * @return The cumulative percentage.
 	 */
 	public double getCumulativePercentage()
 	{
@@ -109,7 +111,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	/**
 	 * Corresponds to disco:percentage.
 	 * 
-	 * @return
+	 * @return The percentage.
 	 */
 	public double getPercentage()
 	{
@@ -128,7 +130,9 @@ public class CategoryStatistics extends DescriptiveStatistics
 
 	/**
 	 * @return The computation base of this CategoryStatistics.
-	 * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-computationbase}
+	 * @see <a href=
+	 *      "http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-computationbase">Definition:
+	 *      computationbase</a>
 	 */
 	public LangString getComputationBase()
 	{
@@ -145,7 +149,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	 * 
 	 * @param computationBase
 	 * @return This CategoryStatistics object.
-	 * @see {@link getComputationBase()}
+	 * @see #getComputationBase()
 	 */
 	public CategoryStatistics setComputationBase( final LangString computationBase )
 	{
@@ -156,7 +160,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	/**
 	 * @return The list of Concepts (representing codes and categories) of this
 	 *         CategoryStatistics.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Concept> getStatisticsCategory()
 	{
@@ -168,7 +172,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	 * codes and categories) of this specific CategoryStatistics individual.
 	 * 
 	 * @param categories
-	 * @see {@link getStatisticsCategory()}
+	 * @see #getStatisticsCategory()
 	 */
 	public CategoryStatistics setStatisticsCategory( final List<Concept> categories )
 	{
@@ -203,7 +207,7 @@ public class CategoryStatistics extends DescriptiveStatistics
 	 * 
 	 * @param weightedBy
 	 * @return This CategoryStatistics object.
-	 * @see {@link getWeightedBy()}
+	 * @see #getWeightedBy()
 	 */
 	public CategoryStatistics setWeightedBy( final Variable weightedBy )
 	{

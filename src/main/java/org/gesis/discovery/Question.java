@@ -16,14 +16,15 @@ import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
 import org.gesis.skos.Concept;
-import org.gesis.skos.ConceptScheme;
 
 /**
  * A Question is designed to get information upon a subject, or sequence of
  * subjects, from a respondent. A Question is a {@link Concept}.
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#question}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#question">Definition:
+ *      Question</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -64,7 +65,7 @@ public class Question extends Concept
 
 	/**
 	 * @return The question text of this Question object.
-	 * @see {@link LangString}
+	 * @see org.gesis.rdf.LangString
 	 */
 	public Object getQuestionText()
 	{
@@ -75,8 +76,8 @@ public class Question extends Concept
 	 * Corresponds to disco:questionText. Sets the question text for this Question.
 	 * 
 	 * @param questionText
-	 * @see {@link getQuestionText()}
 	 * @return this Question object.
+	 * @see #getQuestionText()
 	 */
 	public Question setQuestionText( final LangString questionText )
 	{
@@ -88,8 +89,8 @@ public class Question extends Concept
 	 * Get the list of response domains ({@link Representation}) of this Question.
 	 * 
 	 * @return The list of Representations of this Variable.
-	 * @see {@link Representation}
-	 * @see {@link ConceptScheme}
+	 * @see org.gesis.discovery.Representation
+	 * @see org.gesis.skos.ConceptScheme
 	 */
 	public List<Representation> getResponseDomain()
 	{
@@ -101,8 +102,8 @@ public class Question extends Concept
 	 * ({@link Representation}) of this Question.
 	 * 
 	 * @param responseDomain
-	 * @see {@link getReponseDomain()}
-	 * @return This question object.
+	 * @return This Question object.
+	 * @see #getResponseDomain()
 	 */
 	public Question setResponseDomain( final List<Representation> responseDomain )
 	{
@@ -122,7 +123,7 @@ public class Question extends Concept
 
 	/**
 	 * @return The list of {@link Concept}s of this Question.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Concept> getConcept()
 	{
@@ -135,8 +136,8 @@ public class Question extends Concept
 	 * Question.
 	 * 
 	 * @param concept
-	 * @see {@link getConcept()}
 	 * @return This Question object.
+	 * @see #getConcept()
 	 */
 	public Question setConcept( final List<Concept> concept )
 	{
@@ -161,8 +162,8 @@ public class Question extends Concept
 	 * persons.
 	 * 
 	 * @return The Universe of this Question.
-	 * @see {@link Universe}
-	 * @see {@link Concept}
+	 * @see org.gesis.discovery.Universe
+	 * @see org.gesis.skos.Concept
 	 */
 	public Universe getUniverse()
 	{
@@ -176,7 +177,7 @@ public class Question extends Concept
 	 * 
 	 * @param universe
 	 * @return This Question object.
-	 * @see {@link getUniverse()}
+	 * @see #getUniverse()
 	 */
 	public Question setUniverse( final Universe universe )
 	{

@@ -28,12 +28,12 @@ public class Locales
 	}
 
 	/**
-	 * Returns a Locale by the given <i>country</i>. If the Locale is not known
-	 * by this class, a new Locale will be created by invoking <i>new Locale(
-	 * country, country )</i>.
+	 * Returns a Locale by the given <i>country</i>. If the Locale is not known by
+	 * this class, a new Locale will be created by invoking <i>new Locale( country,
+	 * country )</i>.
 	 * 
 	 * @param country
-	 * @return
+	 * @return A Locale-instance with given country.
 	 */
 	public static Locale getLocale( String country )
 	{
@@ -55,12 +55,12 @@ public class Locales
 	}
 
 	/**
-	 * Returns a Locale by the given <i>language</i>. If the Locale is not known
-	 * by this class, a new Loale will be created by invoking <i>new Locale(
-	 * language, language )</i>.
+	 * Returns a Locale by the given <i>language</i>. If the Locale is not known by
+	 * this class, a new Loale will be created by invoking <i>new Locale( language,
+	 * language )</i>.
 	 * 
 	 * @param language
-	 * @return
+	 * @return A Locale-instance with given language.
 	 */
 	public static Locale getLocaleByLanguage( String language )
 	{

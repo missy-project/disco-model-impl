@@ -22,8 +22,10 @@ import org.gesis.discovery.Representation;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#codes-and-categories}
- * @see {@link Representation}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#codes-and-categories">Definition:
+ *      Codes and Categories</a>
+ * @see org.gesis.discovery.Representation
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -50,7 +52,7 @@ public class ConceptScheme extends Representation
 
 	/**
 	 * @return The list of top concepts in this ConceptScheme.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Concept> getHasTopConcept()
 	{
@@ -63,7 +65,7 @@ public class ConceptScheme extends Representation
 	 * 
 	 * @param hasTopConcept
 	 * @return This ConceptScheme object.
-	 * @see {@link getHasTopConcept()}
+	 * @see #getHasTopConcept()
 	 */
 	public ConceptScheme setHasTopConcept( final List<Concept> hasTopConcept )
 	{

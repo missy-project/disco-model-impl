@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 
 import org.gesis.rdf.LangString;
 import org.gesis.skos.Concept;
-import org.gesis.skos.ConceptScheme;
 
 /**
  * <p>
@@ -30,7 +29,9 @@ import org.gesis.skos.ConceptScheme;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#variable}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#variable">Definition:
+ *      Variable</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -81,8 +82,8 @@ public class Variable extends Concept
 	 * datatype property skos:prefLabel.
 	 * 
 	 * @return The description of this Variable
-	 * @see {@link Concept.setNotation()}
-	 * @see {@link Resource.setPrefLabel()}
+	 * @see org.gesis.skos.Concept#setNotation(String)
+	 * @see org.gesis.rdfs.Resource#setPrefLabel(LangString)
 	 */
 	public LangString getDescription()
 	{
@@ -94,7 +95,7 @@ public class Variable extends Concept
 	 * 
 	 * @param description
 	 * @return This Variable object.
-	 * @see {@link getDescription()}
+	 * @see #getDescription()
 	 */
 	public Variable setDescription( final LangString description )
 	{
@@ -107,7 +108,7 @@ public class Variable extends Concept
 	 * AnalysisUnit would be individuals or persons.
 	 * 
 	 * @return The AnalysisUnit of this Variable.
-	 * @see {@link AnalysisUnit}
+	 * @see org.gesis.discovery.AnalysisUnit
 	 */
 	public AnalysisUnit getAnalysisUnit()
 	{
@@ -119,7 +120,7 @@ public class Variable extends Concept
 	 * 
 	 * @param analysisUnit
 	 * @return This Variable object.
-	 * @see {@link getAnalysisUnit()}
+	 * @see #getAnalysisUnit()
 	 */
 	public Variable setAnalysisUnit( final AnalysisUnit analysisUnit )
 	{
@@ -132,7 +133,7 @@ public class Variable extends Concept
 	 * Question.
 	 * 
 	 * @return The Concept of this Variable.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public Concept getConcept()
 	{
@@ -144,7 +145,7 @@ public class Variable extends Concept
 	 * 
 	 * @param concept
 	 * @return This Variable object.
-	 * @see {@link getConcept()}
+	 * @see #getConcept()
 	 */
 	public Variable setConcept( final Concept concept )
 	{
@@ -157,7 +158,7 @@ public class Variable extends Concept
 	 * Variables, like occupation classification.
 	 * 
 	 * @return The RepresentedVariable this Variable bases on.
-	 * @see {@link RepresentedVariable}
+	 * @see org.gesis.discovery.RepresentedVariable
 	 */
 	public RepresentedVariable getBasedOn()
 	{
@@ -169,7 +170,7 @@ public class Variable extends Concept
 	 * 
 	 * @param dataElement
 	 * @return This Variable object.
-	 * @see {@link getBasedOn()}
+	 * @see #getBasedOn()
 	 */
 	public Variable setBasedOn( final RepresentedVariable dataElement )
 	{
@@ -182,8 +183,8 @@ public class Variable extends Concept
 	 * domain, datatype, and, if necessary, a unit of measure or a character set.
 	 * 
 	 * @return The Representation of this Variable.
-	 * @see {@link Representation}
-	 * @see {@link ConceptScheme}
+	 * @see org.gesis.discovery.Representation
+	 * @see org.gesis.skos.ConceptScheme
 	 */
 	public Representation getRepresentation()
 	{
@@ -197,7 +198,7 @@ public class Variable extends Concept
 	 * 
 	 * @param representation
 	 * @return This Variable object.
-	 * @see {@link getRepresentation()}
+	 * @see #getRepresentation()
 	 */
 	public Variable setRepresentation( final Representation representation )
 	{
@@ -211,8 +212,8 @@ public class Variable extends Concept
 	 * of the entire {@link Study}.
 	 * 
 	 * @return The Universe of this Variable.
-	 * @see {@link Universe}
-	 * @see {@link Concept}
+	 * @see org.gesis.discovery.Universe
+	 * @see org.gesis.skos.Concept
 	 */
 	public Universe getUniverse()
 	{
@@ -225,7 +226,7 @@ public class Variable extends Concept
 	 * 
 	 * @param universe
 	 * @return This Variable object.
-	 * @see {@link getUniverse()}
+	 * @see #getUniverse()
 	 */
 	public Variable setUniverse( final Universe universe )
 	{
@@ -239,8 +240,8 @@ public class Variable extends Concept
 	 * 
 	 * @return The list of Questions to which this individual Variable may be
 	 *         linked.
-	 * @see {@link Question}
-	 * @see {@link Concept}
+	 * @see org.gesis.discovery.Question
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Question> getQuestion()
 	{
@@ -253,7 +254,7 @@ public class Variable extends Concept
 	 * 
 	 * @param questions
 	 * @return This Variable object.
-	 * @see {@link getQuestion()}
+	 * @see #getQuestion()
 	 */
 	public Variable setQuestion( final List<Question> questions )
 	{

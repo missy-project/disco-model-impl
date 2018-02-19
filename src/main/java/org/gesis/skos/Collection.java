@@ -8,7 +8,7 @@ import org.gesis.rdfs.Resource;
  * A collection of Resources.
  * 
  * @author matthaeus
- * @see {@link Resource}
+ * @see org.gesis.rdfs.Resource
  */
 @MappedSuperclass
 public interface Collection extends java.util.Collection<Resource>

@@ -41,7 +41,9 @@ import org.gesis.skos.Concept;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#datafile}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#datafile">Definition:
+ *      DataFile</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -110,7 +112,7 @@ public class DataFile extends Resource
 	 * 
 	 * @param description
 	 * @return This DateFile object.
-	 * @see {@link getDescription()}
+	 * @see #getDescription()
 	 */
 	public DataFile setDescription( final LangString description )
 	{
@@ -120,7 +122,7 @@ public class DataFile extends Resource
 
 	/**
 	 * @return The case quantity of this DataFile.
-	 * @see {@link LogicalDataSet}
+	 * @see org.gesis.discovery.LogicalDataSet
 	 */
 	public int getCaseQuantity()
 	{
@@ -137,7 +139,7 @@ public class DataFile extends Resource
 	 * 
 	 * @param caseQuantity
 	 * @return This DataFile object.
-	 * @see {@link getCaseQuantity()}
+	 * @see #getCaseQuantity()
 	 */
 	public DataFile setCaseQuantity( final int caseQuantity )
 	{
@@ -148,7 +150,7 @@ public class DataFile extends Resource
 	/**
 	 * @return The list of geographical coverages (Location) this DataFile is
 	 *         attached to.
-	 * @see {@link Location}
+	 * @see org.gesis.dcterms.Location
 	 */
 	public List<Location> getSpatial()
 	{
@@ -162,11 +164,12 @@ public class DataFile extends Resource
 	 * 
 	 * @param spatial
 	 * @return This DataFile object.
-	 * @see {@link getSpatial()}
+	 * @see #getSpatial()
 	 */
-	public void setSpatial( final List<Location> spatial )
+	public DataFile setSpatial( final List<Location> spatial )
 	{
 		this.spatial = spatial;
+		return this;
 	}
 
 	public DataFile addSpatial( final Location location )
@@ -182,7 +185,7 @@ public class DataFile extends Resource
 	/**
 	 * @return The list of temporal coverages (PeriodOfTime) this DataFile is
 	 *         attached to.
-	 * @see {@link PeriodOfTime}
+	 * @see org.gesis.dcterms.PeriodOfTime
 	 */
 	public List<PeriodOfTime> getTemporal()
 	{
@@ -195,12 +198,13 @@ public class DataFile extends Resource
 	 * (dcterms:temporal), and topical (dcterms:subject).
 	 * 
 	 * @param temporal
-	 * @return This DataFile object. {@link getTemporal()}
-	 * @see {@link getTemporal()}
+	 * @return This DataFile object.
+	 * @see #getTemporal()
 	 */
-	public void setTemporal( final List<PeriodOfTime> temporal )
+	public DataFile setTemporal( final List<PeriodOfTime> temporal )
 	{
 		this.temporal = temporal;
+		return this;
 	}
 
 	public DataFile addTemporal( final PeriodOfTime periodOfTime )
@@ -215,7 +219,7 @@ public class DataFile extends Resource
 
 	/**
 	 * @return The list of topical coverages (Concept) this DataFile is attached to.
-	 * @see {@link Concept}
+	 * @see org.gesis.skos.Concept
 	 */
 	public List<Concept> getSubject()
 	{
@@ -229,11 +233,12 @@ public class DataFile extends Resource
 	 * 
 	 * @param subject
 	 * @return This DataFile object.
-	 * @see {@link getSubject()}
+	 * @see #getSubject()
 	 */
-	public void setSubject( final List<Concept> subject )
+	public DataFile setSubject( final List<Concept> subject )
 	{
 		this.subject = subject;
+		return this;
 	}
 
 	public DataFile addSubject( final Concept concept )
@@ -248,7 +253,7 @@ public class DataFile extends Resource
 
 	/**
 	 * @return The list of ProvenanceStatement attached to this DataFile.
-	 * @see {@link ProvenanceStatement}
+	 * @see org.gesis.dcterms.ProvenanceStatement
 	 */
 	public List<ProvenanceStatement> getProvenance()
 	{
@@ -261,7 +266,7 @@ public class DataFile extends Resource
 	 * 
 	 * @param provenance
 	 * @return This DataFile object.
-	 * @see {@link getProvenanceStatement()}
+	 * @see #getProvenance()
 	 */
 	public DataFile setProvenance( final List<ProvenanceStatement> provenance )
 	{
@@ -292,7 +297,7 @@ public class DataFile extends Resource
 	 * 
 	 * @param format
 	 * @return This DataFile object.
-	 * @see {@link getFormat()}
+	 * @see #getFormat()
 	 */
 	public DataFile setFormat( final MediaTypeOrExtend format )
 	{

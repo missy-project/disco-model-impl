@@ -20,7 +20,9 @@ import org.gesis.skos.Concept;
  * </p>
  * 
  * @author matthaeus
- * @see {@link http://rdf-vocabulary.ddialliance.org/discovery.html#analysis-units-and-universes}
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#analysis-units-and-universes">Definition:
+ *      Analysis Units and Universes</a>
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )

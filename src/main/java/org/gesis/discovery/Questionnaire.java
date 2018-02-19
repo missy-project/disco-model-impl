@@ -19,7 +19,9 @@ import org.gesis.skos.Concept;
  * {@link Question}s.
  * 
  * @author matthaeus
- * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-questionnaire
+ * @see <a href=
+ *      "http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-questionnaire">Definition:
+ *      Questionnaire</a>
  *
  */
 @Entity
@@ -58,8 +60,12 @@ public class Questionnaire extends Instrument
 	 * used to attain the data. A specific collection mode can be associated with 0
 	 * to n {@link Questionnaire}s.
 	 * 
-	 * @see http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-collectionmode
-	 * @see http://www.ddialliance.org/Specification/DDI-CV/ModeOfCollection_2.0.html
+	 * @see <a href=
+	 *      "http://rdf-vocabulary.ddialliance.org/discovery.html#dfn-disco-collectionmode">Definition:
+	 *      Collection mode</a>
+	 * @see <a href=
+	 *      "http://www.ddialliance.org/Specification/DDI-CV/ModeOfCollection_2.0.html">DDI:
+	 *      Mode of Collection</a>
 	 * 
 	 * @return List of Concepts definining the collection mode.
 	 */
@@ -71,7 +77,7 @@ public class Questionnaire extends Instrument
 	 * Sets the list of collection modes ({@link Concept}) for this Questionnaire.
 	 * 
 	 * @param collectionMode
-	 * @see {@link getCollectionMode()}
+	 * @see #getCollectionMode()
 	 */
 	public void setCollectionMode(final List<Concept> collectionMode) {
 		this.collectionMode = collectionMode;
@@ -101,7 +107,7 @@ public class Questionnaire extends Instrument
 	 * Sets the list of Questions for this Questionnaire instrument.
 	 * 
 	 * @param question
-	 * @see {@link getQuestion()}
+	 * @see #getQuestion()
 	 */
 	public void setQuestion(final List<Question> question) {
 		this.question = question;

@@ -24,7 +24,7 @@ import org.gesis.rdf.List;
  * </p>
  * 
  * @author matthaeus
- * @see {@link Representation}
+ * @see org.gesis.discovery.Representation
  */
 @Entity
 @Inheritance( strategy = InheritanceType.JOINED )
@@ -47,7 +47,7 @@ public class OrderedCollection extends Representation
 
 	/**
 	 * @return The list of members this OrderedCollection has.
-	 * @see {@link List}
+	 * @see org.gesis.rdf.List
 	 */
 	public List getMemberList()
 	{
@@ -59,7 +59,7 @@ public class OrderedCollection extends Representation
 	 * 
 	 * @param memberList
 	 * @return This OrderedCollection object.
-	 * @see {@link getMemberList()}
+	 * @see #getMemberList()
 	 */
 	public OrderedCollection setMemberList( final List memberList )
 	{

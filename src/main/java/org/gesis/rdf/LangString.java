@@ -104,8 +104,10 @@ public class LangString extends PersistableResource
 	}
 
 	/**
+	 * The value of the 'de' property, which represents the GERMAN translation.
+	 * 
 	 * @param de
-	 * @return
+	 * @return This LangString object.
 	 */
 	public LangString setDe( final String de )
 	{
@@ -119,8 +121,10 @@ public class LangString extends PersistableResource
 	}
 
 	/**
+	 * The value of the 'en' property, which represents the ENGLISH translation.
+	 * 
 	 * @param en
-	 * @return
+	 * @return This LangString object.
 	 */
 	public LangString setEn( final String en )
 	{
@@ -134,8 +138,10 @@ public class LangString extends PersistableResource
 	}
 
 	/**
+	 * The value of the 'fr' property, which represents the FRENCH translation.
+	 * 
 	 * @param fr
-	 * @return
+	 * @return This LangString object.
 	 */
 	public LangString setFr( final String fr )
 	{
@@ -147,7 +153,7 @@ public class LangString extends PersistableResource
 	 * Returns the corresponding value to the passed <i>locale</i>.
 	 *
 	 * @param locale
-	 * @return
+	 * @return The translated string value corresponding to the given locale.
 	 */
 	public String getValue( final Locale locale )
 	{
@@ -176,7 +182,7 @@ public class LangString extends PersistableResource
 	 *
 	 * @param locale
 	 * @param value
-	 * @return
+	 * @return This LangString object.
 	 */
 	public LangString setValue( final Locale locale, final String value )
 	{
@@ -218,7 +224,7 @@ public class LangString extends PersistableResource
 	 * LangString-object.
 	 *
 	 * @param values
-	 * @return
+	 * @return This LangString object.
 	 */
 	public LangString setValues( final Map<Locale, String> values )
 	{
@@ -232,11 +238,8 @@ public class LangString extends PersistableResource
 	}
 
 	/**
-	 * Returns the map of <i>all</i> values, including the default Locales,
-	 * added to this LangString-object.
-	 *
-	 * @param all
-	 * @return
+	 * @return Returns the map of <i>all</i> values, including the default Locales,
+	 *         added to this LangString-object.
 	 */
 	public Map<String, String> getValues()
 	{
@@ -255,18 +258,16 @@ public class LangString extends PersistableResource
 	}
 
 	/**
-	 * Returns an java.util.Map.Entry object from <i>locale</i> and
-	 * <i>value</i>. For instance, if<br>
-	 * <br>
-	 * <code>Locale locale = Locales.GERMANY;</code>,<br>
-	 * <br>
-	 * <code>buildEntryFrom(locale, "some value")</code> <br>
-	 * <br>
-	 * returns and Entry-object with key = "de_DE" and value = "some value".
-	 *
 	 * @param locale
 	 * @param value
-	 * @return
+	 * @return Returns an java.util.Map.Entry object from <i>locale</i> and
+	 *         <i>value</i>. For instance, if<br>
+	 *         <br>
+	 *         <code>Locale locale = Locales.GERMANY;</code>,<br>
+	 *         <br>
+	 *         <code>buildEntryFrom(locale, "some value")</code> <br>
+	 *         <br>
+	 *         returns and Entry-object with key = "de_DE" and value = "some value".
 	 */
 	protected static Entry<String, String> buildEntryFrom( final Locale locale, final String value )
 	{
@@ -295,7 +296,7 @@ public class LangString extends PersistableResource
 	 * Factory-method for a LangString object with UK-locale.
 	 *
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for Locales.UNITED_KINGDOM.
 	 */
 	public static LangString uk( final String value )
 	{
@@ -306,7 +307,7 @@ public class LangString extends PersistableResource
 	 * Factory-method for a LangString object with DE-locale.
 	 *
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for Locales.GERMANY.
 	 */
 	public static LangString de( final String value )
 	{
@@ -317,7 +318,7 @@ public class LangString extends PersistableResource
 	 * Factory-method for a LangString object with FR-locale.
 	 *
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for Locales.FRANCE.
 	 */
 	public static LangString fr( final String value )
 	{
@@ -340,13 +341,12 @@ public class LangString extends PersistableResource
 	}
 
 	/**
-	 * Factory-method for a LangString object. The Locale is tried to be
-	 * resolved from the <i>country</i> code. The <i>country</i> should be one
-	 * of de, uk, fr.
+	 * Factory-method for a LangString object. The Locale is tried to be resolved
+	 * from the <i>country</i> code. The <i>country</i> should be one of de, uk, fr.
 	 * 
 	 * @param country
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for the given country.
 	 */
 	public static LangString withLocaleAndValue( final String country, final String value )
 	{
@@ -360,7 +360,7 @@ public class LangString extends PersistableResource
 	 * 
 	 * @param locale
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for the given locale.
 	 */
 	@Deprecated
 	public static LangString createLangString( final Locale locale, final String value )
@@ -372,12 +372,13 @@ public class LangString extends PersistableResource
 	}
 
 	/**
-	 * Factory-method for a LangString object. The locale is tried to be
-	 * resolved from the country code.
+	 * Factory-method for a LangString object. The locale is tried to be resolved
+	 * from the country code.
 	 * 
 	 * @param country
 	 * @param value
-	 * @return
+	 * @return A LangString object with a pre-set value for the given country
+	 *         string.
 	 */
 	@Deprecated
 	public static LangString createLangString( final String country, final String value )
@@ -388,10 +389,9 @@ public class LangString extends PersistableResource
 	}
 
 	/**
-	 * Factory-method for a LangString-object, that has no values for no
-	 * country.
+	 * Factory-method for a LangString-object, that has no values for no country.
 	 * 
-	 * @return
+	 * @return A blank LangString object.
 	 */
 	public static LangString blank()
 	{
