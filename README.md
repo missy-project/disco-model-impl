@@ -1,3 +1,5 @@
+[![pipeline status](https://git.gesis.org/ddi/disco-model/badges/master/pipeline.svg)](https://git.gesis.org/ddi/disco-model/commits/master)
+
 This package contains the implementation of DISCO, the DDI Discovery Vocabulary Specification.
 
 ### DDI-RDF Discovery Vocabulary (disco)
